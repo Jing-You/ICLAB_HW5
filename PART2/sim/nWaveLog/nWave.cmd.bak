@@ -1,0 +1,328 @@
+wvSetPosition -win $_nWave1 {("G1" 0)}
+wvOpenFile -win $_nWave1 \
+           {/home/u105/u105061255/ICLAB/HW5/PART2/sim/eCNN_micro.fsdb}
+wvGetSignalOpen -win $_nWave1
+wvGetSignalSetScope -win $_nWave1 "/test_top"
+wvGetSignalSetScope -win $_nWave1 "/test_top/Conv_top"
+wvSetPosition -win $_nWave1 {("G1" 56)}
+wvSetPosition -win $_nWave1 {("G1" 56)}
+wvAddSignal -win $_nWave1 -clear
+wvAddSignal -win $_nWave1 -group {"G1" \
+{/test_top/Conv_top/bank_num\[1:0\]} \
+{/test_top/Conv_top/bias_cnt\[7:0\]} \
+{/test_top/Conv_top/busy} \
+{/test_top/Conv_top/clk} \
+{/test_top/Conv_top/cnn_state\[4:0\]} \
+{/test_top/Conv_top/conv_cnt\[7:0\]} \
+{/test_top/Conv_top/enable} \
+{/test_top/Conv_top/i\[31:0\]} \
+{/test_top/Conv_top/input_data\[7:0\]} \
+{/test_top/Conv_top/look\[7:0\]} \
+{/test_top/Conv_top/position_offset\[3:0\]} \
+{/test_top/Conv_top/read_cnt\[10:0\]} \
+{/test_top/Conv_top/rst_n} \
+{/test_top/Conv_top/sram_bytemask_a\[15:0\]} \
+{/test_top/Conv_top/sram_bytemask_b\[15:0\]} \
+{/test_top/Conv_top/sram_raddr_a0\[5:0\]} \
+{/test_top/Conv_top/sram_raddr_a1\[5:0\]} \
+{/test_top/Conv_top/sram_raddr_a2\[5:0\]} \
+{/test_top/Conv_top/sram_raddr_a3\[5:0\]} \
+{/test_top/Conv_top/sram_raddr_b0\[5:0\]} \
+{/test_top/Conv_top/sram_raddr_b1\[5:0\]} \
+{/test_top/Conv_top/sram_raddr_b2\[5:0\]} \
+{/test_top/Conv_top/sram_raddr_b3\[5:0\]} \
+{/test_top/Conv_top/sram_raddr_bias\[6:0\]} \
+{/test_top/Conv_top/sram_raddr_weight\[10:0\]} \
+{/test_top/Conv_top/sram_rdata_a0\[127:0\]} \
+{/test_top/Conv_top/sram_rdata_a1\[127:0\]} \
+{/test_top/Conv_top/sram_rdata_a2\[127:0\]} \
+{/test_top/Conv_top/sram_rdata_a3\[127:0\]} \
+{/test_top/Conv_top/sram_rdata_b0\[127:0\]} \
+{/test_top/Conv_top/sram_rdata_b1\[127:0\]} \
+{/test_top/Conv_top/sram_rdata_b2\[127:0\]} \
+{/test_top/Conv_top/sram_rdata_b3\[127:0\]} \
+{/test_top/Conv_top/sram_rdata_bias\[3:0\]} \
+{/test_top/Conv_top/sram_rdata_weight\[35:0\]} \
+{/test_top/Conv_top/sram_waddr_a\[5:0\]} \
+{/test_top/Conv_top/sram_waddr_b\[5:0\]} \
+{/test_top/Conv_top/sram_wdata_a\[127:0\]} \
+{/test_top/Conv_top/sram_wdata_b\[127:0\]} \
+{/test_top/Conv_top/sram_wen_a0} \
+{/test_top/Conv_top/sram_wen_a1} \
+{/test_top/Conv_top/sram_wen_a2} \
+{/test_top/Conv_top/sram_wen_a3} \
+{/test_top/Conv_top/sram_wen_b0} \
+{/test_top/Conv_top/sram_wen_b1} \
+{/test_top/Conv_top/sram_wen_b2} \
+{/test_top/Conv_top/sram_wen_b3} \
+{/test_top/Conv_top/state\[5:0\]} \
+{/test_top/Conv_top/test_layer_finish} \
+{/test_top/Conv_top/valid} \
+{/test_top/Conv_top/weight_cnt\[7:0\]} \
+{/test_top/Conv_top/weights\[0:3\]} \
+{/test_top/Conv_top/x_cnt\[4:0\]} \
+{/test_top/Conv_top/x_r8\[2:0\]} \
+{/test_top/Conv_top/y_cnt\[4:0\]} \
+{/test_top/Conv_top/y_r8\[2:0\]} \
+}
+wvAddSignal -win $_nWave1 -group {"G2" \
+}
+wvSelectSignal -win $_nWave1 {( "G1" 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 \
+           18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 \
+           40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 )} 
+wvSetPosition -win $_nWave1 {("G1" 56)}
+wvSetPosition -win $_nWave1 {("G1" 56)}
+wvSetPosition -win $_nWave1 {("G1" 56)}
+wvAddSignal -win $_nWave1 -clear
+wvAddSignal -win $_nWave1 -group {"G1" \
+{/test_top/Conv_top/bank_num\[1:0\]} \
+{/test_top/Conv_top/bias_cnt\[7:0\]} \
+{/test_top/Conv_top/busy} \
+{/test_top/Conv_top/clk} \
+{/test_top/Conv_top/cnn_state\[4:0\]} \
+{/test_top/Conv_top/conv_cnt\[7:0\]} \
+{/test_top/Conv_top/enable} \
+{/test_top/Conv_top/i\[31:0\]} \
+{/test_top/Conv_top/input_data\[7:0\]} \
+{/test_top/Conv_top/look\[7:0\]} \
+{/test_top/Conv_top/position_offset\[3:0\]} \
+{/test_top/Conv_top/read_cnt\[10:0\]} \
+{/test_top/Conv_top/rst_n} \
+{/test_top/Conv_top/sram_bytemask_a\[15:0\]} \
+{/test_top/Conv_top/sram_bytemask_b\[15:0\]} \
+{/test_top/Conv_top/sram_raddr_a0\[5:0\]} \
+{/test_top/Conv_top/sram_raddr_a1\[5:0\]} \
+{/test_top/Conv_top/sram_raddr_a2\[5:0\]} \
+{/test_top/Conv_top/sram_raddr_a3\[5:0\]} \
+{/test_top/Conv_top/sram_raddr_b0\[5:0\]} \
+{/test_top/Conv_top/sram_raddr_b1\[5:0\]} \
+{/test_top/Conv_top/sram_raddr_b2\[5:0\]} \
+{/test_top/Conv_top/sram_raddr_b3\[5:0\]} \
+{/test_top/Conv_top/sram_raddr_bias\[6:0\]} \
+{/test_top/Conv_top/sram_raddr_weight\[10:0\]} \
+{/test_top/Conv_top/sram_rdata_a0\[127:0\]} \
+{/test_top/Conv_top/sram_rdata_a1\[127:0\]} \
+{/test_top/Conv_top/sram_rdata_a2\[127:0\]} \
+{/test_top/Conv_top/sram_rdata_a3\[127:0\]} \
+{/test_top/Conv_top/sram_rdata_b0\[127:0\]} \
+{/test_top/Conv_top/sram_rdata_b1\[127:0\]} \
+{/test_top/Conv_top/sram_rdata_b2\[127:0\]} \
+{/test_top/Conv_top/sram_rdata_b3\[127:0\]} \
+{/test_top/Conv_top/sram_rdata_bias\[3:0\]} \
+{/test_top/Conv_top/sram_rdata_weight\[35:0\]} \
+{/test_top/Conv_top/sram_waddr_a\[5:0\]} \
+{/test_top/Conv_top/sram_waddr_b\[5:0\]} \
+{/test_top/Conv_top/sram_wdata_a\[127:0\]} \
+{/test_top/Conv_top/sram_wdata_b\[127:0\]} \
+{/test_top/Conv_top/sram_wen_a0} \
+{/test_top/Conv_top/sram_wen_a1} \
+{/test_top/Conv_top/sram_wen_a2} \
+{/test_top/Conv_top/sram_wen_a3} \
+{/test_top/Conv_top/sram_wen_b0} \
+{/test_top/Conv_top/sram_wen_b1} \
+{/test_top/Conv_top/sram_wen_b2} \
+{/test_top/Conv_top/sram_wen_b3} \
+{/test_top/Conv_top/state\[5:0\]} \
+{/test_top/Conv_top/test_layer_finish} \
+{/test_top/Conv_top/valid} \
+{/test_top/Conv_top/weight_cnt\[7:0\]} \
+{/test_top/Conv_top/weights\[0:3\]} \
+{/test_top/Conv_top/x_cnt\[4:0\]} \
+{/test_top/Conv_top/x_r8\[2:0\]} \
+{/test_top/Conv_top/y_cnt\[4:0\]} \
+{/test_top/Conv_top/y_r8\[2:0\]} \
+}
+wvAddSignal -win $_nWave1 -group {"G2" \
+}
+wvSelectSignal -win $_nWave1 {( "G1" 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 \
+           18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 \
+           40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 )} 
+wvSetPosition -win $_nWave1 {("G1" 56)}
+wvGetSignalClose -win $_nWave1
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvSetCursor -win $_nWave1 11569.745146 -snap {("G1" 48)}
+wvZoomIn -win $_nWave1
+wvZoomIn -win $_nWave1
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvZoomOut -win $_nWave1
+wvSelectSignal -win $_nWave1 {( "G1" 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 \
+           18 19 20 21 22 23 24 25 27 28 29 30 31 32 33 34 35 36 37 38 39 40 \
+           41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 )} 
+wvSelectSignal -win $_nWave1 {( "G1" 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 \
+           18 19 20 21 22 23 24 25 28 29 30 31 32 33 34 35 36 37 38 39 40 41 \
+           42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 )} 
+wvSelectSignal -win $_nWave1 {( "G1" 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 \
+           18 19 20 21 22 23 24 25 27 28 29 30 31 32 33 34 35 36 37 38 39 40 \
+           41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 )} 
+wvSelectSignal -win $_nWave1 {( "G1" 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 \
+           18 19 20 21 22 23 24 25 28 29 30 31 32 33 34 35 36 37 38 39 40 41 \
+           42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 )} 
+wvSelectSignal -win $_nWave1 {( "G1" 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 \
+           18 19 20 21 22 23 24 25 27 28 29 30 31 32 33 34 35 36 37 38 39 40 \
+           41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 )} 
+wvSelectSignal -win $_nWave1 {( "G1" 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 \
+           18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 \
+           40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 )} 
+wvScrollUp -win $_nWave1 18
+wvScrollUp -win $_nWave1 4
+wvScrollUp -win $_nWave1 1
+wvSelectGroup -win $_nWave1 {G2}
+wvScrollDown -win $_nWave1 0
+wvSelectGroup -win $_nWave1 {G2}
+wvSelectSignal -win $_nWave1 {( "G1" 56 )} 
+wvSelectSignal -win $_nWave1 {( "G1" 55 )} 
+wvSelectSignal -win $_nWave1 {( "G1" 51 55 )} 
+wvScrollUp -win $_nWave1 23
+wvSelectSignal -win $_nWave1 {( "G1" 12 51 55 )} 
+wvSelectSignal -win $_nWave1 {( "G1" 11 12 51 55 )} 
+wvSelectSignal -win $_nWave1 {( "G1" 10 11 12 51 55 )} 
+wvSelectSignal -win $_nWave1 {( "G1" 6 10 11 12 51 55 )} 
+wvScrollDown -win $_nWave1 0
+wvSelectSignal -win $_nWave1 {( "G1" 2 6 10 11 12 51 55 )} 
+wvScrollDown -win $_nWave1 23
+wvSelectGroup -win $_nWave1 {G2}
+wvAddSignal -win $_nWave1 "/test_top/Conv_top/bias_cnt\[7:0\]" \
+           "/test_top/Conv_top/conv_cnt\[7:0\]" \
+           "/test_top/Conv_top/look\[7:0\]" \
+           "/test_top/Conv_top/position_offset\[3:0\]" \
+           "/test_top/Conv_top/read_cnt\[10:0\]" \
+           "/test_top/Conv_top/weight_cnt\[7:0\]" \
+           "/test_top/Conv_top/y_cnt\[4:0\]"
+wvSetPosition -win $_nWave1 {("G1" 56)}
+wvSetPosition -win $_nWave1 {("G1" 63)}
+wvSelectGroup -win $_nWave1 {G2}
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollUp -win $_nWave1 4
+wvSelectGroup -win $_nWave1 {G1}
+wvScrollDown -win $_nWave1 0
+wvCut -win $_nWave1
+wvSetPosition -win $_nWave1 {("G2" 0)}
+wvGetSignalOpen -win $_nWave1
+wvGetSignalSetScope -win $_nWave1 "/test_top"
+wvGetSignalSetScope -win $_nWave1 "/test_top/Conv_top"
+wvSetPosition -win $_nWave1 {("G2" 12)}
+wvSetPosition -win $_nWave1 {("G2" 12)}
+wvAddSignal -win $_nWave1 -clear
+wvAddSignal -win $_nWave1 -group {"G2" \
+{/test_top/Conv_top/clk} \
+{/test_top/Conv_top/cnn_state\[4:0\]} \
+{/test_top/Conv_top/conv_cnt\[7:0\]} \
+{/test_top/Conv_top/position_offset\[3:0\]} \
+{/test_top/Conv_top/read_cnt\[10:0\]} \
+{/test_top/Conv_top/sram_raddr_bias\[6:0\]} \
+{/test_top/Conv_top/sram_raddr_weight\[10:0\]} \
+{/test_top/Conv_top/sram_rdata_bias\[3:0\]} \
+{/test_top/Conv_top/sram_rdata_weight\[35:0\]} \
+{/test_top/Conv_top/weight_cnt\[7:0\]} \
+{/test_top/Conv_top/x_cnt\[4:0\]} \
+{/test_top/Conv_top/y_cnt\[4:0\]} \
+}
+wvAddSignal -win $_nWave1 -group {"G3" \
+}
+wvSelectSignal -win $_nWave1 {( "G2" 1 2 3 4 5 6 7 8 9 10 11 12 )} 
+wvSetPosition -win $_nWave1 {("G2" 12)}
+wvSetPosition -win $_nWave1 {("G2" 12)}
+wvSetPosition -win $_nWave1 {("G2" 12)}
+wvAddSignal -win $_nWave1 -clear
+wvAddSignal -win $_nWave1 -group {"G2" \
+{/test_top/Conv_top/clk} \
+{/test_top/Conv_top/cnn_state\[4:0\]} \
+{/test_top/Conv_top/conv_cnt\[7:0\]} \
+{/test_top/Conv_top/position_offset\[3:0\]} \
+{/test_top/Conv_top/read_cnt\[10:0\]} \
+{/test_top/Conv_top/sram_raddr_bias\[6:0\]} \
+{/test_top/Conv_top/sram_raddr_weight\[10:0\]} \
+{/test_top/Conv_top/sram_rdata_bias\[3:0\]} \
+{/test_top/Conv_top/sram_rdata_weight\[35:0\]} \
+{/test_top/Conv_top/weight_cnt\[7:0\]} \
+{/test_top/Conv_top/x_cnt\[4:0\]} \
+{/test_top/Conv_top/y_cnt\[4:0\]} \
+}
+wvAddSignal -win $_nWave1 -group {"G3" \
+}
+wvSelectSignal -win $_nWave1 {( "G2" 1 2 3 4 5 6 7 8 9 10 11 12 )} 
+wvSetPosition -win $_nWave1 {("G2" 12)}
+wvGetSignalClose -win $_nWave1
+wvSetCursor -win $_nWave1 78764.562670 -snap {("G2" 12)}
+wvSetCursor -win $_nWave1 78685.100134 -snap {("G2" 12)}
+wvSelectSignal -win $_nWave1 {( "G2" 10 )} 
+wvSelectSignal -win $_nWave1 {( "G2" 5 )} 
+wvSelectSignal -win $_nWave1 {( "G2" 10 )} 
+wvSetCursor -win $_nWave1 78805.749510 -snap {("G2" 2)}
+wvGetSignalOpen -win $_nWave1
+wvGetSignalSetScope -win $_nWave1 "/test_top"
+wvGetSignalSetScope -win $_nWave1 "/test_top/Conv_top"
+wvGetSignalSetScope -win $_nWave1 "/test_top/Conv_top"
+wvSetPosition -win $_nWave1 {("G2" 13)}
+wvSetPosition -win $_nWave1 {("G2" 13)}
+wvAddSignal -win $_nWave1 -clear
+wvAddSignal -win $_nWave1 -group {"G2" \
+{/test_top/Conv_top/clk} \
+{/test_top/Conv_top/cnn_state\[4:0\]} \
+{/test_top/Conv_top/conv_cnt\[7:0\]} \
+{/test_top/Conv_top/position_offset\[3:0\]} \
+{/test_top/Conv_top/read_cnt\[10:0\]} \
+{/test_top/Conv_top/sram_raddr_bias\[6:0\]} \
+{/test_top/Conv_top/sram_raddr_weight\[10:0\]} \
+{/test_top/Conv_top/sram_rdata_bias\[3:0\]} \
+{/test_top/Conv_top/sram_rdata_weight\[35:0\]} \
+{/test_top/Conv_top/weight_cnt\[7:0\]} \
+{/test_top/Conv_top/x_cnt\[4:0\]} \
+{/test_top/Conv_top/y_cnt\[4:0\]} \
+{/test_top/Conv_top/state\[5:0\]} \
+}
+wvAddSignal -win $_nWave1 -group {"G3" \
+}
+wvSelectSignal -win $_nWave1 {( "G2" 13 )} 
+wvSetPosition -win $_nWave1 {("G2" 13)}
+wvSetPosition -win $_nWave1 {("G2" 13)}
+wvSetPosition -win $_nWave1 {("G2" 13)}
+wvAddSignal -win $_nWave1 -clear
+wvAddSignal -win $_nWave1 -group {"G2" \
+{/test_top/Conv_top/clk} \
+{/test_top/Conv_top/cnn_state\[4:0\]} \
+{/test_top/Conv_top/conv_cnt\[7:0\]} \
+{/test_top/Conv_top/position_offset\[3:0\]} \
+{/test_top/Conv_top/read_cnt\[10:0\]} \
+{/test_top/Conv_top/sram_raddr_bias\[6:0\]} \
+{/test_top/Conv_top/sram_raddr_weight\[10:0\]} \
+{/test_top/Conv_top/sram_rdata_bias\[3:0\]} \
+{/test_top/Conv_top/sram_rdata_weight\[35:0\]} \
+{/test_top/Conv_top/weight_cnt\[7:0\]} \
+{/test_top/Conv_top/x_cnt\[4:0\]} \
+{/test_top/Conv_top/y_cnt\[4:0\]} \
+{/test_top/Conv_top/state\[5:0\]} \
+}
+wvAddSignal -win $_nWave1 -group {"G3" \
+}
+wvSelectSignal -win $_nWave1 {( "G2" 13 )} 
+wvSetPosition -win $_nWave1 {("G2" 13)}
+wvGetSignalClose -win $_nWave1
+wvZoomIn -win $_nWave1
+wvZoomIn -win $_nWave1
+wvSetCursor -win $_nWave1 78664.703509 -snap {("G2" 11)}
+wvSetCursor -win $_nWave1 78859.386721 -snap {("G2" 12)}
+wvZoomIn -win $_nWave1
+wvSetCursor -win $_nWave1 78953.251841 -snap {("G2" 11)}
+wvSetCursor -win $_nWave1 78838.031165 -snap {("G2" 11)}
+wvSetCursor -win $_nWave1 78943.319024 -snap {("G2" 7)}
+wvSetCursor -win $_nWave1 77068.271329 -snap {("G2" 7)}
+wvDisplayGridCount -win $_nWave1 -off
+wvGetSignalClose -win $_nWave1
+wvReloadFile -win $_nWave1

@@ -1,0 +1,152 @@
+ncverilog(64): 15.20-s039: (c) Copyright 1995-2017 Cadence Design Systems, Inc.
+TOOL:	ncverilog	15.20-s039: Started on Dec 04, 2019 at 06:25:00 CST
+ncverilog
+	-f sim.f
+		test_top.v
+		../hdl/Convnet_top.v
+		../hdl/CNN2D.v
+		sram_model/sram_36x128b.v
+		sram_model/sram_84x4b.v
+		sram_model/sram_1104x36b.v
+		+access+r
+Recompiling... reason: file '../hdl/Convnet_top.v' is newer than expected.
+	expected: Wed Dec  4 04:44:38 2019
+	actual:   Wed Dec  4 05:28:07 2019
+file: ../hdl/Convnet_top.v
+	module worklib.Convnet_top:v
+		errors: 0, warnings: 0
+		Caching library 'worklib' ....... Done
+	Elaborating the design hierarchy:
+	Building instance overlay tables: .................... Done
+	Generating native compiled code:
+		worklib.Convnet_top:v <0x3e5d49de>
+			streams: 326, words: 61963
+	Building instance specific data structures.
+	Loading native compiled code:     .................... Done
+	Design hierarchy summary:
+		                   Instances  Unique
+		Modules:                  28       6
+		Registers:               154     133
+		Scalar wires:             38       -
+		Vectored wires:          472       -
+		Always blocks:            49      28
+		Initial blocks:            6       6
+		Cont. assignments:       153      11
+		Pseudo assignments:      293     293
+		Simulation timescale:  100ps
+	Writing initial simulation snapshot: worklib.test_top:v
+Loading snapshot worklib.test_top:v .................... Done
+*Novas* Loading libsscore_ius111.so
+ncsim> source /usr/cad/cadence/INCISIV/cur/tools/inca/files/ncsimrc
+ncsim> run
+Novas FSDB Dumper for IUS, Release 2012.01, Linux x86_64/64bit, 01/12/2012
+Copyright (C) 1996 - 2012 by SpringSoft, Inc.
+***********************************************************************
+*  WARNING -                                                          *
+*  The simulator version is newer than the FSDB dumper version which  *
+*  may cause abnormal behavior. Please contact SpringSoft support at  *
+*  support@springsoft.com for assistance.                             *
+***********************************************************************
+*Novas* : Create FSDB file 'eCNN_micro.fsdb'
+*Novas* : Begin traversing the scopes, layer (0).
+*Novas* : Enable +mda dumping.
+*Novas* : End of traversing.
+The following is input image !!
+  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0 84127127127 60 36  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0127127127127127127127127127127127127127127127 52  0  0  0  0  0  0
+  0  0  0  0  0  0 67114 72114127127127127127127127127127127127127  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0 17 66 14 67 67 67 59 21127127106  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0 83127127 18  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0 22127127 83  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0127127127 44  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0 59127127 62  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0127127127  5  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  9127127 58  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0126127127  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  0  0 75127127 57  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  0 19127127127  0  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  3127127127 35  0  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0 38127127 77  0  0  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0 31127127115  1  0  0  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0127127127 52  0  0  0  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0 61127127127 52  0  0  0  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0121127127127 40  0  0  0  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0121127127 18  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+Start to check unshuffle outputs in sram #A0...
+sram #A0 address:           0 PASS!!
+sram #A0 address:           1 PASS!!
+sram #A0 address:           2 PASS!!
+sram #A0 address:           3 PASS!!
+sram #A0 address:           6 PASS!!
+sram #A0 address:           7 PASS!!
+sram #A0 address:           8 PASS!!
+sram #A0 address:           9 PASS!!
+sram #A0 address:          12 PASS!!
+sram #A0 address:          13 PASS!!
+sram #A0 address:          14 PASS!!
+sram #A0 address:          15 PASS!!
+sram #A0 address:          18 PASS!!
+sram #A0 address:          19 PASS!!
+sram #A0 address:          20 PASS!!
+sram #A0 address:          21 PASS!!
+
+Unshuffle outputs in sram #A0 are successfully passed!
+===============================================================================
+Start to check unshuffle outputs in sram #A1...
+sram #A1 address:           0 PASS!!
+sram #A1 address:           1 PASS!!
+sram #A1 address:           2 PASS!!
+sram #A1 address:           6 PASS!!
+sram #A1 address:           7 PASS!!
+sram #A1 address:           8 PASS!!
+sram #A1 address:          12 PASS!!
+sram #A1 address:          13 PASS!!
+sram #A1 address:          14 PASS!!
+sram #A1 address:          18 PASS!!
+sram #A1 address:          19 PASS!!
+sram #A1 address:          20 PASS!!
+
+Unshuffle outputs in sram #A1 are successfully passed!
+===============================================================================
+Start to check unshuffle outputs in sram #A2...
+sram #A2 address:           0 PASS!!
+sram #A2 address:           1 PASS!!
+sram #A2 address:           2 PASS!!
+sram #A2 address:           3 PASS!!
+sram #A2 address:           6 PASS!!
+sram #A2 address:           7 PASS!!
+sram #A2 address:           8 PASS!!
+sram #A2 address:           9 PASS!!
+sram #A2 address:          12 PASS!!
+sram #A2 address:          13 PASS!!
+sram #A2 address:          14 PASS!!
+sram #A2 address:          15 PASS!!
+
+Unshuffle outputs in sram #A2 are successfully passed!
+===============================================================================
+Start to check unshuffle outputs in sram #A3...
+sram #A3 address:           0 PASS!!
+sram #A3 address:           1 PASS!!
+sram #A3 address:           2 PASS!!
+sram #A3 address:           6 PASS!!
+sram #A3 address:           7 PASS!!
+sram #A3 address:           8 PASS!!
+sram #A3 address:          12 PASS!!
+sram #A3 address:          13 PASS!!
+sram #A3 address:          14 PASS!!
+
+Unshuffle outputs in sram #A3 are successfully passed!
+===================================================>
+Congratulations! Your unshuffle is correct ^___^
+Simulation complete via $finish(1) at time 14850 NS + 0
+./test_top.v:523                     $finish;
+ncsim> exit
+TOOL:	ncverilog	15.20-s039: Exiting on Dec 04, 2019 at 06:25:03 CST  (total: 00:00:03)
