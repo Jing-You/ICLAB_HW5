@@ -1,17 +1,15 @@
 ncverilog(64): 15.20-s039: (c) Copyright 1995-2017 Cadence Design Systems, Inc.
-TOOL:	ncverilog	15.20-s039: Started on Dec 04, 2019 at 06:25:00 CST
+TOOL:	ncverilog	15.20-s039: Started on Dec 04, 2019 at 09:32:38 CST
 ncverilog
 	-f sim.f
 		test_top.v
 		../hdl/Convnet_top.v
 		../hdl/CNN2D.v
+		../hdl/bytemask.v
 		sram_model/sram_36x128b.v
 		sram_model/sram_84x4b.v
 		sram_model/sram_1104x36b.v
 		+access+r
-Recompiling... reason: file '../hdl/Convnet_top.v' is newer than expected.
-	expected: Wed Dec  4 04:44:38 2019
-	actual:   Wed Dec  4 05:28:07 2019
 file: ../hdl/Convnet_top.v
 	module worklib.Convnet_top:v
 		errors: 0, warnings: 0
@@ -19,20 +17,22 @@ file: ../hdl/Convnet_top.v
 	Elaborating the design hierarchy:
 	Building instance overlay tables: .................... Done
 	Generating native compiled code:
-		worklib.Convnet_top:v <0x3e5d49de>
-			streams: 326, words: 61963
+		worklib.Convnet_top:v <0x5a6cec9d>
+			streams: 327, words: 60184
+		worklib.bytemask:v <0x0aeb99e5>
+			streams:   3, words:  4392
 	Building instance specific data structures.
 	Loading native compiled code:     .................... Done
 	Design hierarchy summary:
 		                   Instances  Unique
-		Modules:                  28       6
+		Modules:                  29       7
 		Registers:               154     133
 		Scalar wires:             38       -
-		Vectored wires:          472       -
-		Always blocks:            49      28
+		Vectored wires:          476       -
+		Always blocks:            50      29
 		Initial blocks:            6       6
 		Cont. assignments:       153      11
-		Pseudo assignments:      293     293
+		Pseudo assignments:      296     296
 		Simulation timescale:  100ps
 	Writing initial simulation snapshot: worklib.test_top:v
 Loading snapshot worklib.test_top:v .................... Done
@@ -149,4 +149,4 @@ Congratulations! Your unshuffle is correct ^___^
 Simulation complete via $finish(1) at time 14850 NS + 0
 ./test_top.v:523                     $finish;
 ncsim> exit
-TOOL:	ncverilog	15.20-s039: Exiting on Dec 04, 2019 at 06:25:03 CST  (total: 00:00:03)
+TOOL:	ncverilog	15.20-s039: Exiting on Dec 04, 2019 at 09:32:40 CST  (total: 00:00:02)
