@@ -211,17 +211,17 @@ always @* begin
 end
 
 always @(posedge clk) begin
-	if (state == CONV1 && cnn_state && DOCNN) begin
-		$display("(%d, %d)", y_cnt_pp, x_cnt_pp);
-		$display("ch1_pixels:");
-		for(i=0; i<4; i=i+1) begin
-			for (j=0;j<4;j=j+1) begin
-				$write("%d ", ch1_pixels[i][j]);
-			end
-			$write("\n");
-		end
-		$display("%d %d %d %d", feature_maps_o0, feature_maps_o1, feature_maps_o2, feature_maps_o3);
-	end
+	// if (state == CONV1 && cnn_state && DOCNN) begin
+	// 	// $display("(%d, %d)", y_cnt_pp, x_cnt_pp);
+	// 	// $display("ch1_pixels:");
+	// 	for(i=0; i<4; i=i+1) begin
+	// 		for (j=0;j<4;j=j+1) begin
+	// 			$write("%d ", ch1_pixels[i][j]);
+	// 		end
+	// 		$write("\n");
+	// 	end
+	// 	$display("%d %d %d %d", feature_maps_o0, feature_maps_o1, feature_maps_o2, feature_maps_o3);
+	// end
 end
 
 always @* begin
