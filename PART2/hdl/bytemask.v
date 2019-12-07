@@ -29,6 +29,7 @@ always @* begin
 end
 
 always @(posedge clk) begin
+	if (state == UNSHUFFLE)
 		case (position_offset)
 		0: 	sram_bytemask_a <=  16'b0111_1111_1111_1111;
 		1: 	sram_bytemask_a <=  16'b1111_0111_1111_1111;
@@ -46,7 +47,10 @@ always @(posedge clk) begin
 		13: sram_bytemask_a <= 16'b1111_1111_1111_1101;
 		14: sram_bytemask_a <= 16'b1111_1111_1110_1111;
 		15: sram_bytemask_a <= 16'b1111_1111_1111_1110;
-	endcase
+		endcase
+	else if (state == CONV2) begin
+		sram_bytemask_a <= 0;
+	end
 end
 
 

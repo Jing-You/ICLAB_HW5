@@ -67,19 +67,25 @@ always @(posedge clk) begin
 		load_weight_finish <= 0;
 	end
 	else if (state == CONV1) begin
-		if (state == UNSHUFFLE) begin
+		if (cnn_state == DOCNN) begin
 			load_weight_finish <= 0;
 		end
-		else if (state == CONV1) begin
-			if (cnn_state == DOCNN) begin
-				load_weight_finish <= 0;
-			end
-			else if (read_cnt % 16 == 0 && read_weight_finish) begin
-				load_weight_finish <= 1;
-			end
-			else begin
-				load_weight_finish <= load_weight_finish;
-			end
+		else if (read_cnt % 16 == 0 && read_weight_finish) begin
+			load_weight_finish <= 1;
+		end
+		else begin
+			load_weight_finish <= load_weight_finish;
+		end
+	end
+	else if (state == CONV2) begin
+		if (cnn_state == DOCNN) begin
+			load_weight_finish <= 0;
+		end
+		else if (read_cnt % 16 == 0 && read_weight_finish) begin
+			load_weight_finish <= 1;
+		end
+		else begin
+			load_weight_finish <= load_weight_finish;
 		end
 	end
 end
@@ -88,7 +94,7 @@ always @(posedge clk) begin
 	if (!rst_n) begin
 		load_bias_finish <= 0;
 	end
-	else if (state == CONV1) begin
+	else if (state == CONV1 || state == CONV2) begin
 		if (state == UNSHUFFLE) begin
 			load_bias_finish <= 0;
 		end
@@ -104,6 +110,7 @@ always @(posedge clk) begin
 			end
 		end
 	end
+
 end
 
 always @(posedge clk) begin
@@ -113,17 +120,18 @@ always @(posedge clk) begin
 		bias[2] <= 0;
 		bias[3] <= 0;
 	end
-	else if (state == CONV1) begin
-		if (read_cnt  == 1) begin
+	else if (state == CONV1 || state == CONV2) begin
+		if (read_cnt % 16 == 1) begin
 			bias[0] <= sram_rdata_bias;
 		end
-		if (read_cnt  == 2) begin
+		if (read_cnt  % 16 == 2) begin
 			bias[1] <= sram_rdata_bias;
 		end
-		if (read_cnt == 3) begin
+		if (read_cnt % 16 == 3) begin
 			bias[2] <= sram_rdata_bias;
 		end
-		if (read_cnt  == 4 && !load_bias_finish) begin
+		// if (read_cnt  % 16 == 4 && !load_bias_finish) begin
+		if (read_cnt  % 16 == 4) begin
 			bias[3] <= sram_rdata_bias;
 		end
 	end
@@ -139,7 +147,7 @@ always @(posedge clk) begin
 			end
 		end
 	end
-	else if (state == CONV1 && !load_weight_finish) begin
+	else if ((state == CONV1 || state == CONV2) && !load_weight_finish) begin
 		for (i=1; i<= 15; i=i+1) begin
 			if (read_cnt % 16 == i) begin
 				W[i-1][0][0] <= sram_rdata_weight[35:32];
@@ -153,6 +161,7 @@ always @(posedge clk) begin
 				W[i-1][2][2] <= sram_rdata_weight[3:0];				
 			end
 		end
+		// if (read_cnt % 16 == 0 && read_weight_finish) begin
 		if (read_cnt % 16 == 0 && read_weight_finish) begin
 			W[15][0][0] <= sram_rdata_weight[35:32];
 			W[15][0][1] <= sram_rdata_weight[31:28];
@@ -221,22 +230,22 @@ always @* begin
 		end
 	end
 	else if (state == CONV2) begin
-		for(i=0; i<4; i=i+16) begin
-			temp_conv_out[i/16] =   Y[0+i] + Y[4+i] + Y[8+i]  + Y[12+i] + (bias[i / 16] << (3)) + 2 ** 4;
-			temp_conv_out[i/16+1] = Y[1+i] + Y[5+i] + Y[9+i]  + Y[13+i] + (bias[i / 16] << (3)) + 2 ** 4;
-			temp_conv_out[i/16+2] = Y[2+i] + Y[6+i] + Y[10+i] + Y[14+i] + (bias[i / 16] << (3)) + 2 ** 4;
-			temp_conv_out[i/16+3] = Y[3+i] + Y[7+i] + Y[11+i] + Y[15+i] + (bias[i / 16] << (3)) + 2 ** 4;
+		for(i=0; i<=48; i=i+16) begin
+			temp_conv_out[i/4] =   Y[0+i] + Y[4+i] + Y[8+i]  + Y[12+i] + (bias[i / 16] << (3)) + 2 ** 4;
+			temp_conv_out[i/4+1] = Y[1+i] + Y[5+i] + Y[9+i]  + Y[13+i] + (bias[i / 16] << (3)) + 2 ** 4;
+			temp_conv_out[i/4+2] = Y[2+i] + Y[6+i] + Y[10+i] + Y[14+i] + (bias[i / 16] << (3)) + 2 ** 4;
+			temp_conv_out[i/4+3] = Y[3+i] + Y[7+i] + Y[11+i] + Y[15+i] + (bias[i / 16] << (3)) + 2 ** 4;
 		end
 		for (i=0; i<16 ;i=i+1) begin
 			conv_out[i] = temp_conv_out[i] >>> 5;
 		end
 	end
 	else begin
-		for(i=0; i<4; i=i+16) begin
-			temp_conv_out[i/16] =   Y[0+i] + Y[4+i] + Y[8+i]  + Y[12+i] + (bias[i / 16] << (3)) + 2 ** 4;
-			temp_conv_out[i/16+1] = Y[1+i] + Y[5+i] + Y[9+i]  + Y[13+i] + (bias[i / 16] << (3)) + 2 ** 4;
-			temp_conv_out[i/16+2] = Y[2+i] + Y[6+i] + Y[10+i] + Y[14+i] + (bias[i / 16] << (3)) + 2 ** 4;
-			temp_conv_out[i/16+3] = Y[3+i] + Y[7+i] + Y[11+i] + Y[15+i] + (bias[i / 16] << (3)) + 2 ** 4;
+		for(i=0; i<=48; i=i+16) begin
+			temp_conv_out[i/4] =   Y[0+i] + Y[4+i] + Y[8+i]  + Y[12+i] + (bias[i / 16] << (3)) + 2 ** 4;
+			temp_conv_out[i/4+1] = Y[1+i] + Y[5+i] + Y[9+i]  + Y[13+i] + (bias[i / 16] << (3)) + 2 ** 4;
+			temp_conv_out[i/4+2] = Y[2+i] + Y[6+i] + Y[10+i] + Y[14+i] + (bias[i / 16] << (3)) + 2 ** 4;
+			temp_conv_out[i/4+3] = Y[3+i] + Y[7+i] + Y[11+i] + Y[15+i] + (bias[i / 16] << (3)) + 2 ** 4;
 		end
 		for (i=0; i<16 ;i=i+1) begin
 			conv_out[i] = temp_conv_out[i] >>> 6;
@@ -274,21 +283,13 @@ always@* begin
 end
 
 always @(posedge clk) begin
-	if (state == CONV1 && cnn_state && DOCNN) begin
+	if (state == CONV2 && cnn_state == DOCNN) begin
 		// $display("(%d, %d)", y_cnt_pp, x_cnt_pp);
-		// $display("ch1_pixels:");
-		// for(i=0; i<4; i=i+1) begin
-		// 	for (j=0;j<4;j=j+1) begin
-		// 		$write("%d ", ch1_pixels[i][j]);
-		// 	end
-		// 	$write("\n");
-		// end
-		// $display("feature_maps_o");
+		// $display("feature_maps");
 		// $display("%d %d %d %d", feature_maps_o0, feature_maps_o1, feature_maps_o2, feature_maps_o3);
 		// $display("%d %d %d %d", feature_maps_o4, feature_maps_o5, feature_maps_o6, feature_maps_o7);
 		// $display("%d %d %d %d", feature_maps_o8, feature_maps_o9, feature_maps_o10, feature_maps_o11);
 		// $display("%d %d %d %d", feature_maps_o12, feature_maps_o13, feature_maps_o14, feature_maps_o15);
-	
 	end
 end
 

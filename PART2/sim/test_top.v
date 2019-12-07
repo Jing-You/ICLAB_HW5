@@ -378,7 +378,7 @@ initial begin
             //set test_layer to UNSHUFFLE, CONV1, CONV2 or POOL to choose which layer outputs you want to check
             //be aware of test_layer_finish is needed for UNSHUFFLE, CONV1 and CONV2
             //valid is needed for POOL 
-            test_layer = UNSHUFFLE;
+            test_layer = CONV2;
             if(test_layer == UNSHUFFLE) begin
                 if(test_layer_finish) begin
                     $display("Start to check unshuffle outputs in sram #A0...");
@@ -658,7 +658,7 @@ initial begin
                         else begin
                             $write("You have wrong answer in the sram #A0 !!!\n\n");
                             display_error(0, 2, m, 0);
-                            $finish;
+                            // $finish;
                         end
                     end
                     $display("\nConv2 outputs in sram #A0 are successfully passed!");
@@ -670,7 +670,7 @@ initial begin
                         else begin
                             $write("You have wrong answer in the sram #A1 !!!\n\n");
                             display_error(1, 2, m, 0);
-                            $finish;
+                            // $finish;
                         end
                     end
                     for(m=3; m<5; m=m+1) begin
@@ -679,7 +679,7 @@ initial begin
                         else begin
                             $write("You have wrong answer in the sram #A1 !!!\n\n");
                             display_error(1, 2, m, 1);
-                            $finish;
+                            // $finish;
                         end
                     end
                     for(m=6; m<8; m=m+1) begin
@@ -688,7 +688,7 @@ initial begin
                         else begin
                             $write("You have wrong answer in the sram #A1 !!!\n\n");
                             display_error(1, 2, m, 2);
-                            $finish;
+                            // $finish;
                         end
                     end
                     for(m=9; m<11; m=m+1) begin
@@ -697,7 +697,7 @@ initial begin
                         else begin
                             $write("You have wrong answer in the sram #A1 !!!\n\n");
                             display_error(1, 2, m, 3);
-                            $finish;
+                            // $finish;
                         end
                     end
                     for(m=12; m<14; m=m+1) begin
@@ -706,7 +706,7 @@ initial begin
                         else begin
                             $write("You have wrong answer in the sram #A1 !!!\n\n");
                             display_error(1, 2, m, 4);
-                            $finish;
+                            // $finish;
                         end
                     end
                     for(m=15; m<17; m=m+1) begin
@@ -715,7 +715,7 @@ initial begin
                         else begin
                             $write("You have wrong answer in the sram #A1 !!!\n\n");
                             display_error(1, 2, m, 5);
-                            $finish;
+                            // $finish;
                         end
                     end
                     for(m=18; m<20; m=m+1) begin
@@ -724,7 +724,7 @@ initial begin
                         else begin
                             $write("You have wrong answer in the sram #A1 !!!\n\n");
                             display_error(1, 2, m, 6);
-                            $finish;
+                            // $finish;
                         end
                     end
                     for(m=21; m<23; m=m+1) begin
@@ -733,7 +733,7 @@ initial begin
                         else begin
                             $write("You have wrong answer in the sram #A1 !!!\n\n");
                             display_error(1, 2, m, 7);
-                            $finish;
+                            // $finish;
                         end
                     end
                     for(m=24; m<26; m=m+1) begin
@@ -742,7 +742,7 @@ initial begin
                         else begin
                             $write("You have wrong answer in the sram #A1 !!!\n\n");
                             display_error(1, 2, m, 8);
-                            $finish;
+                            // $finish;
                         end
                     end
                     for(m=27; m<29; m=m+1) begin
@@ -751,7 +751,7 @@ initial begin
                         else begin
                             $write("You have wrong answer in the sram #A1 !!!\n\n");
                             display_error(1, 2, m, 9);
-                            $finish;
+                            // $finish;
                         end
                     end
                     for(m=30; m<32; m=m+1) begin
@@ -760,7 +760,7 @@ initial begin
                         else begin
                             $write("You have wrong answer in the sram #A1 !!!\n\n");
                             display_error(1, 2, m, 10);
-                            $finish;
+                            // $finish;
                         end
                     end
                     for(m=33; m<35; m=m+1) begin
@@ -769,7 +769,7 @@ initial begin
                         else begin
                             $write("You have wrong answer in the sram #A1 !!!\n\n");
                             display_error(1, 2, m, 11);
-                            $finish;
+                            // $finish;
                         end
                     end
                     $display("\nConv2 outputs in sram #A1 are successfully passed!");
@@ -781,7 +781,7 @@ initial begin
                         else begin
                             $write("You have wrong answer in the sram #A2 !!!\n\n");
                             display_error(2, 2, m, 0);
-                            $finish;
+                            // $finish;
                         end
                     end
                     for(m=18; m<30; m=m+1) begin
@@ -790,7 +790,7 @@ initial begin
                         else begin
                             $write("You have wrong answer in the sram #A2 !!!\n\n");
                             display_error(2, 2, m, 6);
-                            $finish;
+                            // $finish;
                         end
                     end
                     $display("\nConv2 outputs in sram #A2 are successfully passed!");
@@ -802,7 +802,7 @@ initial begin
                         else begin
                             $write("You have wrong answer in the sram #A3 !!!\n\n");
                             display_error(3, 2, m, 0);
-                            $finish;
+                            // $finish;
                         end
                     end
                     for(m=3; m<5; m=m+1) begin
@@ -811,7 +811,7 @@ initial begin
                         else begin
                             $write("You have wrong answer in the sram #A3 !!!\n\n");
                             display_error(3, 2, m, 1);
-                            $finish;
+                            // $finish;
                         end
                     end
                     for(m=6; m<8; m=m+1) begin
@@ -820,7 +820,7 @@ initial begin
                         else begin
                             $write("You have wrong answer in the sram #A3 !!!\n\n");
                             display_error(3, 2, m, 2);
-                            $finish;
+                            // $finish;
                         end
                     end
                     for(m=9; m<11; m=m+1) begin
@@ -829,7 +829,7 @@ initial begin
                         else begin
                             $write("You have wrong answer in the sram #A3 !!!\n\n");
                             display_error(3, 2, m, 3);
-                            $finish;
+                            // $finish;
                         end
                     end
                     for(m=18; m<20; m=m+1) begin
@@ -838,7 +838,7 @@ initial begin
                         else begin
                             $write("You have wrong answer in the sram #A3 !!!\n\n");
                             display_error(3, 2, m, 10);
-                            $finish;
+                            // $finish;
                         end
                     end
                     for(m=21; m<23; m=m+1) begin
@@ -847,7 +847,7 @@ initial begin
                         else begin
                             $write("You have wrong answer in the sram #A3 !!!\n\n");
                             display_error(3, 2, m, 11);
-                            $finish;
+                            // $finish;
                         end
                     end
                     for(m=24; m<26; m=m+1) begin
@@ -856,7 +856,7 @@ initial begin
                         else begin
                             $write("You have wrong answer in the sram #A3 !!!\n\n");
                             display_error(3, 2, m, 12);
-                            $finish;
+                            // $finish;
                         end
                     end
                     for(m=27; m<29; m=m+1) begin
@@ -865,7 +865,7 @@ initial begin
                         else begin
                             $write("You have wrong answer in the sram #A3 !!!\n\n");
                             display_error(3, 2, m, 13);
-                            $finish;
+                            // $finish;
                         end
                     end
                     $display("\nConv2 outputs in sram #A3 are successfully passed!");

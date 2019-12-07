@@ -102,6 +102,7 @@ wire [7:0] feature_maps_o12;
 wire [7:0] feature_maps_o13;
 wire [7:0] feature_maps_o14;
 wire [7:0] feature_maps_o15;
+
 reg [7:0] conv_cnt_p;
 always @(posedge clk)
 	x_cnt_p <= x_cnt;
@@ -142,6 +143,7 @@ addr addr(
 	.read_weight_finish(read_weight_finish),
 	.read_bias_finish(read_bias_finish),
 	.conv_cnt(conv_cnt),
+	.conv_cnt_p(conv_cnt_p),
 	.sram_waddr_a(sram_waddr_a),
 	.sram_waddr_b(sram_waddr_b),
 	.sram_raddr_bias(sram_raddr_bias),
@@ -239,7 +241,7 @@ always @(posedge clk) begin
 		state <= CONV2;
 	end
 	else if (state == CONV2) begin
-		if (conv_cnt_p == 16 && x_cnt_pp == 4 && y_cnt_pp == 4)
+		if (conv_cnt_p == 3 && x_cnt_pp == 4 && y_cnt_pp == 4)
 			state <= C2_2_C3;
 		else
 			state <= state;
@@ -248,7 +250,7 @@ always @(posedge clk) begin
 		state <= CONV3;
 	end
 	else if (state == CONV3) begin
-		if (conv_cnt_p == 64 && x_cnt_pp == 3 && y_cnt_pp == 3)
+		if (conv_cnt_p == 16 && x_cnt_pp == 3 && y_cnt_pp == 3)
 			state <= C2_2_C3;
 		else
 			state <= state;
@@ -299,14 +301,6 @@ end
 always @(posedge clk) begin
 	if(!rst_n) begin
 		conv_cnt <= 0;
-	end
-	else if (state == CONV1) begin
-		if(x_cnt_pp == 5 && y_cnt_pp == 5) begin
-			conv_cnt = conv_cnt + 1;
-		end
-		else begin
-			conv_cnt <= conv_cnt;
-		end
 	end
 	else if (state == C1_2_C2) begin
 		conv_cnt <= 0;
@@ -487,7 +481,26 @@ always @(posedge clk) begin
 		sram_wdata_b[2*8 +:8]  <= feature_maps_o13;
 		sram_wdata_b[1*8 +:8]  <= feature_maps_o14;
 		sram_wdata_b[0*8 +:8]  <= feature_maps_o15;
-	end	
+	end
+	else if (state == CONV2) begin
+		sram_wdata_a[15*8 +:8] <= feature_maps_o0;
+		sram_wdata_a[14*8 +:8] <= feature_maps_o1;
+		sram_wdata_a[13*8 +:8] <= feature_maps_o2;
+		sram_wdata_a[12*8 +:8] <= feature_maps_o3;
+		sram_wdata_a[11*8 +:8] <= feature_maps_o4;
+		sram_wdata_a[10*8 +:8] <= feature_maps_o5;
+		sram_wdata_a[9*8 +:8]  <= feature_maps_o6;
+		sram_wdata_a[8*8 +:8]  <= feature_maps_o7;
+		sram_wdata_a[7*8 +:8]  <= feature_maps_o8;
+		sram_wdata_a[6*8 +:8]  <= feature_maps_o9;
+		sram_wdata_a[5*8 +:8]  <= feature_maps_o10;
+		sram_wdata_a[4*8 +:8]  <= feature_maps_o11;
+		sram_wdata_a[3*8 +:8]  <= feature_maps_o12;
+		sram_wdata_a[2*8 +:8]  <= feature_maps_o13;
+		sram_wdata_a[1*8 +:8]  <= feature_maps_o14;
+		sram_wdata_a[0*8 +:8]  <= feature_maps_o15;
+		
+	end
 end
 
 

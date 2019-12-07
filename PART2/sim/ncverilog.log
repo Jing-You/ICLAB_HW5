@@ -1,37 +1,47 @@
 ncverilog(64): 15.20-s039: (c) Copyright 1995-2017 Cadence Design Systems, Inc.
-TOOL:	ncverilog	15.20-s039: Started on Dec 04, 2019 at 09:32:38 CST
+TOOL:	ncverilog	15.20-s039: Started on Dec 08, 2019 at 06:46:09 CST
 ncverilog
 	-f sim.f
 		test_top.v
 		../hdl/Convnet_top.v
 		../hdl/CNN2D.v
 		../hdl/bytemask.v
+		../hdl/addr.v
+		../hdl/top_CNN.v
+		../hdl/wen.v
 		sram_model/sram_36x128b.v
 		sram_model/sram_84x4b.v
 		sram_model/sram_1104x36b.v
 		+access+r
-file: ../hdl/Convnet_top.v
-	module worklib.Convnet_top:v
+Recompiling... reason: file '../hdl/addr.v' is newer than expected.
+	expected: Sun Dec  8 05:48:21 2019
+	actual:   Sun Dec  8 05:49:07 2019
+file: ../hdl/addr.v
+	module worklib.addr:v
 		errors: 0, warnings: 0
 		Caching library 'worklib' ....... Done
 	Elaborating the design hierarchy:
+	.conv_cnt(conv_cnt),
+	                 |
+ncelab: *W,CUVMPW (../hdl/Convnet_top.v,145|18): port sizes differ in port connection (8/11).
+	.conv_cnt_p(conv_cnt_p),
+	                     |
+ncelab: *W,CUVMPW (../hdl/Convnet_top.v,146|22): port sizes differ in port connection (8/11).
 	Building instance overlay tables: .................... Done
 	Generating native compiled code:
-		worklib.Convnet_top:v <0x5a6cec9d>
-			streams: 327, words: 60184
-		worklib.bytemask:v <0x0aeb99e5>
-			streams:   3, words:  4392
+		worklib.addr:v <0x05048f9f>
+			streams:  12, words:  6792
 	Building instance specific data structures.
 	Loading native compiled code:     .................... Done
 	Design hierarchy summary:
 		                   Instances  Unique
-		Modules:                  29       7
-		Registers:               154     133
-		Scalar wires:             38       -
-		Vectored wires:          476       -
-		Always blocks:            50      29
+		Modules:                  80      10
+		Registers:               192     171
+		Scalar wires:             42       -
+		Vectored wires:         1302       -
+		Always blocks:            70      49
 		Initial blocks:            6       6
-		Cont. assignments:       153      11
+		Cont. assignments:        73       3
 		Pseudo assignments:      296     296
 		Simulation timescale:  100ps
 	Writing initial simulation snapshot: worklib.test_top:v
@@ -80,73 +90,724 @@ The following is input image !!
   0  0  0  0  0  0  0  0  0  0121127127127 40  0  0  0  0  0  0  0  0  0  0  0  0  0
   0  0  0  0  0  0  0  0  0  0121127127 18  0  0  0  0  0  0  0  0  0  0  0  0  0  0
   0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
-Start to check unshuffle outputs in sram #A0...
+( 0,  0)
+feature_maps
+   3    0    3    0
+   4    5   10   15
+   0    0    0    0
+   4    1    1    0
+( 0,  0)
+feature_maps
+   3    0    3    0
+   4    5   10   15
+   0    0    0    0
+   4    1    1    0
+( 0,  0)
+feature_maps
+   3    0    3    0
+   4    5   10   15
+   0    0    0    0
+   4    1    1    0
+( 0,  1)
+feature_maps
+   0    0    0    0
+   4    4   17   19
+   1    1    0    0
+   0    3    0    0
+( 0,  2)
+feature_maps
+   2    6    0    0
+   2    1   18   18
+   1    0    1    2
+   5    5    0    0
+( 0,  3)
+feature_maps
+   6    6    0    0
+   0    0   18   15
+   0    0    2    2
+   5    5    0    0
+( 0,  4)
+feature_maps
+   6    7    0    0
+   0    1   10    6
+   0    0    2    2
+   5    5    0    1
+( 1,  0)
+feature_maps
+  19   24   20   36
+   5    2    0    0
+   0    0    0    0
+   6    4   18   32
+( 1,  1)
+feature_maps
+  22   15   46   48
+   2    4    1    2
+   0    0    0    0
+   1    0   38   36
+( 1,  2)
+feature_maps
+   6    0   48   48
+   7    9    1    4
+   0    0    0    0
+   0    0   33   32
+( 1,  3)
+feature_maps
+   0    0   45   23
+  11    9    8    6
+   0    0    0    0
+   0    0   25   13
+( 1,  4)
+feature_maps
+   0    0    6    6
+   5    5    4    5
+   0    0    0    0
+   0    0    7    4
+( 2,  0)
+feature_maps
+   7   11    3    3
+   1    1    2    2
+   0    0    0    0
+   8   12    3    3
+( 2,  1)
+feature_maps
+  15   18    3    4
+   1    1    2    2
+   0    0    0    0
+  16   19    3    4
+( 2,  2)
+feature_maps
+  22   28    7   12
+   3   10    6   11
+   0    0    0    0
+  24   25    6    4
+( 2,  3)
+feature_maps
+  24   12    7   10
+  10    3    4    1
+   0    0    0    0
+  19   17    6   14
+( 2,  4)
+feature_maps
+  14   11   15    8
+   6    5    5    3
+   0    0    0    0
+  16    8   13    6
+( 3,  0)
+feature_maps
+   3    3    3    4
+   2    2    2    2
+   0    0    0    0
+   3    3    3    3
+( 3,  1)
+feature_maps
+   4    5    4    6
+   1    4    3    8
+   0    0    0    0
+   3    5    5    5
+( 3,  2)
+feature_maps
+   9    8    7    4
+  10   10   12    4
+   0    0    0    0
+   5    4    2    5
+( 3,  3)
+feature_maps
+   6   14   10   14
+   0    5    2    5
+   0    0    0    0
+  11   16   14   12
+( 3,  4)
+feature_maps
+  11    5    7    4
+   5    2    3    2
+   0    0    0    0
+   9    4    5    4
+( 4,  0)
+feature_maps
+   3    4    3    4
+   2    2    2    4
+   0    0    0    0
+   3    4    3    5
+( 4,  1)
+feature_maps
+   5    7    8    5
+   6   12   11   13
+   0    0    0    0
+   5    3    4    0
+( 4,  2)
+feature_maps
+   4    9    0    7
+   8    0    5    5
+   0    0    0    0
+   2   13    5   14
+( 0,  0)
+feature_maps
+   1    1    0    0
+   0    0    0    0
+   0    0    0    0
+   0    0    0    0
+( 0,  0)
+feature_maps
+   1    1    0    0
+   0    0    0    0
+   0    0    0    0
+   0    0    0    0
+( 0,  0)
+feature_maps
+   1    1    0    0
+   0    0    0    0
+   0    0    0    0
+   0    0    0    0
+( 0,  1)
+feature_maps
+   3    2    5    3
+   0    0    0    0
+   0    0    2    4
+   0    1    0    0
+( 0,  2)
+feature_maps
+   1    2    1    0
+   2    3    0    0
+   0    0    2    1
+   1    2    0    0
+( 0,  3)
+feature_maps
+   2    2    0    2
+   4    4    0    0
+   0    0    0    0
+   2    1    0    0
+( 0,  4)
+feature_maps
+   2    2    4    2
+   4    3    0    0
+   0    0    3    2
+   1    1    0    0
+( 1,  0)
+feature_maps
+   1   14   17   34
+   9   13    3    6
+   0    0    0    0
+   2    2   11   18
+( 1,  1)
+feature_maps
+  19   13   39   38
+  14   12   10   12
+   0    2    0    0
+   0    0   19   18
+( 1,  2)
+feature_maps
+   8    7   37   32
+   8    5   13   11
+   3    3    0    0
+   0    0   17   14
+( 1,  3)
+feature_maps
+   4   11   29   41
+   2    0   10    7
+   2    4    0    0
+   0    0   10    6
+( 1,  4)
+feature_maps
+  14    4   31    8
+   0    0    6    4
+   9    6    4    4
+   0    0    1    0
+( 2,  0)
+feature_maps
+   7   11    2    2
+   1    2    2    2
+   0    0    0    0
+   3    5    1    1
+( 2,  1)
+feature_maps
+  14   18    3    3
+   2    2    2    1
+   0    0    0    0
+   7   10    1    1
+( 2,  2)
+feature_maps
+  20   13    0    0
+   0    0    0    2
+   0    0    0    0
+  12   10    0    0
+( 2,  3)
+feature_maps
+  28   47   31   39
+   1    3    1    5
+   0    0    0    0
+  10   11    6    6
+( 2,  4)
+feature_maps
+  29    8   17    5
+   6    4    6    3
+   1    1    2    0
+   5    1    1    1
+( 3,  0)
+feature_maps
+   2    2    2    3
+   2    2    2    2
+   0    0    0    0
+   1    1    1    1
+( 3,  1)
+feature_maps
+   3    1    2    0
+   2    0    0    0
+   0    0    0    0
+   1    1    1    0
+( 3,  2)
+feature_maps
+   0   15    0   33
+   0    0    1    0
+   0    0    0    0
+   0    4    0    6
+( 3,  3)
+feature_maps
+  42   28   38   15
+   2    6    5    5
+   0    1    0    2
+   8    3    6    1
+( 3,  4)
+feature_maps
+   8    3    4    3
+   4    2    2    2
+   1    0    0    0
+   2    1    1    1
+( 4,  0)
+feature_maps
+   2    3    2    1
+   2    1    2    0
+   0    0    0    0
+   1    1    1    1
+( 4,  1)
+feature_maps
+   0    0    0    7
+   0    0    0    0
+   0    0    0    0
+   0    0    0    0
+( 4,  2)
+feature_maps
+  21   42   40   36
+   0    4    0    3
+   0    0    0    2
+   4    8    6    4
+( 0,  0)
+feature_maps
+   1    5    0    7
+   4    7   11   27
+   0    0    0    0
+   1    2    4   14
+( 0,  0)
+feature_maps
+   1    5    0    7
+   4    7   11   27
+   0    0    0    0
+   1    2    4   14
+( 0,  0)
+feature_maps
+   1    5    0    7
+   4    7   11   27
+   0    0    0    0
+   1    2    4   14
+( 0,  1)
+feature_maps
+   8    5   15   13
+   8    6   33   30
+   0    0    0    0
+   4    3   21   18
+( 0,  2)
+feature_maps
+   2    2   10   10
+   3    2   25   23
+   0    0    0    0
+   1    0   13   11
+( 0,  3)
+feature_maps
+   3    3    9   12
+   2    2   22   21
+   0    0    0    0
+   0    0   10   12
+( 0,  4)
+feature_maps
+   3    2   12    4
+   2    2   17    9
+   0    0    0    0
+   1    1   11    6
+( 1,  0)
+feature_maps
+   0    8    9   14
+  18   31    7    4
+   0    0    0    0
+  10   22    0    0
+( 1,  1)
+feature_maps
+  10    9   12    9
+  34   36    0    1
+   0    0    0    0
+  32   34    7   11
+( 1,  2)
+feature_maps
+   8    9    9    5
+  39   42    5    7
+   0    0    0    0
+  33   32   13   12
+( 1,  3)
+feature_maps
+   8   18    7   25
+  43   45   19   31
+   0    0    0    0
+  32   34   19   31
+( 1,  4)
+feature_maps
+  22    7   19    3
+  33   16   17    7
+   0    0    0    0
+  28   13   31   15
+( 2,  0)
+feature_maps
+   5    7    3    3
+   4    2    4    4
+   0    0    0    0
+   0    0    2    2
+( 2,  1)
+feature_maps
+   6    7    3    3
+   0    0    4    4
+   0    0    0    0
+   0    0    2    2
+( 2,  2)
+feature_maps
+   5    0    0    0
+   0    1    4   21
+   0    0    0    1
+   0    1    1    7
+( 2,  3)
+feature_maps
+  14   30   27   25
+  24   27   39   19
+   0    0    0    0
+  15   28   20   25
+( 2,  4)
+feature_maps
+  10    0    4    0
+   5    1    1    1
+   0    0    0    0
+  25   11   17    6
+( 3,  0)
+feature_maps
+   3    3    3    3
+   4    4    4    4
+   0    0    0    0
+   2    2    2    3
+( 3,  1)
+feature_maps
+   3    0    2    0
+   4    3    3    6
+   0    0    0    0
+   2    1    1    1
+( 3,  2)
+feature_maps
+   0   14    2   29
+  10   35   25   40
+   0    0    1    0
+   2   12    9   21
+( 3,  3)
+feature_maps
+  33   12   23    3
+  31    5   17    1
+   0    0    0    0
+  24   22   25   16
+( 3,  4)
+feature_maps
+   0    1    1    3
+   0    2    1    4
+   0    0    0    0
+  11    4    6    3
+( 4,  0)
+feature_maps
+   3    3    3    0
+   4    3    4    3
+   0    0    0    0
+   2    2    2    1
+( 4,  1)
+feature_maps
+   0    0    0    9
+   4   17   10   35
+   0    1    0    0
+   1    5    2   13
+( 4,  2)
+feature_maps
+  20   31   35   21
+  39   28   42   15
+   0    0    0    0
+  17   24   26   26
+( 0,  0)
+feature_maps
+   5    5    8    9
+   2    0    0    0
+   6    9   17   33
+   6    7   18   35
+( 0,  0)
+feature_maps
+   5    5    8    9
+   2    0    0    0
+   6    9   17   33
+   6    7   18   35
+( 0,  0)
+feature_maps
+   5    5    8    9
+   2    0    0    0
+   6    9   17   33
+   6    7   18   35
+( 0,  1)
+feature_maps
+   2    2    2    1
+   0    1    0    0
+   7    2   31   23
+   5    1   39   33
+( 0,  2)
+feature_maps
+   2    3    3    4
+   4    6    0    0
+   1    2   19   18
+   0    0   26   24
+( 0,  3)
+feature_maps
+   3    3    4    4
+   6    6    0    0
+   3    3   17   15
+   0    0   23   19
+( 0,  4)
+feature_maps
+   3    3    0    1
+   6    5    0    0
+   3    3    8    2
+   0    0   10    3
+( 1,  0)
+feature_maps
+  12   15   20   33
+  16   32   22   41
+  17   35    1    3
+  14   30    0    0
+( 1,  1)
+feature_maps
+   9    4   37   37
+  32   22   48   49
+  41   43    7   12
+  40   43    0    3
+( 1,  2)
+feature_maps
+   1    1   34   34
+  15   11   49   48
+  43   43   15   20
+  45   46    7   14
+( 1,  3)
+feature_maps
+   2    0   37   29
+   8    5   44   42
+  44   46   34   44
+  50   48   27   36
+( 1,  4)
+feature_maps
+   0    0    9    2
+   2    0   25    6
+  26    6   24    8
+  32   12   26   10
+( 2,  0)
+feature_maps
+   8   11    3    3
+   8   12    4    4
+   2    1    4    4
+   1    0    3    3
+( 2,  1)
+feature_maps
+  15   19    3    3
+  16   20    4    4
+   1    1    4    4
+   0    0    3    3
+( 2,  2)
+feature_maps
+  23   30    6   16
+  23   22    3    8
+   1   10    7   23
+   0    6    7   21
+( 2,  3)
+feature_maps
+  37   29   24   16
+  32   43   32   34
+  31   30   36   18
+  22   26   31   21
+( 2,  4)
+feature_maps
+  13    7    9    7
+  24    9   15    7
+  11    8    8    7
+  14    5    6    3
+( 3,  0)
+feature_maps
+   3    3    3    3
+   4    4    4    4
+   4    4    4    4
+   3    3    3    2
+( 3,  1)
+feature_maps
+   3    4    4    7
+   4    4    4    2
+   4    5    4    9
+   2    4    3   10
+( 3,  2)
+feature_maps
+  11   22   15   23
+   2   18    7   32
+  14   32   27   35
+  14   27   23   31
+( 3,  3)
+feature_maps
+  23   12   15    9
+  38   22   32   13
+  27    9   15    8
+  27   12   20    6
+( 3,  4)
+feature_maps
+   9    5    6    4
+   9    5    6    4
+   8    5    7    5
+   3    3    3    3
+( 4,  0)
+feature_maps
+   3    3    3    4
+   4    4    4    4
+   4    4    4    5
+   3    3    3    5
+( 4,  1)
+feature_maps
+   5   12   10   20
+   3    3    2   10
+   7   20   14   36
+   7   19   15   33
+( 4,  2)
+feature_maps
+  21   20   23   13
+  22   39   32   26
+  35   23   36   12
+  30   24   36   18
+Start to check conv2 outputs in sram #A0...
 sram #A0 address:           0 PASS!!
 sram #A0 address:           1 PASS!!
 sram #A0 address:           2 PASS!!
 sram #A0 address:           3 PASS!!
+sram #A0 address:           4 PASS!!
+sram #A0 address:           5 PASS!!
 sram #A0 address:           6 PASS!!
 sram #A0 address:           7 PASS!!
 sram #A0 address:           8 PASS!!
 sram #A0 address:           9 PASS!!
+sram #A0 address:          10 PASS!!
+sram #A0 address:          11 PASS!!
 sram #A0 address:          12 PASS!!
 sram #A0 address:          13 PASS!!
 sram #A0 address:          14 PASS!!
 sram #A0 address:          15 PASS!!
+sram #A0 address:          16 PASS!!
+sram #A0 address:          17 PASS!!
 sram #A0 address:          18 PASS!!
 sram #A0 address:          19 PASS!!
 sram #A0 address:          20 PASS!!
 sram #A0 address:          21 PASS!!
+sram #A0 address:          22 PASS!!
+sram #A0 address:          23 PASS!!
+sram #A0 address:          24 PASS!!
+sram #A0 address:          25 PASS!!
+sram #A0 address:          26 PASS!!
+sram #A0 address:          27 PASS!!
+sram #A0 address:          28 PASS!!
+sram #A0 address:          29 PASS!!
+sram #A0 address:          30 PASS!!
+sram #A0 address:          31 PASS!!
+sram #A0 address:          32 PASS!!
+sram #A0 address:          33 PASS!!
+sram #A0 address:          34 PASS!!
+sram #A0 address:          35 PASS!!
 
-Unshuffle outputs in sram #A0 are successfully passed!
+Conv2 outputs in sram #A0 are successfully passed!
 ===============================================================================
-Start to check unshuffle outputs in sram #A1...
+Start to check conv2 outputs in sram #A1...
 sram #A1 address:           0 PASS!!
 sram #A1 address:           1 PASS!!
-sram #A1 address:           2 PASS!!
+sram #A1 address:           3 PASS!!
+sram #A1 address:           4 PASS!!
 sram #A1 address:           6 PASS!!
 sram #A1 address:           7 PASS!!
-sram #A1 address:           8 PASS!!
+sram #A1 address:           9 PASS!!
+sram #A1 address:          10 PASS!!
 sram #A1 address:          12 PASS!!
 sram #A1 address:          13 PASS!!
-sram #A1 address:          14 PASS!!
+sram #A1 address:          15 PASS!!
+sram #A1 address:          16 PASS!!
 sram #A1 address:          18 PASS!!
 sram #A1 address:          19 PASS!!
-sram #A1 address:          20 PASS!!
+sram #A1 address:          21 PASS!!
+sram #A1 address:          22 PASS!!
+sram #A1 address:          24 PASS!!
+sram #A1 address:          25 PASS!!
+sram #A1 address:          27 PASS!!
+sram #A1 address:          28 PASS!!
+sram #A1 address:          30 PASS!!
+sram #A1 address:          31 PASS!!
+sram #A1 address:          33 PASS!!
+sram #A1 address:          34 PASS!!
 
-Unshuffle outputs in sram #A1 are successfully passed!
+Conv2 outputs in sram #A1 are successfully passed!
 ===============================================================================
-Start to check unshuffle outputs in sram #A2...
+Start to check conv2 outputs in sram #A2...
 sram #A2 address:           0 PASS!!
 sram #A2 address:           1 PASS!!
 sram #A2 address:           2 PASS!!
 sram #A2 address:           3 PASS!!
+sram #A2 address:           4 PASS!!
+sram #A2 address:           5 PASS!!
 sram #A2 address:           6 PASS!!
 sram #A2 address:           7 PASS!!
 sram #A2 address:           8 PASS!!
 sram #A2 address:           9 PASS!!
-sram #A2 address:          12 PASS!!
-sram #A2 address:          13 PASS!!
-sram #A2 address:          14 PASS!!
-sram #A2 address:          15 PASS!!
+sram #A2 address:          10 PASS!!
+sram #A2 address:          11 PASS!!
+sram #A2 address:          18 PASS!!
+sram #A2 address:          19 PASS!!
+sram #A2 address:          20 PASS!!
+sram #A2 address:          21 PASS!!
+sram #A2 address:          22 PASS!!
+sram #A2 address:          23 PASS!!
+sram #A2 address:          24 PASS!!
+sram #A2 address:          25 PASS!!
+sram #A2 address:          26 PASS!!
+sram #A2 address:          27 PASS!!
+sram #A2 address:          28 PASS!!
+sram #A2 address:          29 PASS!!
 
-Unshuffle outputs in sram #A2 are successfully passed!
+Conv2 outputs in sram #A2 are successfully passed!
 ===============================================================================
-Start to check unshuffle outputs in sram #A3...
+Start to check conv2 outputs in sram #A3...
 sram #A3 address:           0 PASS!!
 sram #A3 address:           1 PASS!!
-sram #A3 address:           2 PASS!!
+sram #A3 address:           3 PASS!!
+sram #A3 address:           4 PASS!!
 sram #A3 address:           6 PASS!!
 sram #A3 address:           7 PASS!!
-sram #A3 address:           8 PASS!!
-sram #A3 address:          12 PASS!!
-sram #A3 address:          13 PASS!!
-sram #A3 address:          14 PASS!!
+sram #A3 address:           9 PASS!!
+sram #A3 address:          10 PASS!!
+sram #A3 address:          18 PASS!!
+sram #A3 address:          19 PASS!!
+sram #A3 address:          21 PASS!!
+sram #A3 address:          22 PASS!!
+sram #A3 address:          24 PASS!!
+sram #A3 address:          25 PASS!!
+sram #A3 address:          27 PASS!!
+sram #A3 address:          28 PASS!!
 
-Unshuffle outputs in sram #A3 are successfully passed!
+Conv2 outputs in sram #A3 are successfully passed!
 ===================================================>
-Congratulations! Your unshuffle is correct ^___^
-Simulation complete via $finish(1) at time 14850 NS + 0
-./test_top.v:523                     $finish;
+Congratulations! Your conv2 is correct ^___^
+Simulation complete via $finish(1) at time 10150 NS + 0
+./test_top.v:874                     $finish;
 ncsim> exit
-TOOL:	ncverilog	15.20-s039: Exiting on Dec 04, 2019 at 09:32:40 CST  (total: 00:00:02)
+TOOL:	ncverilog	15.20-s039: Exiting on Dec 08, 2019 at 06:46:11 CST  (total: 00:00:02)

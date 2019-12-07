@@ -21,12 +21,12 @@ HOME=/home/u105/u105061255
 PATH=/usr/cad/cadence/INCISIV/cur/tools/bin/64bit:/usr/cad/synopsys/icc/cur/amd64/syn/bin:/usr/lib64/qt-3.3/bin:/home/u105/u105061255/perl5/bin:/usr/cad/synopsys/hspice/cur/hspice/bin:/usr/cad/synopsys/hspice/cur/hspice/GNU/linux64/gcc/bin:/usr/cad/synopsys/hspice/cur/hspice/linux64:/usr/bin:/usr/ucb/bin:/usr/bin/:/usr/cad/cadence/EDI/cur/tools/celtic/bin:/usr/cad/cadence/EDI/cur/tools/plato/bin:/usr/cad/cadence/EDI/cur/tools/dfII/bin:/usr/cad/cadence/EDI/cur/tools/fe/bin:/usr/cad/cadence/EDI/cur/tools/cdsdoc/bin:/usr/cad/cadence/EDI/cur/tools/bin:/usr/cad/cadence/EDI/cur//tools/tlfUtil/bin:/usr/cadtool/silvaco/bin:/usr/cadtool/jeroo/Jeroo.jar/:/usr/cadtool/mentor/tessent/cur/bin:/usr/cad/synopsys/sold/cur:/usr/cad/synopsys/processor_designer/cur/PD/linux/bin:/usr/cadtool/matlab/bin:/usr/cadtool/git/bin:/usr/cad/synopsys/finesim/cur/bin:/usr/cadtool/eclipse_2012/eclipse/:/usr/cad/synopsys/verdi/cur/bin:/usr/cad/synopsys/verdi/cur/nLint/bin:/usr/cad/synopsys/vcs-mx/cur/bin:/usr/cad/synopsys/vcs-mx/cur/linux/bin:/usr/cad/synopsys/vcs-mx/cur/linux/util:/usr/cad/synopsys/vcs-mx/cur/linux/flexlm:/usr/cad/synopsys/vcs/cur/bin:/usr/cad/synopsys/vcs/cur/linux/bin:/usr/cad/synopsys/vcs/cur/linux/util:/usr/cad/synopsys/vcs/cur/linux/flexlm:/usr/cad/synopsys/tmax/cur/bin:/usr/bin/X11:/usr/cad/synopsys/coreconsultant/cur/bin:/usr/cad/synopsys/synthesis/cur/amd64/syn/bin:/usr/cad/synopsys/lc/cur/bin:/usr/cadtool/cad/synopsys/spyglass/cur/SPYGLASS_HOME/bin:/usr/bin/X11:/usr/cad/synopsys/primetime/cur/amd64/syn/bin:/usr/bin/X11:/usr/cad/synopsys/primerail/cur/amd64/syn/bin:/usr/cad/synopsys/nanosim/cur/bin:/usr/cad/synopsys/nanosim/cur/linux/ns/bin:/usr/cad/synopsys/milkyway/cur/bin/AMD.64:/usr/cadtool/cad/synopsys/laker/cur/bin:/usr/cad/synopsys/icc2/cur/bin:/usr/cad/synopsys/icc/vH-2013.03-SP1/amd64/syn/bin:/usr/cad/synopsys/hsimplus/cur/hsimplus/bin:/usr/cad/synopsys/hercules/cur/bin/AMD.64:/usr/cad/synopsys/customexplorer/cur/bin:/usr/bin/X11:/usr/cadtool/cad/synopsys/coreconsultant/cur/bin:/usr/cad/mentor/Questa_Sim/cur/questasim/bin:/usr/cad/mentor/modelsim/cur/bin:/usr/cad/mentor/calibre/cur/bin:/usr/mentor/calibre/aoi_cal_2017.4_19.14/bin:/usr/cadtool/BRAINS/cur/bin:/usr/cadtool/cadence/STRATUS/cur/tools/bin:/usr/cad/cadence/INCISIV/cur/tools/bin:/usr/cad/cadence/INCISIV/cur/tools/vtools/vfault/bin:/usr/cad/cadence/INCISIV/cur/tools/dfII/bin:/usr/cadence/IC/cur/tools/dfII/bin:/usr/cadence/IC/cur/tools/dracula/bin:/usr/cadence/IC/cur/tools/bin:/usr/cad/cadence/IC/IC_06.17.709/tools/dfII/bin:/usr/cad/cadence/IC/IC_06.17.709/tools/dracula/bin:/usr/cad/cadence/IC/IC_06.17.709/tools/bin:/usr/cad/cadence/ETS/cur/tools/bin:/usr/cad/cadence/CTOS/cur/tools/bin:/usr/cadtool/cadence/CONFRML/cur/./bin:/usr/cadtool/cadence/CONFRML/cur/tools/bin:/usr/cad/cadence/ASSURA/cur/tools/assura/bin:/usr/cad/cadence/ASSURA/cur/tools/dsm/bin:/usr/cad/cadence/ASSURA/cur/tools/bin:/usr/cad/cadence/ASSURA/cur/tools/dfII/bin:/usr/bin/X11:/usr/cad/synopsys/primetime/cur/linux/syn/bin:/usr/local/bin:/usr/bin:/usr/cadtool/cad/synopsys/synthesis/lc/cur/bin:/usr/cadtool/cad/synopsys/synthesis/lc/cur/admin/install/lc/bin/:/usr/cadtool/cad/synopsys/dw_home/cur/bin:/usr/cadtool/Acrobat5/bin:/usr/local/sbin:/usr/sbin
 MAIL=/var/spool/mail/u105061255
 SHELL=/usr/bin/tcsh
-SSH_CLIENT=140.114.24.33 40258 22
-SSH_CONNECTION=140.114.24.33 40258 140.114.24.121 22
-SSH_TTY=/dev/pts/6
+SSH_CLIENT=140.114.24.33 54692 22
+SSH_CONNECTION=140.114.24.33 54692 140.114.24.121 22
+SSH_TTY=/dev/pts/2
 TERM=xterm
-DISPLAY=localhost:12.0
-XDG_SESSION_ID=34921
+DISPLAY=localhost:11.0
+XDG_SESSION_ID=36184
 XDG_RUNTIME_DIR=/run/user/21529
 HOSTTYPE=x86_64-linux
 VENDOR=unknown
@@ -37,7 +37,7 @@ PWD=/home/u105/u105061255/ICLAB/HW5/PART2/sim
 GROUP=u105
 HOST=ws47
 REMOTEHOST=bigbird
-LM_LICENSE_FILE=1717@lsnctu:26585@lsnctu:5280@lscic:5280@lsncku:5280@lsnchu:5219@lsnctu:5280@lsnctu:
+LM_LICENSE_FILE=1717@lsnctu:26585@lsnctu:5280@lscic:5280@lscic:5280@lsnctu:5219@lsnctu:5280@lsncku:
 PRIMETIME=/usr/cad/synopsys/primetime/cur
 ASSURAHOME=/usr/cad/cadence/ASSURA/cur
 LD_LIBRARY_PATH=/usr/cad/spring_soft/verdi/2012.01/share/PLI/IUS/LINUX64
@@ -119,74 +119,77 @@ argv[3]=test_top.v
 argv[4]=../hdl/Convnet_top.v
 argv[5]=../hdl/CNN2D.v
 argv[6]=../hdl/bytemask.v
-argv[7]=sram_model/sram_36x128b.v
-argv[8]=sram_model/sram_84x4b.v
-argv[9]=sram_model/sram_1104x36b.v
-argv[10]=+access+r
-126 profile - 100
-          CPU/Mem usage: 0.040 sys,  0.030 user,  236.88M sys,  0.00M vm
-127 VC callback profile - scalar:0 vector:0
-128 Wed Dec  4 09:32:40 2019
-129 pliAppInit
-130 pliAppMiscSet: New Sim Round
-131 LIBSSCORE=found /usr/cad/spring_soft/verdi/2012.01/share/PLI/IUS/LINUX64/libsscore_ius111.so through $LD_LIBRARY_PATH setting.
-132 argv[0]: eCNN_micro.fsdb
-133 argv[0]: +mda
-134 Catch signal 11. Stack trace follows:
-#0  0x00007f09baf0ac30 in __read_nocancel () at /lib64/libc.so.6
-#1  0x00007f09bae995a0 in __GI__IO_file_underflow () at /lib64/libc.so.6
-#2  0x00007f09bae9a52e in __GI__IO_default_uflow () at /lib64/libc.so.6
-#3  0x00007f09bae8e4d4 in __GI__IO_getline_info () at /lib64/libc.so.6
-#4  0x00007f09bae8d3d6 in fgets () at /lib64/libc.so.6
-#5  0x00007f09b0a3b9f3 in ndpGetCallStack () at /usr/cad/spring_soft/verdi/2012.01/share/PLI/IUS/LINUX64/libsscore_ius111.so
-#6  0x00007f09b0a68a20 in pliAppDbg_SigHandler () at /usr/cad/spring_soft/verdi/2012.01/share/PLI/IUS/LINUX64/libsscore_ius111.so
-#7  0x00007f09b0a3b4f6 in catchSignalCB () at /usr/cad/spring_soft/verdi/2012.01/share/PLI/IUS/LINUX64/libsscore_ius111.so
-#8  0x00007f09bb1f2370 in <signal handler called> () at /lib64/libpthread.so.0
-#9  0x0000000004ce3c54 in  ()
-#10 0x0000000004ce3c48 in  ()
+argv[7]=../hdl/addr.v
+argv[8]=../hdl/top_CNN.v
+argv[9]=../hdl/wen.v
+argv[10]=sram_model/sram_36x128b.v
+argv[11]=sram_model/sram_84x4b.v
+argv[12]=sram_model/sram_1104x36b.v
+argv[13]=+access+r
+129 profile - 100
+          CPU/Mem usage: 0.050 sys,  0.030 user,  237.74M sys,  0.00M vm
+130 VC callback profile - scalar:0 vector:0
+131 Sun Dec  8 06:46:10 2019
+132 pliAppInit
+133 pliAppMiscSet: New Sim Round
+134 LIBSSCORE=found /usr/cad/spring_soft/verdi/2012.01/share/PLI/IUS/LINUX64/libsscore_ius111.so through $LD_LIBRARY_PATH setting.
+135 argv[0]: eCNN_micro.fsdb
+136 argv[0]: +mda
+137 Catch signal 11. Stack trace follows:
+#0  0x00007f536911fc30 in __read_nocancel () at /lib64/libc.so.6
+#1  0x00007f53690ae5a0 in __GI__IO_file_underflow () at /lib64/libc.so.6
+#2  0x00007f53690af52e in __GI__IO_default_uflow () at /lib64/libc.so.6
+#3  0x00007f53690a34d4 in __GI__IO_getline_info () at /lib64/libc.so.6
+#4  0x00007f53690a23d6 in fgets () at /lib64/libc.so.6
+#5  0x00007f535ebcb9f3 in ndpGetCallStack () at /usr/cad/spring_soft/verdi/2012.01/share/PLI/IUS/LINUX64/libsscore_ius111.so
+#6  0x00007f535ebf8a20 in pliAppDbg_SigHandler () at /usr/cad/spring_soft/verdi/2012.01/share/PLI/IUS/LINUX64/libsscore_ius111.so
+#7  0x00007f535ebcb4f6 in catchSignalCB () at /usr/cad/spring_soft/verdi/2012.01/share/PLI/IUS/LINUX64/libsscore_ius111.so
+#8  0x00007f5369407370 in <signal handler called> () at /lib64/libpthread.so.0
+#9  0x0000000003ceefbc in  ()
+#10 0x0000000003ceefb0 in  ()
 #11 0x0000000000000000 in  ()
-135 Novas FSDB Dumper for IUS, Release 2012.01, Linux x86_64/64bit, 01/12/2012
-136 Copyright (C) 1996 - 2012 by SpringSoft, Inc.
-137 ***********************************************************************
-138 *  WARNING -                                                          *
-139 *  The simulator version is newer than the FSDB dumper version which  *
-140 *  may cause abnormal behavior. Please contact SpringSoft support at  *
-141 *  support@springsoft.com for assistance.                             *
-142 ***********************************************************************
-143 sps_call_fsdbDumpfile at 0 : /home/u105/u105061255/ICLAB/HW5/PART2/sim/test_top.v(243)
-144 argv[0]: eCNN_micro.fsdb
-145 *Novas* : Create FSDB file 'eCNN_micro.fsdb'
-146 sps_call_fsdbDumpvars at 0 : /home/u105/u105061255/ICLAB/HW5/PART2/sim/test_top.v(244)
-147 argv[0]: +mda
-148 *Novas* : Begin traversing the scopes, layer (0).
-149 *Novas* : Enable +mda dumping.
-150 *Novas* : End of traversing.
-151 fsdbDumpvars traverse var: profile - 
-          CPU/Mem usage: 0.050 sys,  0.160 user,  261.51M sys,  0.00M vm
-                   incr: 0.000 sys,  0.120 user,  12.20M sys,  0.00M vm
-                   accu: 0.000 sys,  0.120 user,  12.20M sys,  0.00M vm
-              accu incr: 0.000 sys,  0.120 user,  12.20M sys,  0.00M vm
+138 Novas FSDB Dumper for IUS, Release 2012.01, Linux x86_64/64bit, 01/12/2012
+139 Copyright (C) 1996 - 2012 by SpringSoft, Inc.
+140 ***********************************************************************
+141 *  WARNING -                                                          *
+142 *  The simulator version is newer than the FSDB dumper version which  *
+143 *  may cause abnormal behavior. Please contact SpringSoft support at  *
+144 *  support@springsoft.com for assistance.                             *
+145 ***********************************************************************
+146 sps_call_fsdbDumpfile at 0 : /home/u105/u105061255/ICLAB/HW5/PART2/sim/test_top.v(243)
+147 argv[0]: eCNN_micro.fsdb
+148 *Novas* : Create FSDB file 'eCNN_micro.fsdb'
+149 sps_call_fsdbDumpvars at 0 : /home/u105/u105061255/ICLAB/HW5/PART2/sim/test_top.v(244)
+150 argv[0]: +mda
+151 *Novas* : Begin traversing the scopes, layer (0).
+152 *Novas* : Enable +mda dumping.
+153 *Novas* : End of traversing.
+154 fsdbDumpvars traverse var: profile - 
+          CPU/Mem usage: 0.060 sys,  0.180 user,  262.55M sys,  0.00M vm
+                   incr: 0.000 sys,  0.150 user,  12.37M sys,  0.00M vm
+                   accu: 0.000 sys,  0.150 user,  12.37M sys,  0.00M vm
+              accu incr: 0.000 sys,  0.150 user,  12.37M sys,  0.00M vm
 
-          Count usage: 7980 var,  7760 idcode,  7760 callback
-                 incr: 7980 var,  7760 idcode,  7760 callback
-                 accu: 7980 var,  7760 idcode,  7760 callback
-            accu incr: 7980 var,  7760 idcode,  7760 callback
-152 VC callback profile - scalar:0 vector:0
-153 Wed Dec  4 09:32:40 2019
-154 fsdbDumpvars: profile - 
-          CPU/Mem usage: 0.050 sys,  0.170 user,  263.24M sys,  0.00M vm
+          Count usage: 8892 var,  7836 idcode,  7836 callback
+                 incr: 8892 var,  7836 idcode,  7836 callback
+                 accu: 8892 var,  7836 idcode,  7836 callback
+            accu incr: 8892 var,  7836 idcode,  7836 callback
+155 VC callback profile - scalar:0 vector:0
+156 Sun Dec  8 06:46:11 2019
+157 fsdbDumpvars: profile - 
+          CPU/Mem usage: 0.060 sys,  0.190 user,  264.28M sys,  0.00M vm
                    incr: 0.000 sys,  0.010 user,  1.73M sys,  0.00M vm
-                   accu: 0.000 sys,  0.130 user,  13.93M sys,  0.00M vm
+                   accu: 0.000 sys,  0.160 user,  14.10M sys,  0.00M vm
               accu incr: 0.000 sys,  0.010 user,  1.73M sys,  0.00M vm
 
-          Count usage: 7980 var,  7760 idcode,  7760 callback
+          Count usage: 8892 var,  7836 idcode,  7836 callback
                  incr: 0 var,  0 idcode,  0 callback
-                 accu: 7980 var,  7760 idcode,  7760 callback
+                 accu: 8892 var,  7836 idcode,  7836 callback
             accu incr: 0 var,  0 idcode,  0 callback
-155 VC callback profile - scalar:33 vector:7727
-156 Wed Dec  4 09:32:40 2019
-157 End of simulation at 148500
-158 VC callback profile - scalar:6728 vector:49440
-159 Wed Dec  4 09:32:40 2019
-160 SimExit
-161 Sim process exit
+158 VC callback profile - scalar:43 vector:7793
+159 Sun Dec  8 06:46:11 2019
+160 End of simulation at 101500
+161 VC callback profile - scalar:8364 vector:206934
+162 Sun Dec  8 06:46:11 2019
+163 SimExit
+164 Sim process exit
