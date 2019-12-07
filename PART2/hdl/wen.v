@@ -18,7 +18,8 @@ module wen(
 
 reg [2:0] y_r8, x_r8;
 parameter LAYER1_WIDTH = 14, LAYER1_HEIGHT = 14;
-parameter IDLE = 0, UNSHUFFLE = 1, CONV1 = 2, CONV2 = 3;
+parameter IDLE = 0, UNSHUFFLE = 1, CONV1 = 2, C1_2_C2=3,CONV2 = 4, C2_2_C3 = 5,
+	CONV3=6, C3_2_P=7, POOL=8, FINISH = 9;
 parameter READ_WEIGHT = 0, DOCNN = 1;
 
 always @* begin
