@@ -49,10 +49,15 @@ always @(posedge clk) begin
 		15: sram_bytemask_a <= 16'b1111_1111_1111_1110;
 		endcase
 	else if (state == CONV2) begin
-		sram_bytemask_a <= 0;
+		case (conv_cnt_p % 4)
+			0: sram_bytemask_a <= 16'b0000_1111_1111_1111;
+			1: sram_bytemask_a <= 16'b1111_0000_1111_1111;
+			2: sram_bytemask_a <= 16'b1111_1111_0000_1111;
+			3: sram_bytemask_a <= 16'b1111_1111_1111_0000;
+			default: sram_bytemask_a <= 16'b1111_1111_1111_1111;
+		endcase
 	end
 end
-
 
 reg x_cnt_pp_r;
 reg y_cnt_pp_r;
@@ -64,14 +69,14 @@ end
 
 always @(posedge clk) begin
 	if (state == CONV1) begin
-		sram_bytemask_b <= 0;
-		// case (conv_cnt_p)
-		// 	0: sram_bytemask_b <= 16'b0000_1111_1111_1111;
-		// 	1: sram_bytemask_b <= 16'b1111_0000_1111_1111;
-		// 	2: sram_bytemask_b <= 16'b1111_1111_0000_1111;
-		// 	3: sram_bytemask_b <= 16'b1111_1111_1111_0000;
-		// 	default: sram_bytemask_b <= 16'b1111_1111_1111_1111;
-		// endcase
+		// sram_bytemask_b <= 0;
+		case (conv_cnt_p)
+			0: sram_bytemask_b <= 16'b0000_1111_1111_1111;
+			1: sram_bytemask_b <= 16'b1111_0000_1111_1111;
+			2: sram_bytemask_b <= 16'b1111_1111_0000_1111;
+			3: sram_bytemask_b <= 16'b1111_1111_1111_0000;
+			default: sram_bytemask_b <= 16'b1111_1111_1111_1111;
+		endcase
 	end
 	else begin
 		sram_bytemask_b <= 16'b1111_1111_1111_1111;

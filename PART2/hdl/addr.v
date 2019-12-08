@@ -70,7 +70,7 @@ always @(posedge clk) begin
 	if (state == UNSHUFFLE)
 		sram_waddr_a <= y_cnt / 8 * 6 + x_cnt / 8;
 	else if (state == CONV2) begin
-		case (conv_cnt_p[1:0])
+		case ((conv_cnt_p/4) % 4)
 		0: begin
 			sram_waddr_a = x_offset_pp1 + y_offset_pp1;
 		end
@@ -95,14 +95,17 @@ always @(posedge clk) begin
 	if(!rst_n) begin
 		sram_raddr_bias <= 0;
 	end
-	else if (state == CONV1 && read_cnt < 4) begin
-		sram_raddr_bias <= sram_raddr_bias + 1;
+	else if (state == CONV1) begin
+		sram_raddr_bias <= conv_cnt;
 	end
 	else if (state == C1_2_C2) begin
 		sram_raddr_bias <= 4;
 	end
-	else if (state == CONV2 && read_cnt % 16 < 3 && cnn_state == READ_WEIGHT) begin
-		sram_raddr_bias <= sram_raddr_bias + 1;
+	else if (state == CONV2 && read_cnt % 4 < 3 && cnn_state == READ_WEIGHT) begin
+		sram_raddr_bias <= conv_cnt + 4;
+	end
+	else if (state == C2_2_C3) begin
+		sram_raddr_bias <= 20;
 	end
 end
 
