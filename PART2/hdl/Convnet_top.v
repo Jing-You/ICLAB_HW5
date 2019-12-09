@@ -73,12 +73,13 @@ reg [4:0] x_cnt, x_cnt_p;
 reg [4:0] y_cnt, y_cnt_p;
 reg [1:0] bank_num;
 reg [3:0] position_offset;
-reg [7:0] conv_cnt;
+reg [9:0] conv_cnt;
 reg [7:0] weight_cnt;
 reg [7:0] bias_cnt;
-reg [4:0] cnn_state;
+reg [4:0] cnn_state, cnn_state_p, cnn_state_pp, cnn_state_ppp;
 reg read_weight_finish;
 reg read_bias_finish;
+reg [1:0] read_input_cnt, read_input_cnt_pp;
 parameter LAYER1_WIDTH = 14, LAYER1_HEIGHT = 14;
 parameter IDLE = 0, UNSHUFFLE = 1, CONV1 = 2, C1_2_C2=3, CONV2 = 4, C2_2_C3 = 5,
 	CONV3=6, C3_2_P=7, POOL=8, FINISH = 9;
@@ -90,8 +91,8 @@ wire [7:0] feature_maps_o0;
 wire [7:0] feature_maps_o1;
 wire [7:0] feature_maps_o2;
 wire [7:0] feature_maps_o3;
-
-reg [7:0] conv_cnt_p;
+reg [1:0] read_input_cnt_p;
+reg [10:0] conv_cnt_p, conv_cnt_pp;
 always @(posedge clk)
 	x_cnt_p <= x_cnt;
 always @(posedge clk)
@@ -100,8 +101,12 @@ always @(posedge clk) begin
 	x_cnt_pp <= x_cnt_p;
 	y_cnt_pp <= y_cnt_p;
 	conv_cnt_p <= conv_cnt;
+	cnn_state_pp <= cnn_state_p;
+	cnn_state_ppp <= cnn_state_pp;
+	read_input_cnt_p <= read_input_cnt;
+	read_input_cnt_pp <= read_input_cnt_p;
+	cnn_state_p <= cnn_state;
 end
-
 
 bytemask bytemask
 (
@@ -125,6 +130,7 @@ addr addr(
 	.y_cnt(y_cnt),
 	.x_cnt_pp(x_cnt_pp),
 	.y_cnt_pp(y_cnt_pp),
+	.read_input_cnt(read_input_cnt),
 	.read_cnt(read_cnt),
 	.cnn_state(cnn_state),
 	.state(state),
@@ -150,6 +156,7 @@ top_CNN top_CNN(
 	.clk(clk),
 	.rst_n(rst_n),
 	.cnn_state(cnn_state),
+	.cnn_state_ppp(cnn_state_ppp),
 	.state(state),
 	.sram_rdata_a0(sram_rdata_a0),
 	.sram_rdata_a1(sram_rdata_a1),
@@ -167,6 +174,8 @@ top_CNN top_CNN(
 	.y_cnt_pp(y_cnt_pp),
 	.x_cnt_p(x_cnt_p),
 	.y_cnt_p(y_cnt_p),
+	.read_input_cnt(read_input_cnt),
+	.read_input_cnt_p(read_input_cnt_p),
 	.read_cnt(read_cnt),
 	.read_weight_finish(read_weight_finish),
 	.read_bias_finish(read_bias_finish),
@@ -192,6 +201,14 @@ wen wen(
 	.sram_wen_b2(sram_wen_b2),
 	.sram_wen_b3(sram_wen_b3)
 );
+
+always @(posedge clk) begin
+	if (!rst_n) begin
+	end
+	else begin
+		
+	end
+end
 
 always @(posedge clk) begin
 	if(!rst_n) begin
@@ -226,8 +243,8 @@ always @(posedge clk) begin
 		state <= CONV3;
 	end
 	else if (state == CONV3) begin
-		if (conv_cnt_p == 63 && x_cnt_pp == 3 && y_cnt_pp == 3)
-			state <= C2_2_C3;
+		if (conv_cnt == 63 && x_cnt == 3 && y_cnt == 3 && read_input_cnt == 3)
+			state <= FINISH;
 		else
 			state <= state;
 	end
@@ -257,9 +274,7 @@ always @(posedge clk) begin
 		cnn_state <= READ_WEIGHT;
 	end
 	else if (state == CONV2) begin
-		if (cnn_state == WAIT)
-			cnn_state <= READ_WEIGHT;
-		else if (cnn_state == READ_WEIGHT) begin
+		if (cnn_state == READ_WEIGHT) begin
 			if (read_weight_finish) begin
 				cnn_state <= DOCNN;
 			end else begin
@@ -271,8 +286,20 @@ always @(posedge clk) begin
 		else
 			cnn_state <= DOCNN;
 	end
+	else if (state == CONV3) begin
+		if (cnn_state == READ_WEIGHT) begin
+			if (read_weight_finish) begin
+				cnn_state <= DOCNN;
+			end else begin
+				cnn_state <= READ_WEIGHT;
+			end
+		end
+		else if (x_cnt_pp == 3 && y_cnt_pp == 3 && read_input_cnt_pp == 3)
+			cnn_state <= READ_WEIGHT;
+		else
+			cnn_state <= DOCNN;
+	end
 end
-
 // cnt
 always @(posedge clk) begin
 	if(!rst_n) begin
@@ -299,6 +326,14 @@ always @(posedge clk) begin
 	end
 	else if (state == C2_2_C3) begin
 		conv_cnt <= 0;
+	end
+	else if (state == CONV3) begin
+		if(x_cnt_pp == 3 && y_cnt_pp == 3 && read_input_cnt == 3) begin
+			conv_cnt = conv_cnt + 1;
+		end
+		else begin
+			conv_cnt <= conv_cnt;
+		end
 	end
 	else begin
 		conv_cnt <= conv_cnt;
@@ -334,6 +369,13 @@ always @(posedge clk) begin
 			read_cnt <= read_cnt;
 		end
 	end
+	else if (state == CONV3) begin
+		if (!read_weight_finish && cnn_state == READ_WEIGHT)
+			read_cnt <= 1 + read_cnt;
+		else begin
+			read_cnt <= read_cnt;
+		end
+	end	
 	else begin
 		read_cnt <= 0;
 	end
@@ -362,6 +404,14 @@ always @(posedge clk) begin
 			read_weight_finish <= 1;
 		end		
 	end
+	else if (state == CONV3) begin
+		if (cnn_state == DOCNN) begin
+			read_weight_finish <= 0;
+		end
+		else if (sram_raddr_weight % 16 == 15) begin
+			read_weight_finish <= 1;
+		end		
+	end	
 end
 
 always @(posedge clk) begin
@@ -434,11 +484,45 @@ always@(posedge clk) begin
 			x_cnt <= 0;
 			y_cnt <= 0;
 		end
+	end	
+	else if (state == CONV3) begin
+		if (cnn_state == DOCNN)
+			if (read_input_cnt == 3) begin
+				if (x_cnt == 3) begin
+					x_cnt <= 0;
+					y_cnt <= y_cnt + 1;
+				end else begin
+					x_cnt <= x_cnt + 1;
+					y_cnt <= y_cnt;
+				end
+			end
+			else begin
+					
+			end
+		else begin
+			x_cnt <= 0;
+			y_cnt <= 0;
+		end
+	end
+end
+
+always @(posedge clk) begin
+	if (!rst_n) begin
+		read_input_cnt <= 0;
+	end
+	else if (cnn_state_p == READ_WEIGHT) begin
+		read_input_cnt <= 0;
+	end
+	else if (cnn_state_p == DOCNN) begin
+		read_input_cnt <= read_input_cnt + 1;
+	end
+	else begin
+		read_input_cnt <= read_input_cnt;
 	end
 end
 
 always @*
-	test_layer_finish = state == CONV3;
+	test_layer_finish = state == FINISH;
 
 always@(posedge clk) 
 	if (read_cnt >= 28*28 && state == UNSHUFFLE) begin

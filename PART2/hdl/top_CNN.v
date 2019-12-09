@@ -19,13 +19,16 @@ module top_CNN(
 	input [4:0] y_cnt_p,
 	input [4:0] x_cnt_pp,
 	input [4:0] y_cnt_pp,
+	input [1:0] read_input_cnt,
+	input [1:0] read_input_cnt_p,
 	input read_weight_finish,
 	input read_bias_finish,
 	input [10:0] read_cnt,
-	output  reg signed [7:0] feature_maps_o0,
-	output  reg signed [7:0] feature_maps_o1,
-	output  reg signed [7:0] feature_maps_o2,
-	output  reg signed [7:0] feature_maps_o3
+	input [4:0] cnn_state_ppp,
+	output reg signed [7:0] feature_maps_o0,
+	output reg signed [7:0] feature_maps_o1,
+	output reg signed [7:0] feature_maps_o2,
+	output reg signed [7:0] feature_maps_o3
 );
 
 parameter LAYER1_WIDTH = 14, LAYER1_HEIGHT = 14;
@@ -34,7 +37,7 @@ parameter IDLE = 0, UNSHUFFLE = 1, CONV1 = 2, C1_2_C2=3, CONV2 = 4, C2_2_C3 = 5,
 parameter READ_WEIGHT = 0, DOCNN = 1;
 
 reg  [7:0]  X[0:15][0:2][0:2];
-reg  [3:0]  W[0:3][0:2][0:2];
+reg  [3:0]  W[0:15][0:2][0:2];
 wire signed [15:0] Y[0:15];	
 reg [1:0] raed_type;
 reg x_r2, y_r2;
@@ -76,6 +79,17 @@ always @(posedge clk) begin
 			load_weight_finish <= load_weight_finish;
 		end
 	end
+	else if (state == CONV3) begin
+		if (cnn_state == DOCNN) begin
+			load_weight_finish <= 0;
+		end
+		else if (read_cnt % 16 == 0 && read_weight_finish) begin
+			load_weight_finish <= 1;
+		end
+		else begin
+			load_weight_finish <= load_weight_finish;
+		end
+	end
 end
 
 always @(posedge clk) begin
@@ -98,7 +112,6 @@ always @(posedge clk) begin
 			end
 		end
 	end
-
 end
 
 always @(posedge clk) begin
@@ -145,6 +158,60 @@ always @(posedge clk) begin
 			W[3][2][1] <= sram_rdata_weight[7:4];
 			W[3][2][2] <= sram_rdata_weight[3:0];
 		end	
+	end
+	else if ((state == CONV3) && !load_weight_finish) begin
+		if (cnn_state == READ_WEIGHT) begin
+			for (i=1; i<= 15; i=i+1) begin
+				if (read_cnt % 16 == i) begin
+					W[i-1][0][0] <= sram_rdata_weight[35:32];
+					W[i-1][0][1] <= sram_rdata_weight[31:28];
+					W[i-1][0][2] <= sram_rdata_weight[27:24];
+					W[i-1][1][0] <= sram_rdata_weight[23:20];
+					W[i-1][1][1] <= sram_rdata_weight[19:16];
+					W[i-1][1][2] <= sram_rdata_weight[15:12];
+					W[i-1][2][0] <= sram_rdata_weight[11:8];
+					W[i-1][2][1] <= sram_rdata_weight[7:4];
+					W[i-1][2][2] <= sram_rdata_weight[3:0];				
+				end
+			end
+			if (read_cnt % 16 == 0 && read_weight_finish) begin
+				W[15][0][0] <= sram_rdata_weight[35:32];
+				W[15][0][1] <= sram_rdata_weight[31:28];
+				W[15][0][2] <= sram_rdata_weight[27:24];
+				W[15][1][0] <= sram_rdata_weight[23:20];
+				W[15][1][1] <= sram_rdata_weight[19:16];
+				W[15][1][2] <= sram_rdata_weight[15:12];
+				W[15][2][0] <= sram_rdata_weight[11:8];
+				W[15][2][1] <= sram_rdata_weight[7:4];
+				W[15][2][2] <= sram_rdata_weight[3:0];
+			end
+		end
+		else if (cnn_state_ppp == DOCNN)begin
+			for (i=0; i<12; i=i+1) begin
+				W[i][0][0] <= W[i+4][0][0];
+				W[i][0][1] <= W[i+4][0][1];
+				W[i][0][2] <= W[i+4][0][2];
+				W[i][1][0] <= W[i+4][1][0];
+				W[i][1][1] <= W[i+4][1][1];
+				W[i][1][2] <= W[i+4][1][2];
+				W[i][2][0] <= W[i+4][2][0];
+				W[i][2][1] <= W[i+4][2][1];
+				W[i][2][2] <= W[i+4][2][2];				
+			end
+			for (i=0; i<4; i=i+1) begin
+				
+				W[i+12][0][0] <= W[i][0][0];
+				W[i+12][0][1] <= W[i][0][1];
+				W[i+12][0][2] <= W[i][0][2];
+				W[i+12][1][0] <= W[i][1][0];
+				W[i+12][1][1] <= W[i][1][1];
+				W[i+12][1][2] <= W[i][1][2];
+				W[i+12][2][0] <= W[i][2][0];
+				W[i+12][2][1] <= W[i][2][1];
+				W[i+12][2][2] <= W[i][2][2];			
+			end
+
+		end
 	end
 	else begin
 	end
@@ -229,7 +296,6 @@ always @* begin
 		else
 			feature_maps_o[i] = conv_out[i][7:0];
 	end
-
 end
 
 always@* begin
@@ -241,9 +307,9 @@ end
 
 always @(posedge clk) begin
 	if (state == CONV1 && cnn_state == DOCNN) begin
-		$display("(%d, %d)", y_cnt_pp, x_cnt_pp);
-		$display("feature_maps");
-		$display("%d %d %d %d", feature_maps_o0, feature_maps_o1, feature_maps_o2, feature_maps_o3);
+		// $display("(%d, %d)", y_cnt_pp, x_cnt_pp);
+		// $display("feature_maps");
+		// $display("%d %d %d %d", feature_maps_o0, feature_maps_o1, feature_maps_o2, feature_maps_o3);
 		// $display("%d %d %d %d", feature_maps_o4, feature_maps_o5, feature_maps_o6, feature_maps_o7);
 		// $display("%d %d %d %d", feature_maps_o8, feature_maps_o9, feature_maps_o10, feature_maps_o11);
 		// $display("%d %d %d %d", feature_maps_o12, feature_maps_o13, feature_maps_o14, feature_maps_o15);

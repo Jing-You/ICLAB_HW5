@@ -5,6 +5,7 @@ module addr(
 	input [4:0] y_cnt,
 	input [4:0] x_cnt_pp,
 	input [4:0] y_cnt_pp,
+	input [1:0] read_input_cnt,
 	input [4:0] cnn_state,
 	input [10:0] read_cnt,
 	input [5:0] state,
@@ -64,6 +65,20 @@ always @(posedge clk) begin
 			sram_raddr_weight <= sram_raddr_weight;
 		end
 	end
+	else if (state == C2_2_C3) begin
+		sram_raddr_weight <= 80;
+	end
+	else if (state == CONV3) begin
+		if (cnn_state == READ_WEIGHT && !read_weight_finish)
+			sram_raddr_weight <= sram_raddr_weight + 1;
+		else begin
+			sram_raddr_weight <= sram_raddr_weight;
+		end
+	end	
+	else begin
+		
+	end
+
 end
 
 always @(posedge clk) begin
@@ -72,16 +87,16 @@ always @(posedge clk) begin
 	else if (state == CONV2) begin
 		case ((conv_cnt_p/4) % 4)
 		0: begin
-			sram_waddr_a = x_offset_pp1 + y_offset_pp1;
+			sram_waddr_a <= x_offset_pp1 + y_offset_pp1;
 		end
 		1: begin
-			sram_waddr_a = x_offset_pp1 + y_offset_pp1 + 3;
+			sram_waddr_a <= x_offset_pp1 + y_offset_pp1 + 3;
 		end
 		2: begin
-			sram_waddr_a = x_offset_pp1 + y_offset_pp1 + 18;
+			sram_waddr_a <= x_offset_pp1 + y_offset_pp1 + 18;
 		end
 		3: begin
-			sram_waddr_a = x_offset_pp1 + y_offset_pp1 + 21;
+			sram_waddr_a <= x_offset_pp1 + y_offset_pp1 + 21;
 		end
 		endcase
  	end
@@ -107,6 +122,9 @@ always @(posedge clk) begin
 	else if (state == C2_2_C3) begin
 		sram_raddr_bias <= 20;
 	end
+	else if (state == CONV3 && read_cnt % 4 < 3 && cnn_state == READ_WEIGHT) begin
+		sram_raddr_bias <= conv_cnt + 20;
+	end
 end
 
 always @* begin
@@ -129,6 +147,34 @@ always @(posedge clk) begin
 		sram_raddr_a1 <= x_offset1 + y_offset0;
 		sram_raddr_a2 <= x_offset0 + y_offset1;
 		sram_raddr_a3 <= x_offset1 + y_offset1;
+	end
+	else begin
+		case(read_input_cnt)
+		0:begin
+			sram_raddr_a0 <= x_offset0 + y_offset0;
+			sram_raddr_a1 <= x_offset1 + y_offset0;
+			sram_raddr_a2 <= x_offset0 + y_offset1;
+			sram_raddr_a3 <= x_offset1 + y_offset1;
+		end
+		1:begin
+			sram_raddr_a0 <= x_offset0 + y_offset0 + 3;
+			sram_raddr_a1 <= x_offset1 + y_offset0 + 3;
+			sram_raddr_a2 <= x_offset0 + y_offset1 + 3;
+			sram_raddr_a3 <= x_offset1 + y_offset1 + 3;
+		end
+		2:begin
+			sram_raddr_a0 <= x_offset0 + y_offset0 + 18;
+			sram_raddr_a1 <= x_offset1 + y_offset0 + 18;
+			sram_raddr_a2 <= x_offset0 + y_offset1 + 18;
+			sram_raddr_a3 <= x_offset1 + y_offset1 + 18;
+		end
+		3:begin
+			sram_raddr_a0 <= x_offset0 + y_offset0 + 21;
+			sram_raddr_a1 <= x_offset1 + y_offset0 + 21;
+			sram_raddr_a2 <= x_offset0 + y_offset1 + 21;
+			sram_raddr_a3 <= x_offset1 + y_offset1 + 21;
+		end
+		endcase
 	end
 end
 
