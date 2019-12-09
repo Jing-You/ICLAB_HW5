@@ -25,19 +25,7 @@ module top_CNN(
 	output  reg signed [7:0] feature_maps_o0,
 	output  reg signed [7:0] feature_maps_o1,
 	output  reg signed [7:0] feature_maps_o2,
-	output  reg signed [7:0] feature_maps_o3,
-	output  reg signed [7:0] feature_maps_o4,
-	output  reg signed [7:0] feature_maps_o5,
-	output  reg signed [7:0] feature_maps_o6,
-	output  reg signed [7:0] feature_maps_o7,
-	output  reg signed [7:0] feature_maps_o8,
-	output  reg signed [7:0] feature_maps_o9,
-	output  reg signed [7:0] feature_maps_o10,
-	output  reg signed [7:0] feature_maps_o11,
-	output  reg signed [7:0] feature_maps_o12,
-	output  reg signed [7:0] feature_maps_o13,
-	output  reg signed [7:0] feature_maps_o14,
-	output  reg signed [7:0] feature_maps_o15
+	output  reg signed [7:0] feature_maps_o3
 );
 
 parameter LAYER1_WIDTH = 14, LAYER1_HEIGHT = 14;
@@ -249,18 +237,6 @@ always@* begin
 	feature_maps_o1 = feature_maps_o[1];
 	feature_maps_o2 = feature_maps_o[2];
 	feature_maps_o3 = feature_maps_o[3];
-	feature_maps_o4 = feature_maps_o[4];
-	feature_maps_o5 = feature_maps_o[5];
-	feature_maps_o6 = feature_maps_o[6];
-	feature_maps_o7 = feature_maps_o[7];
-	feature_maps_o8 = feature_maps_o[8];
-	feature_maps_o9 = feature_maps_o[9];
-	feature_maps_o10 = feature_maps_o[10];
-	feature_maps_o11 = feature_maps_o[11];
-	feature_maps_o12 = feature_maps_o[12];
-	feature_maps_o13 = feature_maps_o[13];
-	feature_maps_o14 = feature_maps_o[14];
-	feature_maps_o15 = feature_maps_o[15];
 end
 
 always @(posedge clk) begin

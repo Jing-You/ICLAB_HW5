@@ -90,18 +90,6 @@ wire [7:0] feature_maps_o0;
 wire [7:0] feature_maps_o1;
 wire [7:0] feature_maps_o2;
 wire [7:0] feature_maps_o3;
-wire [7:0] feature_maps_o4;
-wire [7:0] feature_maps_o5;
-wire [7:0] feature_maps_o6;
-wire [7:0] feature_maps_o7;
-wire [7:0] feature_maps_o8;
-wire [7:0] feature_maps_o9;
-wire [7:0] feature_maps_o10;
-wire [7:0] feature_maps_o11;
-wire [7:0] feature_maps_o12;
-wire [7:0] feature_maps_o13;
-wire [7:0] feature_maps_o14;
-wire [7:0] feature_maps_o15;
 
 reg [7:0] conv_cnt_p;
 always @(posedge clk)
@@ -185,19 +173,7 @@ top_CNN top_CNN(
 	.feature_maps_o0(feature_maps_o0),
 	.feature_maps_o1(feature_maps_o1),
 	.feature_maps_o2(feature_maps_o2),
-	.feature_maps_o3(feature_maps_o3),
-	.feature_maps_o4(feature_maps_o4),
-	.feature_maps_o5(feature_maps_o5),
-	.feature_maps_o6(feature_maps_o6),
-	.feature_maps_o7(feature_maps_o7),
-	.feature_maps_o8(feature_maps_o8),
-	.feature_maps_o9(feature_maps_o9),
-	.feature_maps_o10(feature_maps_o10),
-	.feature_maps_o11(feature_maps_o11),
-	.feature_maps_o12(feature_maps_o12),
-	.feature_maps_o13(feature_maps_o13),
-	.feature_maps_o14(feature_maps_o14),
-	.feature_maps_o15(feature_maps_o15)
+	.feature_maps_o3(feature_maps_o3)
 );
 
 wen wen(
