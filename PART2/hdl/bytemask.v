@@ -8,8 +8,8 @@ module bytemask
 	input [4:0] x_cnt_pp,
 	input [4:0] y_cnt_pp,
 	input [5:0] state,
-	input [7:0] conv_cnt,
-	input [7:0] conv_cnt_p,
+	input [9:0] conv_cnt,
+	input [9:0] conv_cnt_p,
 	output reg [15:0] sram_bytemask_a,
 	output reg [15:0] sram_bytemask_b
 

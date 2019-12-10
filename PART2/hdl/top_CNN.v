@@ -25,10 +25,10 @@ module top_CNN(
 	input read_bias_finish,
 	input [10:0] read_cnt,
 	input [4:0] cnn_state_ppp,
-	output reg signed [7:0] feature_maps_o0,
-	output reg signed [7:0] feature_maps_o1,
-	output reg signed [7:0] feature_maps_o2,
-	output reg signed [7:0] feature_maps_o3
+	output reg signed [15:0] feature_maps_o0,
+	output reg signed [15:0] feature_maps_o1,
+	output reg signed [15:0] feature_maps_o2,
+	output reg signed [15:0] feature_maps_o3
 );
 
 parameter LAYER1_WIDTH = 14, LAYER1_HEIGHT = 14;
@@ -39,15 +39,14 @@ parameter READ_WEIGHT = 0, DOCNN = 1;
 reg  [7:0]  X[0:15][0:2][0:2];
 reg  [3:0]  W[0:15][0:2][0:2];
 wire signed [15:0] Y[0:15];	
-reg [1:0] raed_type;
 reg x_r2, y_r2;
 reg [7:0] ch0_pixels[0:3][0:3];
 reg [7:0] ch1_pixels[0:3][0:3];
 reg [7:0] ch2_pixels[0:3][0:3];
 reg [7:0] ch3_pixels[0:3][0:3];
 reg signed [15:0] conv_out[0:15];
-reg signed [15:0] feature_maps_o[0:15];
-reg signed [15:0] temp_conv_out[0:15];
+reg signed [15:0] feature_maps_o[0:3];
+reg signed [15:0] temp_conv_out[0:3];
 reg load_weight_finish;
 reg load_bias_finish;
 reg signed [3:0] bias[0:3];
@@ -118,7 +117,7 @@ always @(posedge clk) begin
 	if (!rst_n) begin
 		bias[0] <= 0;
 	end
-	else if (state == CONV1 || state == CONV2) begin
+	else if (state == CONV1 || state == CONV2 || state == CONV3) begin
 		bias[0] <= sram_rdata_bias;
 	end
 end
@@ -277,15 +276,17 @@ always @* begin
 		end
 	end
 	else begin
-		// for(i=0; i<=48; i=i+16) begin
-		// 	temp_conv_out[i/4] =   Y[0+i] + Y[4+i] + Y[8+i]  + Y[12+i] + (bias[i / 16] << (3)) + 2 ** 4;
-		// 	temp_conv_out[i/4+1] = Y[1+i] + Y[5+i] + Y[9+i]  + Y[13+i] + (bias[i / 16] << (3)) + 2 ** 4;
-		// 	temp_conv_out[i/4+2] = Y[2+i] + Y[6+i] + Y[10+i] + Y[14+i] + (bias[i / 16] << (3)) + 2 ** 4;
-		// 	temp_conv_out[i/4+3] = Y[3+i] + Y[7+i] + Y[11+i] + Y[15+i] + (bias[i / 16] << (3)) + 2 ** 4;
-		// end
-		// for (i=0; i<16 ;i=i+1) begin
-		// 	conv_out[i] = temp_conv_out[i] >>> 6;
-		// end
+		i = 0;
+		temp_conv_out[i/4] =   Y[0+i] + Y[4+i] + Y[8+i]  + Y[12+i];
+		temp_conv_out[i/4+1] = Y[1+i] + Y[5+i] + Y[9+i]  + Y[13+i];
+		temp_conv_out[i/4+2] = Y[2+i] + Y[6+i] + Y[10+i] + Y[14+i];
+		temp_conv_out[i/4+3] = Y[3+i] + Y[7+i] + Y[11+i] + Y[15+i];
+
+		conv_out[0] = ($signed(2**5) + temp_conv_out[0] + feature_maps_o0 + (bias[0] << (6+3-6) ) ) >>> 6;
+		conv_out[1] = ($signed(2**5) + temp_conv_out[1] + feature_maps_o1 + (bias[0] << (6+3-6) ) ) >>> 6;
+		conv_out[2] = ($signed(2**5) + temp_conv_out[2] + feature_maps_o2 + (bias[0] << (6+3-6) ) ) >>> 6;
+		conv_out[3] = ($signed(2**5) + temp_conv_out[3] + feature_maps_o3 + (bias[0] << (6+3-6) ) ) >>> 6;
+
 	end
 
 	for (i=0; i<4; i=i+1) begin
@@ -298,21 +299,48 @@ always @* begin
 	end
 end
 
-always@* begin
-	feature_maps_o0 = feature_maps_o[0];
-	feature_maps_o1 = feature_maps_o[1];
-	feature_maps_o2 = feature_maps_o[2];
-	feature_maps_o3 = feature_maps_o[3];
+always@(posedge clk) begin
+	if (CONV1 <= state && state <= C2_2_C3) begin
+		feature_maps_o0 <= feature_maps_o[0];
+		feature_maps_o1 <= feature_maps_o[1];
+		feature_maps_o2 <= feature_maps_o[2];
+		feature_maps_o3 <= feature_maps_o[3];
+	end
+	else begin
+		case (read_input_cnt_p)
+			1: begin
+				feature_maps_o0 <= temp_conv_out[0];
+				feature_maps_o1 <= temp_conv_out[1];
+				feature_maps_o2 <= temp_conv_out[2];
+				feature_maps_o3 <= temp_conv_out[3];
+			end
+			2: begin
+				feature_maps_o0 <= feature_maps_o0 + temp_conv_out[0];
+				feature_maps_o1 <= feature_maps_o1 + temp_conv_out[1];
+				feature_maps_o2 <= feature_maps_o2 + temp_conv_out[2];
+				feature_maps_o3 <= feature_maps_o3 + temp_conv_out[3];
+			end
+			3: begin
+				feature_maps_o0 <= feature_maps_o0 + temp_conv_out[0];
+				feature_maps_o1 <= feature_maps_o1 + temp_conv_out[1];
+				feature_maps_o2 <= feature_maps_o2 + temp_conv_out[2];
+				feature_maps_o3 <= feature_maps_o3 + temp_conv_out[3];
+			end
+			0: begin
+				feature_maps_o0 <= feature_maps_o[0];
+				feature_maps_o1 <= feature_maps_o[1];
+				feature_maps_o2 <= feature_maps_o[2];
+				feature_maps_o3 <= feature_maps_o[3];
+			end
+		endcase
+	end	
 end
 
 always @(posedge clk) begin
-	if (state == CONV1 && cnn_state == DOCNN) begin
-		// $display("(%d, %d)", y_cnt_pp, x_cnt_pp);
-		// $display("feature_maps");
-		// $display("%d %d %d %d", feature_maps_o0, feature_maps_o1, feature_maps_o2, feature_maps_o3);
-		// $display("%d %d %d %d", feature_maps_o4, feature_maps_o5, feature_maps_o6, feature_maps_o7);
-		// $display("%d %d %d %d", feature_maps_o8, feature_maps_o9, feature_maps_o10, feature_maps_o11);
-		// $display("%d %d %d %d", feature_maps_o12, feature_maps_o13, feature_maps_o14, feature_maps_o15);
+	if (state == CONV3 && cnn_state == DOCNN && read_input_cnt_p == 0) begin
+		$display("(%d, %d)", y_cnt_pp, x_cnt_pp);
+		$display("feature_maps");
+		$display("%d %d %d %d", feature_maps_o[0], feature_maps_o[1], feature_maps_o[2], feature_maps_o[3]);
 	end
 end
 

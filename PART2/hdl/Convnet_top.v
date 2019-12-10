@@ -87,12 +87,12 @@ parameter READ_WEIGHT = 0, DOCNN = 1, WAIT = 2;
 integer i, j, k;
 reg [4:0] x_cnt_pp;
 reg [4:0] y_cnt_pp;
-wire [7:0] feature_maps_o0;
-wire [7:0] feature_maps_o1;
-wire [7:0] feature_maps_o2;
-wire [7:0] feature_maps_o3;
+wire [15:0] feature_maps_o0;
+wire [15:0] feature_maps_o1;
+wire [15:0] feature_maps_o2;
+wire [15:0] feature_maps_o3;
 reg [1:0] read_input_cnt_p;
-reg [10:0] conv_cnt_p, conv_cnt_pp;
+reg [9:0] conv_cnt_p, conv_cnt_pp;
 always @(posedge clk)
 	x_cnt_p <= x_cnt;
 always @(posedge clk)
@@ -307,7 +307,7 @@ always @(posedge clk) begin
 	end
 	else if (state == CONV1) begin
 		if(x_cnt_pp == 5 && y_cnt_pp == 5) begin
-			conv_cnt = conv_cnt + 1;
+			conv_cnt <= conv_cnt + 1;
 		end
 		else begin
 			conv_cnt <= conv_cnt;
@@ -318,7 +318,7 @@ always @(posedge clk) begin
 	end
 	else if (state == CONV2) begin
 		if(x_cnt_pp == 4 && y_cnt_pp == 4) begin
-			conv_cnt = conv_cnt + 1;
+			conv_cnt <= conv_cnt + 1;
 		end
 		else begin
 			conv_cnt <= conv_cnt;
@@ -329,7 +329,7 @@ always @(posedge clk) begin
 	end
 	else if (state == CONV3) begin
 		if(x_cnt_pp == 3 && y_cnt_pp == 3 && read_input_cnt == 3) begin
-			conv_cnt = conv_cnt + 1;
+			conv_cnt <= conv_cnt + 1;
 		end
 		else begin
 			conv_cnt <= conv_cnt;
@@ -534,47 +534,52 @@ always@(posedge clk)
 		busy <= 0;	
 	end
 
+
 wire [7:0] look = sram_wdata_a[7:0];
+reg [7:0] input_data_delay;
 always @(posedge clk) begin
+	input_data_delay <= input_data;
+end
+always @* begin
 	if (state == UNSHUFFLE) begin
 		for(i=0; i< 16; i=i+1)
-			sram_wdata_a[i*8 +:8] <= input_data;
+			sram_wdata_a[i*8 +:8] = input_data_delay;
 	end
-	else if (state == CONV1) begin
-		sram_wdata_b[15*8 +:8] <= feature_maps_o0;
-		sram_wdata_b[14*8 +:8] <= feature_maps_o1;
-		sram_wdata_b[13*8 +:8] <= feature_maps_o2;
-		sram_wdata_b[12*8 +:8] <= feature_maps_o3;
-		sram_wdata_b[11*8 +:8] <= feature_maps_o0;
-		sram_wdata_b[10*8 +:8] <= feature_maps_o1;
-		sram_wdata_b[9*8 +:8]  <= feature_maps_o2;
-		sram_wdata_b[8*8 +:8]  <= feature_maps_o3;
-		sram_wdata_b[7*8 +:8]  <= feature_maps_o0;
-		sram_wdata_b[6*8 +:8]  <= feature_maps_o1;
-		sram_wdata_b[5*8 +:8]  <= feature_maps_o2;
-		sram_wdata_b[4*8 +:8]  <= feature_maps_o3;
-		sram_wdata_b[3*8 +:8]  <= feature_maps_o0;
-		sram_wdata_b[2*8 +:8]  <= feature_maps_o1;
-		sram_wdata_b[1*8 +:8]  <= feature_maps_o2;
-		sram_wdata_b[0*8 +:8]  <= feature_maps_o3;
+	else if (state == CONV1|| state == C1_2_C2) begin
+		sram_wdata_b[15*8 +:8] = feature_maps_o0;
+		sram_wdata_b[14*8 +:8] = feature_maps_o1;
+		sram_wdata_b[13*8 +:8] = feature_maps_o2;
+		sram_wdata_b[12*8 +:8] = feature_maps_o3;
+		sram_wdata_b[11*8 +:8] = feature_maps_o0;
+		sram_wdata_b[10*8 +:8] = feature_maps_o1;
+		sram_wdata_b[9*8 +:8]  = feature_maps_o2;
+		sram_wdata_b[8*8 +:8]  = feature_maps_o3;
+		sram_wdata_b[7*8 +:8]  = feature_maps_o0;
+		sram_wdata_b[6*8 +:8]  = feature_maps_o1;
+		sram_wdata_b[5*8 +:8]  = feature_maps_o2;
+		sram_wdata_b[4*8 +:8]  = feature_maps_o3;
+		sram_wdata_b[3*8 +:8]  = feature_maps_o0;
+		sram_wdata_b[2*8 +:8]  = feature_maps_o1;
+		sram_wdata_b[1*8 +:8]  = feature_maps_o2;
+		sram_wdata_b[0*8 +:8]  = feature_maps_o3;
 	end
-	else if (state == CONV2) begin
-		sram_wdata_a[15*8 +:8] <= feature_maps_o0;
-		sram_wdata_a[14*8 +:8] <= feature_maps_o1;
-		sram_wdata_a[13*8 +:8] <= feature_maps_o2;
-		sram_wdata_a[12*8 +:8] <= feature_maps_o3;
-		sram_wdata_a[11*8 +:8] <= feature_maps_o0;
-		sram_wdata_a[10*8 +:8] <= feature_maps_o1;
-		sram_wdata_a[9*8 +:8]  <= feature_maps_o2;
-		sram_wdata_a[8*8 +:8]  <= feature_maps_o3;
-		sram_wdata_a[7*8 +:8]  <= feature_maps_o0;
-		sram_wdata_a[6*8 +:8]  <= feature_maps_o1;
-		sram_wdata_a[5*8 +:8]  <= feature_maps_o2;
-		sram_wdata_a[4*8 +:8]  <= feature_maps_o3;
-		sram_wdata_a[3*8 +:8]  <= feature_maps_o0;
-		sram_wdata_a[2*8 +:8]  <= feature_maps_o1;
-		sram_wdata_a[1*8 +:8]  <= feature_maps_o2;
-		sram_wdata_a[0*8 +:8]  <= feature_maps_o3;
+	else if (state == CONV2 || state == C2_2_C3) begin
+		sram_wdata_a[15*8 +:8] = feature_maps_o0;
+		sram_wdata_a[14*8 +:8] = feature_maps_o1;
+		sram_wdata_a[13*8 +:8] = feature_maps_o2;
+		sram_wdata_a[12*8 +:8] = feature_maps_o3;
+		sram_wdata_a[11*8 +:8] = feature_maps_o0;
+		sram_wdata_a[10*8 +:8] = feature_maps_o1;
+		sram_wdata_a[9*8 +:8]  = feature_maps_o2;
+		sram_wdata_a[8*8 +:8]  = feature_maps_o3;
+		sram_wdata_a[7*8 +:8]  = feature_maps_o0;
+		sram_wdata_a[6*8 +:8]  = feature_maps_o1;
+		sram_wdata_a[5*8 +:8]  = feature_maps_o2;
+		sram_wdata_a[4*8 +:8]  = feature_maps_o3;
+		sram_wdata_a[3*8 +:8]  = feature_maps_o0;
+		sram_wdata_a[2*8 +:8]  = feature_maps_o1;
+		sram_wdata_a[1*8 +:8]  = feature_maps_o2;
+		sram_wdata_a[0*8 +:8]  = feature_maps_o3;
 	end
 end
 
