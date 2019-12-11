@@ -378,7 +378,7 @@ initial begin
             //set test_layer to UNSHUFFLE, CONV1, CONV2 or POOL to choose which layer outputs you want to check
             //be aware of test_layer_finish is needed for UNSHUFFLE, CONV1 and CONV2
             //valid is needed for POOL 
-            test_layer = CONV2;
+            test_layer = POOL;
             if(test_layer == UNSHUFFLE) begin
                 if(test_layer_finish) begin
                     $display("Start to check unshuffle outputs in sram #A0...");
@@ -532,7 +532,7 @@ initial begin
                         else begin
                             $write("You have wrong answer in the sram #B0 !!!\n\n");
                             display_error(4, 1, m, 0);
-                            $finish;
+                            // $finish;
                         end
                     end
                     for(m=6; m<9; m=m+1) begin
@@ -541,7 +541,7 @@ initial begin
                         else begin
                             $write("You have wrong answer in the sram #B0 !!!\n\n");
                             display_error(4, 1, m, 3);
-                            $finish;
+                            // $finish;
                         end
                     end
                     for(m=12; m<15; m=m+1) begin
@@ -550,7 +550,7 @@ initial begin
                         else begin
                             $write("You have wrong answer in the sram #B0 !!!\n\n");
                             display_error(4, 1, m, 6);
-                            $finish;
+                            // $finish;
                         end
                     end
                     $display("\nConv1 outputs in sram #B0 are successfully passed!");
@@ -562,7 +562,7 @@ initial begin
                         else begin
                             $write("You have wrong answer in the sram #B1 !!!\n\n");
                             display_error(5, 1, m, 0);
-                            $finish;
+                            // $finish;
                         end
                     end
                     for(m=6; m<9; m=m+1) begin
@@ -571,7 +571,7 @@ initial begin
                         else begin
                             $write("You have wrong answer in the sram #B1 !!!\n\n");
                             display_error(5, 1, m, 3);
-                            $finish;
+                            // $finish;
                         end
                     end
                     for(m=12; m<15; m=m+1) begin
@@ -580,7 +580,7 @@ initial begin
                         else begin
                             $write("You have wrong answer in the sram #B1 !!!\n\n");
                             display_error(5, 1, m, 6);
-                            $finish;
+                            // $finish;
                         end
                     end
                     $display("\nConv1 outputs in sram #B1 are successfully passed!");
@@ -592,7 +592,7 @@ initial begin
                         else begin
                             $write("You have wrong answer in the sram #B2 !!!\n\n");
                             display_error(6, 1, m, 0);
-                            $finish;
+                            // $finish;
                         end
                     end
                     for(m=6; m<9; m=m+1) begin
@@ -601,7 +601,7 @@ initial begin
                         else begin
                             $write("You have wrong answer in the sram #B2 !!!\n\n");
                             display_error(6, 1, m, 3);
-                            $finish;
+                            // $finish;
                         end
                     end
                     for(m=12; m<15; m=m+1) begin
@@ -610,7 +610,7 @@ initial begin
                         else begin
                             $write("You have wrong answer in the sram #B2 !!!\n\n");
                             display_error(6, 1, m, 6);
-                            $finish;
+                            // $finish;
                         end
                     end
                     $display("\nConv1 outputs in sram #B2 are successfully passed!");
@@ -622,7 +622,7 @@ initial begin
                         else begin
                             $write("You have wrong answer in the sram #B3 !!!\n\n");
                             display_error(7, 1, m, 0);
-                            $finish;
+                            // $finish;
                         end
                     end
                     for(m=6; m<9; m=m+1) begin
@@ -631,7 +631,7 @@ initial begin
                         else begin
                             $write("You have wrong answer in the sram #B3 !!!\n\n");
                             display_error(7, 1, m, 3);
-                            $finish;
+                            // $finish;
                         end
                     end
                     for(m=12; m<15; m=m+1) begin
@@ -640,7 +640,7 @@ initial begin
                         else begin
                             $write("You have wrong answer in the sram #B3 !!!\n\n");
                             display_error(7, 1, m, 6);
-                            $finish;
+                            // $finish;
                         end
                     end
                     $display("\nConv1 outputs in sram #B3 are successfully passed!");
@@ -899,7 +899,7 @@ initial begin
                                 $signed(pool_ans[m][47:40]),   $signed(pool_ans[m][39:32]),
                                 $signed(pool_ans[m][31:24]),   $signed(pool_ans[m][23:16]),
                                 $signed(pool_ans[m][15:8]),    $signed(pool_ans[m][7:0]));
-                            $finish;
+                            // $finish;
                         end
                     end
                     $display("\nAnswers in sram #B0 correct.");
@@ -927,7 +927,7 @@ initial begin
                                 $signed(pool_ans[m][47:40]),   $signed(pool_ans[m][39:32]),
                                 $signed(pool_ans[m][31:24]),   $signed(pool_ans[m][23:16]),
                                 $signed(pool_ans[m][15:8]),    $signed(pool_ans[m][7:0]));
-                            $finish;
+                            // $finish;
                         end
                     end
                     $display("\nAnswers in sram #B1 correct.");

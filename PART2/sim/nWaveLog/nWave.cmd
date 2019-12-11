@@ -1,2797 +1,443 @@
-wvOpenFile -win $_nWave1 -mul \
-           {/home/u105/u105061255/ICLAB/EE4292_HW2/EE4292_HW2/part2/sim/test_enigma.fsdb} {/home/u105/u105061255/ICLAB/HW5/PART2/sim/eCNN_micro.fsdb} 
-wvCopyFilePathToClipboard -win $_nWave1 -fileId 0
-wvCopyFilePathToClipboard -win $_nWave1 -fileId 0
+wvSetPosition -win $_nWave1 {("G1" 0)}
+wvOpenFile -win $_nWave1 \
+           {/home/u105/u105061255/ICLAB/HW5/PART2/sim/eCNN_micro.fsdb}
 wvSetActiveFile -win $_nWave1 -applyAnnotation off \
            {/home/u105/u105061255/ICLAB/HW5/PART2/sim/eCNN_micro.fsdb}
+wvOpenFile -win $_nWave1 \
+           {/home/u105/u105061255/ICLAB/EE4292_HW2/EE4292_HW2/part2/sim/test_enigma.fsdb}
+wvGetSignalOpen -win $_nWave1
+wvGetSignalSetScope -win $_nWave1 "/enigma_part2_test"
+wvGetSignalClose -win $_nWave1
+wvCloseFile -win $_nWave1 \
+           {/home/u105/u105061255/ICLAB/EE4292_HW2/EE4292_HW2/part2/sim/test_enigma.fsdb}
 wvGetSignalOpen -win $_nWave1
 wvGetSignalSetScope -win $_nWave1 "/test_top"
+wvGetSignalSetScope -win $_nWave1 "/test_top/Conv_top/top_CNN"
 wvGetSignalSetScope -win $_nWave1 "/test_top/Conv_top"
-wvSetPosition -win $_nWave1 {("G1" 26)}
-wvSetPosition -win $_nWave1 {("G1" 26)}
+wvGetSignalSetScope -win $_nWave1 "/test_top/Conv_top/top_CNN"
+wvSetPosition -win $_nWave1 {("G1" 65)}
+wvSetPosition -win $_nWave1 {("G1" 65)}
 wvAddSignal -win $_nWave1 -clear
 wvAddSignal -win $_nWave1 -group {"G1" \
-{/test_top/Conv_top/clk} \
-{/test_top/Conv_top/cnn_state\[4:0\]} \
-{/test_top/Conv_top/feature_maps_o0\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o1\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o2\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o3\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o4\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o5\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o6\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o7\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o8\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o9\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o10\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o11\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o12\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o13\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o14\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o15\[7:0\]} \
-{/test_top/Conv_top/read_weight_finish} \
-{/test_top/Conv_top/rst_n} \
-{/test_top/Conv_top/sram_raddr_weight\[10:0\]} \
-{/test_top/Conv_top/state\[5:0\]} \
-{/test_top/Conv_top/x_cnt\[4:0\]} \
-{/test_top/Conv_top/x_cnt_pp\[4:0\]} \
-{/test_top/Conv_top/y_cnt\[4:0\]} \
-{/test_top/Conv_top/y_cnt_pp\[4:0\]} \
+{/test_top/Conv_top/top_CNN/W\[0:15\]} \
+{/test_top/Conv_top/top_CNN/X\[0:15\]} \
+{/test_top/Conv_top/top_CNN/Y\[0:15\]} \
+{/test_top/Conv_top/top_CNN/bias\[3:0\]} \
+{/test_top/Conv_top/top_CNN/ch0_pixels\[0:3\]} \
+{/test_top/Conv_top/top_CNN/ch1_pixels\[0:3\]} \
+{/test_top/Conv_top/top_CNN/ch2_pixels\[0:3\]} \
+{/test_top/Conv_top/top_CNN/ch3_pixels\[0:3\]} \
+{/test_top/Conv_top/top_CNN/clk} \
+{/test_top/Conv_top/top_CNN/cnn_state\[4:0\]} \
+{/test_top/Conv_top/top_CNN/cnn_state_p} \
+{/test_top/Conv_top/top_CNN/cnn_state_pppp} \
+{/test_top/Conv_top/top_CNN/conv_out\[0:3\]} \
+{/test_top/Conv_top/top_CNN/conv_out_FF\[0:3\]} \
+{/test_top/Conv_top/top_CNN/feature_maps_o0\[15:0\]} \
+{/test_top/Conv_top/top_CNN/feature_maps_o1\[15:0\]} \
+{/test_top/Conv_top/top_CNN/feature_maps_o2\[15:0\]} \
+{/test_top/Conv_top/top_CNN/feature_maps_o3\[15:0\]} \
+{/test_top/Conv_top/top_CNN/feature_maps_temp_o\[0:3\]} \
+{/test_top/Conv_top/top_CNN/i\[31:0\]} \
+{/test_top/Conv_top/top_CNN/j\[31:0\]} \
+{/test_top/Conv_top/top_CNN/k\[31:0\]} \
+{/test_top/Conv_top/top_CNN/l\[31:0\]} \
+{/test_top/Conv_top/top_CNN/load_bias_finish} \
+{/test_top/Conv_top/top_CNN/load_weight_finish} \
+{/test_top/Conv_top/top_CNN/max0\[7:0\]} \
+{/test_top/Conv_top/top_CNN/max1\[7:0\]} \
+{/test_top/Conv_top/top_CNN/max\[7:0\]} \
+{/test_top/Conv_top/top_CNN/read_bias_finish} \
+{/test_top/Conv_top/top_CNN/read_cnt\[10:0\]} \
+{/test_top/Conv_top/top_CNN/read_input_cnt\[1:0\]} \
+{/test_top/Conv_top/top_CNN/read_input_cnt_p\[1:0\]} \
+{/test_top/Conv_top/top_CNN/read_input_cnt_pp\[1:0\]} \
+{/test_top/Conv_top/top_CNN/read_weight_finish} \
+{/test_top/Conv_top/top_CNN/rst_n} \
+{/test_top/Conv_top/top_CNN/sram_rdata_0\[127:0\]} \
+{/test_top/Conv_top/top_CNN/sram_rdata_1\[127:0\]} \
+{/test_top/Conv_top/top_CNN/sram_rdata_2\[127:0\]} \
+{/test_top/Conv_top/top_CNN/sram_rdata_3\[127:0\]} \
+{/test_top/Conv_top/top_CNN/sram_rdata_a0\[127:0\]} \
+{/test_top/Conv_top/top_CNN/sram_rdata_a1\[127:0\]} \
+{/test_top/Conv_top/top_CNN/sram_rdata_a2\[127:0\]} \
+{/test_top/Conv_top/top_CNN/sram_rdata_a3\[127:0\]} \
+{/test_top/Conv_top/top_CNN/sram_rdata_b0\[127:0\]} \
+{/test_top/Conv_top/top_CNN/sram_rdata_b1\[127:0\]} \
+{/test_top/Conv_top/top_CNN/sram_rdata_b2\[127:0\]} \
+{/test_top/Conv_top/top_CNN/sram_rdata_b3\[127:0\]} \
+{/test_top/Conv_top/top_CNN/sram_rdata_bias\[3:0\]} \
+{/test_top/Conv_top/top_CNN/sram_rdata_weight\[35:0\]} \
+{/test_top/Conv_top/top_CNN/state\[5:0\]} \
+{/test_top/Conv_top/top_CNN/state_p\[5:0\]} \
+{/test_top/Conv_top/top_CNN/temp_conv_out\[0:3\]} \
+{/test_top/Conv_top/top_CNN/x_cnt\[4:0\]} \
+{/test_top/Conv_top/top_CNN/x_cnt_p\[4:0\]} \
+{/test_top/Conv_top/top_CNN/x_cnt_pp\[4:0\]} \
+{/test_top/Conv_top/top_CNN/x_cnt_ppp\[4:0\]} \
+{/test_top/Conv_top/top_CNN/x_r2} \
+{/test_top/Conv_top/top_CNN/y_cnt\[4:0\]} \
+{/test_top/Conv_top/top_CNN/y_cnt_p\[4:0\]} \
+{/test_top/Conv_top/top_CNN/y_cnt_pp\[4:0\]} \
+{/test_top/Conv_top/top_CNN/y_cnt_ppp\[4:0\]} \
+{/test_top/Conv_top/top_CNN/y_r2} \
+{/LOGIC_LOW} \
+{/LOGIC_HIGH} \
+{/BLANK} \
 }
 wvAddSignal -win $_nWave1 -group {"G2" \
 }
 wvSelectSignal -win $_nWave1 {( "G1" 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 \
-           18 19 20 21 22 23 24 25 26 )} 
-wvSetPosition -win $_nWave1 {("G1" 26)}
-wvSetPosition -win $_nWave1 {("G1" 26)}
-wvSetPosition -win $_nWave1 {("G1" 26)}
+           18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 \
+           40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 \
+           62 63 64 65 )} 
+wvSetPosition -win $_nWave1 {("G1" 65)}
+wvSetPosition -win $_nWave1 {("G1" 65)}
+wvSetPosition -win $_nWave1 {("G1" 65)}
 wvAddSignal -win $_nWave1 -clear
 wvAddSignal -win $_nWave1 -group {"G1" \
-{/test_top/Conv_top/clk} \
-{/test_top/Conv_top/cnn_state\[4:0\]} \
-{/test_top/Conv_top/feature_maps_o0\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o1\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o2\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o3\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o4\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o5\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o6\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o7\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o8\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o9\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o10\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o11\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o12\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o13\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o14\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o15\[7:0\]} \
-{/test_top/Conv_top/read_weight_finish} \
-{/test_top/Conv_top/rst_n} \
-{/test_top/Conv_top/sram_raddr_weight\[10:0\]} \
-{/test_top/Conv_top/state\[5:0\]} \
-{/test_top/Conv_top/x_cnt\[4:0\]} \
-{/test_top/Conv_top/x_cnt_pp\[4:0\]} \
-{/test_top/Conv_top/y_cnt\[4:0\]} \
-{/test_top/Conv_top/y_cnt_pp\[4:0\]} \
+{/test_top/Conv_top/top_CNN/W\[0:15\]} \
+{/test_top/Conv_top/top_CNN/X\[0:15\]} \
+{/test_top/Conv_top/top_CNN/Y\[0:15\]} \
+{/test_top/Conv_top/top_CNN/bias\[3:0\]} \
+{/test_top/Conv_top/top_CNN/ch0_pixels\[0:3\]} \
+{/test_top/Conv_top/top_CNN/ch1_pixels\[0:3\]} \
+{/test_top/Conv_top/top_CNN/ch2_pixels\[0:3\]} \
+{/test_top/Conv_top/top_CNN/ch3_pixels\[0:3\]} \
+{/test_top/Conv_top/top_CNN/clk} \
+{/test_top/Conv_top/top_CNN/cnn_state\[4:0\]} \
+{/test_top/Conv_top/top_CNN/cnn_state_p} \
+{/test_top/Conv_top/top_CNN/cnn_state_pppp} \
+{/test_top/Conv_top/top_CNN/conv_out\[0:3\]} \
+{/test_top/Conv_top/top_CNN/conv_out_FF\[0:3\]} \
+{/test_top/Conv_top/top_CNN/feature_maps_o0\[15:0\]} \
+{/test_top/Conv_top/top_CNN/feature_maps_o1\[15:0\]} \
+{/test_top/Conv_top/top_CNN/feature_maps_o2\[15:0\]} \
+{/test_top/Conv_top/top_CNN/feature_maps_o3\[15:0\]} \
+{/test_top/Conv_top/top_CNN/feature_maps_temp_o\[0:3\]} \
+{/test_top/Conv_top/top_CNN/i\[31:0\]} \
+{/test_top/Conv_top/top_CNN/j\[31:0\]} \
+{/test_top/Conv_top/top_CNN/k\[31:0\]} \
+{/test_top/Conv_top/top_CNN/l\[31:0\]} \
+{/test_top/Conv_top/top_CNN/load_bias_finish} \
+{/test_top/Conv_top/top_CNN/load_weight_finish} \
+{/test_top/Conv_top/top_CNN/max0\[7:0\]} \
+{/test_top/Conv_top/top_CNN/max1\[7:0\]} \
+{/test_top/Conv_top/top_CNN/max\[7:0\]} \
+{/test_top/Conv_top/top_CNN/read_bias_finish} \
+{/test_top/Conv_top/top_CNN/read_cnt\[10:0\]} \
+{/test_top/Conv_top/top_CNN/read_input_cnt\[1:0\]} \
+{/test_top/Conv_top/top_CNN/read_input_cnt_p\[1:0\]} \
+{/test_top/Conv_top/top_CNN/read_input_cnt_pp\[1:0\]} \
+{/test_top/Conv_top/top_CNN/read_weight_finish} \
+{/test_top/Conv_top/top_CNN/rst_n} \
+{/test_top/Conv_top/top_CNN/sram_rdata_0\[127:0\]} \
+{/test_top/Conv_top/top_CNN/sram_rdata_1\[127:0\]} \
+{/test_top/Conv_top/top_CNN/sram_rdata_2\[127:0\]} \
+{/test_top/Conv_top/top_CNN/sram_rdata_3\[127:0\]} \
+{/test_top/Conv_top/top_CNN/sram_rdata_a0\[127:0\]} \
+{/test_top/Conv_top/top_CNN/sram_rdata_a1\[127:0\]} \
+{/test_top/Conv_top/top_CNN/sram_rdata_a2\[127:0\]} \
+{/test_top/Conv_top/top_CNN/sram_rdata_a3\[127:0\]} \
+{/test_top/Conv_top/top_CNN/sram_rdata_b0\[127:0\]} \
+{/test_top/Conv_top/top_CNN/sram_rdata_b1\[127:0\]} \
+{/test_top/Conv_top/top_CNN/sram_rdata_b2\[127:0\]} \
+{/test_top/Conv_top/top_CNN/sram_rdata_b3\[127:0\]} \
+{/test_top/Conv_top/top_CNN/sram_rdata_bias\[3:0\]} \
+{/test_top/Conv_top/top_CNN/sram_rdata_weight\[35:0\]} \
+{/test_top/Conv_top/top_CNN/state\[5:0\]} \
+{/test_top/Conv_top/top_CNN/state_p\[5:0\]} \
+{/test_top/Conv_top/top_CNN/temp_conv_out\[0:3\]} \
+{/test_top/Conv_top/top_CNN/x_cnt\[4:0\]} \
+{/test_top/Conv_top/top_CNN/x_cnt_p\[4:0\]} \
+{/test_top/Conv_top/top_CNN/x_cnt_pp\[4:0\]} \
+{/test_top/Conv_top/top_CNN/x_cnt_ppp\[4:0\]} \
+{/test_top/Conv_top/top_CNN/x_r2} \
+{/test_top/Conv_top/top_CNN/y_cnt\[4:0\]} \
+{/test_top/Conv_top/top_CNN/y_cnt_p\[4:0\]} \
+{/test_top/Conv_top/top_CNN/y_cnt_pp\[4:0\]} \
+{/test_top/Conv_top/top_CNN/y_cnt_ppp\[4:0\]} \
+{/test_top/Conv_top/top_CNN/y_r2} \
+{/LOGIC_LOW} \
+{/LOGIC_HIGH} \
+{/BLANK} \
 }
 wvAddSignal -win $_nWave1 -group {"G2" \
 }
 wvSelectSignal -win $_nWave1 {( "G1" 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 \
-           18 19 20 21 22 23 24 25 26 )} 
-wvSetPosition -win $_nWave1 {("G1" 26)}
+           18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 \
+           40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 \
+           62 63 64 65 )} 
+wvSetPosition -win $_nWave1 {("G1" 65)}
 wvGetSignalClose -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvSetCursor -win $_nWave1 79573.911404 -snap {("G1" 22)}
-wvResizeWindow -win $_nWave1 0 23 1217 697
-wvZoomIn -win $_nWave1
-wvZoomIn -win $_nWave1
-wvZoomIn -win $_nWave1
-wvZoomIn -win $_nWave1
-wvGetSignalOpen -win $_nWave1
-wvGetSignalSetScope -win $_nWave1 "/test_top"
-wvGetSignalSetScope -win $_nWave1 "/test_top/Conv_top"
-wvGetSignalSetScope -win $_nWave1 "/test_top/Conv_top/top_CNN"
-wvSetPosition -win $_nWave1 {("G1" 27)}
-wvSetPosition -win $_nWave1 {("G1" 27)}
-wvAddSignal -win $_nWave1 -clear
-wvAddSignal -win $_nWave1 -group {"G1" \
-{/test_top/Conv_top/clk} \
-{/test_top/Conv_top/cnn_state\[4:0\]} \
-{/test_top/Conv_top/feature_maps_o0\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o1\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o2\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o3\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o4\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o5\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o6\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o7\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o8\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o9\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o10\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o11\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o12\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o13\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o14\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o15\[7:0\]} \
-{/test_top/Conv_top/read_weight_finish} \
-{/test_top/Conv_top/rst_n} \
-{/test_top/Conv_top/sram_raddr_weight\[10:0\]} \
-{/test_top/Conv_top/state\[5:0\]} \
-{/test_top/Conv_top/x_cnt\[4:0\]} \
-{/test_top/Conv_top/x_cnt_pp\[4:0\]} \
-{/test_top/Conv_top/y_cnt\[4:0\]} \
-{/test_top/Conv_top/y_cnt_pp\[4:0\]} \
-{/test_top/Conv_top/top_CNN/W\[0:15\]} \
-}
-wvAddSignal -win $_nWave1 -group {"G2" \
-}
-wvSelectSignal -win $_nWave1 {( "G1" 27 )} 
-wvSetPosition -win $_nWave1 {("G1" 27)}
-wvSetPosition -win $_nWave1 {("G1" 27)}
-wvSetPosition -win $_nWave1 {("G1" 27)}
-wvAddSignal -win $_nWave1 -clear
-wvAddSignal -win $_nWave1 -group {"G1" \
-{/test_top/Conv_top/clk} \
-{/test_top/Conv_top/cnn_state\[4:0\]} \
-{/test_top/Conv_top/feature_maps_o0\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o1\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o2\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o3\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o4\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o5\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o6\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o7\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o8\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o9\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o10\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o11\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o12\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o13\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o14\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o15\[7:0\]} \
-{/test_top/Conv_top/read_weight_finish} \
-{/test_top/Conv_top/rst_n} \
-{/test_top/Conv_top/sram_raddr_weight\[10:0\]} \
-{/test_top/Conv_top/state\[5:0\]} \
-{/test_top/Conv_top/x_cnt\[4:0\]} \
-{/test_top/Conv_top/x_cnt_pp\[4:0\]} \
-{/test_top/Conv_top/y_cnt\[4:0\]} \
-{/test_top/Conv_top/y_cnt_pp\[4:0\]} \
-{/test_top/Conv_top/top_CNN/W\[0:15\]} \
-}
-wvAddSignal -win $_nWave1 -group {"G2" \
-}
-wvSelectSignal -win $_nWave1 {( "G1" 27 )} 
-wvSetPosition -win $_nWave1 {("G1" 27)}
-wvGetSignalClose -win $_nWave1
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvSetCursor -win $_nWave1 78433.283582 -snap {("G1" 22)}
-wvSetCursor -win $_nWave1 78865.422886 -snap {("G1" 22)}
-wvSetCursor -win $_nWave1 78865.422886 -snap {("G1" 22)}
-wvSetCursor -win $_nWave1 78865.422886 -snap {("G1" 22)}
-wvSetCursor -win $_nWave1 78865.422886 -snap {("G1" 22)}
-wvZoomIn -win $_nWave1
-wvZoomIn -win $_nWave1
-wvZoomIn -win $_nWave1
+wvScrollUp -win $_nWave1 6
+wvResizeWindow -win $_nWave1 8 31 1474 841
 wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvSelectSignal -win $_nWave1 {( "G1" 37 )} 
+wvSelectSignal -win $_nWave1 {( "G1" 36 37 38 39 40 41 42 43 44 45 46 47 48 49 \
+           )} 
+wvCut -win $_nWave1
+wvSetPosition -win $_nWave1 {("G1" 51)}
+wvScrollUp -win $_nWave1 18
 wvScrollDown -win $_nWave1 0
 wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvSetCursor -win $_nWave1 80362.011176 -snap {("G1" 2)}
-wvDisplayGridCount -win $_nWave1 -off
-wvGetSignalClose -win $_nWave1
-wvReloadFile -win $_nWave1
-wvZoomIn -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomIn -win $_nWave1
-wvZoomIn -win $_nWave1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvSetCursor -win $_nWave1 78776.959698 -snap {("G1" 22)}
-wvSetCursor -win $_nWave1 80521.829101 -snap {("G1" 27)}
-wvSetCursor -win $_nWave1 81437.718405 -snap {("G1" 27)}
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvSelectSignal -win $_nWave1 {( "G1" 27 )} 
-wvSelectSignal -win $_nWave1 {( "G1" 27 )} 
-wvSelectSignal -win $_nWave1 {( "G1" 27 )} 
-wvExpandBus -win $_nWave1 {("G1" 27)}
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
+wvResizeWindow -win $_nWave1 8 31 1474 841
+wvResizeWindow -win $_nWave1 8 31 1474 841
 wvResizeWindow -win $_nWave1 0 23 1217 697
 wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomIn -win $_nWave1
-wvSetCursor -win $_nWave1 99935.154946 -snap {("G1" 26)}
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollDown -win $_nWave1 0
-wvDisplayGridCount -win $_nWave1 -off
-wvGetSignalClose -win $_nWave1
-wvReloadFile -win $_nWave1
-wvSetCursor -win $_nWave1 80156.741392 -snap {("G1" 19)}
-wvScrollDown -win $_nWave1 1
-wvZoomIn -win $_nWave1
-wvZoomIn -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomIn -win $_nWave1
-wvDisplayGridCount -win $_nWave1 -off
-wvGetSignalClose -win $_nWave1
-wvReloadFile -win $_nWave1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvSetCursor -win $_nWave1 84292.019419 -snap {("G1" 22)}
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvZoomIn -win $_nWave1
-wvSetCursor -win $_nWave1 78735.917608 -snap {("G1" 22)}
-wvGetSignalOpen -win $_nWave1
-wvSetPosition -win $_nWave1 {("G1" 44)}
-wvSetPosition -win $_nWave1 {("G1" 44)}
-wvAddSignal -win $_nWave1 -clear
-wvAddSignal -win $_nWave1 -group {"G1" \
-{/test_top/Conv_top/clk} \
-{/test_top/Conv_top/cnn_state\[4:0\]} \
-{/test_top/Conv_top/feature_maps_o0\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o1\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o2\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o3\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o4\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o5\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o6\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o7\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o8\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o9\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o10\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o11\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o12\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o13\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o14\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o15\[7:0\]} \
-{/test_top/Conv_top/read_weight_finish} \
-{/test_top/Conv_top/rst_n} \
-{/test_top/Conv_top/sram_raddr_weight\[10:0\]} \
-{/test_top/Conv_top/state\[5:0\]} \
-{/test_top/Conv_top/x_cnt\[4:0\]} \
-{/test_top/Conv_top/x_cnt_pp\[4:0\]} \
-{/test_top/Conv_top/y_cnt\[4:0\]} \
-{/test_top/Conv_top/y_cnt_pp\[4:0\]} \
-{/test_top/Conv_top/top_CNN/W\[0:15\]} \
-{/test_top/Conv_top/top_CNN/W\[0\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[1\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[2\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[3\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[4\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[5\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[6\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[7\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[8\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[9\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[10\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[11\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[12\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[13\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[14\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[15\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/temp_conv_out\[0:15\]} \
-}
-wvAddSignal -win $_nWave1 -group {"G2" \
-}
-wvSelectSignal -win $_nWave1 {( "G1" 44 )} 
-wvSetPosition -win $_nWave1 {("G1" 44)}
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvGetSignalOpen -win $_nWave1
-wvSetPosition -win $_nWave1 {("G1" 45)}
-wvSetPosition -win $_nWave1 {("G1" 45)}
-wvAddSignal -win $_nWave1 -clear
-wvAddSignal -win $_nWave1 -group {"G1" \
-{/test_top/Conv_top/clk} \
-{/test_top/Conv_top/cnn_state\[4:0\]} \
-{/test_top/Conv_top/feature_maps_o0\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o1\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o2\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o3\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o4\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o5\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o6\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o7\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o8\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o9\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o10\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o11\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o12\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o13\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o14\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o15\[7:0\]} \
-{/test_top/Conv_top/read_weight_finish} \
-{/test_top/Conv_top/rst_n} \
-{/test_top/Conv_top/sram_raddr_weight\[10:0\]} \
-{/test_top/Conv_top/state\[5:0\]} \
-{/test_top/Conv_top/x_cnt\[4:0\]} \
-{/test_top/Conv_top/x_cnt_pp\[4:0\]} \
-{/test_top/Conv_top/y_cnt\[4:0\]} \
-{/test_top/Conv_top/y_cnt_pp\[4:0\]} \
-{/test_top/Conv_top/top_CNN/W\[0:15\]} \
-{/test_top/Conv_top/top_CNN/W\[0\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[1\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[2\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[3\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[4\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[5\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[6\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[7\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[8\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[9\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[10\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[11\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[12\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[13\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[14\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[15\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/temp_conv_out\[0:15\]} \
-{/test_top/Conv_top/top_CNN/Y\[0:63\]} \
-}
-wvAddSignal -win $_nWave1 -group {"G2" \
-}
-wvSelectSignal -win $_nWave1 {( "G1" 45 )} 
-wvSetPosition -win $_nWave1 {("G1" 45)}
-wvSetPosition -win $_nWave1 {("G1" 46)}
-wvSetPosition -win $_nWave1 {("G1" 46)}
-wvAddSignal -win $_nWave1 -clear
-wvAddSignal -win $_nWave1 -group {"G1" \
-{/test_top/Conv_top/clk} \
-{/test_top/Conv_top/cnn_state\[4:0\]} \
-{/test_top/Conv_top/feature_maps_o0\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o1\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o2\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o3\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o4\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o5\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o6\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o7\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o8\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o9\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o10\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o11\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o12\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o13\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o14\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o15\[7:0\]} \
-{/test_top/Conv_top/read_weight_finish} \
-{/test_top/Conv_top/rst_n} \
-{/test_top/Conv_top/sram_raddr_weight\[10:0\]} \
-{/test_top/Conv_top/state\[5:0\]} \
-{/test_top/Conv_top/x_cnt\[4:0\]} \
-{/test_top/Conv_top/x_cnt_pp\[4:0\]} \
-{/test_top/Conv_top/y_cnt\[4:0\]} \
-{/test_top/Conv_top/y_cnt_pp\[4:0\]} \
-{/test_top/Conv_top/top_CNN/W\[0:15\]} \
-{/test_top/Conv_top/top_CNN/W\[0\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[1\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[2\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[3\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[4\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[5\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[6\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[7\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[8\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[9\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[10\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[11\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[12\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[13\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[14\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[15\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/temp_conv_out\[0:15\]} \
-{/test_top/Conv_top/top_CNN/Y\[0:63\]} \
-{/test_top/Conv_top/top_CNN/bias\[0:3\]} \
-}
-wvAddSignal -win $_nWave1 -group {"G2" \
-}
-wvSelectSignal -win $_nWave1 {( "G1" 46 )} 
-wvSetPosition -win $_nWave1 {("G1" 46)}
-wvSetPosition -win $_nWave1 {("G1" 46)}
-wvSetPosition -win $_nWave1 {("G1" 46)}
-wvAddSignal -win $_nWave1 -clear
-wvAddSignal -win $_nWave1 -group {"G1" \
-{/test_top/Conv_top/clk} \
-{/test_top/Conv_top/cnn_state\[4:0\]} \
-{/test_top/Conv_top/feature_maps_o0\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o1\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o2\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o3\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o4\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o5\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o6\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o7\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o8\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o9\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o10\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o11\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o12\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o13\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o14\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o15\[7:0\]} \
-{/test_top/Conv_top/read_weight_finish} \
-{/test_top/Conv_top/rst_n} \
-{/test_top/Conv_top/sram_raddr_weight\[10:0\]} \
-{/test_top/Conv_top/state\[5:0\]} \
-{/test_top/Conv_top/x_cnt\[4:0\]} \
-{/test_top/Conv_top/x_cnt_pp\[4:0\]} \
-{/test_top/Conv_top/y_cnt\[4:0\]} \
-{/test_top/Conv_top/y_cnt_pp\[4:0\]} \
-{/test_top/Conv_top/top_CNN/W\[0:15\]} \
-{/test_top/Conv_top/top_CNN/W\[0\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[1\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[2\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[3\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[4\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[5\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[6\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[7\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[8\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[9\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[10\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[11\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[12\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[13\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[14\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[15\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/temp_conv_out\[0:15\]} \
-{/test_top/Conv_top/top_CNN/Y\[0:63\]} \
-{/test_top/Conv_top/top_CNN/bias\[0:3\]} \
-}
-wvAddSignal -win $_nWave1 -group {"G2" \
-}
-wvSelectSignal -win $_nWave1 {( "G1" 46 )} 
-wvSetPosition -win $_nWave1 {("G1" 46)}
-wvGetSignalClose -win $_nWave1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvScrollUp -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 0
-wvZoomIn -win $_nWave1
-wvZoomIn -win $_nWave1
-wvZoomIn -win $_nWave1
-wvZoomIn -win $_nWave1
-wvZoomIn -win $_nWave1
-wvZoomIn -win $_nWave1
-wvZoomIn -win $_nWave1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvZoomOut -win $_nWave1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 0
-wvSetCursor -win $_nWave1 80488.007622 -snap {("G1" 46)}
-wvZoom -win $_nWave1 79308.676573 79513.049283
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomIn -win $_nWave1
-wvSetCursor -win $_nWave1 78770.872207 -snap {("G1" 22)}
-wvScrollDown -win $_nWave1 0
-wvSetCursor -win $_nWave1 80471.798908 -snap {("G1" 46)}
-wvZoom -win $_nWave1 77433.780094 77833.998142
-wvGetSignalOpen -win $_nWave1
-wvGetSignalSetScope -win $_nWave1 "/test_top"
-wvGetSignalSetScope -win $_nWave1 "/test_top/Conv_top"
-wvGetSignalSetScope -win $_nWave1 "/test_top/Conv_top/top_CNN"
-wvGetSignalSetScope -win $_nWave1 "/test_top/Conv_top/addr"
+wvSelectSignal -win $_nWave1 {( "G1" 5 6 7 8 )} 
+wvCut -win $_nWave1
 wvSetPosition -win $_nWave1 {("G1" 47)}
-wvSetPosition -win $_nWave1 {("G1" 47)}
-wvAddSignal -win $_nWave1 -clear
-wvAddSignal -win $_nWave1 -group {"G1" \
-{/test_top/Conv_top/clk} \
-{/test_top/Conv_top/cnn_state\[4:0\]} \
-{/test_top/Conv_top/feature_maps_o0\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o1\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o2\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o3\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o4\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o5\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o6\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o7\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o8\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o9\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o10\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o11\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o12\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o13\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o14\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o15\[7:0\]} \
-{/test_top/Conv_top/read_weight_finish} \
-{/test_top/Conv_top/rst_n} \
-{/test_top/Conv_top/sram_raddr_weight\[10:0\]} \
-{/test_top/Conv_top/state\[5:0\]} \
-{/test_top/Conv_top/x_cnt\[4:0\]} \
-{/test_top/Conv_top/x_cnt_pp\[4:0\]} \
-{/test_top/Conv_top/y_cnt\[4:0\]} \
-{/test_top/Conv_top/y_cnt_pp\[4:0\]} \
-{/test_top/Conv_top/top_CNN/W\[0:15\]} \
-{/test_top/Conv_top/top_CNN/W\[0\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[1\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[2\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[3\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[4\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[5\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[6\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[7\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[8\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[9\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[10\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[11\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[12\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[13\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[14\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[15\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/temp_conv_out\[0:15\]} \
-{/test_top/Conv_top/top_CNN/Y\[0:63\]} \
-{/test_top/Conv_top/top_CNN/bias\[0:3\]} \
-{/test_top/Conv_top/addr/sram_raddr_bias\[6:0\]} \
-}
-wvAddSignal -win $_nWave1 -group {"G2" \
-}
-wvSelectSignal -win $_nWave1 {( "G1" 47 )} 
-wvSetPosition -win $_nWave1 {("G1" 47)}
-wvSetPosition -win $_nWave1 {("G1" 47)}
-wvSetPosition -win $_nWave1 {("G1" 47)}
-wvAddSignal -win $_nWave1 -clear
-wvAddSignal -win $_nWave1 -group {"G1" \
-{/test_top/Conv_top/clk} \
-{/test_top/Conv_top/cnn_state\[4:0\]} \
-{/test_top/Conv_top/feature_maps_o0\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o1\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o2\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o3\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o4\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o5\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o6\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o7\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o8\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o9\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o10\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o11\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o12\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o13\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o14\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o15\[7:0\]} \
-{/test_top/Conv_top/read_weight_finish} \
-{/test_top/Conv_top/rst_n} \
-{/test_top/Conv_top/sram_raddr_weight\[10:0\]} \
-{/test_top/Conv_top/state\[5:0\]} \
-{/test_top/Conv_top/x_cnt\[4:0\]} \
-{/test_top/Conv_top/x_cnt_pp\[4:0\]} \
-{/test_top/Conv_top/y_cnt\[4:0\]} \
-{/test_top/Conv_top/y_cnt_pp\[4:0\]} \
-{/test_top/Conv_top/top_CNN/W\[0:15\]} \
-{/test_top/Conv_top/top_CNN/W\[0\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[1\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[2\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[3\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[4\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[5\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[6\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[7\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[8\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[9\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[10\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[11\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[12\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[13\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[14\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[15\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/temp_conv_out\[0:15\]} \
-{/test_top/Conv_top/top_CNN/Y\[0:63\]} \
-{/test_top/Conv_top/top_CNN/bias\[0:3\]} \
-{/test_top/Conv_top/addr/sram_raddr_bias\[6:0\]} \
-}
-wvAddSignal -win $_nWave1 -group {"G2" \
-}
-wvSelectSignal -win $_nWave1 {( "G1" 47 )} 
-wvSetPosition -win $_nWave1 {("G1" 47)}
-wvGetSignalClose -win $_nWave1
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
+wvSelectSignal -win $_nWave1 {( "G1" 4 )} 
 wvZoomOut -win $_nWave1
 wvZoomOut -win $_nWave1
 wvZoomOut -win $_nWave1
 wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomIn -win $_nWave1
-wvSetCursor -win $_nWave1 78969.977157 -snap {("G1" 47)}
-wvGetSignalOpen -win $_nWave1
-wvGetSignalSetScope -win $_nWave1 "/test_top"
-wvGetSignalSetScope -win $_nWave1 "/test_top/Conv_top"
-wvGetSignalSetScope -win $_nWave1 "/test_top/Conv_top/top_CNN"
-wvGetSignalSetScope -win $_nWave1 "/test_top/Conv_top/addr"
-wvGetSignalClose -win $_nWave1
-wvDisplayGridCount -win $_nWave1 -off
-wvGetSignalClose -win $_nWave1
-wvReloadFile -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomIn -win $_nWave1
-wvZoomIn -win $_nWave1
-wvScrollUp -win $_nWave1 1
-wvSetCursor -win $_nWave1 78725.059298 -snap {("G1" 22)}
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
+wvScrollDown -win $_nWave1 21
 wvScrollDown -win $_nWave1 0
 wvScrollDown -win $_nWave1 0
 wvScrollDown -win $_nWave1 0
 wvScrollDown -win $_nWave1 0
 wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 17
-wvGetSignalOpen -win $_nWave1
-wvGetSignalSetScope -win $_nWave1 "/test_top/Conv_top"
-wvSetPosition -win $_nWave1 {("G1" 48)}
-wvSetPosition -win $_nWave1 {("G1" 48)}
-wvAddSignal -win $_nWave1 -clear
-wvAddSignal -win $_nWave1 -group {"G1" \
-{/test_top/Conv_top/clk} \
-{/test_top/Conv_top/cnn_state\[4:0\]} \
-{/test_top/Conv_top/feature_maps_o0\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o1\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o2\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o3\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o4\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o5\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o6\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o7\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o8\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o9\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o10\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o11\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o12\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o13\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o14\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o15\[7:0\]} \
-{/test_top/Conv_top/read_weight_finish} \
-{/test_top/Conv_top/rst_n} \
-{/test_top/Conv_top/sram_raddr_weight\[10:0\]} \
-{/test_top/Conv_top/state\[5:0\]} \
-{/test_top/Conv_top/x_cnt\[4:0\]} \
-{/test_top/Conv_top/x_cnt_pp\[4:0\]} \
-{/test_top/Conv_top/y_cnt\[4:0\]} \
-{/test_top/Conv_top/y_cnt_pp\[4:0\]} \
-{/test_top/Conv_top/top_CNN/W\[0:15\]} \
-{/test_top/Conv_top/top_CNN/W\[0\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[1\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[2\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[3\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[4\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[5\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[6\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[7\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[8\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[9\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[10\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[11\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[12\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[13\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[14\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[15\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/temp_conv_out\[0:15\]} \
-{/test_top/Conv_top/top_CNN/Y\[0:63\]} \
-{/test_top/Conv_top/top_CNN/bias\[0:3\]} \
-{/test_top/Conv_top/addr/sram_raddr_bias\[6:0\]} \
-{/test_top/Conv_top/read_cnt\[10:0\]} \
-}
-wvAddSignal -win $_nWave1 -group {"G2" \
-}
-wvSelectSignal -win $_nWave1 {( "G1" 48 )} 
-wvSetPosition -win $_nWave1 {("G1" 48)}
-wvSetPosition -win $_nWave1 {("G1" 48)}
-wvSetPosition -win $_nWave1 {("G1" 48)}
-wvAddSignal -win $_nWave1 -clear
-wvAddSignal -win $_nWave1 -group {"G1" \
-{/test_top/Conv_top/clk} \
-{/test_top/Conv_top/cnn_state\[4:0\]} \
-{/test_top/Conv_top/feature_maps_o0\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o1\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o2\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o3\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o4\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o5\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o6\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o7\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o8\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o9\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o10\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o11\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o12\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o13\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o14\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o15\[7:0\]} \
-{/test_top/Conv_top/read_weight_finish} \
-{/test_top/Conv_top/rst_n} \
-{/test_top/Conv_top/sram_raddr_weight\[10:0\]} \
-{/test_top/Conv_top/state\[5:0\]} \
-{/test_top/Conv_top/x_cnt\[4:0\]} \
-{/test_top/Conv_top/x_cnt_pp\[4:0\]} \
-{/test_top/Conv_top/y_cnt\[4:0\]} \
-{/test_top/Conv_top/y_cnt_pp\[4:0\]} \
-{/test_top/Conv_top/top_CNN/W\[0:15\]} \
-{/test_top/Conv_top/top_CNN/W\[0\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[1\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[2\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[3\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[4\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[5\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[6\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[7\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[8\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[9\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[10\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[11\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[12\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[13\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[14\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[15\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/temp_conv_out\[0:15\]} \
-{/test_top/Conv_top/top_CNN/Y\[0:63\]} \
-{/test_top/Conv_top/top_CNN/bias\[0:3\]} \
-{/test_top/Conv_top/addr/sram_raddr_bias\[6:0\]} \
-{/test_top/Conv_top/read_cnt\[10:0\]} \
-}
-wvAddSignal -win $_nWave1 -group {"G2" \
-}
-wvSelectSignal -win $_nWave1 {( "G1" 48 )} 
-wvSetPosition -win $_nWave1 {("G1" 48)}
-wvGetSignalClose -win $_nWave1
-wvSelectSignal -win $_nWave1 {( "G1" 22 )} 
-wvCopyFilePathToClipboard -win $_nWave1 -fileId 1
-wvSetActiveFile -win $_nWave1 -applyAnnotation off \
-           {/home/u105/u105061255/ICLAB/HW5/PART2/sim/eCNN_micro.fsdb}
-wvDisplayGridCount -win $_nWave1 -off
-wvGetSignalClose -win $_nWave1
-wvReloadFile -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomIn -win $_nWave1
-wvZoomIn -win $_nWave1
-wvZoomIn -win $_nWave1
-wvZoomIn -win $_nWave1
-wvZoomIn -win $_nWave1
-wvZoomIn -win $_nWave1
 wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvSetCursor -win $_nWave1 78746.024858 -snap {("G1" 46)}
-wvSetCursor -win $_nWave1 78752.809455 -snap {("G1" 21)}
-wvSetCursor -win $_nWave1 78725.671068 -snap {("G1" 22)}
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 0
-wvScrollUp -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 0
-wvSetCursor -win $_nWave1 78779.947842 -snap {("G1" 46)}
-wvSetCursor -win $_nWave1 78762.986350 -snap {("G1" 48)}
-wvDisplayGridCount -win $_nWave1 -off
-wvGetSignalClose -win $_nWave1
-wvReloadFile -win $_nWave1
-wvSetCursor -win $_nWave1 78963.131952 -snap {("G1" 46)}
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 0
-wvResizeWindow -win $_nWave1 0 23 1217 697
-wvSetCursor -win $_nWave1 79248.518778 -snap {("G1" 46)}
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvGetSignalOpen -win $_nWave1
-wvGetSignalSetScope -win $_nWave1 "/test_top"
-wvGetSignalSetScope -win $_nWave1 "/test_top/FC1_layer"
-wvGetSignalSetScope -win $_nWave1 "/test_top/FC2_layer"
-wvGetSignalSetScope -win $_nWave1 "/test_top/FC1_layer"
-wvGetSignalSetScope -win $_nWave1 "/test_top/Conv_top"
-wvGetSignalSetScope -win $_nWave1 "/test_top/Conv_top/top_CNN"
-wvSetPosition -win $_nWave1 {("G1" 49)}
-wvSetPosition -win $_nWave1 {("G1" 49)}
-wvAddSignal -win $_nWave1 -clear
-wvAddSignal -win $_nWave1 -group {"G1" \
-{/test_top/Conv_top/clk} \
-{/test_top/Conv_top/cnn_state\[4:0\]} \
-{/test_top/Conv_top/feature_maps_o0\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o1\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o2\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o3\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o4\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o5\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o6\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o7\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o8\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o9\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o10\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o11\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o12\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o13\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o14\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o15\[7:0\]} \
-{/test_top/Conv_top/read_weight_finish} \
-{/test_top/Conv_top/rst_n} \
-{/test_top/Conv_top/sram_raddr_weight\[10:0\]} \
-{/test_top/Conv_top/state\[5:0\]} \
-{/test_top/Conv_top/x_cnt\[4:0\]} \
-{/test_top/Conv_top/x_cnt_pp\[4:0\]} \
-{/test_top/Conv_top/y_cnt\[4:0\]} \
-{/test_top/Conv_top/y_cnt_pp\[4:0\]} \
-{/test_top/Conv_top/top_CNN/W\[0:15\]} \
-{/test_top/Conv_top/top_CNN/W\[0\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[1\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[2\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[3\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[4\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[5\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[6\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[7\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[8\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[9\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[10\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[11\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[12\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[13\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[14\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[15\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/temp_conv_out\[0:15\]} \
-{/test_top/Conv_top/top_CNN/Y\[0:63\]} \
-{/test_top/Conv_top/top_CNN/bias\[0:3\]} \
-{/test_top/Conv_top/addr/sram_raddr_bias\[6:0\]} \
-{/test_top/Conv_top/read_cnt\[10:0\]} \
-{/test_top/Conv_top/top_CNN/sram_rdata_bias\[3:0\]} \
-}
-wvAddSignal -win $_nWave1 -group {"G2" \
-}
-wvSelectSignal -win $_nWave1 {( "G1" 49 )} 
-wvSetPosition -win $_nWave1 {("G1" 49)}
-wvSetPosition -win $_nWave1 {("G1" 49)}
-wvSetPosition -win $_nWave1 {("G1" 49)}
-wvAddSignal -win $_nWave1 -clear
-wvAddSignal -win $_nWave1 -group {"G1" \
-{/test_top/Conv_top/clk} \
-{/test_top/Conv_top/cnn_state\[4:0\]} \
-{/test_top/Conv_top/feature_maps_o0\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o1\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o2\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o3\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o4\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o5\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o6\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o7\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o8\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o9\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o10\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o11\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o12\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o13\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o14\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o15\[7:0\]} \
-{/test_top/Conv_top/read_weight_finish} \
-{/test_top/Conv_top/rst_n} \
-{/test_top/Conv_top/sram_raddr_weight\[10:0\]} \
-{/test_top/Conv_top/state\[5:0\]} \
-{/test_top/Conv_top/x_cnt\[4:0\]} \
-{/test_top/Conv_top/x_cnt_pp\[4:0\]} \
-{/test_top/Conv_top/y_cnt\[4:0\]} \
-{/test_top/Conv_top/y_cnt_pp\[4:0\]} \
-{/test_top/Conv_top/top_CNN/W\[0:15\]} \
-{/test_top/Conv_top/top_CNN/W\[0\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[1\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[2\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[3\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[4\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[5\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[6\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[7\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[8\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[9\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[10\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[11\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[12\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[13\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[14\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[15\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/temp_conv_out\[0:15\]} \
-{/test_top/Conv_top/top_CNN/Y\[0:63\]} \
-{/test_top/Conv_top/top_CNN/bias\[0:3\]} \
-{/test_top/Conv_top/addr/sram_raddr_bias\[6:0\]} \
-{/test_top/Conv_top/read_cnt\[10:0\]} \
-{/test_top/Conv_top/top_CNN/sram_rdata_bias\[3:0\]} \
-}
-wvAddSignal -win $_nWave1 -group {"G2" \
-}
-wvSelectSignal -win $_nWave1 {( "G1" 49 )} 
-wvSetPosition -win $_nWave1 {("G1" 49)}
-wvGetSignalClose -win $_nWave1
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvZoomOut -win $_nWave1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvSetCursor -win $_nWave1 78766.619328 -snap {("G1" 22)}
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvSetCursor -win $_nWave1 79343.541205 -snap {("G1" 48)}
-wvDisplayGridCount -win $_nWave1 -off
-wvGetSignalClose -win $_nWave1
-wvReloadFile -win $_nWave1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvSetCursor -win $_nWave1 80449.873746 -snap {("G1" 43)}
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvSetCursor -win $_nWave1 80584.941338 -snap {("G1" 19)}
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvSetCursor -win $_nWave1 80517.068176 -snap {("G1" 23)}
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvSetCursor -win $_nWave1 80449.195014 -snap {("G1" 2)}
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 8
-wvGetSignalOpen -win $_nWave1
-wvSetPosition -win $_nWave1 {("G1" 50)}
-wvSetPosition -win $_nWave1 {("G1" 50)}
-wvAddSignal -win $_nWave1 -clear
-wvAddSignal -win $_nWave1 -group {"G1" \
-{/test_top/Conv_top/clk} \
-{/test_top/Conv_top/cnn_state\[4:0\]} \
-{/test_top/Conv_top/feature_maps_o0\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o1\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o2\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o3\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o4\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o5\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o6\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o7\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o8\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o9\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o10\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o11\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o12\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o13\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o14\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o15\[7:0\]} \
-{/test_top/Conv_top/read_weight_finish} \
-{/test_top/Conv_top/rst_n} \
-{/test_top/Conv_top/sram_raddr_weight\[10:0\]} \
-{/test_top/Conv_top/state\[5:0\]} \
-{/test_top/Conv_top/x_cnt\[4:0\]} \
-{/test_top/Conv_top/x_cnt_pp\[4:0\]} \
-{/test_top/Conv_top/y_cnt\[4:0\]} \
-{/test_top/Conv_top/y_cnt_pp\[4:0\]} \
-{/test_top/Conv_top/top_CNN/W\[0:15\]} \
-{/test_top/Conv_top/top_CNN/W\[0\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[1\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[2\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[3\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[4\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[5\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[6\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[7\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[8\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[9\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[10\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[11\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[12\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[13\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[14\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[15\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/temp_conv_out\[0:15\]} \
-{/test_top/Conv_top/top_CNN/Y\[0:63\]} \
-{/test_top/Conv_top/top_CNN/bias\[0:3\]} \
-{/test_top/Conv_top/addr/sram_raddr_bias\[6:0\]} \
-{/test_top/Conv_top/read_cnt\[10:0\]} \
-{/test_top/Conv_top/top_CNN/sram_rdata_bias\[3:0\]} \
-{/test_top/Conv_top/top_CNN/feature_maps_o\[0:15\]} \
-}
-wvAddSignal -win $_nWave1 -group {"G2" \
-}
-wvSelectSignal -win $_nWave1 {( "G1" 50 )} 
-wvSetPosition -win $_nWave1 {("G1" 50)}
-wvSetPosition -win $_nWave1 {("G1" 50)}
-wvSetPosition -win $_nWave1 {("G1" 50)}
-wvAddSignal -win $_nWave1 -clear
-wvAddSignal -win $_nWave1 -group {"G1" \
-{/test_top/Conv_top/clk} \
-{/test_top/Conv_top/cnn_state\[4:0\]} \
-{/test_top/Conv_top/feature_maps_o0\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o1\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o2\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o3\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o4\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o5\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o6\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o7\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o8\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o9\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o10\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o11\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o12\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o13\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o14\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o15\[7:0\]} \
-{/test_top/Conv_top/read_weight_finish} \
-{/test_top/Conv_top/rst_n} \
-{/test_top/Conv_top/sram_raddr_weight\[10:0\]} \
-{/test_top/Conv_top/state\[5:0\]} \
-{/test_top/Conv_top/x_cnt\[4:0\]} \
-{/test_top/Conv_top/x_cnt_pp\[4:0\]} \
-{/test_top/Conv_top/y_cnt\[4:0\]} \
-{/test_top/Conv_top/y_cnt_pp\[4:0\]} \
-{/test_top/Conv_top/top_CNN/W\[0:15\]} \
-{/test_top/Conv_top/top_CNN/W\[0\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[1\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[2\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[3\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[4\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[5\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[6\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[7\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[8\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[9\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[10\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[11\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[12\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[13\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[14\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[15\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/temp_conv_out\[0:15\]} \
-{/test_top/Conv_top/top_CNN/Y\[0:63\]} \
-{/test_top/Conv_top/top_CNN/bias\[0:3\]} \
-{/test_top/Conv_top/addr/sram_raddr_bias\[6:0\]} \
-{/test_top/Conv_top/read_cnt\[10:0\]} \
-{/test_top/Conv_top/top_CNN/sram_rdata_bias\[3:0\]} \
-{/test_top/Conv_top/top_CNN/feature_maps_o\[0:15\]} \
-}
-wvAddSignal -win $_nWave1 -group {"G2" \
-}
-wvSelectSignal -win $_nWave1 {( "G1" 50 )} 
-wvSetPosition -win $_nWave1 {("G1" 50)}
-wvGetSignalClose -win $_nWave1
-wvSetCursor -win $_nWave1 81399.419283 -snap {("G1" 50)}
+wvSelectSignal -win $_nWave1 {( "G1" 20 )} 
+wvScrollUp -win $_nWave1 3
 wvCut -win $_nWave1
 wvSetPosition -win $_nWave1 {("G2" 0)}
-wvSetPosition -win $_nWave1 {("G1" 49)}
-wvGetSignalOpen -win $_nWave1
-wvGetSignalSetScope -win $_nWave1 "/test_top"
-wvGetSignalSetScope -win $_nWave1 "/test_top/Conv_top"
-wvGetSignalSetScope -win $_nWave1 "/test_top/Conv_top/top_CNN"
-wvScrollUp -win $_nWave1 12
-wvScrollUp -win $_nWave1 10
-wvScrollDown -win $_nWave1 11
-wvGetSignalOpen -win $_nWave1
-wvGetSignalSetScope -win $_nWave1 "/test_top"
-wvGetSignalSetScope -win $_nWave1 "/test_top/Conv_top"
-wvGetSignalSetScope -win $_nWave1 "/test_top/Conv_top/top_CNN"
-wvSetPosition -win $_nWave1 {("G1" 50)}
-wvSetPosition -win $_nWave1 {("G1" 50)}
-wvAddSignal -win $_nWave1 -clear
-wvAddSignal -win $_nWave1 -group {"G1" \
-{/test_top/Conv_top/clk} \
-{/test_top/Conv_top/cnn_state\[4:0\]} \
-{/test_top/Conv_top/feature_maps_o0\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o1\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o2\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o3\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o4\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o5\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o6\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o7\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o8\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o9\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o10\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o11\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o12\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o13\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o14\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o15\[7:0\]} \
-{/test_top/Conv_top/read_weight_finish} \
-{/test_top/Conv_top/rst_n} \
-{/test_top/Conv_top/sram_raddr_weight\[10:0\]} \
-{/test_top/Conv_top/state\[5:0\]} \
-{/test_top/Conv_top/x_cnt\[4:0\]} \
-{/test_top/Conv_top/x_cnt_pp\[4:0\]} \
-{/test_top/Conv_top/y_cnt\[4:0\]} \
-{/test_top/Conv_top/y_cnt_pp\[4:0\]} \
-{/test_top/Conv_top/top_CNN/W\[0:15\]} \
-{/test_top/Conv_top/top_CNN/W\[0\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[1\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[2\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[3\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[4\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[5\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[6\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[7\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[8\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[9\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[10\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[11\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[12\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[13\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[14\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[15\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/temp_conv_out\[0:15\]} \
-{/test_top/Conv_top/top_CNN/Y\[0:63\]} \
-{/test_top/Conv_top/top_CNN/bias\[0:3\]} \
-{/test_top/Conv_top/addr/sram_raddr_bias\[6:0\]} \
-{/test_top/Conv_top/read_cnt\[10:0\]} \
-{/test_top/Conv_top/top_CNN/sram_rdata_bias\[3:0\]} \
-{/test_top/Conv_top/top_CNN/Y\[0:63\]} \
-}
-wvAddSignal -win $_nWave1 -group {"G2" \
-}
-wvSelectSignal -win $_nWave1 {( "G1" 50 )} 
-wvSetPosition -win $_nWave1 {("G1" 50)}
-wvSetPosition -win $_nWave1 {("G1" 50)}
-wvSetPosition -win $_nWave1 {("G1" 50)}
-wvAddSignal -win $_nWave1 -clear
-wvAddSignal -win $_nWave1 -group {"G1" \
-{/test_top/Conv_top/clk} \
-{/test_top/Conv_top/cnn_state\[4:0\]} \
-{/test_top/Conv_top/feature_maps_o0\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o1\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o2\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o3\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o4\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o5\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o6\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o7\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o8\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o9\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o10\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o11\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o12\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o13\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o14\[7:0\]} \
-{/test_top/Conv_top/feature_maps_o15\[7:0\]} \
-{/test_top/Conv_top/read_weight_finish} \
-{/test_top/Conv_top/rst_n} \
-{/test_top/Conv_top/sram_raddr_weight\[10:0\]} \
-{/test_top/Conv_top/state\[5:0\]} \
-{/test_top/Conv_top/x_cnt\[4:0\]} \
-{/test_top/Conv_top/x_cnt_pp\[4:0\]} \
-{/test_top/Conv_top/y_cnt\[4:0\]} \
-{/test_top/Conv_top/y_cnt_pp\[4:0\]} \
-{/test_top/Conv_top/top_CNN/W\[0:15\]} \
-{/test_top/Conv_top/top_CNN/W\[0\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[1\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[2\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[3\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[4\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[5\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[6\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[7\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[8\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[9\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[10\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[11\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[12\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[13\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[14\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[15\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/temp_conv_out\[0:15\]} \
-{/test_top/Conv_top/top_CNN/Y\[0:63\]} \
-{/test_top/Conv_top/top_CNN/bias\[0:3\]} \
-{/test_top/Conv_top/addr/sram_raddr_bias\[6:0\]} \
-{/test_top/Conv_top/read_cnt\[10:0\]} \
-{/test_top/Conv_top/top_CNN/sram_rdata_bias\[3:0\]} \
-{/test_top/Conv_top/top_CNN/Y\[0:63\]} \
-}
-wvAddSignal -win $_nWave1 -group {"G2" \
-}
-wvSelectSignal -win $_nWave1 {( "G1" 50 )} 
-wvSetPosition -win $_nWave1 {("G1" 50)}
-wvGetSignalClose -win $_nWave1
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvSetCursor -win $_nWave1 81623.400717 -snap {("G1" 50)}
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvSetCursor -win $_nWave1 81080.415421 -snap {("G1" 44)}
-wvSetCursor -win $_nWave1 81589.464136 -snap {("G1" 44)}
-wvSetCursor -win $_nWave1 80985.392994 -snap {("G1" 44)}
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvSelectSignal -win $_nWave1 {( "G1" 27 )} 
-wvSelectSignal -win $_nWave1 {( "G1" 27 )} 
-wvSelectSignal -win $_nWave1 {( "G1" 27 )} 
-wvSelectSignal -win $_nWave1 {( "G1" 27 )} 
-wvSetPosition -win $_nWave1 {("G1" 27)}
-wvCollapseBus -win $_nWave1 {("G1" 27)}
-wvSetPosition -win $_nWave1 {("G1" 27)}
-wvSetPosition -win $_nWave1 {("G1" 34)}
-wvScrollDown -win $_nWave1 0
-wvSelectSignal -win $_nWave1 {( "G1" 34 )} 
-wvExpandBus -win $_nWave1 {("G1" 34)}
-wvScrollUp -win $_nWave1 14
-wvDisplayGridCount -win $_nWave1 -off
-wvGetSignalClose -win $_nWave1
-wvReloadFile -win $_nWave1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 0
-wvSetCursor -win $_nWave1 82224.159375 -snap {("G1" 91)}
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvGetSignalOpen -win $_nWave1
-wvSetCursor -win $_nWave1 81124.614150 -snap {("G1" 28)}
-wvSetCursor -win $_nWave1 81036.379040 -snap {("G1" 28)}
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
+wvSetPosition -win $_nWave1 {("G1" 46)}
+wvSetCursor -win $_nWave1 145486.706894 -snap {("G1" 32)}
 wvZoomIn -win $_nWave1
 wvZoomIn -win $_nWave1
-wvDisplayGridCount -win $_nWave1 -off
-wvGetSignalClose -win $_nWave1
-wvReloadFile -win $_nWave1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
+wvZoomIn -win $_nWave1
 wvZoomIn -win $_nWave1
 wvZoomIn -win $_nWave1
 wvZoomIn -win $_nWave1
 wvScrollDown -win $_nWave1 1
 wvScrollDown -win $_nWave1 1
 wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
 wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
+wvScrollUp -win $_nWave1 5
+wvScrollDown -win $_nWave1 3
 wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvSelectSignal -win $_nWave1 {( "G1" 34 )} 
-wvSetPosition -win $_nWave1 {("G1" 34)}
-wvCollapseBus -win $_nWave1 {("G1" 34)}
-wvSetPosition -win $_nWave1 {("G1" 34)}
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvSelectSignal -win $_nWave1 {( "G1" 22 )} 
-wvZoomIn -win $_nWave1
-wvZoomIn -win $_nWave1
-wvSetCursor -win $_nWave1 86137.864577 -snap {("G1" 27)}
-wvSetCursor -win $_nWave1 85038.720082 -snap {("G1" 27)}
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvSelectSignal -win $_nWave1 {( "G1" 3 22 )} 
-wvSelectSignal -win $_nWave1 {( "G1" 3 4 22 )} 
-wvSelectSignal -win $_nWave1 {( "G1" 3 4 5 22 )} 
-wvSelectSignal -win $_nWave1 {( "G1" 3 4 5 6 22 )} 
-wvSelectSignal -win $_nWave1 {( "G1" 3 4 5 6 7 22 )} 
-wvSelectSignal -win $_nWave1 {( "G1" 3 4 5 6 7 8 22 )} 
-wvSelectSignal -win $_nWave1 {( "G1" 3 4 5 6 7 8 9 22 )} 
-wvSelectSignal -win $_nWave1 {( "G1" 3 4 5 6 7 8 9 10 22 )} 
-wvSelectSignal -win $_nWave1 {( "G1" 3 4 5 6 7 8 9 10 11 22 )} 
-wvSelectSignal -win $_nWave1 {( "G1" 3 4 5 6 7 8 9 10 11 12 22 )} 
-wvSelectSignal -win $_nWave1 {( "G1" 3 4 5 6 7 8 9 10 11 12 13 22 )} 
-wvSelectSignal -win $_nWave1 {( "G1" 3 4 5 6 7 8 9 10 11 12 13 14 22 )} 
-wvSelectSignal -win $_nWave1 {( "G1" 3 4 5 6 7 8 9 10 11 12 13 14 15 22 )} 
-wvSelectSignal -win $_nWave1 {( "G1" 3 4 5 6 7 8 9 10 11 12 13 14 15 16 22 )} \
-           
-wvSelectSignal -win $_nWave1 {( "G1" 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 22 \
-           )} 
-wvSelectSignal -win $_nWave1 {( "G1" 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 \
-           22 )} 
+wvSelectSignal -win $_nWave1 {( "G1" 39 40 41 )} 
 wvCut -win $_nWave1
-wvSetPosition -win $_nWave1 {("G1" 17)}
-wvGetSignalOpen -win $_nWave1
-wvGetSignalSetScope -win $_nWave1 "/test_top/Conv_top"
-wvSetPosition -win $_nWave1 {("G1" 18)}
-wvSetPosition -win $_nWave1 {("G1" 18)}
-wvAddSignal -win $_nWave1 -clear
-wvAddSignal -win $_nWave1 -group {"G1" \
-{/test_top/Conv_top/clk} \
-{/test_top/Conv_top/cnn_state\[4:0\]} \
-{/test_top/Conv_top/read_weight_finish} \
-{/test_top/Conv_top/rst_n} \
-{/test_top/Conv_top/sram_raddr_weight\[10:0\]} \
-{/test_top/Conv_top/x_cnt\[4:0\]} \
-{/test_top/Conv_top/x_cnt_pp\[4:0\]} \
-{/test_top/Conv_top/y_cnt\[4:0\]} \
-{/test_top/Conv_top/y_cnt_pp\[4:0\]} \
-{/test_top/Conv_top/top_CNN/W\[0:15\]} \
-{/test_top/Conv_top/top_CNN/temp_conv_out\[0:15\]} \
-{/test_top/Conv_top/top_CNN/Y\[0:63\]} \
-{/test_top/Conv_top/top_CNN/bias\[0:3\]} \
-{/test_top/Conv_top/addr/sram_raddr_bias\[6:0\]} \
-{/test_top/Conv_top/read_cnt\[10:0\]} \
-{/test_top/Conv_top/top_CNN/sram_rdata_bias\[3:0\]} \
-{/test_top/Conv_top/top_CNN/Y\[0:63\]} \
-{/test_top/Conv_top/state\[5:0\]} \
-}
-wvAddSignal -win $_nWave1 -group {"G2" \
-}
-wvSelectSignal -win $_nWave1 {( "G1" 18 )} 
-wvSetPosition -win $_nWave1 {("G1" 18)}
-wvSetPosition -win $_nWave1 {("G1" 18)}
-wvSetPosition -win $_nWave1 {("G1" 18)}
-wvAddSignal -win $_nWave1 -clear
-wvAddSignal -win $_nWave1 -group {"G1" \
-{/test_top/Conv_top/clk} \
-{/test_top/Conv_top/cnn_state\[4:0\]} \
-{/test_top/Conv_top/read_weight_finish} \
-{/test_top/Conv_top/rst_n} \
-{/test_top/Conv_top/sram_raddr_weight\[10:0\]} \
-{/test_top/Conv_top/x_cnt\[4:0\]} \
-{/test_top/Conv_top/x_cnt_pp\[4:0\]} \
-{/test_top/Conv_top/y_cnt\[4:0\]} \
-{/test_top/Conv_top/y_cnt_pp\[4:0\]} \
-{/test_top/Conv_top/top_CNN/W\[0:15\]} \
-{/test_top/Conv_top/top_CNN/temp_conv_out\[0:15\]} \
-{/test_top/Conv_top/top_CNN/Y\[0:63\]} \
-{/test_top/Conv_top/top_CNN/bias\[0:3\]} \
-{/test_top/Conv_top/addr/sram_raddr_bias\[6:0\]} \
-{/test_top/Conv_top/read_cnt\[10:0\]} \
-{/test_top/Conv_top/top_CNN/sram_rdata_bias\[3:0\]} \
-{/test_top/Conv_top/top_CNN/Y\[0:63\]} \
-{/test_top/Conv_top/state\[5:0\]} \
-}
-wvAddSignal -win $_nWave1 -group {"G2" \
-}
-wvSelectSignal -win $_nWave1 {( "G1" 18 )} 
-wvSetPosition -win $_nWave1 {("G1" 18)}
-wvGetSignalClose -win $_nWave1
-wvSetCursor -win $_nWave1 80468.273774 -snap {("G2" 0)}
-wvSetCursor -win $_nWave1 80508.882160 -snap {("G1" 18)}
-wvSetCursor -win $_nWave1 84350.493061 -snap {("G1" 18)}
-wvDisplayGridCount -win $_nWave1 -off
-wvGetSignalClose -win $_nWave1
-wvReloadFile -win $_nWave1
-wvGetSignalOpen -win $_nWave1
-wvSetPosition -win $_nWave1 {("G1" 19)}
-wvSetPosition -win $_nWave1 {("G1" 19)}
-wvAddSignal -win $_nWave1 -clear
-wvAddSignal -win $_nWave1 -group {"G1" \
-{/test_top/Conv_top/clk} \
-{/test_top/Conv_top/cnn_state\[4:0\]} \
-{/test_top/Conv_top/read_weight_finish} \
-{/test_top/Conv_top/rst_n} \
-{/test_top/Conv_top/sram_raddr_weight\[10:0\]} \
-{/test_top/Conv_top/x_cnt\[4:0\]} \
-{/test_top/Conv_top/x_cnt_pp\[4:0\]} \
-{/test_top/Conv_top/y_cnt\[4:0\]} \
-{/test_top/Conv_top/y_cnt_pp\[4:0\]} \
-{/test_top/Conv_top/top_CNN/W\[0:15\]} \
-{/test_top/Conv_top/top_CNN/temp_conv_out\[0:15\]} \
-{/test_top/Conv_top/top_CNN/Y\[0:63\]} \
-{/test_top/Conv_top/top_CNN/bias\[0:3\]} \
-{/test_top/Conv_top/addr/sram_raddr_bias\[6:0\]} \
-{/test_top/Conv_top/read_cnt\[10:0\]} \
-{/test_top/Conv_top/top_CNN/sram_rdata_bias\[3:0\]} \
-{/test_top/Conv_top/top_CNN/Y\[0:63\]} \
-{/test_top/Conv_top/state\[5:0\]} \
-{/test_top/Conv_top/top_CNN/W\[0:15\]} \
-}
-wvAddSignal -win $_nWave1 -group {"G2" \
-}
-wvSelectSignal -win $_nWave1 {( "G1" 19 )} 
-wvSetPosition -win $_nWave1 {("G1" 19)}
-wvSetPosition -win $_nWave1 {("G1" 19)}
-wvSetPosition -win $_nWave1 {("G1" 19)}
-wvAddSignal -win $_nWave1 -clear
-wvAddSignal -win $_nWave1 -group {"G1" \
-{/test_top/Conv_top/clk} \
-{/test_top/Conv_top/cnn_state\[4:0\]} \
-{/test_top/Conv_top/read_weight_finish} \
-{/test_top/Conv_top/rst_n} \
-{/test_top/Conv_top/sram_raddr_weight\[10:0\]} \
-{/test_top/Conv_top/x_cnt\[4:0\]} \
-{/test_top/Conv_top/x_cnt_pp\[4:0\]} \
-{/test_top/Conv_top/y_cnt\[4:0\]} \
-{/test_top/Conv_top/y_cnt_pp\[4:0\]} \
-{/test_top/Conv_top/top_CNN/W\[0:15\]} \
-{/test_top/Conv_top/top_CNN/temp_conv_out\[0:15\]} \
-{/test_top/Conv_top/top_CNN/Y\[0:63\]} \
-{/test_top/Conv_top/top_CNN/bias\[0:3\]} \
-{/test_top/Conv_top/addr/sram_raddr_bias\[6:0\]} \
-{/test_top/Conv_top/read_cnt\[10:0\]} \
-{/test_top/Conv_top/top_CNN/sram_rdata_bias\[3:0\]} \
-{/test_top/Conv_top/top_CNN/Y\[0:63\]} \
-{/test_top/Conv_top/state\[5:0\]} \
-{/test_top/Conv_top/top_CNN/W\[0:15\]} \
-}
-wvAddSignal -win $_nWave1 -group {"G2" \
-}
-wvSelectSignal -win $_nWave1 {( "G1" 19 )} 
-wvSetPosition -win $_nWave1 {("G1" 19)}
-wvGetSignalClose -win $_nWave1
-wvGetSignalOpen -win $_nWave1
-wvGetSignalSetScope -win $_nWave1 "/test_top"
-wvGetSignalSetScope -win $_nWave1 "/test_top/Conv_top"
-wvGetSignalSetScope -win $_nWave1 "/test_top/Conv_top/top_CNN"
-wvGetSignalSetScope -win $_nWave1 "/test_top/Conv_top/top_CNN"
-wvGetSignalSetScope -win $_nWave1 "/test_top/Conv_top"
-wvGetSignalSetScope -win $_nWave1 "/test_top/Conv_top/addr"
-wvSetPosition -win $_nWave1 {("G1" 20)}
-wvSetPosition -win $_nWave1 {("G1" 20)}
-wvAddSignal -win $_nWave1 -clear
-wvAddSignal -win $_nWave1 -group {"G1" \
-{/test_top/Conv_top/clk} \
-{/test_top/Conv_top/cnn_state\[4:0\]} \
-{/test_top/Conv_top/read_weight_finish} \
-{/test_top/Conv_top/rst_n} \
-{/test_top/Conv_top/sram_raddr_weight\[10:0\]} \
-{/test_top/Conv_top/x_cnt\[4:0\]} \
-{/test_top/Conv_top/x_cnt_pp\[4:0\]} \
-{/test_top/Conv_top/y_cnt\[4:0\]} \
-{/test_top/Conv_top/y_cnt_pp\[4:0\]} \
-{/test_top/Conv_top/top_CNN/W\[0:15\]} \
-{/test_top/Conv_top/top_CNN/temp_conv_out\[0:15\]} \
-{/test_top/Conv_top/top_CNN/Y\[0:63\]} \
-{/test_top/Conv_top/top_CNN/bias\[0:3\]} \
-{/test_top/Conv_top/addr/sram_raddr_bias\[6:0\]} \
-{/test_top/Conv_top/read_cnt\[10:0\]} \
-{/test_top/Conv_top/top_CNN/sram_rdata_bias\[3:0\]} \
-{/test_top/Conv_top/top_CNN/Y\[0:63\]} \
-{/test_top/Conv_top/state\[5:0\]} \
-{/test_top/Conv_top/top_CNN/W\[0:15\]} \
-{/test_top/Conv_top/addr/sram_raddr_weight\[10:0\]} \
-}
-wvAddSignal -win $_nWave1 -group {"G2" \
-}
-wvSelectSignal -win $_nWave1 {( "G1" 20 )} 
-wvSetPosition -win $_nWave1 {("G1" 20)}
-wvSetPosition -win $_nWave1 {("G1" 20)}
-wvSetPosition -win $_nWave1 {("G1" 20)}
-wvAddSignal -win $_nWave1 -clear
-wvAddSignal -win $_nWave1 -group {"G1" \
-{/test_top/Conv_top/clk} \
-{/test_top/Conv_top/cnn_state\[4:0\]} \
-{/test_top/Conv_top/read_weight_finish} \
-{/test_top/Conv_top/rst_n} \
-{/test_top/Conv_top/sram_raddr_weight\[10:0\]} \
-{/test_top/Conv_top/x_cnt\[4:0\]} \
-{/test_top/Conv_top/x_cnt_pp\[4:0\]} \
-{/test_top/Conv_top/y_cnt\[4:0\]} \
-{/test_top/Conv_top/y_cnt_pp\[4:0\]} \
-{/test_top/Conv_top/top_CNN/W\[0:15\]} \
-{/test_top/Conv_top/top_CNN/temp_conv_out\[0:15\]} \
-{/test_top/Conv_top/top_CNN/Y\[0:63\]} \
-{/test_top/Conv_top/top_CNN/bias\[0:3\]} \
-{/test_top/Conv_top/addr/sram_raddr_bias\[6:0\]} \
-{/test_top/Conv_top/read_cnt\[10:0\]} \
-{/test_top/Conv_top/top_CNN/sram_rdata_bias\[3:0\]} \
-{/test_top/Conv_top/top_CNN/Y\[0:63\]} \
-{/test_top/Conv_top/state\[5:0\]} \
-{/test_top/Conv_top/top_CNN/W\[0:15\]} \
-{/test_top/Conv_top/addr/sram_raddr_weight\[10:0\]} \
-}
-wvAddSignal -win $_nWave1 -group {"G2" \
-}
-wvSelectSignal -win $_nWave1 {( "G1" 20 )} 
-wvSetPosition -win $_nWave1 {("G1" 20)}
-wvGetSignalClose -win $_nWave1
-wvSetCursor -win $_nWave1 84449.252773 -snap {("G1" 20)}
-wvSetCursor -win $_nWave1 84347.731808 -snap {("G1" 20)}
-wvSetCursor -win $_nWave1 84327.427614 -snap {("G1" 2)}
-wvSetCursor -win $_nWave1 84488.388648 -snap {("G1" 20)}
-wvSetCursor -win $_nWave1 84589.909613 -snap {("G1" 20)}
-wvSetCursor -win $_nWave1 84698.198643 -snap {("G1" 20)}
-wvSetCursor -win $_nWave1 84820.023801 -snap {("G1" 20)}
-wvSetCursor -win $_nWave1 85828.465390 -snap {("G1" 20)}
-wvSetCursor -win $_nWave1 85936.754420 -snap {("G1" 20)}
-wvSetCursor -win $_nWave1 85862.305712 -snap {("G1" 20)}
-wvSetCursor -win $_nWave1 78763.335604 -snap {("G1" 18)}
-wvSetCursor -win $_nWave1 79081.434629 -snap {("G1" 17)}
-wvSetCursor -win $_nWave1 79277.708495 -snap {("G1" 17)}
-wvSetCursor -win $_nWave1 79318.316881 -snap {("G1" 17)}
-wvSetCursor -win $_nWave1 78864.856569 -snap {("G1" 20)}
-wvSetCursor -win $_nWave1 78715.959154 -snap {("G1" 18)}
-wvSetCursor -win $_nWave1 84340.666498 -snap {("G1" 14)}
-wvDisplayGridCount -win $_nWave1 -off
-wvGetSignalClose -win $_nWave1
-wvReloadFile -win $_nWave1
-wvSetCursor -win $_nWave1 84470.732232 -snap {("G1" 20)}
-wvZoomIn -win $_nWave1
-wvSetCursor -win $_nWave1 84352.786578 -snap {("G1" 2)}
-wvZoomOut -win $_nWave1
-wvSetCursor -win $_nWave1 86193.361679 -snap {("G1" 17)}
-wvZoomIn -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomIn -win $_nWave1
-wvZoomIn -win $_nWave1
-wvZoomIn -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvSetCursor -win $_nWave1 86064.768456 -snap {("G1" 2)}
-wvSetCursor -win $_nWave1 86145.985228 -snap {("G1" 19)}
-wvSelectSignal -win $_nWave1 {( "G1" 14 )} 
-wvSetCursor -win $_nWave1 86321.954901 -snap {("G1" 16)}
-wvSetCursor -win $_nWave1 86179.825550 -snap {("G1" 10)}
-wvSelectSignal -win $_nWave1 {( "G1" 19 )} 
-wvSetPosition -win $_nWave1 {("G1" 19)}
-wvExpandBus -win $_nWave1 {("G1" 19)}
+wvSetPosition -win $_nWave1 {("G1" 43)}
+wvSelectSignal -win $_nWave1 {( "G1" 35 36 )} 
+wvCut -win $_nWave1
+wvSetPosition -win $_nWave1 {("G1" 41)}
+wvSelectSignal -win $_nWave1 {( "G1" 36 )} 
+wvCut -win $_nWave1
+wvSetPosition -win $_nWave1 {("G2" 0)}
+wvSetPosition -win $_nWave1 {("G1" 40)}
+wvSelectSignal -win $_nWave1 {( "G1" 37 )} 
+wvCut -win $_nWave1
+wvSetPosition -win $_nWave1 {("G2" 0)}
+wvSetPosition -win $_nWave1 {("G1" 39)}
+wvSelectSignal -win $_nWave1 {( "G1" 37 38 39 )} 
+wvCut -win $_nWave1
 wvSetPosition -win $_nWave1 {("G1" 36)}
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
 wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvSetCursor -win $_nWave1 85891.528658 -snap {("G1" 36)}
-wvGetSignalOpen -win $_nWave1
-wvGetSignalSetScope -win $_nWave1 "/test_top/Conv_top/top_CNN"
-wvSetPosition -win $_nWave1 {("G1" 37)}
-wvSetPosition -win $_nWave1 {("G1" 37)}
-wvAddSignal -win $_nWave1 -clear
-wvAddSignal -win $_nWave1 -group {"G1" \
-{/test_top/Conv_top/clk} \
-{/test_top/Conv_top/cnn_state\[4:0\]} \
-{/test_top/Conv_top/read_weight_finish} \
-{/test_top/Conv_top/rst_n} \
-{/test_top/Conv_top/sram_raddr_weight\[10:0\]} \
-{/test_top/Conv_top/x_cnt\[4:0\]} \
-{/test_top/Conv_top/x_cnt_pp\[4:0\]} \
-{/test_top/Conv_top/y_cnt\[4:0\]} \
-{/test_top/Conv_top/y_cnt_pp\[4:0\]} \
-{/test_top/Conv_top/top_CNN/W\[0:15\]} \
-{/test_top/Conv_top/top_CNN/temp_conv_out\[0:15\]} \
-{/test_top/Conv_top/top_CNN/Y\[0:63\]} \
-{/test_top/Conv_top/top_CNN/bias\[0:3\]} \
-{/test_top/Conv_top/addr/sram_raddr_bias\[6:0\]} \
-{/test_top/Conv_top/read_cnt\[10:0\]} \
-{/test_top/Conv_top/top_CNN/sram_rdata_bias\[3:0\]} \
-{/test_top/Conv_top/top_CNN/Y\[0:63\]} \
-{/test_top/Conv_top/state\[5:0\]} \
-{/test_top/Conv_top/top_CNN/W\[0:15\]} \
-{/test_top/Conv_top/top_CNN/W\[0\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[1\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[2\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[3\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[4\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[5\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[6\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[7\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[8\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[9\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[10\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[11\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[12\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[13\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[14\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[15\]\[0:2\]} \
-{/test_top/Conv_top/addr/sram_raddr_weight\[10:0\]} \
-{/test_top/Conv_top/top_CNN/sram_rdata_weight\[35:0\]} \
-}
-wvAddSignal -win $_nWave1 -group {"G2" \
-}
-wvSelectSignal -win $_nWave1 {( "G1" 37 )} 
-wvSetPosition -win $_nWave1 {("G1" 37)}
-wvSetPosition -win $_nWave1 {("G1" 37)}
-wvSetPosition -win $_nWave1 {("G1" 37)}
-wvAddSignal -win $_nWave1 -clear
-wvAddSignal -win $_nWave1 -group {"G1" \
-{/test_top/Conv_top/clk} \
-{/test_top/Conv_top/cnn_state\[4:0\]} \
-{/test_top/Conv_top/read_weight_finish} \
-{/test_top/Conv_top/rst_n} \
-{/test_top/Conv_top/sram_raddr_weight\[10:0\]} \
-{/test_top/Conv_top/x_cnt\[4:0\]} \
-{/test_top/Conv_top/x_cnt_pp\[4:0\]} \
-{/test_top/Conv_top/y_cnt\[4:0\]} \
-{/test_top/Conv_top/y_cnt_pp\[4:0\]} \
-{/test_top/Conv_top/top_CNN/W\[0:15\]} \
-{/test_top/Conv_top/top_CNN/temp_conv_out\[0:15\]} \
-{/test_top/Conv_top/top_CNN/Y\[0:63\]} \
-{/test_top/Conv_top/top_CNN/bias\[0:3\]} \
-{/test_top/Conv_top/addr/sram_raddr_bias\[6:0\]} \
-{/test_top/Conv_top/read_cnt\[10:0\]} \
-{/test_top/Conv_top/top_CNN/sram_rdata_bias\[3:0\]} \
-{/test_top/Conv_top/top_CNN/Y\[0:63\]} \
-{/test_top/Conv_top/state\[5:0\]} \
-{/test_top/Conv_top/top_CNN/W\[0:15\]} \
-{/test_top/Conv_top/top_CNN/W\[0\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[1\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[2\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[3\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[4\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[5\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[6\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[7\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[8\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[9\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[10\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[11\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[12\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[13\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[14\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[15\]\[0:2\]} \
-{/test_top/Conv_top/addr/sram_raddr_weight\[10:0\]} \
-{/test_top/Conv_top/top_CNN/sram_rdata_weight\[35:0\]} \
-}
-wvAddSignal -win $_nWave1 -group {"G2" \
-}
-wvSelectSignal -win $_nWave1 {( "G1" 37 )} 
-wvSetPosition -win $_nWave1 {("G1" 37)}
-wvGetSignalClose -win $_nWave1
-wvSetCursor -win $_nWave1 85959.209301 -snap {("G1" 37)}
-wvSetCursor -win $_nWave1 86047.194138 -snap {("G1" 35)}
-wvSetCursor -win $_nWave1 86053.962202 -snap {("G1" 35)}
-wvResizeWindow -win $_nWave1 0 23 1217 697
+wvSelectSignal -win $_nWave1 {( "G1" 33 )} 
+wvSelectSignal -win $_nWave1 {( "G1" 16 17 18 19 )} 
+wvCut -win $_nWave1
+wvSetPosition -win $_nWave1 {("G1" 32)}
+wvSelectSignal -win $_nWave1 {( "G1" 19 )} 
+wvZoomOut -win $_nWave1
+wvZoomOut -win $_nWave1
+wvZoomOut -win $_nWave1
+wvSetCursor -win $_nWave1 148736.971632 -snap {("G1" 19)}
+wvSetCursor -win $_nWave1 153744.666253 -snap {("G1" 19)}
+wvSetCursor -win $_nWave1 155062.480627 -snap {("G1" 19)}
+wvSetCursor -win $_nWave1 155457.824939 -snap {("G1" 19)}
+wvSetCursor -win $_nWave1 155984.950689 -snap {("G1" 19)}
+wvSetCursor -win $_nWave1 155984.950689 -snap {("G1" 20)}
+wvSetCursor -win $_nWave1 156643.857876 -snap {("G1" 20)}
+wvSetCursor -win $_nWave1 156907.420751 -snap {("G1" 20)}
+wvSetCursor -win $_nWave1 156116.732126 -snap {("G1" 21)}
+wvZoomIn -win $_nWave1
+wvZoomIn -win $_nWave1
+wvZoomIn -win $_nWave1
+wvZoomIn -win $_nWave1
+wvZoomIn -win $_nWave1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvSetCursor -win $_nWave1 156652.917850 -snap {("G1" 17)}
+wvSetCursor -win $_nWave1 156965.898764 -snap {("G1" 19)}
+wvSelectSignal -win $_nWave1 {( "G1" 22 )} 
+wvSelectSignal -win $_nWave1 {( "G1" 22 23 )} 
 wvGetSignalOpen -win $_nWave1
 wvGetSignalSetScope -win $_nWave1 "/test_top"
 wvGetSignalSetScope -win $_nWave1 "/test_top/Conv_top"
 wvGetSignalSetScope -win $_nWave1 "/test_top/Conv_top/top_CNN"
-wvSetPosition -win $_nWave1 {("G1" 38)}
-wvSetPosition -win $_nWave1 {("G1" 38)}
-wvAddSignal -win $_nWave1 -clear
-wvAddSignal -win $_nWave1 -group {"G1" \
-{/test_top/Conv_top/clk} \
-{/test_top/Conv_top/cnn_state\[4:0\]} \
-{/test_top/Conv_top/read_weight_finish} \
-{/test_top/Conv_top/rst_n} \
-{/test_top/Conv_top/sram_raddr_weight\[10:0\]} \
-{/test_top/Conv_top/x_cnt\[4:0\]} \
-{/test_top/Conv_top/x_cnt_pp\[4:0\]} \
-{/test_top/Conv_top/y_cnt\[4:0\]} \
-{/test_top/Conv_top/y_cnt_pp\[4:0\]} \
-{/test_top/Conv_top/top_CNN/W\[0:15\]} \
-{/test_top/Conv_top/top_CNN/temp_conv_out\[0:15\]} \
-{/test_top/Conv_top/top_CNN/Y\[0:63\]} \
-{/test_top/Conv_top/top_CNN/bias\[0:3\]} \
-{/test_top/Conv_top/addr/sram_raddr_bias\[6:0\]} \
-{/test_top/Conv_top/read_cnt\[10:0\]} \
-{/test_top/Conv_top/top_CNN/sram_rdata_bias\[3:0\]} \
-{/test_top/Conv_top/top_CNN/Y\[0:63\]} \
-{/test_top/Conv_top/state\[5:0\]} \
-{/test_top/Conv_top/top_CNN/W\[0:15\]} \
-{/test_top/Conv_top/top_CNN/W\[0\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[1\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[2\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[3\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[4\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[5\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[6\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[7\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[8\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[9\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[10\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[11\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[12\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[13\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[14\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[15\]\[0:2\]} \
-{/test_top/Conv_top/addr/sram_raddr_weight\[10:0\]} \
-{/test_top/Conv_top/top_CNN/sram_rdata_weight\[35:0\]} \
-{/test_top/Conv_top/top_CNN/read_weight_finish} \
-}
-wvAddSignal -win $_nWave1 -group {"G2" \
-}
-wvSelectSignal -win $_nWave1 {( "G1" 38 )} 
-wvSetPosition -win $_nWave1 {("G1" 38)}
-wvSetPosition -win $_nWave1 {("G1" 38)}
-wvSetPosition -win $_nWave1 {("G1" 38)}
-wvAddSignal -win $_nWave1 -clear
-wvAddSignal -win $_nWave1 -group {"G1" \
-{/test_top/Conv_top/clk} \
-{/test_top/Conv_top/cnn_state\[4:0\]} \
-{/test_top/Conv_top/read_weight_finish} \
-{/test_top/Conv_top/rst_n} \
-{/test_top/Conv_top/sram_raddr_weight\[10:0\]} \
-{/test_top/Conv_top/x_cnt\[4:0\]} \
-{/test_top/Conv_top/x_cnt_pp\[4:0\]} \
-{/test_top/Conv_top/y_cnt\[4:0\]} \
-{/test_top/Conv_top/y_cnt_pp\[4:0\]} \
-{/test_top/Conv_top/top_CNN/W\[0:15\]} \
-{/test_top/Conv_top/top_CNN/temp_conv_out\[0:15\]} \
-{/test_top/Conv_top/top_CNN/Y\[0:63\]} \
-{/test_top/Conv_top/top_CNN/bias\[0:3\]} \
-{/test_top/Conv_top/addr/sram_raddr_bias\[6:0\]} \
-{/test_top/Conv_top/read_cnt\[10:0\]} \
-{/test_top/Conv_top/top_CNN/sram_rdata_bias\[3:0\]} \
-{/test_top/Conv_top/top_CNN/Y\[0:63\]} \
-{/test_top/Conv_top/state\[5:0\]} \
-{/test_top/Conv_top/top_CNN/W\[0:15\]} \
-{/test_top/Conv_top/top_CNN/W\[0\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[1\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[2\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[3\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[4\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[5\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[6\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[7\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[8\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[9\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[10\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[11\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[12\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[13\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[14\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[15\]\[0:2\]} \
-{/test_top/Conv_top/addr/sram_raddr_weight\[10:0\]} \
-{/test_top/Conv_top/top_CNN/sram_rdata_weight\[35:0\]} \
-{/test_top/Conv_top/top_CNN/read_weight_finish} \
-}
-wvAddSignal -win $_nWave1 -group {"G2" \
-}
-wvSelectSignal -win $_nWave1 {( "G1" 38 )} 
-wvSetPosition -win $_nWave1 {("G1" 38)}
-wvGetSignalClose -win $_nWave1
-wvSetCursor -win $_nWave1 85954.117383 -snap {("G1" 38)}
-wvSetCursor -win $_nWave1 86139.075290 -snap {("G1" 38)}
-wvSetCursor -win $_nWave1 85967.817969 -snap {("G1" 38)}
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 0
-wvSetCursor -win $_nWave1 86070.572362 -snap {("G1" 35)}
-wvGetSignalOpen -win $_nWave1
-wvGetSignalSetScope -win $_nWave1 "/test_top"
 wvGetSignalSetScope -win $_nWave1 "/test_top/Conv_top"
-wvGetSignalSetScope -win $_nWave1 "/test_top/Conv_top/top_CNN"
-wvGetSignalSetScope -win $_nWave1 "/test_top/Conv_top/top_CNN"
-wvSetPosition -win $_nWave1 {("G1" 39)}
-wvSetPosition -win $_nWave1 {("G1" 39)}
-wvAddSignal -win $_nWave1 -clear
-wvAddSignal -win $_nWave1 -group {"G1" \
-{/test_top/Conv_top/clk} \
-{/test_top/Conv_top/cnn_state\[4:0\]} \
-{/test_top/Conv_top/read_weight_finish} \
-{/test_top/Conv_top/rst_n} \
-{/test_top/Conv_top/sram_raddr_weight\[10:0\]} \
-{/test_top/Conv_top/x_cnt\[4:0\]} \
-{/test_top/Conv_top/x_cnt_pp\[4:0\]} \
-{/test_top/Conv_top/y_cnt\[4:0\]} \
-{/test_top/Conv_top/y_cnt_pp\[4:0\]} \
-{/test_top/Conv_top/top_CNN/W\[0:15\]} \
-{/test_top/Conv_top/top_CNN/temp_conv_out\[0:15\]} \
-{/test_top/Conv_top/top_CNN/Y\[0:63\]} \
-{/test_top/Conv_top/top_CNN/bias\[0:3\]} \
-{/test_top/Conv_top/addr/sram_raddr_bias\[6:0\]} \
-{/test_top/Conv_top/read_cnt\[10:0\]} \
-{/test_top/Conv_top/top_CNN/sram_rdata_bias\[3:0\]} \
-{/test_top/Conv_top/top_CNN/Y\[0:63\]} \
-{/test_top/Conv_top/state\[5:0\]} \
-{/test_top/Conv_top/top_CNN/W\[0:15\]} \
-{/test_top/Conv_top/top_CNN/W\[0\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[1\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[2\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[3\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[4\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[5\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[6\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[7\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[8\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[9\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[10\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[11\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[12\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[13\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[14\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[15\]\[0:2\]} \
-{/test_top/Conv_top/addr/sram_raddr_weight\[10:0\]} \
-{/test_top/Conv_top/top_CNN/sram_rdata_weight\[35:0\]} \
-{/test_top/Conv_top/top_CNN/read_weight_finish} \
-{/test_top/Conv_top/top_CNN/load_weight_finish} \
-}
-wvAddSignal -win $_nWave1 -group {"G2" \
-}
-wvSelectSignal -win $_nWave1 {( "G1" 39 )} 
-wvSetPosition -win $_nWave1 {("G1" 39)}
-wvSetPosition -win $_nWave1 {("G1" 39)}
-wvSetPosition -win $_nWave1 {("G1" 39)}
-wvAddSignal -win $_nWave1 -clear
-wvAddSignal -win $_nWave1 -group {"G1" \
-{/test_top/Conv_top/clk} \
-{/test_top/Conv_top/cnn_state\[4:0\]} \
-{/test_top/Conv_top/read_weight_finish} \
-{/test_top/Conv_top/rst_n} \
-{/test_top/Conv_top/sram_raddr_weight\[10:0\]} \
-{/test_top/Conv_top/x_cnt\[4:0\]} \
-{/test_top/Conv_top/x_cnt_pp\[4:0\]} \
-{/test_top/Conv_top/y_cnt\[4:0\]} \
-{/test_top/Conv_top/y_cnt_pp\[4:0\]} \
-{/test_top/Conv_top/top_CNN/W\[0:15\]} \
-{/test_top/Conv_top/top_CNN/temp_conv_out\[0:15\]} \
-{/test_top/Conv_top/top_CNN/Y\[0:63\]} \
-{/test_top/Conv_top/top_CNN/bias\[0:3\]} \
-{/test_top/Conv_top/addr/sram_raddr_bias\[6:0\]} \
-{/test_top/Conv_top/read_cnt\[10:0\]} \
-{/test_top/Conv_top/top_CNN/sram_rdata_bias\[3:0\]} \
-{/test_top/Conv_top/top_CNN/Y\[0:63\]} \
-{/test_top/Conv_top/state\[5:0\]} \
-{/test_top/Conv_top/top_CNN/W\[0:15\]} \
-{/test_top/Conv_top/top_CNN/W\[0\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[1\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[2\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[3\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[4\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[5\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[6\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[7\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[8\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[9\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[10\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[11\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[12\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[13\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[14\]\[0:2\]} \
-{/test_top/Conv_top/top_CNN/W\[15\]\[0:2\]} \
-{/test_top/Conv_top/addr/sram_raddr_weight\[10:0\]} \
-{/test_top/Conv_top/top_CNN/sram_rdata_weight\[35:0\]} \
-{/test_top/Conv_top/top_CNN/read_weight_finish} \
-{/test_top/Conv_top/top_CNN/load_weight_finish} \
-}
-wvAddSignal -win $_nWave1 -group {"G2" \
-}
-wvSelectSignal -win $_nWave1 {( "G1" 39 )} 
-wvSetPosition -win $_nWave1 {("G1" 39)}
-wvGetSignalClose -win $_nWave1
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvSetCursor -win $_nWave1 80475.802675 -snap {("G1" 39)}
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomIn -win $_nWave1
-wvZoomIn -win $_nWave1
-wvZoomIn -win $_nWave1
-wvZoomIn -win $_nWave1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvDisplayGridCount -win $_nWave1 -off
-wvGetSignalClose -win $_nWave1
-wvReloadFile -win $_nWave1
-wvSetCursor -win $_nWave1 86050.667139 -snap {("G1" 35)}
-wvSetCursor -win $_nWave1 99011.024604 -snap {("G2" 0)}
-wvResizeWindow -win $_nWave1 0 23 1217 697
-wvSelectSignal -win $_nWave1 {( "G1" 19 )} 
-wvSelectSignal -win $_nWave1 {( "G1" 19 )} 
-wvSelectSignal -win $_nWave1 {( "G1" 19 )} 
-wvSelectSignal -win $_nWave1 {( "G1" 19 )} 
-wvSetPosition -win $_nWave1 {("G1" 19)}
-wvCollapseBus -win $_nWave1 {("G1" 19)}
-wvSetPosition -win $_nWave1 {("G1" 19)}
-wvSetPosition -win $_nWave1 {("G1" 23)}
-wvGetSignalOpen -win $_nWave1
-wvGetSignalSetScope -win $_nWave1 "/test_top/Conv_top/top_CNN"
-wvSelectSignal -win $_nWave1 {( "G1" 13 )} 
-wvSetCursor -win $_nWave1 67587.693403 -snap {("G1" 13)}
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvSetCursor -win $_nWave1 84270.921084 -snap {("G1" 13)}
-wvZoomIn -win $_nWave1
-wvZoomIn -win $_nWave1
-wvResizeWindow -win $_nWave1 0 23 1217 697
-wvZoomIn -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomIn -win $_nWave1
-wvSetCursor -win $_nWave1 101460.530587 -snap {("G1" 13)}
-wvZoomIn -win $_nWave1
-wvZoomIn -win $_nWave1
-wvSetCursor -win $_nWave1 84361.434437 -snap {("G1" 6)}
-wvSetCursor -win $_nWave1 84528.873025 -snap {("G1" 7)}
-wvSetCursor -win $_nWave1 88532.741119 -snap {("G1" 6)}
-wvDisplayGridCount -win $_nWave1 -off
-wvGetSignalClose -win $_nWave1
-wvReloadFile -win $_nWave1
-wvGetSignalOpen -win $_nWave1
-wvSetPosition -win $_nWave1 {("G1" 24)}
-wvSetPosition -win $_nWave1 {("G1" 24)}
-wvAddSignal -win $_nWave1 -clear
-wvAddSignal -win $_nWave1 -group {"G1" \
-{/test_top/Conv_top/clk} \
-{/test_top/Conv_top/cnn_state\[4:0\]} \
-{/test_top/Conv_top/read_weight_finish} \
-{/test_top/Conv_top/rst_n} \
-{/test_top/Conv_top/sram_raddr_weight\[10:0\]} \
-{/test_top/Conv_top/x_cnt\[4:0\]} \
-{/test_top/Conv_top/x_cnt_pp\[4:0\]} \
-{/test_top/Conv_top/y_cnt\[4:0\]} \
-{/test_top/Conv_top/y_cnt_pp\[4:0\]} \
-{/test_top/Conv_top/top_CNN/W\[0:15\]} \
-{/test_top/Conv_top/top_CNN/temp_conv_out\[0:15\]} \
-{/test_top/Conv_top/top_CNN/Y\[0:63\]} \
-{/test_top/Conv_top/top_CNN/bias\[0:3\]} \
-{/test_top/Conv_top/addr/sram_raddr_bias\[6:0\]} \
-{/test_top/Conv_top/read_cnt\[10:0\]} \
-{/test_top/Conv_top/top_CNN/sram_rdata_bias\[3:0\]} \
-{/test_top/Conv_top/top_CNN/Y\[0:63\]} \
-{/test_top/Conv_top/state\[5:0\]} \
-{/test_top/Conv_top/top_CNN/W\[0:15\]} \
-{/test_top/Conv_top/addr/sram_raddr_weight\[10:0\]} \
-{/test_top/Conv_top/top_CNN/sram_rdata_weight\[35:0\]} \
-{/test_top/Conv_top/top_CNN/read_weight_finish} \
-{/test_top/Conv_top/top_CNN/load_weight_finish} \
-{/test_top/Conv_top/addr/sram_waddr_a\[5:0\]} \
-}
-wvAddSignal -win $_nWave1 -group {"G2" \
-}
-wvSelectSignal -win $_nWave1 {( "G1" 24 )} 
-wvSetPosition -win $_nWave1 {("G1" 24)}
-wvSetPosition -win $_nWave1 {("G1" 24)}
-wvSetPosition -win $_nWave1 {("G1" 24)}
-wvAddSignal -win $_nWave1 -clear
-wvAddSignal -win $_nWave1 -group {"G1" \
-{/test_top/Conv_top/clk} \
-{/test_top/Conv_top/cnn_state\[4:0\]} \
-{/test_top/Conv_top/read_weight_finish} \
-{/test_top/Conv_top/rst_n} \
-{/test_top/Conv_top/sram_raddr_weight\[10:0\]} \
-{/test_top/Conv_top/x_cnt\[4:0\]} \
-{/test_top/Conv_top/x_cnt_pp\[4:0\]} \
-{/test_top/Conv_top/y_cnt\[4:0\]} \
-{/test_top/Conv_top/y_cnt_pp\[4:0\]} \
-{/test_top/Conv_top/top_CNN/W\[0:15\]} \
-{/test_top/Conv_top/top_CNN/temp_conv_out\[0:15\]} \
-{/test_top/Conv_top/top_CNN/Y\[0:63\]} \
-{/test_top/Conv_top/top_CNN/bias\[0:3\]} \
-{/test_top/Conv_top/addr/sram_raddr_bias\[6:0\]} \
-{/test_top/Conv_top/read_cnt\[10:0\]} \
-{/test_top/Conv_top/top_CNN/sram_rdata_bias\[3:0\]} \
-{/test_top/Conv_top/top_CNN/Y\[0:63\]} \
-{/test_top/Conv_top/state\[5:0\]} \
-{/test_top/Conv_top/top_CNN/W\[0:15\]} \
-{/test_top/Conv_top/addr/sram_raddr_weight\[10:0\]} \
-{/test_top/Conv_top/top_CNN/sram_rdata_weight\[35:0\]} \
-{/test_top/Conv_top/top_CNN/read_weight_finish} \
-{/test_top/Conv_top/top_CNN/load_weight_finish} \
-{/test_top/Conv_top/addr/sram_waddr_a\[5:0\]} \
-}
-wvAddSignal -win $_nWave1 -group {"G2" \
-}
-wvSelectSignal -win $_nWave1 {( "G1" 24 )} 
-wvSetPosition -win $_nWave1 {("G1" 24)}
-wvGetSignalClose -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomIn -win $_nWave1
-wvZoomIn -win $_nWave1
-wvZoomIn -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvSetCursor -win $_nWave1 84491.969058 -snap {("G1" 18)}
-wvDisplayGridCount -win $_nWave1 -off
-wvGetSignalClose -win $_nWave1
-wvReloadFile -win $_nWave1
-wvZoomIn -win $_nWave1
-wvZoomIn -win $_nWave1
-wvZoomIn -win $_nWave1
-wvZoomIn -win $_nWave1
-wvZoomIn -win $_nWave1
-wvSetCursor -win $_nWave1 81218.948132 -snap {("G1" 10)}
-wvSetCursor -win $_nWave1 85092.480614 -snap {("G1" 11)}
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomIn -win $_nWave1
-wvZoomOut -win $_nWave1
-wvSetCursor -win $_nWave1 79245.661041 -snap {("G1" 18)}
-wvZoomIn -win $_nWave1
-wvZoomIn -win $_nWave1
-wvZoomIn -win $_nWave1
-wvZoomIn -win $_nWave1
-wvZoomIn -win $_nWave1
-wvZoomIn -win $_nWave1
-wvZoomIn -win $_nWave1
-wvZoomOut -win $_nWave1
-wvSetCursor -win $_nWave1 79262.172538 -snap {("G1" 11)}
-wvSetCursor -win $_nWave1 79076.678076 -snap {("G1" 12)}
-wvSetCursor -win $_nWave1 79251.131201 -snap {("G1" 12)}
-wvSetCursor -win $_nWave1 79251.131201 -snap {("G1" 12)}
-wvSetCursor -win $_nWave1 79357.128036 -snap {("G1" 12)}
-wvZoomOut -win $_nWave1
-wvGetSignalOpen -win $_nWave1
-wvSetPosition -win $_nWave1 {("G1" 25)}
-wvSetPosition -win $_nWave1 {("G1" 25)}
-wvAddSignal -win $_nWave1 -clear
-wvAddSignal -win $_nWave1 -group {"G1" \
-{/test_top/Conv_top/clk} \
-{/test_top/Conv_top/cnn_state\[4:0\]} \
-{/test_top/Conv_top/read_weight_finish} \
-{/test_top/Conv_top/rst_n} \
-{/test_top/Conv_top/sram_raddr_weight\[10:0\]} \
-{/test_top/Conv_top/x_cnt\[4:0\]} \
-{/test_top/Conv_top/x_cnt_pp\[4:0\]} \
-{/test_top/Conv_top/y_cnt\[4:0\]} \
-{/test_top/Conv_top/y_cnt_pp\[4:0\]} \
-{/test_top/Conv_top/top_CNN/W\[0:15\]} \
-{/test_top/Conv_top/top_CNN/temp_conv_out\[0:15\]} \
-{/test_top/Conv_top/top_CNN/Y\[0:63\]} \
-{/test_top/Conv_top/top_CNN/bias\[0:3\]} \
-{/test_top/Conv_top/addr/sram_raddr_bias\[6:0\]} \
-{/test_top/Conv_top/read_cnt\[10:0\]} \
-{/test_top/Conv_top/top_CNN/sram_rdata_bias\[3:0\]} \
-{/test_top/Conv_top/top_CNN/Y\[0:63\]} \
-{/test_top/Conv_top/state\[5:0\]} \
-{/test_top/Conv_top/top_CNN/W\[0:15\]} \
-{/test_top/Conv_top/addr/sram_raddr_weight\[10:0\]} \
-{/test_top/Conv_top/top_CNN/sram_rdata_weight\[35:0\]} \
-{/test_top/Conv_top/top_CNN/read_weight_finish} \
-{/test_top/Conv_top/top_CNN/load_weight_finish} \
-{/test_top/Conv_top/addr/sram_waddr_a\[5:0\]} \
-{/test_top/Conv_top/addr/sram_waddr_b\[5:0\]} \
-}
-wvAddSignal -win $_nWave1 -group {"G2" \
-}
-wvSelectSignal -win $_nWave1 {( "G1" 25 )} 
-wvSetPosition -win $_nWave1 {("G1" 25)}
-wvSetPosition -win $_nWave1 {("G1" 25)}
-wvSetPosition -win $_nWave1 {("G1" 25)}
-wvAddSignal -win $_nWave1 -clear
-wvAddSignal -win $_nWave1 -group {"G1" \
-{/test_top/Conv_top/clk} \
-{/test_top/Conv_top/cnn_state\[4:0\]} \
-{/test_top/Conv_top/read_weight_finish} \
-{/test_top/Conv_top/rst_n} \
-{/test_top/Conv_top/sram_raddr_weight\[10:0\]} \
-{/test_top/Conv_top/x_cnt\[4:0\]} \
-{/test_top/Conv_top/x_cnt_pp\[4:0\]} \
-{/test_top/Conv_top/y_cnt\[4:0\]} \
-{/test_top/Conv_top/y_cnt_pp\[4:0\]} \
-{/test_top/Conv_top/top_CNN/W\[0:15\]} \
-{/test_top/Conv_top/top_CNN/temp_conv_out\[0:15\]} \
-{/test_top/Conv_top/top_CNN/Y\[0:63\]} \
-{/test_top/Conv_top/top_CNN/bias\[0:3\]} \
-{/test_top/Conv_top/addr/sram_raddr_bias\[6:0\]} \
-{/test_top/Conv_top/read_cnt\[10:0\]} \
-{/test_top/Conv_top/top_CNN/sram_rdata_bias\[3:0\]} \
-{/test_top/Conv_top/top_CNN/Y\[0:63\]} \
-{/test_top/Conv_top/state\[5:0\]} \
-{/test_top/Conv_top/top_CNN/W\[0:15\]} \
-{/test_top/Conv_top/addr/sram_raddr_weight\[10:0\]} \
-{/test_top/Conv_top/top_CNN/sram_rdata_weight\[35:0\]} \
-{/test_top/Conv_top/top_CNN/read_weight_finish} \
-{/test_top/Conv_top/top_CNN/load_weight_finish} \
-{/test_top/Conv_top/addr/sram_waddr_a\[5:0\]} \
-{/test_top/Conv_top/addr/sram_waddr_b\[5:0\]} \
-}
-wvAddSignal -win $_nWave1 -group {"G2" \
-}
-wvSelectSignal -win $_nWave1 {( "G1" 25 )} 
-wvSetPosition -win $_nWave1 {("G1" 25)}
-wvGetSignalClose -win $_nWave1
-wvGetSignalOpen -win $_nWave1
-wvGetSignalSetScope -win $_nWave1 "/test_top"
-wvGetSignalSetScope -win $_nWave1 "/test_top/Conv_top"
-wvGetSignalSetScope -win $_nWave1 "/test_top/Conv_top/top_CNN"
 wvGetSignalSetScope -win $_nWave1 "/test_top/Conv_top/addr"
-wvSetPosition -win $_nWave1 {("G1" 29)}
-wvSetPosition -win $_nWave1 {("G1" 29)}
+wvGetSignalSetScope -win $_nWave1 "/test_top/Conv_top"
+wvGetSignalSetScope -win $_nWave1 "/test_top/Conv_top/addr"
+wvSetPosition -win $_nWave1 {("G1" 32)}
+wvSetPosition -win $_nWave1 {("G1" 32)}
 wvAddSignal -win $_nWave1 -clear
 wvAddSignal -win $_nWave1 -group {"G1" \
-{/test_top/Conv_top/clk} \
-{/test_top/Conv_top/cnn_state\[4:0\]} \
-{/test_top/Conv_top/read_weight_finish} \
-{/test_top/Conv_top/rst_n} \
-{/test_top/Conv_top/sram_raddr_weight\[10:0\]} \
-{/test_top/Conv_top/x_cnt\[4:0\]} \
-{/test_top/Conv_top/x_cnt_pp\[4:0\]} \
-{/test_top/Conv_top/y_cnt\[4:0\]} \
-{/test_top/Conv_top/y_cnt_pp\[4:0\]} \
 {/test_top/Conv_top/top_CNN/W\[0:15\]} \
-{/test_top/Conv_top/top_CNN/temp_conv_out\[0:15\]} \
-{/test_top/Conv_top/top_CNN/Y\[0:63\]} \
-{/test_top/Conv_top/top_CNN/bias\[0:3\]} \
-{/test_top/Conv_top/addr/sram_raddr_bias\[6:0\]} \
-{/test_top/Conv_top/read_cnt\[10:0\]} \
-{/test_top/Conv_top/top_CNN/sram_rdata_bias\[3:0\]} \
-{/test_top/Conv_top/top_CNN/Y\[0:63\]} \
-{/test_top/Conv_top/state\[5:0\]} \
-{/test_top/Conv_top/top_CNN/W\[0:15\]} \
-{/test_top/Conv_top/addr/sram_raddr_weight\[10:0\]} \
-{/test_top/Conv_top/top_CNN/sram_rdata_weight\[35:0\]} \
-{/test_top/Conv_top/top_CNN/read_weight_finish} \
+{/test_top/Conv_top/top_CNN/X\[0:15\]} \
+{/test_top/Conv_top/top_CNN/Y\[0:15\]} \
+{/test_top/Conv_top/top_CNN/bias\[3:0\]} \
+{/test_top/Conv_top/top_CNN/clk} \
+{/test_top/Conv_top/top_CNN/cnn_state\[4:0\]} \
+{/test_top/Conv_top/top_CNN/cnn_state_p} \
+{/test_top/Conv_top/top_CNN/cnn_state_pppp} \
+{/test_top/Conv_top/top_CNN/conv_out\[0:3\]} \
+{/test_top/Conv_top/top_CNN/conv_out_FF\[0:3\]} \
+{/test_top/Conv_top/top_CNN/feature_maps_o0\[15:0\]} \
+{/test_top/Conv_top/top_CNN/feature_maps_o1\[15:0\]} \
+{/test_top/Conv_top/top_CNN/feature_maps_o2\[15:0\]} \
+{/test_top/Conv_top/top_CNN/feature_maps_o3\[15:0\]} \
+{/test_top/Conv_top/top_CNN/feature_maps_temp_o\[0:3\]} \
 {/test_top/Conv_top/top_CNN/load_weight_finish} \
-{/test_top/Conv_top/addr/sram_waddr_a\[5:0\]} \
-{/test_top/Conv_top/addr/sram_waddr_b\[5:0\]} \
-{/test_top/Conv_top/addr/sram_raddr_b0\[5:0\]} \
-{/test_top/Conv_top/addr/sram_raddr_b1\[5:0\]} \
-{/test_top/Conv_top/addr/sram_raddr_b2\[5:0\]} \
-{/test_top/Conv_top/addr/sram_raddr_b3\[5:0\]} \
+{/test_top/Conv_top/top_CNN/max0\[7:0\]} \
+{/test_top/Conv_top/top_CNN/max1\[7:0\]} \
+{/test_top/Conv_top/top_CNN/max\[7:0\]} \
+{/test_top/Conv_top/top_CNN/read_bias_finish} \
+{/test_top/Conv_top/top_CNN/read_cnt\[10:0\]} \
+{/test_top/Conv_top/top_CNN/read_input_cnt\[1:0\]} \
+{/test_top/Conv_top/top_CNN/read_input_cnt_p\[1:0\]} \
+{/test_top/Conv_top/top_CNN/read_input_cnt_pp\[1:0\]} \
+{/test_top/Conv_top/top_CNN/read_weight_finish} \
+{/test_top/Conv_top/top_CNN/rst_n} \
+{/test_top/Conv_top/top_CNN/state\[5:0\]} \
+{/test_top/Conv_top/top_CNN/state_p\[5:0\]} \
+{/test_top/Conv_top/top_CNN/temp_conv_out\[0:3\]} \
+{/test_top/Conv_top/top_CNN/x_cnt\[4:0\]} \
+{/test_top/Conv_top/top_CNN/x_cnt_ppp\[4:0\]} \
+{/test_top/Conv_top/top_CNN/y_cnt_ppp\[4:0\]} \
 }
 wvAddSignal -win $_nWave1 -group {"G2" \
 }
-wvSelectSignal -win $_nWave1 {( "G1" 26 27 28 29 )} 
-wvSetPosition -win $_nWave1 {("G1" 29)}
+wvSetPosition -win $_nWave1 {("G1" 32)}
 wvGetSignalClose -win $_nWave1
-wvZoomOut -win $_nWave1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 0
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
 wvDisplayGridCount -win $_nWave1 -off
 wvGetSignalClose -win $_nWave1
 wvReloadFile -win $_nWave1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 2
+wvGetSignalOpen -win $_nWave1
+wvGetSignalSetScope -win $_nWave1 "/test_top/Conv_top/bytemask"
+wvGetSignalClose -win $_nWave1
+wvGetSignalOpen -win $_nWave1
+wvGetSignalSetScope -win $_nWave1 "/test_top"
+wvGetSignalSetScope -win $_nWave1 "/test_top/Conv_top"
+wvGetSignalSetScope -win $_nWave1 "/test_top/Conv_top/top_CNN"
+wvGetSignalSetScope -win $_nWave1 "/test_top/Conv_top/bytemask"
+wvGetSignalClose -win $_nWave1
+wvDisplayGridCount -win $_nWave1 -off
+wvGetSignalClose -win $_nWave1
+wvReloadFile -win $_nWave1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvGetSignalOpen -win $_nWave1
+wvSetPosition -win $_nWave1 {("G1" 33)}
+wvSetPosition -win $_nWave1 {("G1" 33)}
+wvAddSignal -win $_nWave1 -clear
+wvAddSignal -win $_nWave1 -group {"G1" \
+{/test_top/Conv_top/top_CNN/W\[0:15\]} \
+{/test_top/Conv_top/top_CNN/X\[0:15\]} \
+{/test_top/Conv_top/top_CNN/Y\[0:15\]} \
+{/test_top/Conv_top/top_CNN/bias\[3:0\]} \
+{/test_top/Conv_top/top_CNN/clk} \
+{/test_top/Conv_top/top_CNN/cnn_state\[4:0\]} \
+{/test_top/Conv_top/top_CNN/cnn_state_p} \
+{/test_top/Conv_top/top_CNN/cnn_state_pppp} \
+{/test_top/Conv_top/top_CNN/conv_out\[0:3\]} \
+{/test_top/Conv_top/top_CNN/conv_out_FF\[0:3\]} \
+{/test_top/Conv_top/top_CNN/feature_maps_o0\[15:0\]} \
+{/test_top/Conv_top/top_CNN/feature_maps_o1\[15:0\]} \
+{/test_top/Conv_top/top_CNN/feature_maps_o2\[15:0\]} \
+{/test_top/Conv_top/top_CNN/feature_maps_o3\[15:0\]} \
+{/test_top/Conv_top/top_CNN/feature_maps_temp_o\[0:3\]} \
+{/test_top/Conv_top/top_CNN/load_weight_finish} \
+{/test_top/Conv_top/top_CNN/max0\[7:0\]} \
+{/test_top/Conv_top/top_CNN/max1\[7:0\]} \
+{/test_top/Conv_top/top_CNN/max\[7:0\]} \
+{/test_top/Conv_top/top_CNN/read_bias_finish} \
+{/test_top/Conv_top/top_CNN/read_cnt\[10:0\]} \
+{/test_top/Conv_top/top_CNN/read_input_cnt\[1:0\]} \
+{/test_top/Conv_top/top_CNN/read_input_cnt_p\[1:0\]} \
+{/test_top/Conv_top/top_CNN/read_input_cnt_pp\[1:0\]} \
+{/test_top/Conv_top/top_CNN/read_weight_finish} \
+{/test_top/Conv_top/top_CNN/rst_n} \
+{/test_top/Conv_top/top_CNN/state\[5:0\]} \
+{/test_top/Conv_top/top_CNN/state_p\[5:0\]} \
+{/test_top/Conv_top/top_CNN/temp_conv_out\[0:3\]} \
+{/test_top/Conv_top/top_CNN/x_cnt\[4:0\]} \
+{/test_top/Conv_top/top_CNN/x_cnt_ppp\[4:0\]} \
+{/test_top/Conv_top/top_CNN/y_cnt_ppp\[4:0\]} \
+{/test_top/Conv_top/bytemask/final_cnt\[10:0\]} \
+}
+wvAddSignal -win $_nWave1 -group {"G2" \
+}
+wvSelectSignal -win $_nWave1 {( "G1" 33 )} 
+wvSetPosition -win $_nWave1 {("G1" 33)}
+wvSetPosition -win $_nWave1 {("G1" 33)}
+wvSetPosition -win $_nWave1 {("G1" 33)}
+wvAddSignal -win $_nWave1 -clear
+wvAddSignal -win $_nWave1 -group {"G1" \
+{/test_top/Conv_top/top_CNN/W\[0:15\]} \
+{/test_top/Conv_top/top_CNN/X\[0:15\]} \
+{/test_top/Conv_top/top_CNN/Y\[0:15\]} \
+{/test_top/Conv_top/top_CNN/bias\[3:0\]} \
+{/test_top/Conv_top/top_CNN/clk} \
+{/test_top/Conv_top/top_CNN/cnn_state\[4:0\]} \
+{/test_top/Conv_top/top_CNN/cnn_state_p} \
+{/test_top/Conv_top/top_CNN/cnn_state_pppp} \
+{/test_top/Conv_top/top_CNN/conv_out\[0:3\]} \
+{/test_top/Conv_top/top_CNN/conv_out_FF\[0:3\]} \
+{/test_top/Conv_top/top_CNN/feature_maps_o0\[15:0\]} \
+{/test_top/Conv_top/top_CNN/feature_maps_o1\[15:0\]} \
+{/test_top/Conv_top/top_CNN/feature_maps_o2\[15:0\]} \
+{/test_top/Conv_top/top_CNN/feature_maps_o3\[15:0\]} \
+{/test_top/Conv_top/top_CNN/feature_maps_temp_o\[0:3\]} \
+{/test_top/Conv_top/top_CNN/load_weight_finish} \
+{/test_top/Conv_top/top_CNN/max0\[7:0\]} \
+{/test_top/Conv_top/top_CNN/max1\[7:0\]} \
+{/test_top/Conv_top/top_CNN/max\[7:0\]} \
+{/test_top/Conv_top/top_CNN/read_bias_finish} \
+{/test_top/Conv_top/top_CNN/read_cnt\[10:0\]} \
+{/test_top/Conv_top/top_CNN/read_input_cnt\[1:0\]} \
+{/test_top/Conv_top/top_CNN/read_input_cnt_p\[1:0\]} \
+{/test_top/Conv_top/top_CNN/read_input_cnt_pp\[1:0\]} \
+{/test_top/Conv_top/top_CNN/read_weight_finish} \
+{/test_top/Conv_top/top_CNN/rst_n} \
+{/test_top/Conv_top/top_CNN/state\[5:0\]} \
+{/test_top/Conv_top/top_CNN/state_p\[5:0\]} \
+{/test_top/Conv_top/top_CNN/temp_conv_out\[0:3\]} \
+{/test_top/Conv_top/top_CNN/x_cnt\[4:0\]} \
+{/test_top/Conv_top/top_CNN/x_cnt_ppp\[4:0\]} \
+{/test_top/Conv_top/top_CNN/y_cnt_ppp\[4:0\]} \
+{/test_top/Conv_top/bytemask/final_cnt\[10:0\]} \
+}
+wvAddSignal -win $_nWave1 -group {"G2" \
+}
+wvSelectSignal -win $_nWave1 {( "G1" 33 )} 
+wvSetPosition -win $_nWave1 {("G1" 33)}
+wvGetSignalClose -win $_nWave1
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
 wvScrollDown -win $_nWave1 0
 wvScrollDown -win $_nWave1 0
 wvScrollDown -win $_nWave1 0
@@ -2799,58 +445,118 @@ wvScrollDown -win $_nWave1 0
 wvScrollDown -win $_nWave1 0
 wvZoomOut -win $_nWave1
 wvZoomOut -win $_nWave1
-wvSetCursor -win $_nWave1 80469.683203 -snap {("G1" 2)}
+wvZoomOut -win $_nWave1
+wvSetCursor -win $_nWave1 287331.048155 -snap {("G1" 33)}
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvSetCursor -win $_nWave1 96890.702285 -snap {("G1" 33)}
+wvSetCursor -win $_nWave1 125289.701230 -snap {("G1" 33)}
 wvZoomIn -win $_nWave1
 wvZoomIn -win $_nWave1
 wvZoomIn -win $_nWave1
+wvZoomIn -win $_nWave1
+wvZoomIn -win $_nWave1
+wvSetCursor -win $_nWave1 124477.928374 -snap {("G1" 27)}
+wvSetCursor -win $_nWave1 148450.254082 -snap {("G1" 33)}
+wvSetCursor -win $_nWave1 148815.682377 -snap {("G1" 33)}
+wvSetCursor -win $_nWave1 149181.110672 -snap {("G1" 33)}
+wvSetCursor -win $_nWave1 145918.358036 -snap {("G1" 28)}
+wvSetCursor -win $_nWave1 145735.643888 -snap {("G1" 33)}
+wvSelectSignal -win $_nWave1 {( "G1" 33 )} 
+wvSetRadix -win $_nWave1 -format UDec
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvSetCursor -win $_nWave1 80148.009556 -snap {("G1" 33)}
+wvZoomIn -win $_nWave1
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvSetCursor -win $_nWave1 79452.390694 -snap {("G1" 19)}
+wvSetCursor -win $_nWave1 79595.951810 -snap {("G1" 19)}
+wvSetCursor -win $_nWave1 79870.023032 -snap {("G1" 19)}
+wvSetCursor -win $_nWave1 80078.839201 -snap {("G1" 19)}
+wvSetCursor -win $_nWave1 80339.859411 -snap {("G1" 19)}
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvZoomOut -win $_nWave1
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvSetCursor -win $_nWave1 80098.415716 -snap {("G1" 33)}
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvZoomOut -win $_nWave1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvZoomIn -win $_nWave1
+wvZoomIn -win $_nWave1
+wvZoomIn -win $_nWave1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvZoomOut -win $_nWave1
+wvZoomOut -win $_nWave1
+wvZoomIn -win $_nWave1
+wvZoomIn -win $_nWave1
+wvZoomOut -win $_nWave1
+wvZoomOut -win $_nWave1
 wvZoomOut -win $_nWave1
 wvZoomOut -win $_nWave1
 wvScrollDown -win $_nWave1 1
 wvScrollDown -win $_nWave1 1
 wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 0
-wvSetCursor -win $_nWave1 78753.543715 -snap {("G1" 18)}
-wvSetCursor -win $_nWave1 78965.537386 -snap {("G1" 24)}
-wvSetCursor -win $_nWave1 79495.521563 -snap {("G1" 24)}
-wvSetCursor -win $_nWave1 78806.542133 -snap {("G1" 24)}
-wvSelectSignal -win $_nWave1 {( "G1" 24 )} 
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
 wvScrollDown -win $_nWave1 0
 wvScrollDown -win $_nWave1 0
 wvScrollDown -win $_nWave1 0
@@ -2858,57 +564,63 @@ wvZoomIn -win $_nWave1
 wvZoomIn -win $_nWave1
 wvZoomIn -win $_nWave1
 wvZoomIn -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
+wvZoomIn -win $_nWave1
+wvSetCursor -win $_nWave1 79646.850752 -snap {("G1" 24)}
+wvSetCursor -win $_nWave1 79924.184726 -snap {("G1" 24)}
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvSetCursor -win $_nWave1 79464.136604 -snap {("G1" 14)}
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
 wvScrollDown -win $_nWave1 1
 wvScrollDown -win $_nWave1 1
 wvScrollDown -win $_nWave1 1
 wvScrollDown -win $_nWave1 0
 wvScrollDown -win $_nWave1 0
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvSetCursor -win $_nWave1 79721.894062 -snap {("G1" 27)}
+wvZoomOut -win $_nWave1
+wvZoomOut -win $_nWave1
+wvZoomOut -win $_nWave1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvSetCursor -win $_nWave1 148342.614498 -snap {("G1" 33)}
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvSetCursor -win $_nWave1 145836.820474 -snap {("G1" 33)}
+wvSetCursor -win $_nWave1 148368.716520 -snap {("G1" 33)}
+wvSetCursor -win $_nWave1 148760.246836 -snap {("G1" 33)}
+wvSetCursor -win $_nWave1 149047.369068 -snap {("G1" 33)}
+wvSetCursor -win $_nWave1 149386.695342 -snap {("G1" 33)}
+wvSetCursor -win $_nWave1 148264.308435 -snap {("G1" 33)}
 wvScrollDown -win $_nWave1 0
 wvDisplayGridCount -win $_nWave1 -off
 wvGetSignalClose -win $_nWave1
 wvReloadFile -win $_nWave1
 wvZoomIn -win $_nWave1
 wvZoomIn -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvSetCursor -win $_nWave1 84203.600563 -snap {("G1" 18)}
-wvZoomIn -win $_nWave1
-wvZoomIn -win $_nWave1
-wvZoomIn -win $_nWave1
-wvZoomIn -win $_nWave1
-wvZoomIn -win $_nWave1
-wvZoomIn -win $_nWave1
-wvSetCursor -win $_nWave1 84360.128348 -snap {("G1" 18)}
-wvSetCursor -win $_nWave1 84449.351274 -snap {("G1" 24)}
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvSetCursor -win $_nWave1 86346.275295 -snap {("G1" 24)}
+wvSetCursor -win $_nWave1 148572.964834 -snap {("G1" 24)}
 wvScrollDown -win $_nWave1 0
 wvScrollDown -win $_nWave1 0
 wvScrollDown -win $_nWave1 0
@@ -2917,328 +629,180 @@ wvScrollDown -win $_nWave1 0
 wvScrollDown -win $_nWave1 0
 wvScrollDown -win $_nWave1 0
 wvGetSignalOpen -win $_nWave1
-wvGetSignalSetScope -win $_nWave1 "/test_top/Conv_top/top_CNN"
-wvSetPosition -win $_nWave1 {("G1" 30)}
-wvSetPosition -win $_nWave1 {("G1" 30)}
+wvGetSignalSetScope -win $_nWave1 "/test_top/Conv_top"
+wvSetPosition -win $_nWave1 {("G1" 34)}
+wvSetPosition -win $_nWave1 {("G1" 34)}
 wvAddSignal -win $_nWave1 -clear
 wvAddSignal -win $_nWave1 -group {"G1" \
-{/test_top/Conv_top/clk} \
-{/test_top/Conv_top/cnn_state\[4:0\]} \
-{/test_top/Conv_top/read_weight_finish} \
-{/test_top/Conv_top/rst_n} \
-{/test_top/Conv_top/sram_raddr_weight\[10:0\]} \
-{/test_top/Conv_top/x_cnt\[4:0\]} \
-{/test_top/Conv_top/x_cnt_pp\[4:0\]} \
-{/test_top/Conv_top/y_cnt\[4:0\]} \
-{/test_top/Conv_top/y_cnt_pp\[4:0\]} \
 {/test_top/Conv_top/top_CNN/W\[0:15\]} \
-{/test_top/Conv_top/top_CNN/temp_conv_out\[0:15\]} \
-{/test_top/Conv_top/top_CNN/Y\[0:63\]} \
-{/test_top/Conv_top/top_CNN/bias\[0:3\]} \
-{/test_top/Conv_top/addr/sram_raddr_bias\[6:0\]} \
-{/test_top/Conv_top/read_cnt\[10:0\]} \
-{/test_top/Conv_top/top_CNN/sram_rdata_bias\[3:0\]} \
-{/test_top/Conv_top/top_CNN/Y\[0:63\]} \
-{/test_top/Conv_top/state\[5:0\]} \
-{/test_top/Conv_top/top_CNN/W\[0:15\]} \
-{/test_top/Conv_top/addr/sram_raddr_weight\[10:0\]} \
-{/test_top/Conv_top/top_CNN/sram_rdata_weight\[35:0\]} \
-{/test_top/Conv_top/top_CNN/read_weight_finish} \
+{/test_top/Conv_top/top_CNN/X\[0:15\]} \
+{/test_top/Conv_top/top_CNN/Y\[0:15\]} \
+{/test_top/Conv_top/top_CNN/bias\[3:0\]} \
+{/test_top/Conv_top/top_CNN/clk} \
+{/test_top/Conv_top/top_CNN/cnn_state\[4:0\]} \
+{/test_top/Conv_top/top_CNN/cnn_state_p} \
+{/test_top/Conv_top/top_CNN/cnn_state_pppp} \
+{/test_top/Conv_top/top_CNN/conv_out\[0:3\]} \
+{/test_top/Conv_top/top_CNN/conv_out_FF\[0:3\]} \
+{/test_top/Conv_top/top_CNN/feature_maps_o0\[15:0\]} \
+{/test_top/Conv_top/top_CNN/feature_maps_o1\[15:0\]} \
+{/test_top/Conv_top/top_CNN/feature_maps_o2\[15:0\]} \
+{/test_top/Conv_top/top_CNN/feature_maps_o3\[15:0\]} \
+{/test_top/Conv_top/top_CNN/feature_maps_temp_o\[0:3\]} \
 {/test_top/Conv_top/top_CNN/load_weight_finish} \
-{/test_top/Conv_top/addr/sram_waddr_a\[5:0\]} \
-{/test_top/Conv_top/addr/sram_waddr_b\[5:0\]} \
-{/test_top/Conv_top/addr/sram_raddr_b0\[5:0\]} \
-{/test_top/Conv_top/addr/sram_raddr_b1\[5:0\]} \
-{/test_top/Conv_top/addr/sram_raddr_b2\[5:0\]} \
-{/test_top/Conv_top/addr/sram_raddr_b3\[5:0\]} \
-{/test_top/Conv_top/top_CNN/feature_maps_o\[0:15\]} \
+{/test_top/Conv_top/top_CNN/max0\[7:0\]} \
+{/test_top/Conv_top/top_CNN/max1\[7:0\]} \
+{/test_top/Conv_top/top_CNN/max\[7:0\]} \
+{/test_top/Conv_top/top_CNN/read_bias_finish} \
+{/test_top/Conv_top/top_CNN/read_cnt\[10:0\]} \
+{/test_top/Conv_top/top_CNN/read_input_cnt\[1:0\]} \
+{/test_top/Conv_top/top_CNN/read_input_cnt_p\[1:0\]} \
+{/test_top/Conv_top/top_CNN/read_input_cnt_pp\[1:0\]} \
+{/test_top/Conv_top/top_CNN/read_weight_finish} \
+{/test_top/Conv_top/top_CNN/rst_n} \
+{/test_top/Conv_top/top_CNN/state\[5:0\]} \
+{/test_top/Conv_top/top_CNN/state_p\[5:0\]} \
+{/test_top/Conv_top/top_CNN/temp_conv_out\[0:3\]} \
+{/test_top/Conv_top/top_CNN/x_cnt\[4:0\]} \
+{/test_top/Conv_top/top_CNN/x_cnt_ppp\[4:0\]} \
+{/test_top/Conv_top/top_CNN/y_cnt_ppp\[4:0\]} \
+{/test_top/Conv_top/bytemask/final_cnt\[10:0\]} \
+{/test_top/Conv_top/read_input_cnt_ppp\[1:0\]} \
 }
 wvAddSignal -win $_nWave1 -group {"G2" \
 }
-wvSelectSignal -win $_nWave1 {( "G1" 30 )} 
-wvSetPosition -win $_nWave1 {("G1" 30)}
-wvSetPosition -win $_nWave1 {("G1" 30)}
-wvSetPosition -win $_nWave1 {("G1" 30)}
+wvSelectSignal -win $_nWave1 {( "G1" 34 )} 
+wvSetPosition -win $_nWave1 {("G1" 34)}
+wvSetCursor -win $_nWave1 148292.368108 -snap {("G1" 34)}
+wvSetCursor -win $_nWave1 148670.847413 -snap {("G1" 34)}
+wvSetCursor -win $_nWave1 148279.317097 -snap {("G1" 34)}
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvGetSignalOpen -win $_nWave1
+wvSetPosition -win $_nWave1 {("G1" 35)}
+wvSetPosition -win $_nWave1 {("G1" 35)}
 wvAddSignal -win $_nWave1 -clear
 wvAddSignal -win $_nWave1 -group {"G1" \
-{/test_top/Conv_top/clk} \
-{/test_top/Conv_top/cnn_state\[4:0\]} \
-{/test_top/Conv_top/read_weight_finish} \
-{/test_top/Conv_top/rst_n} \
-{/test_top/Conv_top/sram_raddr_weight\[10:0\]} \
-{/test_top/Conv_top/x_cnt\[4:0\]} \
-{/test_top/Conv_top/x_cnt_pp\[4:0\]} \
-{/test_top/Conv_top/y_cnt\[4:0\]} \
-{/test_top/Conv_top/y_cnt_pp\[4:0\]} \
 {/test_top/Conv_top/top_CNN/W\[0:15\]} \
-{/test_top/Conv_top/top_CNN/temp_conv_out\[0:15\]} \
-{/test_top/Conv_top/top_CNN/Y\[0:63\]} \
-{/test_top/Conv_top/top_CNN/bias\[0:3\]} \
-{/test_top/Conv_top/addr/sram_raddr_bias\[6:0\]} \
-{/test_top/Conv_top/read_cnt\[10:0\]} \
-{/test_top/Conv_top/top_CNN/sram_rdata_bias\[3:0\]} \
-{/test_top/Conv_top/top_CNN/Y\[0:63\]} \
-{/test_top/Conv_top/state\[5:0\]} \
-{/test_top/Conv_top/top_CNN/W\[0:15\]} \
-{/test_top/Conv_top/addr/sram_raddr_weight\[10:0\]} \
-{/test_top/Conv_top/top_CNN/sram_rdata_weight\[35:0\]} \
-{/test_top/Conv_top/top_CNN/read_weight_finish} \
+{/test_top/Conv_top/top_CNN/X\[0:15\]} \
+{/test_top/Conv_top/top_CNN/Y\[0:15\]} \
+{/test_top/Conv_top/top_CNN/bias\[3:0\]} \
+{/test_top/Conv_top/top_CNN/clk} \
+{/test_top/Conv_top/top_CNN/cnn_state\[4:0\]} \
+{/test_top/Conv_top/top_CNN/cnn_state_p} \
+{/test_top/Conv_top/top_CNN/cnn_state_pppp} \
+{/test_top/Conv_top/top_CNN/conv_out\[0:3\]} \
+{/test_top/Conv_top/top_CNN/conv_out_FF\[0:3\]} \
+{/test_top/Conv_top/top_CNN/feature_maps_o0\[15:0\]} \
+{/test_top/Conv_top/top_CNN/feature_maps_o1\[15:0\]} \
+{/test_top/Conv_top/top_CNN/feature_maps_o2\[15:0\]} \
+{/test_top/Conv_top/top_CNN/feature_maps_o3\[15:0\]} \
+{/test_top/Conv_top/top_CNN/feature_maps_temp_o\[0:3\]} \
 {/test_top/Conv_top/top_CNN/load_weight_finish} \
-{/test_top/Conv_top/addr/sram_waddr_a\[5:0\]} \
-{/test_top/Conv_top/addr/sram_waddr_b\[5:0\]} \
-{/test_top/Conv_top/addr/sram_raddr_b0\[5:0\]} \
-{/test_top/Conv_top/addr/sram_raddr_b1\[5:0\]} \
-{/test_top/Conv_top/addr/sram_raddr_b2\[5:0\]} \
-{/test_top/Conv_top/addr/sram_raddr_b3\[5:0\]} \
-{/test_top/Conv_top/top_CNN/feature_maps_o\[0:15\]} \
+{/test_top/Conv_top/top_CNN/max0\[7:0\]} \
+{/test_top/Conv_top/top_CNN/max1\[7:0\]} \
+{/test_top/Conv_top/top_CNN/max\[7:0\]} \
+{/test_top/Conv_top/top_CNN/read_bias_finish} \
+{/test_top/Conv_top/top_CNN/read_cnt\[10:0\]} \
+{/test_top/Conv_top/top_CNN/read_input_cnt\[1:0\]} \
+{/test_top/Conv_top/top_CNN/read_input_cnt_p\[1:0\]} \
+{/test_top/Conv_top/top_CNN/read_input_cnt_pp\[1:0\]} \
+{/test_top/Conv_top/top_CNN/read_weight_finish} \
+{/test_top/Conv_top/top_CNN/rst_n} \
+{/test_top/Conv_top/top_CNN/state\[5:0\]} \
+{/test_top/Conv_top/top_CNN/state_p\[5:0\]} \
+{/test_top/Conv_top/top_CNN/temp_conv_out\[0:3\]} \
+{/test_top/Conv_top/top_CNN/x_cnt\[4:0\]} \
+{/test_top/Conv_top/top_CNN/x_cnt_ppp\[4:0\]} \
+{/test_top/Conv_top/top_CNN/y_cnt_ppp\[4:0\]} \
+{/test_top/Conv_top/bytemask/final_cnt\[10:0\]} \
+{/test_top/Conv_top/read_input_cnt_ppp\[1:0\]} \
+{/test_top/Conv_top/cnn_state_ppppppp} \
 }
 wvAddSignal -win $_nWave1 -group {"G2" \
 }
-wvSelectSignal -win $_nWave1 {( "G1" 30 )} 
-wvSetPosition -win $_nWave1 {("G1" 30)}
+wvSelectSignal -win $_nWave1 {( "G1" 35 )} 
+wvSetPosition -win $_nWave1 {("G1" 35)}
+wvSetPosition -win $_nWave1 {("G1" 35)}
+wvSetPosition -win $_nWave1 {("G1" 35)}
+wvAddSignal -win $_nWave1 -clear
+wvAddSignal -win $_nWave1 -group {"G1" \
+{/test_top/Conv_top/top_CNN/W\[0:15\]} \
+{/test_top/Conv_top/top_CNN/X\[0:15\]} \
+{/test_top/Conv_top/top_CNN/Y\[0:15\]} \
+{/test_top/Conv_top/top_CNN/bias\[3:0\]} \
+{/test_top/Conv_top/top_CNN/clk} \
+{/test_top/Conv_top/top_CNN/cnn_state\[4:0\]} \
+{/test_top/Conv_top/top_CNN/cnn_state_p} \
+{/test_top/Conv_top/top_CNN/cnn_state_pppp} \
+{/test_top/Conv_top/top_CNN/conv_out\[0:3\]} \
+{/test_top/Conv_top/top_CNN/conv_out_FF\[0:3\]} \
+{/test_top/Conv_top/top_CNN/feature_maps_o0\[15:0\]} \
+{/test_top/Conv_top/top_CNN/feature_maps_o1\[15:0\]} \
+{/test_top/Conv_top/top_CNN/feature_maps_o2\[15:0\]} \
+{/test_top/Conv_top/top_CNN/feature_maps_o3\[15:0\]} \
+{/test_top/Conv_top/top_CNN/feature_maps_temp_o\[0:3\]} \
+{/test_top/Conv_top/top_CNN/load_weight_finish} \
+{/test_top/Conv_top/top_CNN/max0\[7:0\]} \
+{/test_top/Conv_top/top_CNN/max1\[7:0\]} \
+{/test_top/Conv_top/top_CNN/max\[7:0\]} \
+{/test_top/Conv_top/top_CNN/read_bias_finish} \
+{/test_top/Conv_top/top_CNN/read_cnt\[10:0\]} \
+{/test_top/Conv_top/top_CNN/read_input_cnt\[1:0\]} \
+{/test_top/Conv_top/top_CNN/read_input_cnt_p\[1:0\]} \
+{/test_top/Conv_top/top_CNN/read_input_cnt_pp\[1:0\]} \
+{/test_top/Conv_top/top_CNN/read_weight_finish} \
+{/test_top/Conv_top/top_CNN/rst_n} \
+{/test_top/Conv_top/top_CNN/state\[5:0\]} \
+{/test_top/Conv_top/top_CNN/state_p\[5:0\]} \
+{/test_top/Conv_top/top_CNN/temp_conv_out\[0:3\]} \
+{/test_top/Conv_top/top_CNN/x_cnt\[4:0\]} \
+{/test_top/Conv_top/top_CNN/x_cnt_ppp\[4:0\]} \
+{/test_top/Conv_top/top_CNN/y_cnt_ppp\[4:0\]} \
+{/test_top/Conv_top/bytemask/final_cnt\[10:0\]} \
+{/test_top/Conv_top/read_input_cnt_ppp\[1:0\]} \
+{/test_top/Conv_top/cnn_state_ppppppp} \
+}
+wvAddSignal -win $_nWave1 -group {"G2" \
+}
+wvSelectSignal -win $_nWave1 {( "G1" 35 )} 
+wvSetPosition -win $_nWave1 {("G1" 35)}
 wvGetSignalClose -win $_nWave1
-wvSelectSignal -win $_nWave1 {( "G1" 30 )} 
-wvSelectSignal -win $_nWave1 {( "G1" 30 )} 
-wvExpandBus -win $_nWave1 {("G1" 30)}
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
 wvScrollDown -win $_nWave1 0
 wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvSetCursor -win $_nWave1 86025.072763 -snap {("G1" 2)}
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvSelectSignal -win $_nWave1 {( "G1" 31 )} 
-wvSetPosition -win $_nWave1 {("G1" 31)}
-wvExpandBus -win $_nWave1 {("G1" 31)}
-wvSetPosition -win $_nWave1 {("G1" 62)}
-wvSelectSignal -win $_nWave1 {( "G1" 31 )} 
-wvSetPosition -win $_nWave1 {("G1" 31)}
-wvCollapseBus -win $_nWave1 {("G1" 31)}
-wvSetPosition -win $_nWave1 {("G1" 31)}
-wvSetPosition -win $_nWave1 {("G1" 46)}
-wvSelectSignal -win $_nWave1 {( "G1" 31 )} 
-wvSetPosition -win $_nWave1 {("G1" 31)}
-wvExpandBus -win $_nWave1 {("G1" 31)}
-wvSetPosition -win $_nWave1 {("G1" 62)}
-wvSelectSignal -win $_nWave1 {( "G1" 32 )} 
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
+wvSetCursor -win $_nWave1 148331.521139 -snap {("G1" 34)}
+wvSetCursor -win $_nWave1 148285.842602 -snap {("G1" 34)}
 wvScrollUp -win $_nWave1 1
 wvScrollUp -win $_nWave1 1
 wvScrollUp -win $_nWave1 1
 wvScrollUp -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvSetCursor -win $_nWave1 148344.572150 -snap {("G1" 31)}
+wvSetCursor -win $_nWave1 148272.791592 -snap {("G1" 34)}
+wvSetCursor -win $_nWave1 148644.745392 -snap {("G1" 34)}
+wvScrollDown -win $_nWave1 1
 wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvSetCursor -win $_nWave1 86149.984859 -snap {("G1" 3)}
 wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollUp -win $_nWave1 5
-wvSelectSignal -win $_nWave1 {( "G1" 48 )} 
-wvSelectSignal -win $_nWave1 {( "G1" 48 )} 
-wvSetPosition -win $_nWave1 {("G1" 48)}
-wvExpandBus -win $_nWave1 {("G1" 48)}
-wvSetPosition -win $_nWave1 {("G1" 78)}
-wvScrollUp -win $_nWave1 3
-wvSelectSignal -win $_nWave1 {( "G1" 48 )} 
-wvSetPosition -win $_nWave1 {("G1" 48)}
-wvCollapseBus -win $_nWave1 {("G1" 48)}
-wvSetPosition -win $_nWave1 {("G1" 48)}
-wvSetPosition -win $_nWave1 {("G1" 62)}
-wvScrollUp -win $_nWave1 4
-wvScrollUp -win $_nWave1 1
-wvSelectSignal -win $_nWave1 {( "G1" 31 )} 
-wvSelectSignal -win $_nWave1 {( "G1" 31 )} 
-wvSelectSignal -win $_nWave1 {( "G1" 31 )} 
-wvSetPosition -win $_nWave1 {("G1" 31)}
-wvCollapseBus -win $_nWave1 {("G1" 31)}
-wvSetPosition -win $_nWave1 {("G1" 31)}
-wvSetPosition -win $_nWave1 {("G1" 46)}
-wvSetCursor -win $_nWave1 86319.508417 -snap {("G1" 31)}
-wvSetCursor -win $_nWave1 86480.109683 -snap {("G1" 31)}
-wvSetCursor -win $_nWave1 86453.342805 -snap {("G1" 31)}
-wvSetCursor -win $_nWave1 86381.964465 -snap {("G1" 31)}
-wvSetCursor -win $_nWave1 86462.265098 -snap {("G1" 31)}
-wvSetCursor -win $_nWave1 86453.342805 -snap {("G1" 31)}
-wvSetCursor -win $_nWave1 86569.332608 -snap {("G1" 31)}
-wvSetCursor -win $_nWave1 86462.265098 -snap {("G1" 31)}
-wvZoomIn -win $_nWave1
-wvSetCursor -win $_nWave1 86504.645987 -snap {("G1" 31)}
-wvSetCursor -win $_nWave1 86460.034525 -snap {("G1" 31)}
-wvSetCursor -win $_nWave1 86567.102035 -snap {("G1" 31)}
-wvSetCursor -win $_nWave1 86446.651086 -snap {("G1" 31)}
-wvSetCursor -win $_nWave1 86464.495671 -snap {("G1" 31)}
-wvZoomIn -win $_nWave1
-wvZoomIn -win $_nWave1
-wvZoomOut -win $_nWave1
-wvSetCursor -win $_nWave1 86456.688665 -snap {("G1" 32)}
 wvScrollDown -win $_nWave1 0
 wvScrollUp -win $_nWave1 1
 wvScrollDown -win $_nWave1 1
 wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
 wvScrollUp -win $_nWave1 1
 wvScrollUp -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvSetCursor -win $_nWave1 86349.621154 -snap {("G1" 30)}
-wvSetCursor -win $_nWave1 86194.841969 -snap {("G1" 36)}
-wvSetCursor -win $_nWave1 86197.072542 -snap {("G1" 35)}
-wvSetCursor -win $_nWave1 86257.298017 -snap {("G1" 35)}
-wvZoomOut -win $_nWave1
+wvScrollUp -win $_nWave1 1
+wvSetCursor -win $_nWave1 147992.194865 -snap {("G1" 8)}
 wvScrollUp -win $_nWave1 1
 wvScrollUp -win $_nWave1 1
 wvScrollUp -win $_nWave1 1
 wvScrollUp -win $_nWave1 1
 wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollDown -win $_nWave1 0
-wvSetCursor -win $_nWave1 86173.599690 -snap {("G1" 23)}
+wvSetCursor -win $_nWave1 148057.449918 -snap {("G1" 5)}
+wvSetCursor -win $_nWave1 148155.332497 -snap {("G1" 5)}
+wvSetCursor -win $_nWave1 148227.113055 -snap {("G1" 5)}
+wvSetCursor -win $_nWave1 148351.097655 -snap {("G1" 5)}
 wvScrollDown -win $_nWave1 1
 wvScrollDown -win $_nWave1 1
 wvScrollDown -win $_nWave1 1
@@ -3247,63 +811,189 @@ wvScrollDown -win $_nWave1 1
 wvScrollDown -win $_nWave1 1
 wvScrollDown -win $_nWave1 1
 wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
 wvScrollDown -win $_nWave1 1
 wvScrollDown -win $_nWave1 1
 wvScrollDown -win $_nWave1 0
 wvScrollUp -win $_nWave1 1
 wvScrollUp -win $_nWave1 1
 wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
 wvScrollDown -win $_nWave1 1
 wvScrollDown -win $_nWave1 1
 wvScrollDown -win $_nWave1 1
 wvScrollDown -win $_nWave1 0
-wvSelectSignal -win $_nWave1 {( "G1" 31 )} 
-wvSetPosition -win $_nWave1 {("G1" 31)}
-wvExpandBus -win $_nWave1 {("G1" 31)}
-wvSetPosition -win $_nWave1 {("G1" 62)}
-wvScrollUp -win $_nWave1 17
 wvDisplayGridCount -win $_nWave1 -off
 wvGetSignalClose -win $_nWave1
 wvReloadFile -win $_nWave1
+wvSetCursor -win $_nWave1 148758.418806 -snap {("G1" 33)}
+wvSetCursor -win $_nWave1 148680.112743 -snap {("G1" 24)}
+wvSetCursor -win $_nWave1 149156.474628 -snap {("G1" 33)}
+wvSetCursor -win $_nWave1 149600.208987 -snap {("G1" 33)}
+wvSetCursor -win $_nWave1 149972.162787 -snap {("G1" 33)}
+wvSetCursor -win $_nWave1 150344.116588 -snap {("G1" 33)}
+wvSetCursor -win $_nWave1 150742.498685 -snap {("G1" 33)}
+wvSelectSignal -win $_nWave1 {( "G1" 22 23 24 )} 
+wvCut -win $_nWave1
+wvSetPosition -win $_nWave1 {("G1" 32)}
+wvSetCursor -win $_nWave1 148746.672897 -snap {("G1" 30)}
+wvSetCursor -win $_nWave1 149112.101192 -snap {("G1" 31)}
+wvSetCursor -win $_nWave1 149627.616109 -snap {("G1" 31)}
+wvSetCursor -win $_nWave1 149516.682519 -snap {("G1" 31)}
+wvSetCursor -win $_nWave1 149908.212835 -snap {("G1" 31)}
+wvSetCursor -win $_nWave1 150299.743152 -snap {("G1" 31)}
+wvSetCursor -win $_nWave1 150722.922169 -snap {("G1" 31)}
+wvSetCursor -win $_nWave1 151127.503496 -snap {("G1" 31)}
+wvSetCursor -win $_nWave1 153511.270572 -snap {("G1" 31)}
+wvSetCursor -win $_nWave1 153902.800888 -snap {("G1" 31)}
+wvSetCursor -win $_nWave1 154333.484236 -snap {("G1" 31)}
+wvSetCursor -win $_nWave1 154725.014552 -snap {("G1" 31)}
+wvSetCursor -win $_nWave1 157144.345632 -snap {("G1" 30)}
+wvZoomIn -win $_nWave1
+wvSetCursor -win $_nWave1 157501.617046 -snap {("G1" 31)}
+wvSetCursor -win $_nWave1 156725.081918 -snap {("G1" 31)}
+wvSelectSignal -win $_nWave1 {( "G1" 17 18 19 )} 
+wvSelectSignal -win $_nWave1 {( "G1" 17 18 19 )} 
+wvSetRadix -win $_nWave1 -format UDec
+wvSetCursor -win $_nWave1 156744.658434 -snap {("G1" 31)}
+wvSetCursor -win $_nWave1 156738.132929 -snap {("G1" 31)}
+wvSetCursor -win $_nWave1 156457.536202 -snap {("G1" 31)}
+wvSetCursor -win $_nWave1 156738.132929 -snap {("G1" 31)}
+wvSetCursor -win $_nWave1 157123.137740 -snap {("G1" 31)}
+wvSetCursor -win $_nWave1 157539.138701 -snap {("G1" 30)}
+wvSetCursor -win $_nWave1 157946.982781 -snap {("G1" 30)}
+wvSetCursor -win $_nWave1 158348.301355 -snap {("G1" 30)}
+wvSetCursor -win $_nWave1 158744.725800 -snap {("G1" 30)}
+wvSetCursor -win $_nWave1 159129.730611 -snap {("G1" 30)}
+wvSetCursor -win $_nWave1 159535.943315 -snap {("G1" 30)}
+wvSetCursor -win $_nWave1 159947.050147 -snap {("G1" 30)}
+wvSetCursor -win $_nWave1 160350.000097 -snap {("G1" 30)}
+wvSetCursor -win $_nWave1 160735.004908 -snap {("G1" 30)}
+wvSetCursor -win $_nWave1 160346.737345 -snap {("G1" 30)}
+wvSetCursor -win $_nWave1 160731.742156 -snap {("G1" 30)}
+wvSetCursor -win $_nWave1 161142.848988 -snap {("G1" 30)}
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvGetSignalOpen -win $_nWave1
+wvGetSignalSetScope -win $_nWave1 "/test_top/Conv_top"
+wvSetPosition -win $_nWave1 {("G1" 39)}
+wvSetPosition -win $_nWave1 {("G1" 39)}
+wvAddSignal -win $_nWave1 -clear
+wvAddSignal -win $_nWave1 -group {"G1" \
+{/test_top/Conv_top/top_CNN/W\[0:15\]} \
+{/test_top/Conv_top/top_CNN/X\[0:15\]} \
+{/test_top/Conv_top/top_CNN/Y\[0:15\]} \
+{/test_top/Conv_top/top_CNN/bias\[3:0\]} \
+{/test_top/Conv_top/top_CNN/clk} \
+{/test_top/Conv_top/top_CNN/cnn_state\[4:0\]} \
+{/test_top/Conv_top/top_CNN/cnn_state_p} \
+{/test_top/Conv_top/top_CNN/cnn_state_pppp} \
+{/test_top/Conv_top/top_CNN/conv_out\[0:3\]} \
+{/test_top/Conv_top/top_CNN/conv_out_FF\[0:3\]} \
+{/test_top/Conv_top/top_CNN/feature_maps_o0\[15:0\]} \
+{/test_top/Conv_top/top_CNN/feature_maps_o1\[15:0\]} \
+{/test_top/Conv_top/top_CNN/feature_maps_o2\[15:0\]} \
+{/test_top/Conv_top/top_CNN/feature_maps_o3\[15:0\]} \
+{/test_top/Conv_top/top_CNN/feature_maps_temp_o\[0:3\]} \
+{/test_top/Conv_top/top_CNN/load_weight_finish} \
+{/test_top/Conv_top/top_CNN/max0\[7:0\]} \
+{/test_top/Conv_top/top_CNN/max1\[7:0\]} \
+{/test_top/Conv_top/top_CNN/max\[7:0\]} \
+{/test_top/Conv_top/top_CNN/read_bias_finish} \
+{/test_top/Conv_top/top_CNN/read_cnt\[10:0\]} \
+{/test_top/Conv_top/top_CNN/read_weight_finish} \
+{/test_top/Conv_top/top_CNN/rst_n} \
+{/test_top/Conv_top/top_CNN/state\[5:0\]} \
+{/test_top/Conv_top/top_CNN/state_p\[5:0\]} \
+{/test_top/Conv_top/top_CNN/temp_conv_out\[0:3\]} \
+{/test_top/Conv_top/top_CNN/x_cnt\[4:0\]} \
+{/test_top/Conv_top/top_CNN/x_cnt_ppp\[4:0\]} \
+{/test_top/Conv_top/top_CNN/y_cnt_ppp\[4:0\]} \
+{/test_top/Conv_top/bytemask/final_cnt\[10:0\]} \
+{/test_top/Conv_top/read_input_cnt_ppp\[1:0\]} \
+{/test_top/Conv_top/cnn_state_ppppppp} \
+{/test_top/Conv_top/sram_bytemask_b\[15:0\]} \
+{/test_top/Conv_top/sram_waddr_b\[5:0\]} \
+{/test_top/Conv_top/sram_wdata_b\[127:0\]} \
+{/test_top/Conv_top/sram_wen_b0} \
+{/test_top/Conv_top/sram_wen_b1} \
+{/test_top/Conv_top/sram_wen_b2} \
+{/test_top/Conv_top/sram_wen_b3} \
+}
+wvAddSignal -win $_nWave1 -group {"G2" \
+}
+wvSelectSignal -win $_nWave1 {( "G1" 33 34 35 36 37 38 39 )} 
+wvSetPosition -win $_nWave1 {("G1" 39)}
+wvSetPosition -win $_nWave1 {("G1" 39)}
+wvSetPosition -win $_nWave1 {("G1" 39)}
+wvAddSignal -win $_nWave1 -clear
+wvAddSignal -win $_nWave1 -group {"G1" \
+{/test_top/Conv_top/top_CNN/W\[0:15\]} \
+{/test_top/Conv_top/top_CNN/X\[0:15\]} \
+{/test_top/Conv_top/top_CNN/Y\[0:15\]} \
+{/test_top/Conv_top/top_CNN/bias\[3:0\]} \
+{/test_top/Conv_top/top_CNN/clk} \
+{/test_top/Conv_top/top_CNN/cnn_state\[4:0\]} \
+{/test_top/Conv_top/top_CNN/cnn_state_p} \
+{/test_top/Conv_top/top_CNN/cnn_state_pppp} \
+{/test_top/Conv_top/top_CNN/conv_out\[0:3\]} \
+{/test_top/Conv_top/top_CNN/conv_out_FF\[0:3\]} \
+{/test_top/Conv_top/top_CNN/feature_maps_o0\[15:0\]} \
+{/test_top/Conv_top/top_CNN/feature_maps_o1\[15:0\]} \
+{/test_top/Conv_top/top_CNN/feature_maps_o2\[15:0\]} \
+{/test_top/Conv_top/top_CNN/feature_maps_o3\[15:0\]} \
+{/test_top/Conv_top/top_CNN/feature_maps_temp_o\[0:3\]} \
+{/test_top/Conv_top/top_CNN/load_weight_finish} \
+{/test_top/Conv_top/top_CNN/max0\[7:0\]} \
+{/test_top/Conv_top/top_CNN/max1\[7:0\]} \
+{/test_top/Conv_top/top_CNN/max\[7:0\]} \
+{/test_top/Conv_top/top_CNN/read_bias_finish} \
+{/test_top/Conv_top/top_CNN/read_cnt\[10:0\]} \
+{/test_top/Conv_top/top_CNN/read_weight_finish} \
+{/test_top/Conv_top/top_CNN/rst_n} \
+{/test_top/Conv_top/top_CNN/state\[5:0\]} \
+{/test_top/Conv_top/top_CNN/state_p\[5:0\]} \
+{/test_top/Conv_top/top_CNN/temp_conv_out\[0:3\]} \
+{/test_top/Conv_top/top_CNN/x_cnt\[4:0\]} \
+{/test_top/Conv_top/top_CNN/x_cnt_ppp\[4:0\]} \
+{/test_top/Conv_top/top_CNN/y_cnt_ppp\[4:0\]} \
+{/test_top/Conv_top/bytemask/final_cnt\[10:0\]} \
+{/test_top/Conv_top/read_input_cnt_ppp\[1:0\]} \
+{/test_top/Conv_top/cnn_state_ppppppp} \
+{/test_top/Conv_top/sram_bytemask_b\[15:0\]} \
+{/test_top/Conv_top/sram_waddr_b\[5:0\]} \
+{/test_top/Conv_top/sram_wdata_b\[127:0\]} \
+{/test_top/Conv_top/sram_wen_b0} \
+{/test_top/Conv_top/sram_wen_b1} \
+{/test_top/Conv_top/sram_wen_b2} \
+{/test_top/Conv_top/sram_wen_b3} \
+}
+wvAddSignal -win $_nWave1 -group {"G2" \
+}
+wvSelectSignal -win $_nWave1 {( "G1" 33 34 35 36 37 38 39 )} 
+wvSetPosition -win $_nWave1 {("G1" 39)}
+wvGetSignalClose -win $_nWave1
+wvSelectSignal -win $_nWave1 {( "G1" 34 )} 
+wvSelectSignal -win $_nWave1 {( "G1" 33 34 35 36 37 38 39 )} 
+wvSelectSignal -win $_nWave1 {( "G1" 33 34 35 36 37 38 39 )} 
+wvSetRadix -win $_nWave1 -format UDec
+wvSelectSignal -win $_nWave1 {( "G1" 33 34 35 36 37 38 39 )} 
+wvSetRadix -win $_nWave1 -format UDec
+wvSelectSignal -win $_nWave1 {( "G1" 33 )} 
+wvSelectSignal -win $_nWave1 {( "G1" 33 )} 
+wvSetRadix -win $_nWave1 -format Bin
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
 wvScrollDown -win $_nWave1 1
 wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvZoomOut -win $_nWave1
+wvSetCursor -win $_nWave1 159591.410109 -snap {("G1" 31)}
 wvScrollDown -win $_nWave1 0
 wvScrollDown -win $_nWave1 0
 wvScrollDown -win $_nWave1 0
@@ -3312,52 +1002,340 @@ wvScrollDown -win $_nWave1 0
 wvScrollDown -win $_nWave1 0
 wvScrollDown -win $_nWave1 0
 wvScrollDown -win $_nWave1 0
+wvSetCursor -win $_nWave1 158431.175272 -snap {("G1" 31)}
+wvSetCursor -win $_nWave1 158548.634367 -snap {("G1" 30)}
+wvSetCursor -win $_nWave1 148744.388970 -snap {("G1" 30)}
+wvSetCursor -win $_nWave1 148444.215728 -snap {("G1" 31)}
 wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvSelectSignal -win $_nWave1 {( "G1" 31 )} 
-wvSelectSignal -win $_nWave1 {( "G1" 31 )} 
-wvSetPosition -win $_nWave1 {("G1" 31)}
-wvCollapseBus -win $_nWave1 {("G1" 31)}
-wvSetPosition -win $_nWave1 {("G1" 31)}
-wvSetPosition -win $_nWave1 {("G1" 46)}
-wvSelectSignal -win $_nWave1 {( "G1" 31 )} 
-wvSelectSignal -win $_nWave1 {( "G1" 30 )} 
-wvSetPosition -win $_nWave1 {("G1" 30)}
-wvCollapseBus -win $_nWave1 {("G1" 30)}
-wvSetPosition -win $_nWave1 {("G1" 30)}
-wvSelectSignal -win $_nWave1 {( "G1" 30 )} 
-wvExpandBus -win $_nWave1 {("G1" 30)}
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
+wvScrollDown -win $_nWave1 0
+wvSetCursor -win $_nWave1 148385.486180 -snap {("G1" 35)}
+wvSetCursor -win $_nWave1 148489.894265 -snap {("G1" 35)}
+wvDisplayGridCount -win $_nWave1 -off
+wvGetSignalClose -win $_nWave1
+wvReloadFile -win $_nWave1
+wvSetCursor -win $_nWave1 148848.797055 -snap {("G1" 36)}
+wvSetCursor -win $_nWave1 154773.629567 -snap {("G1" 37)}
 wvZoomOut -win $_nWave1
 wvZoomOut -win $_nWave1
 wvZoomOut -win $_nWave1
 wvZoomOut -win $_nWave1
-wvSetCursor -win $_nWave1 84741.793249 -snap {("G1" 18)}
+wvZoomOut -win $_nWave1
+wvZoomOut -win $_nWave1
+wvZoomOut -win $_nWave1
+wvSetCursor -win $_nWave1 147159.406960 -snap {("G1" 34)}
 wvZoomIn -win $_nWave1
 wvZoomIn -win $_nWave1
-wvSetCursor -win $_nWave1 85925.820428 -snap {("G1" 31)}
-wvSetCursor -win $_nWave1 86153.160442 -snap {("G1" 36)}
-wvSetCursor -win $_nWave1 86083.209669 -snap {("G1" 37)}
-wvSetCursor -win $_nWave1 86240.598909 -snap {("G1" 37)}
+wvZoomIn -win $_nWave1
+wvZoomIn -win $_nWave1
+wvZoomIn -win $_nWave1
+wvZoomIn -win $_nWave1
+wvZoomIn -win $_nWave1
+wvZoomIn -win $_nWave1
+wvSetCursor -win $_nWave1 272351.773858 -snap {("G1" 36)}
+wvSetCursor -win $_nWave1 272244.103021 -snap {("G1" 19)}
+wvDisplayGridCount -win $_nWave1 -off
+wvGetSignalClose -win $_nWave1
+wvReloadFile -win $_nWave1
+wvSelectSignal -win $_nWave1 {( "G1" 34 )} 
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvZoomOut -win $_nWave1
+wvZoomOut -win $_nWave1
+wvZoomOut -win $_nWave1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvZoomIn -win $_nWave1
+wvSetCursor -win $_nWave1 154484.773926 -snap {("G1" 30)}
 wvScrollDown -win $_nWave1 1
 wvScrollDown -win $_nWave1 1
 wvScrollDown -win $_nWave1 1
 wvScrollDown -win $_nWave1 1
 wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvSetCursor -win $_nWave1 154654.437063 -snap {("G1" 30)}
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvZoomIn -win $_nWave1
+wvZoomOut -win $_nWave1
+wvZoomIn -win $_nWave1
+wvSetCursor -win $_nWave1 157154.358133 -snap {("G1" 35)}
+wvScrollDown -win $_nWave1 1
+wvSetCursor -win $_nWave1 157539.362944 -snap {("G1" 35)}
+wvZoomIn -win $_nWave1
+wvZoomOut -win $_nWave1
+wvZoomOut -win $_nWave1
+wvSetCursor -win $_nWave1 683947.121532 -snap {("G1" 37)}
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvZoomIn -win $_nWave1
+wvZoomOut -win $_nWave1
+wvSetCursor -win $_nWave1 683527.359368 -snap {("G1" 37)}
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvGetSignalOpen -win $_nWave1
+wvGetSignalClose -win $_nWave1
+wvDisplayGridCount -win $_nWave1 -off
+wvGetSignalClose -win $_nWave1
+wvReloadFile -win $_nWave1
+wvGetSignalOpen -win $_nWave1
+wvGetSignalSetScope -win $_nWave1 "/test_top/sram_36x128b_a0"
+wvSetPosition -win $_nWave1 {("G1" 40)}
+wvSetPosition -win $_nWave1 {("G1" 40)}
+wvAddSignal -win $_nWave1 -clear
+wvAddSignal -win $_nWave1 -group {"G1" \
+{/test_top/Conv_top/top_CNN/W\[0:15\]} \
+{/test_top/Conv_top/top_CNN/X\[0:15\]} \
+{/test_top/Conv_top/top_CNN/Y\[0:15\]} \
+{/test_top/Conv_top/top_CNN/bias\[3:0\]} \
+{/test_top/Conv_top/top_CNN/clk} \
+{/test_top/Conv_top/top_CNN/cnn_state\[4:0\]} \
+{/test_top/Conv_top/top_CNN/cnn_state_p} \
+{/test_top/Conv_top/top_CNN/cnn_state_pppp} \
+{/test_top/Conv_top/top_CNN/conv_out\[0:3\]} \
+{/test_top/Conv_top/top_CNN/conv_out_FF\[0:3\]} \
+{/test_top/Conv_top/top_CNN/feature_maps_o0\[15:0\]} \
+{/test_top/Conv_top/top_CNN/feature_maps_o1\[15:0\]} \
+{/test_top/Conv_top/top_CNN/feature_maps_o2\[15:0\]} \
+{/test_top/Conv_top/top_CNN/feature_maps_o3\[15:0\]} \
+{/test_top/Conv_top/top_CNN/feature_maps_temp_o\[0:3\]} \
+{/test_top/Conv_top/top_CNN/load_weight_finish} \
+{/test_top/Conv_top/top_CNN/max0\[7:0\]} \
+{/test_top/Conv_top/top_CNN/max1\[7:0\]} \
+{/test_top/Conv_top/top_CNN/max\[7:0\]} \
+{/test_top/Conv_top/top_CNN/read_bias_finish} \
+{/test_top/Conv_top/top_CNN/read_cnt\[10:0\]} \
+{/test_top/Conv_top/top_CNN/read_weight_finish} \
+{/test_top/Conv_top/top_CNN/rst_n} \
+{/test_top/Conv_top/top_CNN/state\[5:0\]} \
+{/test_top/Conv_top/top_CNN/state_p\[5:0\]} \
+{/test_top/Conv_top/top_CNN/temp_conv_out\[0:3\]} \
+{/test_top/Conv_top/top_CNN/x_cnt\[4:0\]} \
+{/test_top/Conv_top/top_CNN/x_cnt_ppp\[4:0\]} \
+{/test_top/Conv_top/top_CNN/y_cnt_ppp\[4:0\]} \
+{/test_top/Conv_top/bytemask/final_cnt\[10:0\]} \
+{/test_top/Conv_top/read_input_cnt_ppp\[1:0\]} \
+{/test_top/Conv_top/cnn_state_ppppppp} \
+{/test_top/Conv_top/sram_bytemask_b\[15:0\]} \
+{/test_top/Conv_top/sram_waddr_b\[5:0\]} \
+{/test_top/Conv_top/sram_wdata_b\[127:0\]} \
+{/test_top/Conv_top/sram_wen_b0} \
+{/test_top/Conv_top/sram_wen_b1} \
+{/test_top/Conv_top/sram_wen_b2} \
+{/test_top/Conv_top/sram_wen_b3} \
+{/test_top/sram_36x128b_a0/mem\[0:36\]} \
+}
+wvAddSignal -win $_nWave1 -group {"G2" \
+}
+wvSelectSignal -win $_nWave1 {( "G1" 40 )} 
+wvSetPosition -win $_nWave1 {("G1" 40)}
+wvSetPosition -win $_nWave1 {("G1" 40)}
+wvSetPosition -win $_nWave1 {("G1" 40)}
+wvAddSignal -win $_nWave1 -clear
+wvAddSignal -win $_nWave1 -group {"G1" \
+{/test_top/Conv_top/top_CNN/W\[0:15\]} \
+{/test_top/Conv_top/top_CNN/X\[0:15\]} \
+{/test_top/Conv_top/top_CNN/Y\[0:15\]} \
+{/test_top/Conv_top/top_CNN/bias\[3:0\]} \
+{/test_top/Conv_top/top_CNN/clk} \
+{/test_top/Conv_top/top_CNN/cnn_state\[4:0\]} \
+{/test_top/Conv_top/top_CNN/cnn_state_p} \
+{/test_top/Conv_top/top_CNN/cnn_state_pppp} \
+{/test_top/Conv_top/top_CNN/conv_out\[0:3\]} \
+{/test_top/Conv_top/top_CNN/conv_out_FF\[0:3\]} \
+{/test_top/Conv_top/top_CNN/feature_maps_o0\[15:0\]} \
+{/test_top/Conv_top/top_CNN/feature_maps_o1\[15:0\]} \
+{/test_top/Conv_top/top_CNN/feature_maps_o2\[15:0\]} \
+{/test_top/Conv_top/top_CNN/feature_maps_o3\[15:0\]} \
+{/test_top/Conv_top/top_CNN/feature_maps_temp_o\[0:3\]} \
+{/test_top/Conv_top/top_CNN/load_weight_finish} \
+{/test_top/Conv_top/top_CNN/max0\[7:0\]} \
+{/test_top/Conv_top/top_CNN/max1\[7:0\]} \
+{/test_top/Conv_top/top_CNN/max\[7:0\]} \
+{/test_top/Conv_top/top_CNN/read_bias_finish} \
+{/test_top/Conv_top/top_CNN/read_cnt\[10:0\]} \
+{/test_top/Conv_top/top_CNN/read_weight_finish} \
+{/test_top/Conv_top/top_CNN/rst_n} \
+{/test_top/Conv_top/top_CNN/state\[5:0\]} \
+{/test_top/Conv_top/top_CNN/state_p\[5:0\]} \
+{/test_top/Conv_top/top_CNN/temp_conv_out\[0:3\]} \
+{/test_top/Conv_top/top_CNN/x_cnt\[4:0\]} \
+{/test_top/Conv_top/top_CNN/x_cnt_ppp\[4:0\]} \
+{/test_top/Conv_top/top_CNN/y_cnt_ppp\[4:0\]} \
+{/test_top/Conv_top/bytemask/final_cnt\[10:0\]} \
+{/test_top/Conv_top/read_input_cnt_ppp\[1:0\]} \
+{/test_top/Conv_top/cnn_state_ppppppp} \
+{/test_top/Conv_top/sram_bytemask_b\[15:0\]} \
+{/test_top/Conv_top/sram_waddr_b\[5:0\]} \
+{/test_top/Conv_top/sram_wdata_b\[127:0\]} \
+{/test_top/Conv_top/sram_wen_b0} \
+{/test_top/Conv_top/sram_wen_b1} \
+{/test_top/Conv_top/sram_wen_b2} \
+{/test_top/Conv_top/sram_wen_b3} \
+{/test_top/sram_36x128b_a0/mem\[0:36\]} \
+}
+wvAddSignal -win $_nWave1 -group {"G2" \
+}
+wvSelectSignal -win $_nWave1 {( "G1" 40 )} 
+wvSetPosition -win $_nWave1 {("G1" 40)}
+wvGetSignalClose -win $_nWave1
+wvZoomOut -win $_nWave1
+wvZoomOut -win $_nWave1
+wvZoomOut -win $_nWave1
+wvZoomOut -win $_nWave1
+wvZoomOut -win $_nWave1
+wvZoomOut -win $_nWave1
+wvSetCursor -win $_nWave1 147822.920927 -snap {("G1" 36)}
+wvZoomIn -win $_nWave1
+wvZoomIn -win $_nWave1
+wvZoomIn -win $_nWave1
+wvZoomIn -win $_nWave1
+wvZoomIn -win $_nWave1
+wvZoomIn -win $_nWave1
+wvSelectSignal -win $_nWave1 {( "G1" 40 )} 
+wvSelectSignal -win $_nWave1 {( "G1" 40 )} 
+wvExpandBus -win $_nWave1 {("G1" 40)}
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvSetCursor -win $_nWave1 148077.151064 -snap {("G1" 31)}
+wvSetCursor -win $_nWave1 148749.791696 -snap {("G1" 30)}
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvSetCursor -win $_nWave1 148650.549636 -snap {("G1" 35)}
+wvSetCursor -win $_nWave1 148661.576531 -snap {("G1" 36)}
+wvSetCursor -win $_nWave1 148749.791696 -snap {("G1" 36)}
+wvSelectSignal -win $_nWave1 {( "G1" 35 )} 
+wvSelectSignal -win $_nWave1 {( "G1" 35 )} 
+wvSetRadix -win $_nWave1 -format Hex
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvSetCursor -win $_nWave1 148661.576531 -snap {("G1" 36)}
+wvSetCursor -win $_nWave1 148744.278248 -snap {("G1" 36)}
+wvSetCursor -win $_nWave1 148661.576531 -snap {("G1" 36)}
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvZoomOut -win $_nWave1
+wvZoomIn -win $_nWave1
+wvSetCursor -win $_nWave1 148733.251353 -snap {("G1" 35)}
+wvSetCursor -win $_nWave1 148634.009292 -snap {("G1" 35)}
+wvSetCursor -win $_nWave1 149157.786833 -snap {("G1" 35)}
+wvSetCursor -win $_nWave1 148650.549636 -snap {("G1" 35)}
+wvSetCursor -win $_nWave1 148237.041051 -snap {("G1" 41)}
+wvZoomOut -win $_nWave1
+wvZoomOut -win $_nWave1
+wvZoomOut -win $_nWave1
+wvZoomOut -win $_nWave1
+wvZoomOut -win $_nWave1
+wvZoomOut -win $_nWave1
+wvZoomOut -win $_nWave1
+wvSetCursor -win $_nWave1 149612.919491 -snap {("G1" 24)}
+wvZoomIn -win $_nWave1
+wvZoomIn -win $_nWave1
+wvZoomOut -win $_nWave1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
 wvScrollDown -win $_nWave1 0
 wvScrollUp -win $_nWave1 1
 wvScrollUp -win $_nWave1 1
@@ -3367,229 +1345,579 @@ wvScrollUp -win $_nWave1 1
 wvScrollUp -win $_nWave1 1
 wvScrollUp -win $_nWave1 1
 wvScrollUp -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvZoomIn -win $_nWave1
+wvZoomIn -win $_nWave1
+wvZoomIn -win $_nWave1
+wvZoomIn -win $_nWave1
+wvZoomIn -win $_nWave1
+wvZoomIn -win $_nWave1
+wvZoomOut -win $_nWave1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvSetCursor -win $_nWave1 199043.417626 -snap {("G1" 36)}
+wvScrollUp -win $_nWave1 1
+wvZoomIn -win $_nWave1
+wvSelectSignal -win $_nWave1 {( "G1" 40 )} 
+wvSelectSignal -win $_nWave1 {( "G1" 40 )} 
+wvSetPosition -win $_nWave1 {("G1" 40)}
+wvCollapseBus -win $_nWave1 {("G1" 40)}
+wvSetPosition -win $_nWave1 {("G1" 40)}
+wvSelectSignal -win $_nWave1 {( "G1" 40 )} 
+wvExpandBus -win $_nWave1 {("G1" 40)}
+wvScrollUp -win $_nWave1 13
+wvSelectSignal -win $_nWave1 {( "G1" 40 )} 
+wvSetPosition -win $_nWave1 {("G1" 40)}
+wvCollapseBus -win $_nWave1 {("G1" 40)}
+wvSetPosition -win $_nWave1 {("G1" 40)}
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvSetCursor -win $_nWave1 551861.257590 -snap {("G1" 37)}
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvZoomOut -win $_nWave1
+wvSelectSignal -win $_nWave1 {( "G1" 34 )} 
+wvZoomOut -win $_nWave1
+wvZoomOut -win $_nWave1
+wvZoomOut -win $_nWave1
+wvZoomOut -win $_nWave1
+wvZoomOut -win $_nWave1
+wvZoomOut -win $_nWave1
+wvZoomOut -win $_nWave1
+wvSetCursor -win $_nWave1 450639.811951 -snap {("G1" 34)}
+wvSetCursor -win $_nWave1 403267.971880 -snap {("G1" 34)}
+wvSetCursor -win $_nWave1 448210.486819 -snap {("G1" 34)}
+wvSetCursor -win $_nWave1 454283.799649 -snap {("G1" 34)}
+wvSetCursor -win $_nWave1 440922.511424 -snap {("G1" 34)}
+wvSetCursor -win $_nWave1 451854.474517 -snap {("G1" 34)}
+wvDisplayGridCount -win $_nWave1 -off
+wvGetSignalClose -win $_nWave1
+wvReloadFile -win $_nWave1
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
 wvScrollDown -win $_nWave1 0
 wvScrollUp -win $_nWave1 1
 wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvSetCursor -win $_nWave1 84596.755731 -snap {("G1" 19)}
-wvSetCursor -win $_nWave1 86170.648136 -snap {("G1" 19)}
-wvSetCursor -win $_nWave1 86135.672749 -snap {("G1" 19)}
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvSelectSignal -win $_nWave1 {( "G1" 40 )} 
+wvSelectSignal -win $_nWave1 {( "G1" 40 )} 
+wvCut -win $_nWave1
+wvSetPosition -win $_nWave1 {("G2" 0)}
+wvSetPosition -win $_nWave1 {("G1" 39)}
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvSetCursor -win $_nWave1 137256.869947 -snap {("G1" 36)}
+wvZoomIn -win $_nWave1
+wvGetSignalOpen -win $_nWave1
+wvGetSignalSetScope -win $_nWave1 "/test_top/Conv_top"
+wvSetPosition -win $_nWave1 {("G1" 40)}
+wvSetPosition -win $_nWave1 {("G1" 40)}
+wvAddSignal -win $_nWave1 -clear
+wvAddSignal -win $_nWave1 -group {"G1" \
+{/test_top/Conv_top/top_CNN/W\[0:15\]} \
+{/test_top/Conv_top/top_CNN/X\[0:15\]} \
+{/test_top/Conv_top/top_CNN/Y\[0:15\]} \
+{/test_top/Conv_top/top_CNN/bias\[3:0\]} \
+{/test_top/Conv_top/top_CNN/clk} \
+{/test_top/Conv_top/top_CNN/cnn_state\[4:0\]} \
+{/test_top/Conv_top/top_CNN/cnn_state_p} \
+{/test_top/Conv_top/top_CNN/cnn_state_pppp} \
+{/test_top/Conv_top/top_CNN/conv_out\[0:3\]} \
+{/test_top/Conv_top/top_CNN/conv_out_FF\[0:3\]} \
+{/test_top/Conv_top/top_CNN/feature_maps_o0\[15:0\]} \
+{/test_top/Conv_top/top_CNN/feature_maps_o1\[15:0\]} \
+{/test_top/Conv_top/top_CNN/feature_maps_o2\[15:0\]} \
+{/test_top/Conv_top/top_CNN/feature_maps_o3\[15:0\]} \
+{/test_top/Conv_top/top_CNN/feature_maps_temp_o\[0:3\]} \
+{/test_top/Conv_top/top_CNN/load_weight_finish} \
+{/test_top/Conv_top/top_CNN/max0\[7:0\]} \
+{/test_top/Conv_top/top_CNN/max1\[7:0\]} \
+{/test_top/Conv_top/top_CNN/max\[7:0\]} \
+{/test_top/Conv_top/top_CNN/read_bias_finish} \
+{/test_top/Conv_top/top_CNN/read_cnt\[10:0\]} \
+{/test_top/Conv_top/top_CNN/read_weight_finish} \
+{/test_top/Conv_top/top_CNN/rst_n} \
+{/test_top/Conv_top/top_CNN/state\[5:0\]} \
+{/test_top/Conv_top/top_CNN/state_p\[5:0\]} \
+{/test_top/Conv_top/top_CNN/temp_conv_out\[0:3\]} \
+{/test_top/Conv_top/top_CNN/x_cnt\[4:0\]} \
+{/test_top/Conv_top/top_CNN/x_cnt_ppp\[4:0\]} \
+{/test_top/Conv_top/top_CNN/y_cnt_ppp\[4:0\]} \
+{/test_top/Conv_top/bytemask/final_cnt\[10:0\]} \
+{/test_top/Conv_top/read_input_cnt_ppp\[1:0\]} \
+{/test_top/Conv_top/cnn_state_ppppppp} \
+{/test_top/Conv_top/sram_bytemask_b\[15:0\]} \
+{/test_top/Conv_top/sram_waddr_b\[5:0\]} \
+{/test_top/Conv_top/sram_wdata_b\[127:0\]} \
+{/test_top/Conv_top/sram_wen_b0} \
+{/test_top/Conv_top/sram_wen_b1} \
+{/test_top/Conv_top/sram_wen_b2} \
+{/test_top/Conv_top/sram_wen_b3} \
+{/test_top/Conv_top/valid} \
+}
+wvAddSignal -win $_nWave1 -group {"G2" \
+}
+wvSelectSignal -win $_nWave1 {( "G1" 40 )} 
+wvSetPosition -win $_nWave1 {("G1" 40)}
+wvSetPosition -win $_nWave1 {("G1" 40)}
+wvSetPosition -win $_nWave1 {("G1" 40)}
+wvAddSignal -win $_nWave1 -clear
+wvAddSignal -win $_nWave1 -group {"G1" \
+{/test_top/Conv_top/top_CNN/W\[0:15\]} \
+{/test_top/Conv_top/top_CNN/X\[0:15\]} \
+{/test_top/Conv_top/top_CNN/Y\[0:15\]} \
+{/test_top/Conv_top/top_CNN/bias\[3:0\]} \
+{/test_top/Conv_top/top_CNN/clk} \
+{/test_top/Conv_top/top_CNN/cnn_state\[4:0\]} \
+{/test_top/Conv_top/top_CNN/cnn_state_p} \
+{/test_top/Conv_top/top_CNN/cnn_state_pppp} \
+{/test_top/Conv_top/top_CNN/conv_out\[0:3\]} \
+{/test_top/Conv_top/top_CNN/conv_out_FF\[0:3\]} \
+{/test_top/Conv_top/top_CNN/feature_maps_o0\[15:0\]} \
+{/test_top/Conv_top/top_CNN/feature_maps_o1\[15:0\]} \
+{/test_top/Conv_top/top_CNN/feature_maps_o2\[15:0\]} \
+{/test_top/Conv_top/top_CNN/feature_maps_o3\[15:0\]} \
+{/test_top/Conv_top/top_CNN/feature_maps_temp_o\[0:3\]} \
+{/test_top/Conv_top/top_CNN/load_weight_finish} \
+{/test_top/Conv_top/top_CNN/max0\[7:0\]} \
+{/test_top/Conv_top/top_CNN/max1\[7:0\]} \
+{/test_top/Conv_top/top_CNN/max\[7:0\]} \
+{/test_top/Conv_top/top_CNN/read_bias_finish} \
+{/test_top/Conv_top/top_CNN/read_cnt\[10:0\]} \
+{/test_top/Conv_top/top_CNN/read_weight_finish} \
+{/test_top/Conv_top/top_CNN/rst_n} \
+{/test_top/Conv_top/top_CNN/state\[5:0\]} \
+{/test_top/Conv_top/top_CNN/state_p\[5:0\]} \
+{/test_top/Conv_top/top_CNN/temp_conv_out\[0:3\]} \
+{/test_top/Conv_top/top_CNN/x_cnt\[4:0\]} \
+{/test_top/Conv_top/top_CNN/x_cnt_ppp\[4:0\]} \
+{/test_top/Conv_top/top_CNN/y_cnt_ppp\[4:0\]} \
+{/test_top/Conv_top/bytemask/final_cnt\[10:0\]} \
+{/test_top/Conv_top/read_input_cnt_ppp\[1:0\]} \
+{/test_top/Conv_top/cnn_state_ppppppp} \
+{/test_top/Conv_top/sram_bytemask_b\[15:0\]} \
+{/test_top/Conv_top/sram_waddr_b\[5:0\]} \
+{/test_top/Conv_top/sram_wdata_b\[127:0\]} \
+{/test_top/Conv_top/sram_wen_b0} \
+{/test_top/Conv_top/sram_wen_b1} \
+{/test_top/Conv_top/sram_wen_b2} \
+{/test_top/Conv_top/sram_wen_b3} \
+{/test_top/Conv_top/valid} \
+}
+wvAddSignal -win $_nWave1 -group {"G2" \
+}
+wvSelectSignal -win $_nWave1 {( "G1" 40 )} 
+wvSetPosition -win $_nWave1 {("G1" 40)}
+wvGetSignalClose -win $_nWave1
+wvSetCursor -win $_nWave1 683927.182777 -snap {("G1" 40)}
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
 wvResizeWindow -win $_nWave1 0 23 1217 697
-wvSelectSignal -win $_nWave1 {( "G1" 19 )} 
-wvSetPosition -win $_nWave1 {("G1" 19)}
-wvExpandBus -win $_nWave1 {("G1" 19)}
-wvSetPosition -win $_nWave1 {("G1" 62)}
 wvZoomOut -win $_nWave1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
+wvSetCursor -win $_nWave1 453688.741325 -snap {("G1" 38)}
+wvSetCursor -win $_nWave1 447212.716088 -snap {("G1" 37)}
 wvZoomIn -win $_nWave1
+wvZoomIn -win $_nWave1
+wvZoomIn -win $_nWave1
+wvZoomIn -win $_nWave1
+wvZoomIn -win $_nWave1
+wvZoomIn -win $_nWave1
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvSetCursor -win $_nWave1 341864.987431 -snap {("G1" 36)}
 wvZoomIn -win $_nWave1
 wvZoomOut -win $_nWave1
 wvZoomOut -win $_nWave1
 wvZoomOut -win $_nWave1
-wvSetCursor -win $_nWave1 82180.057377 -snap {("G1" 2)}
-wvSetCursor -win $_nWave1 84196.745902 -snap {("G1" 2)}
-wvSetCursor -win $_nWave1 80835.598361 -snap {("G1" 2)}
-wvSetCursor -win $_nWave1 84700.918033 -snap {("G1" 18)}
-wvZoomIn -win $_nWave1
-wvZoomIn -win $_nWave1
-wvZoomIn -win $_nWave1
 wvZoomOut -win $_nWave1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvSetCursor -win $_nWave1 87079.921569 -snap {("G1" 35)}
-wvScrollUp -win $_nWave1 7
-wvSelectSignal -win $_nWave1 {( "G1" 13 )} 
+wvSetCursor -win $_nWave1 148082.908516 -snap {("G1" 36)}
+wvZoomIn -win $_nWave1
+wvZoomIn -win $_nWave1
+wvZoomIn -win $_nWave1
+wvZoomIn -win $_nWave1
+wvSetCursor -win $_nWave1 173848.119157 -snap {("G1" 36)}
+wvZoomIn -win $_nWave1
+wvZoomIn -win $_nWave1
 wvScrollUp -win $_nWave1 1
 wvScrollUp -win $_nWave1 1
+wvZoomOut -win $_nWave1
+wvZoomOut -win $_nWave1
+wvZoomOut -win $_nWave1
+wvZoomOut -win $_nWave1
+wvZoomOut -win $_nWave1
+wvZoomOut -win $_nWave1
+wvSetCursor -win $_nWave1 148850.446719 -snap {("G1" 36)}
+wvZoomIn -win $_nWave1
+wvZoomIn -win $_nWave1
+wvZoomIn -win $_nWave1
+wvZoomIn -win $_nWave1
+wvZoomIn -win $_nWave1
+wvZoomIn -win $_nWave1
+wvZoomIn -win $_nWave1
+wvZoomIn -win $_nWave1
+wvSetCursor -win $_nWave1 148650.693980 -snap {("G1" 36)}
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 0
 wvScrollUp -win $_nWave1 1
 wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
 wvScrollDown -win $_nWave1 0
 wvScrollDown -win $_nWave1 0
 wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvSetCursor -win $_nWave1 84417.626487 -snap {("G1" 18)}
-wvSetCursor -win $_nWave1 84916.806815 -snap {("G1" 13)}
-wvScrollDown -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollDown -win $_nWave1 0
+wvZoomOut -win $_nWave1
+wvZoomOut -win $_nWave1
+wvGetSignalOpen -win $_nWave1
+wvGetSignalSetScope -win $_nWave1 "/test_top"
+wvGetSignalSetScope -win $_nWave1 "/test_top/Conv_top"
+wvGetSignalSetScope -win $_nWave1 "/test_top/Conv_top/bytemask"
+wvGetSignalSetScope -win $_nWave1 "/test_top/Conv_top"
+wvGetSignalSetScope -win $_nWave1 "/test_top"
+wvGetSignalSetScope -win $_nWave1 "/test_top/sram_36x128b_b0"
+wvGetSignalClose -win $_nWave1
 wvDisplayGridCount -win $_nWave1 -off
 wvGetSignalClose -win $_nWave1
 wvReloadFile -win $_nWave1
-wvSetCursor -win $_nWave1 79417.711528 -snap {("G1" 13)}
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvSetCursor -win $_nWave1 84617.506610 -snap {("G1" 18)}
-wvSetCursor -win $_nWave1 86489.432840 -snap {("G1" 10)}
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvSelectSignal -win $_nWave1 {( "G1" 19 )} 
-wvSelectSignal -win $_nWave1 {( "G1" 19 )} 
-wvSetPosition -win $_nWave1 {("G1" 19)}
-wvCollapseBus -win $_nWave1 {("G1" 19)}
-wvSetPosition -win $_nWave1 {("G1" 19)}
-wvSetPosition -win $_nWave1 {("G1" 46)}
-wvScrollDown -win $_nWave1 6
+wvGetSignalOpen -win $_nWave1
+wvGetSignalSetScope -win $_nWave1 "/test_top/sram_36x128b_a0"
+wvGetSignalSetScope -win $_nWave1 "/test_top/sram_36x128b_b0"
+wvGetSignalSetScope -win $_nWave1 "/test_top/sram_36x128b_b1"
+wvGetSignalSetScope -win $_nWave1 "/test_top/sram_36x128b_b0"
+wvSetPosition -win $_nWave1 {("G1" 41)}
+wvSetPosition -win $_nWave1 {("G1" 41)}
+wvAddSignal -win $_nWave1 -clear
+wvAddSignal -win $_nWave1 -group {"G1" \
+{/test_top/Conv_top/top_CNN/W\[0:15\]} \
+{/test_top/Conv_top/top_CNN/X\[0:15\]} \
+{/test_top/Conv_top/top_CNN/Y\[0:15\]} \
+{/test_top/Conv_top/top_CNN/bias\[3:0\]} \
+{/test_top/Conv_top/top_CNN/clk} \
+{/test_top/Conv_top/top_CNN/cnn_state\[4:0\]} \
+{/test_top/Conv_top/top_CNN/cnn_state_p} \
+{/test_top/Conv_top/top_CNN/cnn_state_pppp} \
+{/test_top/Conv_top/top_CNN/conv_out\[0:3\]} \
+{/test_top/Conv_top/top_CNN/conv_out_FF\[0:3\]} \
+{/test_top/Conv_top/top_CNN/feature_maps_o0\[15:0\]} \
+{/test_top/Conv_top/top_CNN/feature_maps_o1\[15:0\]} \
+{/test_top/Conv_top/top_CNN/feature_maps_o2\[15:0\]} \
+{/test_top/Conv_top/top_CNN/feature_maps_o3\[15:0\]} \
+{/test_top/Conv_top/top_CNN/feature_maps_temp_o\[0:3\]} \
+{/test_top/Conv_top/top_CNN/load_weight_finish} \
+{/test_top/Conv_top/top_CNN/max0\[7:0\]} \
+{/test_top/Conv_top/top_CNN/max1\[7:0\]} \
+{/test_top/Conv_top/top_CNN/max\[7:0\]} \
+{/test_top/Conv_top/top_CNN/read_bias_finish} \
+{/test_top/Conv_top/top_CNN/read_cnt\[10:0\]} \
+{/test_top/Conv_top/top_CNN/read_weight_finish} \
+{/test_top/Conv_top/top_CNN/rst_n} \
+{/test_top/Conv_top/top_CNN/state\[5:0\]} \
+{/test_top/Conv_top/top_CNN/state_p\[5:0\]} \
+{/test_top/Conv_top/top_CNN/temp_conv_out\[0:3\]} \
+{/test_top/Conv_top/top_CNN/x_cnt\[4:0\]} \
+{/test_top/Conv_top/top_CNN/x_cnt_ppp\[4:0\]} \
+{/test_top/Conv_top/top_CNN/y_cnt_ppp\[4:0\]} \
+{/test_top/Conv_top/bytemask/final_cnt\[10:0\]} \
+{/test_top/Conv_top/read_input_cnt_ppp\[1:0\]} \
+{/test_top/Conv_top/cnn_state_ppppppp} \
+{/test_top/Conv_top/sram_bytemask_b\[15:0\]} \
+{/test_top/Conv_top/sram_waddr_b\[5:0\]} \
+{/test_top/Conv_top/sram_wdata_b\[127:0\]} \
+{/test_top/Conv_top/sram_wen_b0} \
+{/test_top/Conv_top/sram_wen_b1} \
+{/test_top/Conv_top/sram_wen_b2} \
+{/test_top/Conv_top/sram_wen_b3} \
+{/test_top/Conv_top/valid} \
+{/test_top/sram_36x128b_b0/mem\[0:36\]} \
+}
+wvAddSignal -win $_nWave1 -group {"G2" \
+}
+wvSelectSignal -win $_nWave1 {( "G1" 41 )} 
+wvSetPosition -win $_nWave1 {("G1" 41)}
+wvGetSignalSetScope -win $_nWave1 "/test_top/sram_36x128b_b1"
+wvSetPosition -win $_nWave1 {("G1" 42)}
+wvSetPosition -win $_nWave1 {("G1" 42)}
+wvAddSignal -win $_nWave1 -clear
+wvAddSignal -win $_nWave1 -group {"G1" \
+{/test_top/Conv_top/top_CNN/W\[0:15\]} \
+{/test_top/Conv_top/top_CNN/X\[0:15\]} \
+{/test_top/Conv_top/top_CNN/Y\[0:15\]} \
+{/test_top/Conv_top/top_CNN/bias\[3:0\]} \
+{/test_top/Conv_top/top_CNN/clk} \
+{/test_top/Conv_top/top_CNN/cnn_state\[4:0\]} \
+{/test_top/Conv_top/top_CNN/cnn_state_p} \
+{/test_top/Conv_top/top_CNN/cnn_state_pppp} \
+{/test_top/Conv_top/top_CNN/conv_out\[0:3\]} \
+{/test_top/Conv_top/top_CNN/conv_out_FF\[0:3\]} \
+{/test_top/Conv_top/top_CNN/feature_maps_o0\[15:0\]} \
+{/test_top/Conv_top/top_CNN/feature_maps_o1\[15:0\]} \
+{/test_top/Conv_top/top_CNN/feature_maps_o2\[15:0\]} \
+{/test_top/Conv_top/top_CNN/feature_maps_o3\[15:0\]} \
+{/test_top/Conv_top/top_CNN/feature_maps_temp_o\[0:3\]} \
+{/test_top/Conv_top/top_CNN/load_weight_finish} \
+{/test_top/Conv_top/top_CNN/max0\[7:0\]} \
+{/test_top/Conv_top/top_CNN/max1\[7:0\]} \
+{/test_top/Conv_top/top_CNN/max\[7:0\]} \
+{/test_top/Conv_top/top_CNN/read_bias_finish} \
+{/test_top/Conv_top/top_CNN/read_cnt\[10:0\]} \
+{/test_top/Conv_top/top_CNN/read_weight_finish} \
+{/test_top/Conv_top/top_CNN/rst_n} \
+{/test_top/Conv_top/top_CNN/state\[5:0\]} \
+{/test_top/Conv_top/top_CNN/state_p\[5:0\]} \
+{/test_top/Conv_top/top_CNN/temp_conv_out\[0:3\]} \
+{/test_top/Conv_top/top_CNN/x_cnt\[4:0\]} \
+{/test_top/Conv_top/top_CNN/x_cnt_ppp\[4:0\]} \
+{/test_top/Conv_top/top_CNN/y_cnt_ppp\[4:0\]} \
+{/test_top/Conv_top/bytemask/final_cnt\[10:0\]} \
+{/test_top/Conv_top/read_input_cnt_ppp\[1:0\]} \
+{/test_top/Conv_top/cnn_state_ppppppp} \
+{/test_top/Conv_top/sram_bytemask_b\[15:0\]} \
+{/test_top/Conv_top/sram_waddr_b\[5:0\]} \
+{/test_top/Conv_top/sram_wdata_b\[127:0\]} \
+{/test_top/Conv_top/sram_wen_b0} \
+{/test_top/Conv_top/sram_wen_b1} \
+{/test_top/Conv_top/sram_wen_b2} \
+{/test_top/Conv_top/sram_wen_b3} \
+{/test_top/Conv_top/valid} \
+{/test_top/sram_36x128b_b0/mem\[0:36\]} \
+{/test_top/sram_36x128b_b1/mem\[0:36\]} \
+}
+wvAddSignal -win $_nWave1 -group {"G2" \
+}
+wvSelectSignal -win $_nWave1 {( "G1" 42 )} 
+wvSetPosition -win $_nWave1 {("G1" 42)}
+wvSetPosition -win $_nWave1 {("G1" 42)}
+wvSetPosition -win $_nWave1 {("G1" 42)}
+wvAddSignal -win $_nWave1 -clear
+wvAddSignal -win $_nWave1 -group {"G1" \
+{/test_top/Conv_top/top_CNN/W\[0:15\]} \
+{/test_top/Conv_top/top_CNN/X\[0:15\]} \
+{/test_top/Conv_top/top_CNN/Y\[0:15\]} \
+{/test_top/Conv_top/top_CNN/bias\[3:0\]} \
+{/test_top/Conv_top/top_CNN/clk} \
+{/test_top/Conv_top/top_CNN/cnn_state\[4:0\]} \
+{/test_top/Conv_top/top_CNN/cnn_state_p} \
+{/test_top/Conv_top/top_CNN/cnn_state_pppp} \
+{/test_top/Conv_top/top_CNN/conv_out\[0:3\]} \
+{/test_top/Conv_top/top_CNN/conv_out_FF\[0:3\]} \
+{/test_top/Conv_top/top_CNN/feature_maps_o0\[15:0\]} \
+{/test_top/Conv_top/top_CNN/feature_maps_o1\[15:0\]} \
+{/test_top/Conv_top/top_CNN/feature_maps_o2\[15:0\]} \
+{/test_top/Conv_top/top_CNN/feature_maps_o3\[15:0\]} \
+{/test_top/Conv_top/top_CNN/feature_maps_temp_o\[0:3\]} \
+{/test_top/Conv_top/top_CNN/load_weight_finish} \
+{/test_top/Conv_top/top_CNN/max0\[7:0\]} \
+{/test_top/Conv_top/top_CNN/max1\[7:0\]} \
+{/test_top/Conv_top/top_CNN/max\[7:0\]} \
+{/test_top/Conv_top/top_CNN/read_bias_finish} \
+{/test_top/Conv_top/top_CNN/read_cnt\[10:0\]} \
+{/test_top/Conv_top/top_CNN/read_weight_finish} \
+{/test_top/Conv_top/top_CNN/rst_n} \
+{/test_top/Conv_top/top_CNN/state\[5:0\]} \
+{/test_top/Conv_top/top_CNN/state_p\[5:0\]} \
+{/test_top/Conv_top/top_CNN/temp_conv_out\[0:3\]} \
+{/test_top/Conv_top/top_CNN/x_cnt\[4:0\]} \
+{/test_top/Conv_top/top_CNN/x_cnt_ppp\[4:0\]} \
+{/test_top/Conv_top/top_CNN/y_cnt_ppp\[4:0\]} \
+{/test_top/Conv_top/bytemask/final_cnt\[10:0\]} \
+{/test_top/Conv_top/read_input_cnt_ppp\[1:0\]} \
+{/test_top/Conv_top/cnn_state_ppppppp} \
+{/test_top/Conv_top/sram_bytemask_b\[15:0\]} \
+{/test_top/Conv_top/sram_waddr_b\[5:0\]} \
+{/test_top/Conv_top/sram_wdata_b\[127:0\]} \
+{/test_top/Conv_top/sram_wen_b0} \
+{/test_top/Conv_top/sram_wen_b1} \
+{/test_top/Conv_top/sram_wen_b2} \
+{/test_top/Conv_top/sram_wen_b3} \
+{/test_top/Conv_top/valid} \
+{/test_top/sram_36x128b_b0/mem\[0:36\]} \
+{/test_top/sram_36x128b_b1/mem\[0:36\]} \
+}
+wvAddSignal -win $_nWave1 -group {"G2" \
+}
+wvSelectSignal -win $_nWave1 {( "G1" 42 )} 
+wvSetPosition -win $_nWave1 {("G1" 42)}
+wvGetSignalClose -win $_nWave1
+wvSelectSignal -win $_nWave1 {( "G1" 41 )} 
+wvSetPosition -win $_nWave1 {("G1" 41)}
+wvExpandBus -win $_nWave1 {("G1" 41)}
+wvSetPosition -win $_nWave1 {("G1" 79)}
 wvScrollUp -win $_nWave1 1
 wvScrollUp -win $_nWave1 1
-wvScrollDown -win $_nWave1 6
-wvSelectSignal -win $_nWave1 {( "G1" 30 )} 
-wvSetPosition -win $_nWave1 {("G1" 30)}
-wvCollapseBus -win $_nWave1 {("G1" 30)}
-wvSetPosition -win $_nWave1 {("G1" 30)}
-wvScrollUp -win $_nWave1 4
-wvSelectSignal -win $_nWave1 {( "G1" 14 )} 
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvSelectSignal -win $_nWave1 {( "G1" 42 )} 
+wvSetPosition -win $_nWave1 {("G1" 42)}
+wvExpandBus -win $_nWave1 {("G1" 42)}
+wvSetPosition -win $_nWave1 {("G1" 207)}
+wvScrollUp -win $_nWave1 18
+wvScrollUp -win $_nWave1 93
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvSetCursor -win $_nWave1 283144.713129 -snap {("G1" 45)}
+wvZoomOut -win $_nWave1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvZoomOut -win $_nWave1
+wvZoomOut -win $_nWave1
+wvSetCursor -win $_nWave1 283119.669125 -snap {("G1" 36)}
+wvSetCursor -win $_nWave1 283052.885115 -snap {("G1" 36)}
+wvSetCursor -win $_nWave1 283186.453135 -snap {("G1" 36)}
+wvSetCursor -win $_nWave1 282952.709099 -snap {("G1" 36)}
+wvSelectSignal -win $_nWave1 {( "G1" 34 )} 
+wvSelectSignal -win $_nWave1 {( "G1" 34 )} 
+wvSetRadix -win $_nWave1 -format UDec
+wvSetCursor -win $_nWave1 280732.140759 -snap {("G1" 34)}
+wvZoomOut -win $_nWave1
+wvZoomOut -win $_nWave1
+wvZoomOut -win $_nWave1
+wvZoomOut -win $_nWave1
+wvSetCursor -win $_nWave1 155749.684359 -snap {("G1" 34)}
+wvZoomIn -win $_nWave1
+wvZoomIn -win $_nWave1
+wvZoomIn -win $_nWave1
+wvZoomIn -win $_nWave1
+wvZoomIn -win $_nWave1
+wvSetCursor -win $_nWave1 154489.712648 -snap {("G1" 34)}
+wvSetCursor -win $_nWave1 154648.324672 -snap {("G1" 31)}
+wvSetCursor -win $_nWave1 154731.804685 -snap {("G1" 31)}
+wvSetCursor -win $_nWave1 154681.716677 -snap {("G1" 31)}
+wvSetCursor -win $_nWave1 154756.848689 -snap {("G1" 34)}
+wvSetCursor -win $_nWave1 154681.716677 -snap {("G1" 31)}
+wvSelectSignal -win $_nWave1 {( "G1" 31 )} 
+wvZoomOut -win $_nWave1
+wvZoomOut -win $_nWave1
+wvZoomOut -win $_nWave1
+wvSetCursor -win $_nWave1 221833.349353 -snap {("G1" 34)}
+wvZoomIn -win $_nWave1
+wvZoomIn -win $_nWave1
+wvSetCursor -win $_nWave1 225890.477975 -snap {("G1" 34)}
+wvZoomIn -win $_nWave1
+wvZoomIn -win $_nWave1
+wvSetCursor -win $_nWave1 221862.345987 -snap {("G1" 34)}
+wvSetCursor -win $_nWave1 221929.129997 -snap {("G1" 34)}
+wvSetCursor -win $_nWave1 221858.171986 -snap {("G1" 34)}
+wvZoomOut -win $_nWave1
+wvZoomOut -win $_nWave1
+wvZoomOut -win $_nWave1
+wvSetCursor -win $_nWave1 215513.691013 -snap {("G1" 34)}
 wvDisplayGridCount -win $_nWave1 -off
 wvGetSignalClose -win $_nWave1
 wvReloadFile -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvSelectSignal -win $_nWave1 {( "G1" 18 )} 
-wvSetCursor -win $_nWave1 84532.860656 -snap {("G1" 18)}
+wvSetCursor -win $_nWave1 448446.301149 -snap {("G1" 34)}
 wvZoomIn -win $_nWave1
+wvSetCursor -win $_nWave1 448629.957177 -snap {("G1" 35)}
+wvSetCursor -win $_nWave1 448613.261175 -snap {("G1" 36)}
 wvZoomIn -win $_nWave1
-wvZoomIn -win $_nWave1
-wvZoomIn -win $_nWave1
-wvSelectSignal -win $_nWave1 {( "G1" 13 )} 
-wvSelectSignal -win $_nWave1 {( "G1" 14 )} 
-wvDisplayGridCount -win $_nWave1 -off
-wvGetSignalClose -win $_nWave1
-wvReloadFile -win $_nWave1
-wvSetCursor -win $_nWave1 90204.364294 -snap {("G1" 14)}
-wvDisplayGridCount -win $_nWave1 -off
-wvGetSignalClose -win $_nWave1
-wvReloadFile -win $_nWave1
-wvSetCursor -win $_nWave1 79781.778059 -snap {("G1" 14)}
-wvSetCursor -win $_nWave1 78429.831338 -snap {("G1" 13)}
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvSetCursor -win $_nWave1 84381.520353 -snap {("G1" 30)}
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomIn -win $_nWave1
-wvZoomIn -win $_nWave1
-wvZoomIn -win $_nWave1
-wvZoomIn -win $_nWave1
-wvZoomIn -win $_nWave1
-wvZoomIn -win $_nWave1
-wvZoomIn -win $_nWave1
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvSetCursor -win $_nWave1 92548.374509 -snap {("G1" 18)}
-wvScrollDown -win $_nWave1 0
 wvScrollUp -win $_nWave1 1
 wvScrollUp -win $_nWave1 1
 wvScrollUp -win $_nWave1 1
 wvScrollUp -win $_nWave1 1
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
 wvScrollDown -win $_nWave1 1
 wvScrollDown -win $_nWave1 1
 wvScrollDown -win $_nWave1 1
 wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvSetCursor -win $_nWave1 86157.032787 -snap {("G1" 23)}
-wvSetCursor -win $_nWave1 86179.495902 -snap {("G1" 30)}
-wvSetCursor -win $_nWave1 86179.495902 -snap {("G1" 30)}
-wvSetCursor -win $_nWave1 86179.495902 -snap {("G1" 30)}
-wvSelectSignal -win $_nWave1 {( "G1" 30 )} 
-wvExpandBus -win $_nWave1 {("G1" 30)}
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
 wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvDisplayGridCount -win $_nWave1 -off
-wvGetSignalClose -win $_nWave1
-wvReloadFile -win $_nWave1
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvSelectSignal -win $_nWave1 {( "G1" 30 )} 
-wvSelectSignal -win $_nWave1 {( "G1" 30 )} 
-wvScrollUp -win $_nWave1 3
-wvScrollUp -win $_nWave1 5
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvSetCursor -win $_nWave1 448725.124392 -snap {("G1" 36)}
+wvSetCursor -win $_nWave1 448641.644379 -snap {("G1" 36)}
+wvSetCursor -win $_nWave1 448758.516397 -snap {("G1" 36)}
+wvSetCursor -win $_nWave1 448675.036384 -snap {("G1" 36)}
+wvZoomOut -win $_nWave1
+wvExit

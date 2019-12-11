@@ -1,0 +1,145 @@
+ 
+****************************************
+Report : area
+Design : Convnet_top
+Version: O-2018.06
+Date   : Thu Dec 12 06:58:26 2019
+****************************************
+
+Library(s) Used:
+
+    saed32hvt_ss0p95v125c (File: /usr/cadtool/SAED32_EDK/lib/stdcell_hvt/db_nldm/saed32hvt_ss0p95v125c.db)
+
+Number of ports:                         5066
+Number of nets:                         37607
+Number of cells:                        29772
+Number of combinational cells:          27865
+Number of sequential cells:              1809
+Number of macros/black boxes:               0
+Number of buf/inv:                      11065
+Number of references:                      35
+
+Combinational area:              66471.616585
+Buf/Inv area:                    14090.251703
+Noncombinational area:           12378.337754
+Macro/Black Box area:                0.000000
+Net Interconnect area:           17596.346878
+
+Total cell area:                 78849.954339
+Total area:                      96446.301217
+
+Hierarchical area distribution
+------------------------------
+
+                                  Global cell area            Local cell area
+                                  -------------------  ------------------------------ 
+Hierarchical cell                 Absolute    Percent  Combi-      Noncombi-   Black-
+                                  Total       Total    national    national    boxes   Design
+--------------------------------  ----------  -------  ----------  ----------  ------  -------------------------------------------
+Convnet_top                       78849.9543    100.0   1049.8689   1008.4434  0.0000  Convnet_top
+addr                               1618.8973      2.1    933.4709    601.5589  0.0000  addr
+addr/clk_gate_final_cnt_reg           8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_addr_mydesign_7
+addr/clk_gate_final_cnt_reg_0         8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_addr_mydesign_6
+addr/clk_gate_sram_raddr_b1_reg       8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_addr_mydesign_3
+addr/clk_gate_sram_raddr_b2_reg       8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_addr_mydesign_2
+addr/clk_gate_sram_raddr_b3_reg       8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_addr_mydesign_1
+addr/clk_gate_sram_raddr_bias_reg     8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_addr_mydesign_4
+addr/clk_gate_sram_raddr_weight_reg
+                                      8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_addr_mydesign_0
+addr/clk_gate_sram_raddr_weight_reg_0
+                                      8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_addr_mydesign_9
+addr/clk_gate_sram_waddr_a_reg        8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_addr_mydesign_8
+addr/clk_gate_sram_waddr_b_reg        8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_addr_mydesign_5
+bytemask                            405.3597      0.5    177.1384    211.4478  0.0000  bytemask
+bytemask/clk_gate_sram_bytemask_a_reg
+                                      8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_bytemask_mydesign_0
+bytemask/clk_gate_sram_bytemask_a_reg_0
+                                      8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_bytemask_mydesign_1
+clk_gate_state_reg                    8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_Convnet_top_mydesign_0
+clk_gate_y_cnt_reg                    8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_Convnet_top
+top_CNN                           74638.7882     94.7  17271.6261   8513.5699  0.0000  top_CNN
+top_CNN/CNN2D_0                    3006.5235      3.8   2907.4073     99.1162  0.0000  CNN2D_mydesign_15
+top_CNN/CNN2D_1                    2712.9872      3.4   2607.2633    105.7239  0.0000  CNN2D_mydesign_14
+top_CNN/CNN2D_10                   3056.5898      3.9   2957.4737     99.1162  0.0000  CNN2D_mydesign_5
+top_CNN/CNN2D_11                   3049.7280      3.9   2950.6118     99.1162  0.0000  CNN2D_mydesign_4
+top_CNN/CNN2D_12                   3016.4351      3.8   2917.3189     99.1162  0.0000  CNN2D_mydesign_3
+top_CNN/CNN2D_13                   3016.4351      3.8   2917.3189     99.1162  0.0000  CNN2D_mydesign_2
+top_CNN/CNN2D_14                   3022.5346      3.8   2923.4184     99.1162  0.0000  CNN2D_mydesign_1
+top_CNN/CNN2D_15                   3004.9986      3.8   2905.8825     99.1162  0.0000  CNN2D_mydesign_0
+top_CNN/CNN2D_2                    3056.3357      3.9   2957.2195     99.1162  0.0000  CNN2D_mydesign_13
+top_CNN/CNN2D_3                    3016.1810      3.8   2917.0648     99.1162  0.0000  CNN2D_mydesign_12
+top_CNN/CNN2D_4                    3062.6893      3.9   2963.5731     99.1162  0.0000  CNN2D_mydesign_11
+top_CNN/CNN2D_5                    3061.6727      3.9   2962.5566     99.1162  0.0000  CNN2D_mydesign_10
+top_CNN/CNN2D_6                    3062.6893      3.9   2963.5731     99.1162  0.0000  CNN2D_mydesign_9
+top_CNN/CNN2D_7                    3021.0097      3.8   2921.8935     99.1162  0.0000  CNN2D_mydesign_8
+top_CNN/CNN2D_8                    3069.8053      3.9   2970.6892     99.1162  0.0000  CNN2D_mydesign_7
+top_CNN/CNN2D_9                    3080.2252      3.9   2981.1091     99.1162  0.0000  CNN2D_mydesign_6
+top_CNN/clk_gate_W_reg_0__0__0_       8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_0
+top_CNN/clk_gate_W_reg_0__0__2_       8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_63
+top_CNN/clk_gate_W_reg_0__1__1_       8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_62
+top_CNN/clk_gate_W_reg_0__2__0_       8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_61
+top_CNN/clk_gate_W_reg_10__0__0_      8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_24
+top_CNN/clk_gate_W_reg_10__0__2_      8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_23
+top_CNN/clk_gate_W_reg_10__1__1_      8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_22
+top_CNN/clk_gate_W_reg_10__2__0_      8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_21
+top_CNN/clk_gate_W_reg_11__0__0_      8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_20
+top_CNN/clk_gate_W_reg_11__0__2_      8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_19
+top_CNN/clk_gate_W_reg_11__1__1_      8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_18
+top_CNN/clk_gate_W_reg_11__2__0_      8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_17
+top_CNN/clk_gate_W_reg_12__0__0_      8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_16
+top_CNN/clk_gate_W_reg_12__0__2_      8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_15
+top_CNN/clk_gate_W_reg_12__1__1_      8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_14
+top_CNN/clk_gate_W_reg_12__2__0_      8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_13
+top_CNN/clk_gate_W_reg_13__0__0_      8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_12
+top_CNN/clk_gate_W_reg_13__0__2_      8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_11
+top_CNN/clk_gate_W_reg_13__1__1_      8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_10
+top_CNN/clk_gate_W_reg_13__2__0_      8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_9
+top_CNN/clk_gate_W_reg_14__0__0_      8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_8
+top_CNN/clk_gate_W_reg_14__0__2_      8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_7
+top_CNN/clk_gate_W_reg_14__1__1_      8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_6
+top_CNN/clk_gate_W_reg_14__2__0_      8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_5
+top_CNN/clk_gate_W_reg_15__0__0_      8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_4
+top_CNN/clk_gate_W_reg_15__0__2_      8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_3
+top_CNN/clk_gate_W_reg_15__1__1_      8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_2
+top_CNN/clk_gate_W_reg_15__2__0_      8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_1
+top_CNN/clk_gate_W_reg_1__0__0_       8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_60
+top_CNN/clk_gate_W_reg_1__0__2_       8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_59
+top_CNN/clk_gate_W_reg_1__1__1_       8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_58
+top_CNN/clk_gate_W_reg_1__2__0_       8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_57
+top_CNN/clk_gate_W_reg_2__0__0_       8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_56
+top_CNN/clk_gate_W_reg_2__0__2_       8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_55
+top_CNN/clk_gate_W_reg_2__1__1_       8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_54
+top_CNN/clk_gate_W_reg_2__2__0_       8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_53
+top_CNN/clk_gate_W_reg_3__0__0_       8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_52
+top_CNN/clk_gate_W_reg_3__0__2_       8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_51
+top_CNN/clk_gate_W_reg_3__1__1_       8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_50
+top_CNN/clk_gate_W_reg_3__2__0_       8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_49
+top_CNN/clk_gate_W_reg_4__0__0_       8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_48
+top_CNN/clk_gate_W_reg_4__0__2_       8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_47
+top_CNN/clk_gate_W_reg_4__1__1_       8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_46
+top_CNN/clk_gate_W_reg_4__2__0_       8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_45
+top_CNN/clk_gate_W_reg_5__0__0_       8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_44
+top_CNN/clk_gate_W_reg_5__0__2_       8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_43
+top_CNN/clk_gate_W_reg_5__1__1_       8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_42
+top_CNN/clk_gate_W_reg_5__2__0_       8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_41
+top_CNN/clk_gate_W_reg_6__0__0_       8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_40
+top_CNN/clk_gate_W_reg_6__0__2_       8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_39
+top_CNN/clk_gate_W_reg_6__1__1_       8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_38
+top_CNN/clk_gate_W_reg_6__2__0_       8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_37
+top_CNN/clk_gate_W_reg_7__0__0_       8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_36
+top_CNN/clk_gate_W_reg_7__0__2_       8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_35
+top_CNN/clk_gate_W_reg_7__1__1_       8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_34
+top_CNN/clk_gate_W_reg_7__2__0_       8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_33
+top_CNN/clk_gate_W_reg_8__0__0_       8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_32
+top_CNN/clk_gate_W_reg_8__0__2_       8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_31
+top_CNN/clk_gate_W_reg_8__1__1_       8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_30
+top_CNN/clk_gate_W_reg_8__2__0_       8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_29
+top_CNN/clk_gate_W_reg_9__0__0_       8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_28
+top_CNN/clk_gate_W_reg_9__0__2_       8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_27
+top_CNN/clk_gate_W_reg_9__1__1_       8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_26
+top_CNN/clk_gate_W_reg_9__2__0_       8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_25
+wen                                 111.8234      0.1     57.4365     54.3868  0.0000  wen
+--------------------------------  ----------  -------  ----------  ----------  ------  -------------------------------------------
+Total                                                  66471.6166  12378.3378  0.0000
+
+1

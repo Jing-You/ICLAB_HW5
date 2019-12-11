@@ -2,7 +2,7 @@
 set TOPLEVEL "Convnet_top"
 
 # change your timing constraint here
-set TEST_CYCLE 10
+set TEST_CYCLE 2.7
 
 source -echo -verbose 0_readfile.tcl 
 source -echo -verbose 1_setting.tcl 

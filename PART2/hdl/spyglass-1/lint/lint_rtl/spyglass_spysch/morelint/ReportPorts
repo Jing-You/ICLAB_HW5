@@ -1,0 +1,42 @@
+SCHEMA@@PName@@Dir@@Msb@@Lsb@@Desc@@DU@@DU_BBOX
+VALUE@@clk@@INPUT@@0@@0@@clock input@@Convnet_top@@No
+VALUE@@rst_n@@INPUT@@0@@0@@synchronous reset (active low)@@Convnet_top@@No
+VALUE@@enable@@INPUT@@0@@0@@-@@Convnet_top@@No
+VALUE@@input_data@@INPUT@@7@@0@@input image@@Convnet_top@@No
+VALUE@@sram_rdata_a0@@INPUT@@127@@0@@read data from SRAM group A@@Convnet_top@@No
+VALUE@@sram_rdata_a1@@INPUT@@127@@0@@-@@Convnet_top@@No
+VALUE@@sram_rdata_a2@@INPUT@@127@@0@@-@@Convnet_top@@No
+VALUE@@sram_rdata_a3@@INPUT@@127@@0@@-@@Convnet_top@@No
+VALUE@@sram_rdata_b0@@INPUT@@127@@0@@read data from SRAM group B@@Convnet_top@@No
+VALUE@@sram_rdata_b1@@INPUT@@127@@0@@-@@Convnet_top@@No
+VALUE@@sram_rdata_b2@@INPUT@@127@@0@@-@@Convnet_top@@No
+VALUE@@sram_rdata_b3@@INPUT@@127@@0@@-@@Convnet_top@@No
+VALUE@@sram_rdata_weight@@INPUT@@35@@0@@read data from SRAM weight@@Convnet_top@@No
+VALUE@@sram_rdata_bias@@INPUT@@3@@0@@read data from SRAM bias@@Convnet_top@@No
+VALUE@@sram_raddr_a0@@OUTPUT@@5@@0@@read address from SRAM group A@@Convnet_top@@No
+VALUE@@sram_raddr_a1@@OUTPUT@@5@@0@@-@@Convnet_top@@No
+VALUE@@sram_raddr_a2@@OUTPUT@@5@@0@@-@@Convnet_top@@No
+VALUE@@sram_raddr_a3@@OUTPUT@@5@@0@@-@@Convnet_top@@No
+VALUE@@sram_raddr_b0@@OUTPUT@@5@@0@@read address from SRAM group B@@Convnet_top@@No
+VALUE@@sram_raddr_b1@@OUTPUT@@5@@0@@-@@Convnet_top@@No
+VALUE@@sram_raddr_b2@@OUTPUT@@5@@0@@-@@Convnet_top@@No
+VALUE@@sram_raddr_b3@@OUTPUT@@5@@0@@-@@Convnet_top@@No
+VALUE@@sram_raddr_weight@@OUTPUT@@10@@0@@read address from SRAM weight  @@Convnet_top@@No
+VALUE@@sram_raddr_bias@@OUTPUT@@6@@0@@read address from SRAM bias @@Convnet_top@@No
+VALUE@@busy@@OUTPUT@@0@@0@@-@@Convnet_top@@No
+VALUE@@test_layer_finish@@OUTPUT@@0@@0@@-@@Convnet_top@@No
+VALUE@@valid@@OUTPUT@@0@@0@@output valid to check the final ...@@Convnet_top@@No
+VALUE@@sram_wen_a0@@OUTPUT@@0@@0@@write enable for SRAM groups A & B@@Convnet_top@@No
+VALUE@@sram_wen_a1@@OUTPUT@@0@@0@@-@@Convnet_top@@No
+VALUE@@sram_wen_a2@@OUTPUT@@0@@0@@-@@Convnet_top@@No
+VALUE@@sram_wen_a3@@OUTPUT@@0@@0@@-@@Convnet_top@@No
+VALUE@@sram_wen_b0@@OUTPUT@@0@@0@@-@@Convnet_top@@No
+VALUE@@sram_wen_b1@@OUTPUT@@0@@0@@-@@Convnet_top@@No
+VALUE@@sram_wen_b2@@OUTPUT@@0@@0@@-@@Convnet_top@@No
+VALUE@@sram_wen_b3@@OUTPUT@@0@@0@@-@@Convnet_top@@No
+VALUE@@sram_bytemask_a@@OUTPUT@@15@@0@@bytemask for SRAM groups A & B@@Convnet_top@@No
+VALUE@@sram_bytemask_b@@OUTPUT@@15@@0@@-@@Convnet_top@@No
+VALUE@@sram_waddr_a@@OUTPUT@@5@@0@@write addrress to SRAM groups A ...@@Convnet_top@@No
+VALUE@@sram_waddr_b@@OUTPUT@@5@@0@@-@@Convnet_top@@No
+VALUE@@sram_wdata_a@@OUTPUT@@127@@0@@write data to SRAM groups A & B@@Convnet_top@@No
+VALUE@@sram_wdata_b@@OUTPUT@@127@@0@@-@@Convnet_top@@No

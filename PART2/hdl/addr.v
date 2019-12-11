@@ -5,14 +5,24 @@ module addr(
 	input [4:0] y_cnt,
 	input [4:0] x_cnt_pp,
 	input [4:0] y_cnt_pp,
+	input [4:0] x_cnt_ppp,
+	input [4:0] y_cnt_ppp,
+	input [4:0] x_cnt_pppp,
+	input [4:0] y_cnt_pppp,
+	input [4:0] x_cnt_ppppp,
+	input [4:0] y_cnt_ppppp,
 	input [1:0] read_input_cnt,
-	input [4:0] cnn_state,
+	input cnn_state,
+	input cnn_state_pppppppp,
 	input [10:0] read_cnt,
 	input [5:0] state,
+	input [5:0] state_p,
 	input read_weight_finish,
 	input read_bias_finish,
 	input [9:0] conv_cnt,
 	input [9:0] conv_cnt_p,
+	input [9:0] conv_cnt_pp,
+	input [1:0] read_input_cnt_ppp,
 	output reg [5:0] sram_waddr_a,
 	output reg [5:0] sram_waddr_b,
 	output reg [6:0] sram_raddr_bias,
@@ -24,7 +34,8 @@ module addr(
 	output reg [5:0] sram_raddr_b0,
 	output reg [5:0] sram_raddr_b1,
 	output reg [5:0] sram_raddr_b2,
-	output reg [5:0] sram_raddr_b3
+	output reg [5:0] sram_raddr_b3,
+	output reg [10:0] final_cnt
 );
 
 parameter LAYER1_WIDTH = 14, LAYER1_HEIGHT = 14;
@@ -32,15 +43,14 @@ parameter IDLE = 0, UNSHUFFLE = 1, CONV1 = 2, C1_2_C2=3,CONV2 = 4, C2_2_C3 = 5,
 	CONV3=6, C3_2_P=7, POOL=8, FINISH = 9;
 parameter READ_WEIGHT = 0, DOCNN = 1;
 
-
 reg [4:0] x_offset0;
 reg [4:0] y_offset0;
 reg [4:0] x_offset1;
 reg [4:0] y_offset1;
-reg [4:0] x_offset_pp0;
-reg [4:0] y_offset_pp0;
-reg [4:0] x_offset_pp1;
-reg [4:0] y_offset_pp1;
+reg [4:0] x_offset_ppppp0;
+reg [4:0] y_offset_ppppp0;
+reg [4:0] x_offset_ppppp1;
+reg [4:0] y_offset_ppppp1;
 
 
 // weight addr
@@ -84,26 +94,52 @@ end
 always @(posedge clk) begin
 	if (state == UNSHUFFLE)
 		sram_waddr_a <= y_cnt / 8 * 6 + x_cnt / 8;
-	else if (state == CONV2) begin
-		case ((conv_cnt_p/4) % 4)
+	else if (state_p == CONV2) begin
+		case ((conv_cnt_pp/4) % 4)
 		0: begin
-			sram_waddr_a <= x_offset_pp1 + y_offset_pp1;
+			sram_waddr_a <= x_offset_ppppp1 + y_offset_ppppp1;
 		end
 		1: begin
-			sram_waddr_a <= x_offset_pp1 + y_offset_pp1 + 3;
+			sram_waddr_a <= x_offset_ppppp1 + y_offset_ppppp1 + 3;
 		end
 		2: begin
-			sram_waddr_a <= x_offset_pp1 + y_offset_pp1 + 18;
+			sram_waddr_a <= x_offset_ppppp1 + y_offset_ppppp1 + 18;
 		end
 		3: begin
-			sram_waddr_a <= x_offset_pp1 + y_offset_pp1 + 21;
+			sram_waddr_a <= x_offset_ppppp1 + y_offset_ppppp1 + 21;
 		end
 		endcase
  	end
 end
 
+
+
+always @(posedge clk ) begin
+	if (!rst_n) begin
+		final_cnt <= 0;
+	end
+	else if (state == CONV3 && cnn_state_pppppppp == DOCNN && read_input_cnt_ppp == 3) begin
+		final_cnt <= final_cnt + 1;		
+	end
+end
+
 always @(posedge clk) begin
-	sram_waddr_b <= y_cnt_pp / 2 * 6 + x_cnt_pp / 2;
+	if (state_p <= CONV2)
+		sram_waddr_b <= y_cnt_ppppp / 2 * 6 + x_cnt_ppppp / 2;
+	else if (state_p == C2_2_C3) begin
+		sram_waddr_b <= 0;
+	end
+	else if (final_cnt < 575) begin
+		if (final_cnt % 16 == 15 && read_input_cnt_ppp == 3)
+			sram_waddr_b <= sram_waddr_b + 1; 
+	end
+	else if (final_cnt == 575 && read_input_cnt_ppp == 3) begin
+		sram_waddr_b <= 0;
+	end
+	else begin
+		if (final_cnt % 16 == 15 && read_input_cnt_ppp == 3)
+			sram_waddr_b <= sram_waddr_b + 1; 
+	end
 end
 
 always @(posedge clk) begin
@@ -135,10 +171,10 @@ always @* begin
 end
 
 always @* begin
-	x_offset_pp0 = (x_cnt_pp + 1) / 2;
-	y_offset_pp0 = (y_cnt_pp + 1) / 2 * 6;
-	x_offset_pp1 = (x_cnt_pp) / 2;
-	y_offset_pp1 = (y_cnt_pp) / 2 * 6;
+	x_offset_ppppp0 = (x_cnt_ppppp + 1) / 2;
+	y_offset_ppppp0 = (y_cnt_ppppp + 1) / 2 * 6;
+	x_offset_ppppp1 = (x_cnt_ppppp) / 2;
+	y_offset_ppppp1 = (y_cnt_ppppp) / 2 * 6;
 end
 
 always @(posedge clk) begin

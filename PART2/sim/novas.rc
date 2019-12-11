@@ -110,6 +110,8 @@ FSM = 1
 Branch = 1
 [DesignTree]
 IfShowModule = {TRUE, FALSE}
+[DisabledMessages]
+version = Verdi_N-2017.12
 [Editor]
 editorName = TurboEditor
 [Emacs]
@@ -197,7 +199,7 @@ StickSet-TextColor = black
 [FSM_Dlg-Print]
 Orientation = Landscape
 [FileBrowser]
-nWaveOpenFsdbDirHistory = "\"/home/u105/u105061255/ICLAB/EE4292_HW2/EE4292_HW2/part2/sim/test_enigma.fsdb\""
+nWaveOpenFsdbDirHistory = "\"/home/u105/u105061255/ICLAB/EE4292_HW2/EE4292_HW2/part2/sim/test_enigma.fsdb\"" "\"/home/u105/u105061255/ICLAB/HW5/PART2/sim/eCNN_micro.fsdb\""
 [Form]
 version = Verdi_N-2017.12
 [General]
@@ -305,10 +307,12 @@ FileName = test.ps
 PaperSize = A4 - 210x297 (mm)
 ColorPrint = FALSE
 [QtDialog]
-QwWarnMsgDlg = 458,267,600,250
-qWaveSignalDialog = 174,268,800,479
-openFileDlg = 273,268,810,483
 QwQuestionMsgDlg = 596,330,324,109
+openFileDlg = 340,210,810,483
+QwUserAskDlg = 573,304,324,130
+ActiveFileDialog = 468,324,554,255
+qWaveSignalDialog = 147,111,885,479
+QwWarnMsgDlg = 120,267,938,250
 [Session Cache]
 1 = string (session file name)
 2 = string (session file name)
@@ -519,8 +523,8 @@ waveform_vertical_scroll_bar = TRUE
 scope_to_save_with_macro
 open_file_dir
 open_rc_file_dir
-getSignalForm = 174 268 800 479 219 381 527 183
-viewPort = -197 57 1284 701 322 65
+getSignalForm = 147 111 885 479 276 381 555 183
+viewPort = 0 23 1217 697 356 201
 signalSpacing = 5
 digitalSignalHeight = 15
 analogSignalHeight = 98
@@ -753,7 +757,7 @@ maskIsolation = TRUE
 maskRetention = TRUE
 maskDrivingPowerOff = TRUE
 maskToggle = TRUE
-autoBackupSignals = off 5 "\"/home/u105/u105061255/nWaveLog\"" "\"novas_autosave_sig\""
+autoBackupSignals = off 5 "\"/home/u105/u105061255/ICLAB/HW5/PART2/sim/nWaveLog\"" "\"novas_autosave_sig\""
 signal_rc_attribute = 65535
 signal_rc_alias_attribute = 0
 ConvertAttr1 = -inc FALSE
@@ -781,7 +785,8 @@ curveWindow_Drag&Drop_Mode = TRUE
 hspiceIncOpenMode = TRUE
 pcSelectMode = TRUE
 hierarchyDelimiter = /
-RecentFile1 = "\"/home/u105/u105061255/ICLAB/EE4292_HW2/EE4292_HW2/part2/sim/test_enigma.fsdb\""
+RecentFile1 = "\"/home/u105/u105061255/ICLAB/HW5/PART2/sim/eCNN_micro.fsdb\""
+RecentFile2 = "\"/home/u105/u105061255/ICLAB/EE4292_HW2/EE4292_HW2/part2/sim/test_enigma.fsdb\""
 open_file_time_range = FALSE
 value_window_aligment = Right
 signal_window_alignment = Auto

@@ -1,0 +1,71 @@
+ 
+****************************************
+Report : timing
+        -path full
+        -delay max
+        -max_paths 1
+Design : Convnet_top
+Version: O-2018.06
+Date   : Thu Dec 12 06:58:26 2019
+****************************************
+
+ # A fanout number of 1000 was used for high fanout net computations.
+
+Operating Conditions: ss0p95v125c   Library: saed32hvt_ss0p95v125c
+Wire Load Model Mode: enclosed
+
+  Startpoint: rst_n (input port clocked by clk)
+  Endpoint: top_CNN/clk_gate_W_reg_0__0__0_/latch
+            (positive level-sensitive latch clocked by clk')
+  Path Group: clk
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  Convnet_top        140000                saed32hvt_ss0p95v125c
+  top_CNN            140000                saed32hvt_ss0p95v125c
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk (rise edge)                                 0.0000     0.0000
+  clock network delay (ideal)                           0.0000     0.0000
+  input external delay                                  1.0000     1.0000 f
+  rst_n (in)                                            0.0000     1.0000 f
+  U336/Y (INVX32_HVT)                                   0.0090     1.0090 r
+  U344/Y (INVX8_HVT)                                    0.0213     1.0302 f
+  top_CNN/rst_n (top_CNN)                               0.0000     1.0302 f
+  top_CNN/U964/Y (INVX8_HVT)                            0.0289     1.0591 r
+  top_CNN/U1317/Y (INVX8_HVT)                           0.0279     1.0870 f
+  top_CNN/U403/Y (INVX8_HVT)                            0.0260     1.1130 r
+  top_CNN/U184/Y (INVX1_HVT)                            0.0839     1.1969 f
+  top_CNN/U7039/Y (NAND2X0_HVT)                         0.1041     1.3010 r
+  top_CNN/U7040/Y (AO21X1_HVT)                          0.1057     1.4067 r
+  top_CNN/clk_gate_W_reg_0__0__0_/EN (SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_0)
+                                                        0.0000     1.4067 r
+  top_CNN/clk_gate_W_reg_0__0__0_/latch/D (LATCHX1_HVT)
+                                                        0.0000     1.4067 r
+  data arrival time                                                1.4067
+
+  clock clk' (rise edge)                                1.3500     1.3500
+  clock network delay (ideal)                           0.0000     1.3500
+  top_CNN/clk_gate_W_reg_0__0__0_/latch/CLK (LATCHX1_HVT)
+                                                        0.0000     1.3500 r
+  time borrowed from endpoint                           0.0567     1.4067
+  data required time                                               1.4067
+  --------------------------------------------------------------------------
+  data required time                                               1.4067
+  data arrival time                                               -1.4067
+  --------------------------------------------------------------------------
+  slack (MET)                                                      0.0000
+
+  Time Borrowing Information
+  --------------------------------------------------------------
+  clk' nominal pulse width                              1.3500   
+  library setup time                                   -0.1113   
+  --------------------------------------------------------------
+  max time borrow                                       1.2387   
+  actual time borrow                                    0.0567   
+  --------------------------------------------------------------
+
+
+1

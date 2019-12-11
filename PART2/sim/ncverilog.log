@@ -1,5 +1,5 @@
 ncverilog(64): 15.20-s039: (c) Copyright 1995-2017 Cadence Design Systems, Inc.
-TOOL:	ncverilog	15.20-s039: Started on Dec 09, 2019 at 21:15:24 CST
+TOOL:	ncverilog	15.20-s039: Started on Dec 12, 2019 at 07:33:56 CST
 ncverilog
 	-f sim.f
 		test_top.v
@@ -13,43 +13,6 @@ ncverilog
 		sram_model/sram_84x4b.v
 		sram_model/sram_1104x36b.v
 		+access+r
-Recompiling... reason: file '../hdl/Convnet_top.v' is newer than expected.
-	expected: Mon Dec  9 20:13:40 2019
-	actual:   Mon Dec  9 20:18:20 2019
-file: ../hdl/Convnet_top.v
-	module worklib.Convnet_top:v
-		errors: 0, warnings: 0
-file: ../hdl/top_CNN.v
-	module worklib.top_CNN:v
-		errors: 0, warnings: 0
-		Caching library 'worklib' ....... Done
-	Elaborating the design hierarchy:
-	.conv_cnt(conv_cnt),
-	                 |
-ncelab: *W,CUVMPW (../hdl/Convnet_top.v,133|18): port sizes differ in port connection (8/11).
-	.conv_cnt_p(conv_cnt_p),
-	                     |
-ncelab: *W,CUVMPW (../hdl/Convnet_top.v,134|22): port sizes differ in port connection (8/11).
-	Building instance overlay tables: .................... Done
-	Generating native compiled code:
-		worklib.Convnet_top:v <0x730233ec>
-			streams:  47, words: 33510
-		worklib.top_CNN:v <0x6cd0f173>
-			streams: 195, words: 99584
-	Building instance specific data structures.
-	Loading native compiled code:     .................... Done
-	Design hierarchy summary:
-		                   Instances  Unique
-		Modules:                  32      10
-		Registers:               180     159
-		Scalar wires:             42       -
-		Vectored wires:          378       -
-		Always blocks:            70      49
-		Initial blocks:            6       6
-		Cont. assignments:        25       3
-		Pseudo assignments:      188     188
-		Simulation timescale:  100ps
-	Writing initial simulation snapshot: worklib.test_top:v
 Loading snapshot worklib.test_top:v .................... Done
 *Novas* Loading libsscore_ius111.so
 ncsim> source /usr/cad/cadence/INCISIV/cur/tools/inca/files/ncsimrc
@@ -95,556 +58,83 @@ The following is input image !!
   0  0  0  0  0  0  0  0  0  0121127127127 40  0  0  0  0  0  0  0  0  0  0  0  0  0
   0  0  0  0  0  0  0  0  0  0121127127 18  0  0  0  0  0  0  0  0  0  0  0  0  0  0
   0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
-( 0,  0)
-feature_maps
-   2    2    2    3
-( 0,  0)
-feature_maps
-   2    2    2    3
-( 0,  0)
-feature_maps
-   2    2    2    3
-( 0,  1)
-feature_maps
-   2    2    3    4
-( 0,  2)
-feature_maps
-   2    2    4    3
-( 0,  3)
-feature_maps
-   2    2    2    2
-( 0,  4)
-feature_maps
-   2    2    2    2
-( 0,  5)
-feature_maps
-   2    2    2    2
-( 1,  0)
-feature_maps
-   2    6    2    1
-( 1,  1)
-feature_maps
-   8   10    0    0
-( 1,  2)
-feature_maps
-  11   10    4    7
-( 1,  3)
-feature_maps
-   9    9    8    9
-( 1,  4)
-feature_maps
-   8    5    9    8
-( 1,  5)
-feature_maps
-   4    2    6    2
-( 2,  0)
-feature_maps
-   2    0    2    2
-( 2,  1)
-feature_maps
-   0    0    2    2
-( 2,  2)
-feature_maps
-   0    0    2    1
-( 2,  3)
-feature_maps
-   0    2    6    3
-( 2,  4)
-feature_maps
-   0    4    2    3
-( 2,  5)
-feature_maps
-   4    2    4    2
-( 3,  0)
-feature_maps
-   2    2    2    2
-( 3,  1)
-feature_maps
-   2    2    2    2
-( 3,  2)
-feature_maps
-   2    3    2    6
-( 3,  3)
-feature_maps
-   5    1    3    1
-( 3,  4)
-feature_maps
-   3    3    3    3
-( 3,  5)
-feature_maps
-   3    2    2    2
-( 4,  0)
-feature_maps
-   2    2    2    2
-( 4,  1)
-feature_maps
-   2    2    2    3
-( 4,  2)
-feature_maps
-   4    7    7    3
-( 4,  3)
-feature_maps
-   1    3    1    3
-( 4,  4)
-feature_maps
-   4    2    3    2
-( 4,  5)
-feature_maps
-   2    2    2    2
-( 5,  0)
-feature_maps
-   2    2    2    2
-( 5,  1)
-feature_maps
-   2    6    2    4
-( 5,  2)
-feature_maps
-   5    2    2    0
-( 5,  3)
-feature_maps
-   4    4    4    4
-( 0,  0)
-feature_maps
-   5    5    5    5
-( 0,  0)
-feature_maps
-   5    5    5    5
-( 0,  0)
-feature_maps
-   5    5    5    5
-( 0,  1)
-feature_maps
-   5    5    4    1
-( 0,  2)
-feature_maps
-   5    5    1    4
-( 0,  3)
-feature_maps
-   5    5    5    5
-( 0,  4)
-feature_maps
-   5    5    5    5
-( 0,  5)
-feature_maps
-   5    5    5    5
-( 1,  0)
-feature_maps
-   5    8    5   18
-( 1,  1)
-feature_maps
-  17   18   50   67
-( 1,  2)
-feature_maps
-  11    2   61   55
-( 1,  3)
-feature_maps
-   0    0   53   52
-( 1,  4)
-feature_maps
-   0    0   51   34
-( 1,  5)
-feature_maps
-   0    5   13    5
-( 2,  0)
-feature_maps
-   5    6    5    5
-( 2,  1)
-feature_maps
-  18   24    5    5
-( 2,  2)
-feature_maps
-  31   36    5    5
-( 2,  3)
-feature_maps
-  41   45    7   24
-( 2,  4)
-feature_maps
-  56   47   46   36
-( 2,  5)
-feature_maps
-  18    5   10    5
-( 3,  0)
-feature_maps
-   5    5    5    5
-( 3,  1)
-feature_maps
-   5    5    5    5
-( 3,  2)
-feature_maps
-   5    5    5    7
-( 3,  3)
-feature_maps
-  14   40   23   47
-( 3,  4)
-feature_maps
-  48   21   33    8
-( 3,  5)
-feature_maps
-   5    5    5    5
-( 4,  0)
-feature_maps
-   5    5    5    5
-( 4,  1)
-feature_maps
-   5    5    5    5
-( 4,  2)
-feature_maps
-   5   15   10   30
-( 4,  3)
-feature_maps
-  40   47   49   31
-( 4,  4)
-feature_maps
-  18    5    7    5
-( 4,  5)
-feature_maps
-   5    5    5    5
-( 5,  0)
-feature_maps
-   5    5    5    5
-( 5,  1)
-feature_maps
-   5    7    5   14
-( 5,  2)
-feature_maps
-  22   45   45   63
-( 5,  3)
-feature_maps
-  39   12   32    8
-( 0,  0)
-feature_maps
-   0    0    0    0
-( 0,  0)
-feature_maps
-   0    0    0    0
-( 0,  0)
-feature_maps
-   0    0    0    0
-( 0,  1)
-feature_maps
-   0    0    0    0
-( 0,  2)
-feature_maps
-   0    0    0    0
-( 0,  3)
-feature_maps
-   0    0    0    0
-( 0,  4)
-feature_maps
-   0    0    0    0
-( 0,  5)
-feature_maps
-   0    0    0    0
-( 1,  0)
-feature_maps
-   0    0    0    0
-( 1,  1)
-feature_maps
-   0    1    0    0
-( 1,  2)
-feature_maps
-   0    0    0    0
-( 1,  3)
-feature_maps
-   0    0    0    0
-( 1,  4)
-feature_maps
-   0    0    0    0
-( 1,  5)
-feature_maps
-   0    0    0    0
-( 2,  0)
-feature_maps
-   0    0    0    0
-( 2,  1)
-feature_maps
-   0    0    0    0
-( 2,  2)
-feature_maps
-   0    0    0    0
-( 2,  3)
-feature_maps
-   0    0    0    0
-( 2,  4)
-feature_maps
-   0    0    0    0
-( 2,  5)
-feature_maps
-   0    0    0    0
-( 3,  0)
-feature_maps
-   0    0    0    0
-( 3,  1)
-feature_maps
-   0    0    0    0
-( 3,  2)
-feature_maps
-   0    0    0    0
-( 3,  3)
-feature_maps
-   0    0    0    0
-( 3,  4)
-feature_maps
-   0    0    0    0
-( 3,  5)
-feature_maps
-   0    0    0    0
-( 4,  0)
-feature_maps
-   0    0    0    0
-( 4,  1)
-feature_maps
-   0    0    0    0
-( 4,  2)
-feature_maps
-   1    0    0    0
-( 4,  3)
-feature_maps
-   0    0    0    0
-( 4,  4)
-feature_maps
-   0    0    0    0
-( 4,  5)
-feature_maps
-   0    0    0    0
-( 5,  0)
-feature_maps
-   0    0    0    0
-( 5,  1)
-feature_maps
-   0    0    0    0
-( 5,  2)
-feature_maps
-   0    0    0    0
-( 5,  3)
-feature_maps
-   0    0    0    0
-( 0,  0)
-feature_maps
-   3    3    3    2
-( 0,  0)
-feature_maps
-   3    3    3    2
-( 0,  0)
-feature_maps
-   3    3    3    2
-( 0,  1)
-feature_maps
-   3    3    4    2
-( 0,  2)
-feature_maps
-   3    3    1    2
-( 0,  3)
-feature_maps
-   3    3    3    3
-( 0,  4)
-feature_maps
-   3    3    3    3
-( 0,  5)
-feature_maps
-   3    3    3    3
-( 1,  0)
-feature_maps
-   3    8    3   20
-( 1,  1)
-feature_maps
-  17    9   36   32
-( 1,  2)
-feature_maps
-   4    2   29   29
-( 1,  3)
-feature_maps
-   2    2   30   27
-( 1,  4)
-feature_maps
-   2    0   30   12
-( 1,  5)
-feature_maps
-   0    3    0    3
-( 2,  0)
-feature_maps
-   3   11    3    3
-( 2,  1)
-feature_maps
-  11   10    3    3
-( 2,  2)
-feature_maps
-  13   16    4    3
-( 2,  3)
-feature_maps
-  17   25    5   31
-( 2,  4)
-feature_maps
-  34    5   25    0
-( 2,  5)
-feature_maps
-   0    3    2    3
-( 3,  0)
-feature_maps
-   3    3    3    3
-( 3,  1)
-feature_maps
-   3    3    3    3
-( 3,  2)
-feature_maps
-   3    2    3    6
-( 3,  3)
-feature_maps
-  19   40   34   22
-( 3,  4)
-feature_maps
-   4    0    0    2
-( 3,  5)
-feature_maps
-   3    3    3    3
-( 4,  0)
-feature_maps
-   3    3    3    3
-( 4,  1)
-feature_maps
-   3    3    3    2
-( 4,  2)
-feature_maps
-   2   22   13   38
-( 4,  3)
-feature_maps
-  38    3   17    0
-( 4,  4)
-feature_maps
-   0    3    3    3
-( 4,  5)
-feature_maps
-   3    3    3    3
-( 5,  0)
-feature_maps
-   3    3    3    3
-( 5,  1)
-feature_maps
-   3    6    3   19
-( 5,  2)
-feature_maps
-  31   32   44   16
-( 5,  3)
-feature_maps
-   0    0    0    3
-Start to check conv2 outputs in sram #A0...
-sram #A0 address:           0 PASS!!
-sram #A0 address:           1 PASS!!
-sram #A0 address:           2 PASS!!
-sram #A0 address:           3 PASS!!
-sram #A0 address:           4 PASS!!
-sram #A0 address:           5 PASS!!
-sram #A0 address:           6 PASS!!
-sram #A0 address:           7 PASS!!
-sram #A0 address:           8 PASS!!
-sram #A0 address:           9 PASS!!
-sram #A0 address:          10 PASS!!
-sram #A0 address:          11 PASS!!
-sram #A0 address:          12 PASS!!
-sram #A0 address:          13 PASS!!
-sram #A0 address:          14 PASS!!
-sram #A0 address:          15 PASS!!
-sram #A0 address:          16 PASS!!
-sram #A0 address:          17 PASS!!
-sram #A0 address:          18 PASS!!
-sram #A0 address:          19 PASS!!
-sram #A0 address:          20 PASS!!
-sram #A0 address:          21 PASS!!
-sram #A0 address:          22 PASS!!
-sram #A0 address:          23 PASS!!
-sram #A0 address:          24 PASS!!
-sram #A0 address:          25 PASS!!
-sram #A0 address:          26 PASS!!
-sram #A0 address:          27 PASS!!
-sram #A0 address:          28 PASS!!
-sram #A0 address:          29 PASS!!
-sram #A0 address:          30 PASS!!
-sram #A0 address:          31 PASS!!
-sram #A0 address:          32 PASS!!
-sram #A0 address:          33 PASS!!
-sram #A0 address:          34 PASS!!
-sram #A0 address:          35 PASS!!
+sram #B0 address:           0 PASS!!
+sram #B0 address:           1 PASS!!
+sram #B0 address:           2 PASS!!
+sram #B0 address:           3 PASS!!
+sram #B0 address:           4 PASS!!
+sram #B0 address:           5 PASS!!
+sram #B0 address:           6 PASS!!
+sram #B0 address:           7 PASS!!
+sram #B0 address:           8 PASS!!
+sram #B0 address:           9 PASS!!
+sram #B0 address:          10 PASS!!
+sram #B0 address:          11 PASS!!
+sram #B0 address:          12 PASS!!
+sram #B0 address:          13 PASS!!
+sram #B0 address:          14 PASS!!
+sram #B0 address:          15 PASS!!
+sram #B0 address:          16 PASS!!
+sram #B0 address:          17 PASS!!
+sram #B0 address:          18 PASS!!
+sram #B0 address:          19 PASS!!
+sram #B0 address:          20 PASS!!
+sram #B0 address:          21 PASS!!
+sram #B0 address:          22 PASS!!
+sram #B0 address:          23 PASS!!
+sram #B0 address:          24 PASS!!
+sram #B0 address:          25 PASS!!
+sram #B0 address:          26 PASS!!
+sram #B0 address:          27 PASS!!
+sram #B0 address:          28 PASS!!
+sram #B0 address:          29 PASS!!
+sram #B0 address:          30 PASS!!
+sram #B0 address:          31 PASS!!
+sram #B0 address:          32 PASS!!
+sram #B0 address:          33 PASS!!
+sram #B0 address:          34 PASS!!
+sram #B0 address:          35 PASS!!
 
-Conv2 outputs in sram #A0 are successfully passed!
+Answers in sram #B0 correct.
 ===============================================================================
-Start to check conv2 outputs in sram #A1...
-sram #A1 address:           0 PASS!!
-sram #A1 address:           1 PASS!!
-sram #A1 address:           3 PASS!!
-sram #A1 address:           4 PASS!!
-sram #A1 address:           6 PASS!!
-sram #A1 address:           7 PASS!!
-sram #A1 address:           9 PASS!!
-sram #A1 address:          10 PASS!!
-sram #A1 address:          12 PASS!!
-sram #A1 address:          13 PASS!!
-sram #A1 address:          15 PASS!!
-sram #A1 address:          16 PASS!!
-sram #A1 address:          18 PASS!!
-sram #A1 address:          19 PASS!!
-sram #A1 address:          21 PASS!!
-sram #A1 address:          22 PASS!!
-sram #A1 address:          24 PASS!!
-sram #A1 address:          25 PASS!!
-sram #A1 address:          27 PASS!!
-sram #A1 address:          28 PASS!!
-sram #A1 address:          30 PASS!!
-sram #A1 address:          31 PASS!!
-sram #A1 address:          33 PASS!!
-sram #A1 address:          34 PASS!!
+sram #B1 address:           0 PASS!!
+sram #B1 address:           1 PASS!!
+sram #B1 address:           2 PASS!!
+sram #B1 address:           3 PASS!!
+sram #B1 address:           4 PASS!!
+sram #B1 address:           5 PASS!!
+sram #B1 address:           6 PASS!!
+sram #B1 address:           7 PASS!!
+sram #B1 address:           8 PASS!!
+sram #B1 address:           9 PASS!!
+sram #B1 address:          10 PASS!!
+sram #B1 address:          11 PASS!!
+sram #B1 address:          12 PASS!!
+sram #B1 address:          13 PASS!!
+sram #B1 address:          14 PASS!!
+sram #B1 address:          15 PASS!!
+sram #B1 address:          16 PASS!!
+sram #B1 address:          17 PASS!!
+sram #B1 address:          18 PASS!!
+sram #B1 address:          19 PASS!!
+sram #B1 address:          20 PASS!!
+sram #B1 address:          21 PASS!!
+sram #B1 address:          22 PASS!!
+sram #B1 address:          23 PASS!!
+sram #B1 address:          24 PASS!!
+sram #B1 address:          25 PASS!!
+sram #B1 address:          26 PASS!!
+sram #B1 address:          27 PASS!!
 
-Conv2 outputs in sram #A1 are successfully passed!
-===============================================================================
-Start to check conv2 outputs in sram #A2...
-sram #A2 address:           0 PASS!!
-sram #A2 address:           1 PASS!!
-sram #A2 address:           2 PASS!!
-sram #A2 address:           3 PASS!!
-sram #A2 address:           4 PASS!!
-sram #A2 address:           5 PASS!!
-sram #A2 address:           6 PASS!!
-sram #A2 address:           7 PASS!!
-sram #A2 address:           8 PASS!!
-sram #A2 address:           9 PASS!!
-sram #A2 address:          10 PASS!!
-sram #A2 address:          11 PASS!!
-sram #A2 address:          18 PASS!!
-sram #A2 address:          19 PASS!!
-sram #A2 address:          20 PASS!!
-sram #A2 address:          21 PASS!!
-sram #A2 address:          22 PASS!!
-sram #A2 address:          23 PASS!!
-sram #A2 address:          24 PASS!!
-sram #A2 address:          25 PASS!!
-sram #A2 address:          26 PASS!!
-sram #A2 address:          27 PASS!!
-sram #A2 address:          28 PASS!!
-sram #A2 address:          29 PASS!!
+Answers in sram #B1 correct.
 
-Conv2 outputs in sram #A2 are successfully passed!
-===============================================================================
-Start to check conv2 outputs in sram #A3...
-sram #A3 address:           0 PASS!!
-sram #A3 address:           1 PASS!!
-sram #A3 address:           3 PASS!!
-sram #A3 address:           4 PASS!!
-sram #A3 address:           6 PASS!!
-sram #A3 address:           7 PASS!!
-sram #A3 address:           9 PASS!!
-sram #A3 address:          10 PASS!!
-sram #A3 address:          18 PASS!!
-sram #A3 address:          19 PASS!!
-sram #A3 address:          21 PASS!!
-sram #A3 address:          22 PASS!!
-sram #A3 address:          24 PASS!!
-sram #A3 address:          25 PASS!!
-sram #A3 address:          27 PASS!!
-sram #A3 address:          28 PASS!!
-
-Conv2 outputs in sram #A3 are successfully passed!
 ===================================================>
-Congratulations! Your conv2 is correct ^___^
-Simulation complete via $finish(1) at time 14380 NS + 0
-./test_top.v:874                     $finish;
+Congratulations! Simulation is successfully passed!
+------Show the output of FC2------
+  -1    1    0    1   -2    0   -4    4    0    1 
+And the recognition result is :   7
+Total cycle count =        6840
+Simulation complete via $finish(1) at time 68420 NS + 0
+./test_top.v:943     $finish;
 ncsim> exit
-TOOL:	ncverilog	15.20-s039: Exiting on Dec 09, 2019 at 21:15:27 CST  (total: 00:00:03)
+TOOL:	ncverilog	15.20-s039: Exiting on Dec 12, 2019 at 07:34:07 CST  (total: 00:00:11)

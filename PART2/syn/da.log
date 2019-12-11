@@ -1,0 +1,2185 @@
+
+                           Design Compiler Graphical 
+                                 DC Ultra (TM)
+                                  DFTMAX (TM)
+                              Power Compiler (TM)
+                                 DesignWare (R)
+                                 DC Expert (TM)
+                               Design Vision (TM)
+                               HDL Compiler (TM)
+                               VHDL Compiler (TM)
+                                  DFT Compiler
+                               Design Compiler(R)
+
+                 Version O-2018.06 for linux64 - May 21, 2018 
+
+                    Copyright (c) 1988 - 2018 Synopsys, Inc.
+   This software and the associated documentation are proprietary to Synopsys,
+ Inc. This software may only be used in accordance with the terms and conditions
+ of a written license agreement with Synopsys, Inc. All other use, reproduction,
+            or distribution of this software is strictly prohibited.
+Initializing...
+# set your TOPLEVEL here
+set TOPLEVEL "Convnet_top"
+Convnet_top
+# change your timing constraint here
+set TEST_CYCLE 2.7
+2.7
+source -echo -verbose 0_readfile.tcl 
+set TOP_DIR $TOPLEVEL
+Convnet_top
+set RPT_DIR report
+report
+set NET_DIR netlist
+netlist
+sh rm -rf ./$TOP_DIR
+sh rm -rf ./$RPT_DIR
+sh rm -rf ./$NET_DIR
+sh mkdir ./$TOP_DIR
+sh mkdir ./$RPT_DIR
+sh mkdir ./$NET_DIR
+# define a lib path here
+define_design_lib $TOPLEVEL -path ./$TOPLEVEL
+1
+# Read Design File (add your files here)
+set HDL_DIR "../hdl"
+../hdl
+analyze -library $TOPLEVEL -format verilog "$HDL_DIR/Convnet_top.v $HDL_DIR/addr.v $HDL_DIR/bytemask.v $HDL_DIR/CNN2D.v $HDL_DIR/top_CNN.v $HDL_DIR/wen.v"
+Running PRESTO HDLC
+Compiling source file ../hdl/Convnet_top.v
+Warning:  ../hdl/Convnet_top.v:83: Parameter keyword used in local parameter declaration. (VER-329)
+Compiling source file ../hdl/addr.v
+Compiling source file ../hdl/bytemask.v
+Compiling source file ../hdl/CNN2D.v
+Compiling source file ../hdl/top_CNN.v
+Compiling source file ../hdl/wen.v
+Presto compilation completed successfully.
+Loading db file '/usr/cadtool/SAED32_EDK/lib/stdcell_hvt/db_nldm/saed32hvt_ss0p95v125c.db'
+Loading db file '/usr/cadtool/SAED32_EDK/lib/io_std/db_nldm/saed32io_wb_ss0p95v125c_2p25v.db'
+Loading db file '/usr/cadtool/SAED32_EDK/synthesis/cur/libraries/syn/dw_foundation.sldb'
+1
+# elaborate your design
+elaborate $TOPLEVEL -architecture verilog -library $TOPLEVEL
+Loading db file '/usr/cad/synopsys/synthesis/cur/libraries/syn/gtech.db'
+Loading db file '/usr/cad/synopsys/synthesis/cur/libraries/syn/standard.sldb'
+  Loading link library 'saed32hvt_ss0p95v125c'
+  Loading link library 'saed32io_wb_ss0p95v125c_2p25v'
+  Loading link library 'gtech'
+Running PRESTO HDLC
+Warning:  ../hdl/Convnet_top.v:264: signed to unsigned conversion occurs. (VER-318)
+Warning:  ../hdl/Convnet_top.v:396: signed to unsigned conversion occurs. (VER-318)
+Warning:  ../hdl/Convnet_top.v:577: signed to unsigned conversion occurs. (VER-318)
+
+Inferred memory devices in process
+	in routine Convnet_top line 104 in file
+		'../hdl/Convnet_top.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|     x_cnt_p_reg     | Flip-flop |   5   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+
+Inferred memory devices in process
+	in routine Convnet_top line 106 in file
+		'../hdl/Convnet_top.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|     y_cnt_p_reg     | Flip-flop |   5   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+
+Inferred memory devices in process
+	in routine Convnet_top line 108 in file
+		'../hdl/Convnet_top.v'.
+==================================================================================
+|     Register Name      |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+==================================================================================
+|    conv_cnt_pp_reg     | Flip-flop |  10   |  Y  | N  | N  | N  | N  | N  | N  |
+| read_input_cnt_pp_reg  | Flip-flop |   2   |  Y  | N  | N  | N  | N  | N  | N  |
+|  read_input_cnt_p_reg  | Flip-flop |   2   |  Y  | N  | N  | N  | N  | N  | N  |
+| cnn_state_ppppppp_reg  | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
+|  cnn_state_pppppp_reg  | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
+|  cnn_state_ppppp_reg   | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
+|   cnn_state_pppp_reg   | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
+|   cnn_state_ppp_reg    | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
+|    cnn_state_pp_reg    | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
+|     conv_cnt_p_reg     | Flip-flop |  10   |  Y  | N  | N  | N  | N  | N  | N  |
+|     y_cnt_pppp_reg     | Flip-flop |   5   |  Y  | N  | N  | N  | N  | N  | N  |
+|     y_cnt_ppp_reg      | Flip-flop |   5   |  Y  | N  | N  | N  | N  | N  | N  |
+|     x_cnt_pppp_reg     | Flip-flop |   5   |  Y  | N  | N  | N  | N  | N  | N  |
+|     x_cnt_ppp_reg      | Flip-flop |   5   |  Y  | N  | N  | N  | N  | N  | N  |
+|      y_cnt_pp_reg      | Flip-flop |   5   |  Y  | N  | N  | N  | N  | N  | N  |
+|      x_cnt_pp_reg      | Flip-flop |   5   |  Y  | N  | N  | N  | N  | N  | N  |
+|    x_cnt_ppppp_reg     | Flip-flop |   5   |  Y  | N  | N  | N  | N  | N  | N  |
+|    y_cnt_ppppp_reg     | Flip-flop |   5   |  Y  | N  | N  | N  | N  | N  | N  |
+| cnn_state_pppppppp_reg | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
+| read_input_cnt_ppp_reg | Flip-flop |   2   |  Y  | N  | N  | N  | N  | N  | N  |
+|    cnn_state_p_reg     | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
+|      state_p_reg       | Flip-flop |   6   |  Y  | N  | N  | N  | N  | N  | N  |
+|    conv_cnt_ppp_reg    | Flip-flop |  10   |  Y  | N  | N  | N  | N  | N  | N  |
+==================================================================================
+
+Inferred memory devices in process
+	in routine Convnet_top line 256 in file
+		'../hdl/Convnet_top.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|      state_reg      | Flip-flop |   6   |  Y  | N  | N  | N  | Y  | N  | N  |
+===============================================================================
+
+Inferred memory devices in process
+	in routine Convnet_top line 302 in file
+		'../hdl/Convnet_top.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|    cnn_state_reg    | Flip-flop |   1   |  N  | N  | N  | N  | Y  | N  | N  |
+===============================================================================
+
+Inferred memory devices in process
+	in routine Convnet_top line 351 in file
+		'../hdl/Convnet_top.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|    conv_cnt_reg     | Flip-flop |  10   |  Y  | N  | N  | N  | Y  | N  | N  |
+===============================================================================
+
+Inferred memory devices in process
+	in routine Convnet_top line 391 in file
+		'../hdl/Convnet_top.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|    read_cnt_reg     | Flip-flop |  11   |  Y  | N  | N  | N  | Y  | N  | N  |
+===============================================================================
+
+Inferred memory devices in process
+	in routine Convnet_top line 431 in file
+		'../hdl/Convnet_top.v'.
+==================================================================================
+|     Register Name      |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+==================================================================================
+| read_weight_finish_reg | Flip-flop |   1   |  N  | N  | N  | N  | Y  | N  | N  |
+==================================================================================
+
+Inferred memory devices in process
+	in routine Convnet_top line 464 in file
+		'../hdl/Convnet_top.v'.
+================================================================================
+|    Register Name     |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+================================================================================
+| read_bias_finish_reg | Flip-flop |   1   |  N  | N  | N  | N  | Y  | N  | N  |
+================================================================================
+
+Inferred memory devices in process
+	in routine Convnet_top line 489 in file
+		'../hdl/Convnet_top.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|      y_cnt_reg      | Flip-flop |   5   |  Y  | N  | N  | N  | Y  | N  | N  |
+|      x_cnt_reg      | Flip-flop |   5   |  Y  | N  | N  | N  | Y  | N  | N  |
+===============================================================================
+
+Inferred memory devices in process
+	in routine Convnet_top line 556 in file
+		'../hdl/Convnet_top.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+| read_input_cnt_reg  | Flip-flop |   2   |  Y  | N  | N  | N  | Y  | N  | N  |
+===============================================================================
+
+Inferred memory devices in process
+	in routine Convnet_top line 573 in file
+		'../hdl/Convnet_top.v'.
+=================================================================================
+|     Register Name     |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+=================================================================================
+|       busy_reg        | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
+| test_layer_finish_reg | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
+|       valid_reg       | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
+=================================================================================
+
+Inferred memory devices in process
+	in routine Convnet_top line 595 in file
+		'../hdl/Convnet_top.v'.
+================================================================================
+|    Register Name     |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+================================================================================
+| input_data_delay_reg | Flip-flop |   8   |  Y  | N  | N  | N  | N  | N  | N  |
+================================================================================
+Information:  Complex logic will not be considered for set/reset inference. (ELAB-2008)
+Presto compilation completed successfully.
+Elaborated 1 design.
+Current design is now 'Convnet_top'.
+Information: Building the design 'bytemask'. (HDL-193)
+
+Statistics for case statements in always block at line 33 in file
+	'../hdl/bytemask.v'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|            35            |    auto/auto     |
+|            54            |    auto/auto     |
+===============================================
+
+Statistics for case statements in always block at line 64 in file
+	'../hdl/bytemask.v'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|            66            |    auto/auto     |
+|            75            |    auto/auto     |
+===============================================
+
+Inferred memory devices in process
+	in routine bytemask line 33 in file
+		'../hdl/bytemask.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+| sram_bytemask_a_reg | Flip-flop |  16   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+
+Inferred memory devices in process
+	in routine bytemask line 64 in file
+		'../hdl/bytemask.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+| sram_bytemask_b_reg | Flip-flop |  16   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
+Information: Building the design 'addr'. (HDL-193)
+
+Statistics for case statements in always block at line 94 in file
+	'../hdl/addr.v'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|            98            |    auto/auto     |
+===============================================
+
+Statistics for case statements in always block at line 180 in file
+	'../hdl/addr.v'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|           188            |    auto/auto     |
+===============================================
+
+Inferred memory devices in process
+	in routine addr line 57 in file
+		'../hdl/addr.v'.
+=================================================================================
+|     Register Name     |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+=================================================================================
+| sram_raddr_weight_reg | Flip-flop |  11   |  Y  | N  | N  | N  | Y  | N  | N  |
+=================================================================================
+
+Inferred memory devices in process
+	in routine addr line 94 in file
+		'../hdl/addr.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|  sram_waddr_a_reg   | Flip-flop |   6   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+
+Inferred memory devices in process
+	in routine addr line 117 in file
+		'../hdl/addr.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|    final_cnt_reg    | Flip-flop |  11   |  Y  | N  | N  | N  | Y  | N  | N  |
+===============================================================================
+
+Inferred memory devices in process
+	in routine addr line 126 in file
+		'../hdl/addr.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|  sram_waddr_b_reg   | Flip-flop |   6   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+
+Inferred memory devices in process
+	in routine addr line 145 in file
+		'../hdl/addr.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+| sram_raddr_bias_reg | Flip-flop |   7   |  Y  | N  | N  | N  | Y  | N  | N  |
+===============================================================================
+
+Inferred memory devices in process
+	in routine addr line 180 in file
+		'../hdl/addr.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|  sram_raddr_a1_reg  | Flip-flop |   6   |  Y  | N  | N  | N  | N  | N  | N  |
+|  sram_raddr_a2_reg  | Flip-flop |   6   |  Y  | N  | N  | N  | N  | N  | N  |
+|  sram_raddr_a3_reg  | Flip-flop |   6   |  Y  | N  | N  | N  | N  | N  | N  |
+|  sram_raddr_a0_reg  | Flip-flop |   6   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+
+Inferred memory devices in process
+	in routine addr line 217 in file
+		'../hdl/addr.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|  sram_raddr_b1_reg  | Flip-flop |   6   |  Y  | N  | N  | N  | N  | N  | N  |
+|  sram_raddr_b2_reg  | Flip-flop |   6   |  Y  | N  | N  | N  | N  | N  | N  |
+|  sram_raddr_b3_reg  | Flip-flop |   6   |  Y  | N  | N  | N  | N  | N  | N  |
+|  sram_raddr_b0_reg  | Flip-flop |   6   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
+Information: Building the design 'top_CNN'. (HDL-193)
+Warning:  ../hdl/top_CNN.v:127: signed to unsigned conversion occurs. (VER-318)
+Warning:  ../hdl/top_CNN.v:154: signed to unsigned conversion occurs. (VER-318)
+Warning:  ../hdl/top_CNN.v:291: signed to unsigned part selection occurs. (VER-318)
+Warning:  ../hdl/top_CNN.v:295: signed to unsigned assignment occurs. (VER-318)
+Warning:  ../hdl/top_CNN.v:298: signed to unsigned assignment occurs. (VER-318)
+Warning:  ../hdl/top_CNN.v:301: signed to unsigned assignment occurs. (VER-318)
+Warning:  ../hdl/top_CNN.v:304: signed to unsigned assignment occurs. (VER-318)
+
+Statistics for case statements in always block at line 308 in file
+	'../hdl/top_CNN.v'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|           316            |    auto/auto     |
+===============================================
+
+Statistics for case statements in always block at line 378 in file
+	'../hdl/top_CNN.v'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|           379            |    auto/auto     |
+===============================================
+
+Inferred memory devices in process
+	in routine top_CNN line 65 in file
+		'../hdl/top_CNN.v'.
+==================================================================================
+|     Register Name      |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+==================================================================================
+| load_weight_finish_reg | Flip-flop |   1   |  N  | N  | N  | N  | Y  | N  | N  |
+==================================================================================
+
+Inferred memory devices in process
+	in routine top_CNN line 104 in file
+		'../hdl/top_CNN.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|       max_reg       | Flip-flop |   8   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+
+Inferred memory devices in process
+	in routine top_CNN line 111 in file
+		'../hdl/top_CNN.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|      bias_reg       | Flip-flop |   4   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+
+Inferred memory devices in process
+	in routine top_CNN line 115 in file
+		'../hdl/top_CNN.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|        W_reg        | Flip-flop |  144  |  Y  | N  | N  | N  | Y  | N  | N  |
+|        W_reg        | Flip-flop |  432  |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+
+Inferred memory devices in process
+	in routine top_CNN line 214 in file
+		'../hdl/top_CNN.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|        X_reg        | Flip-flop | 1152  |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+
+Inferred memory devices in process
+	in routine top_CNN line 308 in file
+		'../hdl/top_CNN.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+| feature_maps_o3_reg | Flip-flop |   8   |  Y  | N  | N  | N  | Y  | N  | N  |
+| feature_maps_o3_reg | Flip-flop |   8   |  Y  | N  | N  | N  | N  | N  | N  |
+| feature_maps_o0_reg | Flip-flop |   8   |  Y  | N  | N  | N  | Y  | N  | N  |
+| feature_maps_o0_reg | Flip-flop |   8   |  Y  | N  | N  | N  | N  | N  | N  |
+| feature_maps_o2_reg | Flip-flop |   8   |  Y  | N  | N  | N  | Y  | N  | N  |
+| feature_maps_o2_reg | Flip-flop |   8   |  Y  | N  | N  | N  | N  | N  | N  |
+| feature_maps_o1_reg | Flip-flop |   8   |  Y  | N  | N  | N  | Y  | N  | N  |
+| feature_maps_o1_reg | Flip-flop |   8   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+
+Inferred memory devices in process
+	in routine top_CNN line 345 in file
+		'../hdl/top_CNN.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|   conv_out_FF_reg   | Flip-flop |  64   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
+Information: Building the design 'wen'. (HDL-193)
+
+Statistics for case statements in always block at line 46 in file
+	'../hdl/wen.v'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|            75            |    auto/auto     |
+===============================================
+
+Statistics for case statements in always block at line 112 in file
+	'../hdl/wen.v'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|           114            |    auto/auto     |
+===============================================
+
+Inferred memory devices in process
+	in routine wen line 46 in file
+		'../hdl/wen.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|   sram_wen_a0_reg   | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
+|   sram_wen_a3_reg   | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
+|   sram_wen_a1_reg   | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
+|   sram_wen_a2_reg   | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+
+Inferred memory devices in process
+	in routine wen line 112 in file
+		'../hdl/wen.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|   sram_wen_b0_reg   | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
+|   sram_wen_b3_reg   | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
+|   sram_wen_b1_reg   | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
+|   sram_wen_b2_reg   | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
+Information: Building the design 'CNN2D'. (HDL-193)
+
+Inferred memory devices in process
+	in routine CNN2D line 24 in file
+		'../hdl/CNN2D.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|        Y_reg        | Flip-flop |  16   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
+1
+# Solve Multiple Instance
+set uniquify_naming_style "%s_mydesign_%d"
+%s_mydesign_%d
+uniquify
+Information: Uniquified 16 instances of design 'CNN2D'. (OPT-1056)
+1
+# link the design
+current_design $TOPLEVEL
+Current design is 'Convnet_top'.
+{Convnet_top}
+link
+
+  Linking design 'Convnet_top'
+  Using the following designs and libraries:
+  --------------------------------------------------------------------------
+  * (21 designs)              /home/u105/u105061255/ICLAB/HW5/PART2/syn/Convnet_top.db, etc
+  saed32hvt_ss0p95v125c (library) /usr/cadtool/SAED32_EDK/lib/stdcell_hvt/db_nldm/saed32hvt_ss0p95v125c.db
+  saed32io_wb_ss0p95v125c_2p25v (library) /usr/cadtool/SAED32_EDK/lib/io_std/db_nldm/saed32io_wb_ss0p95v125c_2p25v.db
+  dw_foundation.sldb (library) /usr/cadtool/SAED32_EDK/synthesis/cur/libraries/syn/dw_foundation.sldb
+
+1
+1
+source -echo -verbose 1_setting.tcl 
+# Setting Design and I/O Environment
+set_operating_conditions -library saed32hvt_ss0p95v125c ss0p95v125c
+Using operating conditions 'ss0p95v125c' found in library 'saed32hvt_ss0p95v125c'.
+1
+# Setting wireload model
+set auto_wire_load_selection area_reselect
+area_reselect
+set_wire_load_mode enclosed
+1
+set_wire_load_selection_group predcaps
+1
+# Setting Timing Constraints
+###  ceate your clock here
+create_clock -name clk -period $TEST_CYCLE [get_ports clk]
+1
+###  set clock constrain
+set_ideal_network [get_ports clk]
+1
+set_dont_touch_network [all_clocks]
+1
+# I/O delay should depend on the real enironment. Here only shows an example of setting
+set_input_delay 1 -clock clk [remove_from_collection [all_inputs] [get_ports clk]]
+1
+set_output_delay [expr $TEST_CYCLE*0.5] -clock clk [all_outputs]
+1
+set_fix_hold [get_clocks clk]
+1
+# Setting DRC Constraint
+# Defensive setting: smallest fanout_load 0.041 and WLM max fanout # 20 => 0.041*20 = 0.82
+# max_transition and max_capacitance are given in the cell library
+set_max_fanout 0.82 $TOPLEVEL
+1
+# Area Constraint
+set_max_area 0
+1
+1
+source -echo -verbose 2_compile.tcl 
+# this cell's verilog will cause ncverilog to hang 
+set_dont_use [format "%s%s" saed32hvt_ss0p95v125c {/SDFFNASRX1*}]
+1
+# before synthesis settings
+set case_analysis_with_logic_constants true
+true
+set_fix_multiple_port_nets -feedthroughs -outputs -constants -buffer_constants
+1
+####check design####
+check_design > ./$RPT_DIR/check_design.log
+check_timing > ./$RPT_DIR/check_timing.log
+set_clock_gating_style -max_fanout 10
+
+Current clock gating style....
+Sequential cell: latch
+Minimum bank bitwidth: 3
+Minimum bank bitwidth for enhanced clock gating: 6
+Maximum fanout: 10
+Setup time for clock gate: 0.000000
+Hold time for clock gate: 0.000000
+Clock gating circuitry (positive edge): and
+Clock gating circuitry (negative edge): or
+ Note: inverter between clock gating circuitry 
+       and (negative edge) register clock pin.
+Control point insertion: none
+Control signal for control point: scan_enable
+Observation point insertion: false
+Observation logic depth: 5
+1
+# Synthesis all design (using : compile_ultra)
+# you can add "-gate_clock" to do gated-clock
+# you can add "-incremental" for higher performance
+compile_ultra -gate_clock -exact_map -no_autoungroup -no_seq_output_inversion -no_boundary_optimization
+Warning: The value of variable 'compile_preserve_subdesign_interfaces' has been changed to true because '-no_boundary_optimization' is used. (OPT-133)
+Information: Starting from 2013.12 release, constant propagation is enabled even when boundary optimization is disabled. (OPT-1318)
+Information: Performing power optimization. (PWR-850)
+Alib files are up-to-date.
+Information: Evaluating DesignWare library utilization. (UISN-27)
+
+============================================================================
+| DesignWare Building Block Library  |         Version         | Available |
+============================================================================
+| Basic DW Building Blocks           | O-2018.06-DWBB_201806.0 |     *     |
+| Licensed DW Building Blocks        | G-2012.06-DWBB_201206.4 |     *     |
+============================================================================
+
+
+Information: There are 296 potential problems in your design. Please run 'check_design' for more information. (LINT-99)
+
+  Simplifying Design 'Convnet_top'
+
+  Loading target library 'saed32io_wb_ss0p95v125c_2p25v'
+Loaded alib file './alib-52/saed32hvt_ss0p95v125c.db.alib'
+Loaded alib file './alib-52/saed32io_wb_ss0p95v125c_2p25v.db.alib' (placeholder)
+Information: State dependent leakage is now switched from on to off.
+
+  Beginning Pass 1 Mapping
+  ------------------------
+  Processing 'top_CNN'
+Information: Added key list 'DesignWare' to design 'top_CNN'. (DDB-72)
+Information: In design 'top_CNN', the register 'X_reg[14][2][2][0]' is removed because it is merged to 'X_reg[15][2][1][0]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[14][2][2][1]' is removed because it is merged to 'X_reg[15][2][1][1]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[14][2][2][2]' is removed because it is merged to 'X_reg[15][2][1][2]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[14][2][2][3]' is removed because it is merged to 'X_reg[15][2][1][3]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[14][2][2][4]' is removed because it is merged to 'X_reg[15][2][1][4]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[14][2][2][5]' is removed because it is merged to 'X_reg[15][2][1][5]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[14][2][2][6]' is removed because it is merged to 'X_reg[15][2][1][6]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[14][2][2][7]' is removed because it is merged to 'X_reg[15][2][1][7]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[14][2][1][0]' is removed because it is merged to 'X_reg[15][2][0][0]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[14][2][1][1]' is removed because it is merged to 'X_reg[15][2][0][1]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[14][2][1][2]' is removed because it is merged to 'X_reg[15][2][0][2]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[14][2][1][3]' is removed because it is merged to 'X_reg[15][2][0][3]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[14][2][1][4]' is removed because it is merged to 'X_reg[15][2][0][4]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[14][2][1][5]' is removed because it is merged to 'X_reg[15][2][0][5]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[14][2][1][6]' is removed because it is merged to 'X_reg[15][2][0][6]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[14][2][1][7]' is removed because it is merged to 'X_reg[15][2][0][7]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[13][2][2][0]' is removed because it is merged to 'X_reg[15][1][2][0]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[13][2][2][1]' is removed because it is merged to 'X_reg[15][1][2][1]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[13][2][2][2]' is removed because it is merged to 'X_reg[15][1][2][2]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[13][2][2][3]' is removed because it is merged to 'X_reg[15][1][2][3]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[13][2][2][4]' is removed because it is merged to 'X_reg[15][1][2][4]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[13][2][2][5]' is removed because it is merged to 'X_reg[15][1][2][5]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[13][2][2][6]' is removed because it is merged to 'X_reg[15][1][2][6]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[13][2][2][7]' is removed because it is merged to 'X_reg[15][1][2][7]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[14][1][2][0]' is removed because it is merged to 'X_reg[15][1][1][0]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[13][2][1][0]' is removed because it is merged to 'X_reg[15][1][1][0]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[12][2][2][0]' is removed because it is merged to 'X_reg[15][1][1][0]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[14][1][2][1]' is removed because it is merged to 'X_reg[15][1][1][1]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[13][2][1][1]' is removed because it is merged to 'X_reg[15][1][1][1]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[12][2][2][1]' is removed because it is merged to 'X_reg[15][1][1][1]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[14][1][2][2]' is removed because it is merged to 'X_reg[15][1][1][2]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[13][2][1][2]' is removed because it is merged to 'X_reg[15][1][1][2]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[12][2][2][2]' is removed because it is merged to 'X_reg[15][1][1][2]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[14][1][2][3]' is removed because it is merged to 'X_reg[15][1][1][3]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[13][2][1][3]' is removed because it is merged to 'X_reg[15][1][1][3]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[12][2][2][3]' is removed because it is merged to 'X_reg[15][1][1][3]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[14][1][2][4]' is removed because it is merged to 'X_reg[15][1][1][4]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[13][2][1][4]' is removed because it is merged to 'X_reg[15][1][1][4]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[12][2][2][4]' is removed because it is merged to 'X_reg[15][1][1][4]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[14][1][2][5]' is removed because it is merged to 'X_reg[15][1][1][5]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[13][2][1][5]' is removed because it is merged to 'X_reg[15][1][1][5]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[12][2][2][5]' is removed because it is merged to 'X_reg[15][1][1][5]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[14][1][2][6]' is removed because it is merged to 'X_reg[15][1][1][6]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[13][2][1][6]' is removed because it is merged to 'X_reg[15][1][1][6]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[12][2][2][6]' is removed because it is merged to 'X_reg[15][1][1][6]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[14][1][2][7]' is removed because it is merged to 'X_reg[15][1][1][7]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[13][2][1][7]' is removed because it is merged to 'X_reg[15][1][1][7]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[12][2][2][7]' is removed because it is merged to 'X_reg[15][1][1][7]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[14][1][1][0]' is removed because it is merged to 'X_reg[15][1][0][0]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[13][2][0][0]' is removed because it is merged to 'X_reg[15][1][0][0]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[12][2][1][0]' is removed because it is merged to 'X_reg[15][1][0][0]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[14][1][1][1]' is removed because it is merged to 'X_reg[15][1][0][1]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[13][2][0][1]' is removed because it is merged to 'X_reg[15][1][0][1]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[12][2][1][1]' is removed because it is merged to 'X_reg[15][1][0][1]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[14][1][1][2]' is removed because it is merged to 'X_reg[15][1][0][2]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[13][2][0][2]' is removed because it is merged to 'X_reg[15][1][0][2]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[12][2][1][2]' is removed because it is merged to 'X_reg[15][1][0][2]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[14][1][1][3]' is removed because it is merged to 'X_reg[15][1][0][3]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[13][2][0][3]' is removed because it is merged to 'X_reg[15][1][0][3]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[12][2][1][3]' is removed because it is merged to 'X_reg[15][1][0][3]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[14][1][1][4]' is removed because it is merged to 'X_reg[15][1][0][4]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[13][2][0][4]' is removed because it is merged to 'X_reg[15][1][0][4]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[12][2][1][4]' is removed because it is merged to 'X_reg[15][1][0][4]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[14][1][1][5]' is removed because it is merged to 'X_reg[15][1][0][5]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[13][2][0][5]' is removed because it is merged to 'X_reg[15][1][0][5]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[12][2][1][5]' is removed because it is merged to 'X_reg[15][1][0][5]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[14][1][1][6]' is removed because it is merged to 'X_reg[15][1][0][6]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[13][2][0][6]' is removed because it is merged to 'X_reg[15][1][0][6]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[12][2][1][6]' is removed because it is merged to 'X_reg[15][1][0][6]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[14][1][1][7]' is removed because it is merged to 'X_reg[15][1][0][7]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[13][2][0][7]' is removed because it is merged to 'X_reg[15][1][0][7]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[12][2][1][7]' is removed because it is merged to 'X_reg[15][1][0][7]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[13][1][2][0]' is removed because it is merged to 'X_reg[15][0][2][0]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[13][1][2][1]' is removed because it is merged to 'X_reg[15][0][2][1]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[13][1][2][2]' is removed because it is merged to 'X_reg[15][0][2][2]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[13][1][2][3]' is removed because it is merged to 'X_reg[15][0][2][3]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[13][1][2][4]' is removed because it is merged to 'X_reg[15][0][2][4]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[13][1][2][5]' is removed because it is merged to 'X_reg[15][0][2][5]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[13][1][2][6]' is removed because it is merged to 'X_reg[15][0][2][6]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[13][1][2][7]' is removed because it is merged to 'X_reg[15][0][2][7]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[14][0][2][0]' is removed because it is merged to 'X_reg[15][0][1][0]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[13][1][1][0]' is removed because it is merged to 'X_reg[15][0][1][0]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[12][1][2][0]' is removed because it is merged to 'X_reg[15][0][1][0]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[14][0][2][1]' is removed because it is merged to 'X_reg[15][0][1][1]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[13][1][1][1]' is removed because it is merged to 'X_reg[15][0][1][1]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[12][1][2][1]' is removed because it is merged to 'X_reg[15][0][1][1]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[14][0][2][2]' is removed because it is merged to 'X_reg[15][0][1][2]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[13][1][1][2]' is removed because it is merged to 'X_reg[15][0][1][2]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[12][1][2][2]' is removed because it is merged to 'X_reg[15][0][1][2]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[14][0][2][3]' is removed because it is merged to 'X_reg[15][0][1][3]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[13][1][1][3]' is removed because it is merged to 'X_reg[15][0][1][3]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[12][1][2][3]' is removed because it is merged to 'X_reg[15][0][1][3]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[14][0][2][4]' is removed because it is merged to 'X_reg[15][0][1][4]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[13][1][1][4]' is removed because it is merged to 'X_reg[15][0][1][4]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[12][1][2][4]' is removed because it is merged to 'X_reg[15][0][1][4]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[14][0][2][5]' is removed because it is merged to 'X_reg[15][0][1][5]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[13][1][1][5]' is removed because it is merged to 'X_reg[15][0][1][5]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[12][1][2][5]' is removed because it is merged to 'X_reg[15][0][1][5]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[14][0][2][6]' is removed because it is merged to 'X_reg[15][0][1][6]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[13][1][1][6]' is removed because it is merged to 'X_reg[15][0][1][6]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[12][1][2][6]' is removed because it is merged to 'X_reg[15][0][1][6]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[14][0][2][7]' is removed because it is merged to 'X_reg[15][0][1][7]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[13][1][1][7]' is removed because it is merged to 'X_reg[15][0][1][7]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[12][1][2][7]' is removed because it is merged to 'X_reg[15][0][1][7]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[14][0][1][0]' is removed because it is merged to 'X_reg[15][0][0][0]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[13][1][0][0]' is removed because it is merged to 'X_reg[15][0][0][0]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[12][1][1][0]' is removed because it is merged to 'X_reg[15][0][0][0]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[14][0][1][1]' is removed because it is merged to 'X_reg[15][0][0][1]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[13][1][0][1]' is removed because it is merged to 'X_reg[15][0][0][1]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[12][1][1][1]' is removed because it is merged to 'X_reg[15][0][0][1]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[14][0][1][2]' is removed because it is merged to 'X_reg[15][0][0][2]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[13][1][0][2]' is removed because it is merged to 'X_reg[15][0][0][2]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[12][1][1][2]' is removed because it is merged to 'X_reg[15][0][0][2]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[14][0][1][3]' is removed because it is merged to 'X_reg[15][0][0][3]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[13][1][0][3]' is removed because it is merged to 'X_reg[15][0][0][3]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[12][1][1][3]' is removed because it is merged to 'X_reg[15][0][0][3]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[14][0][1][4]' is removed because it is merged to 'X_reg[15][0][0][4]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[13][1][0][4]' is removed because it is merged to 'X_reg[15][0][0][4]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[12][1][1][4]' is removed because it is merged to 'X_reg[15][0][0][4]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[14][0][1][5]' is removed because it is merged to 'X_reg[15][0][0][5]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[13][1][0][5]' is removed because it is merged to 'X_reg[15][0][0][5]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[12][1][1][5]' is removed because it is merged to 'X_reg[15][0][0][5]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[14][0][1][6]' is removed because it is merged to 'X_reg[15][0][0][6]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[13][1][0][6]' is removed because it is merged to 'X_reg[15][0][0][6]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[12][1][1][6]' is removed because it is merged to 'X_reg[15][0][0][6]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[14][0][1][7]' is removed because it is merged to 'X_reg[15][0][0][7]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[13][1][0][7]' is removed because it is merged to 'X_reg[15][0][0][7]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[12][1][1][7]' is removed because it is merged to 'X_reg[15][0][0][7]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[12][2][0][0]' is removed because it is merged to 'X_reg[14][1][0][0]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[12][2][0][1]' is removed because it is merged to 'X_reg[14][1][0][1]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[12][2][0][2]' is removed because it is merged to 'X_reg[14][1][0][2]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[12][2][0][3]' is removed because it is merged to 'X_reg[14][1][0][3]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[12][2][0][4]' is removed because it is merged to 'X_reg[14][1][0][4]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[12][2][0][5]' is removed because it is merged to 'X_reg[14][1][0][5]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[12][2][0][6]' is removed because it is merged to 'X_reg[14][1][0][6]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[12][2][0][7]' is removed because it is merged to 'X_reg[14][1][0][7]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[12][1][0][0]' is removed because it is merged to 'X_reg[14][0][0][0]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[12][1][0][1]' is removed because it is merged to 'X_reg[14][0][0][1]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[12][1][0][2]' is removed because it is merged to 'X_reg[14][0][0][2]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[12][1][0][3]' is removed because it is merged to 'X_reg[14][0][0][3]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[12][1][0][4]' is removed because it is merged to 'X_reg[14][0][0][4]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[12][1][0][5]' is removed because it is merged to 'X_reg[14][0][0][5]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[12][1][0][6]' is removed because it is merged to 'X_reg[14][0][0][6]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[12][1][0][7]' is removed because it is merged to 'X_reg[14][0][0][7]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[12][0][2][0]' is removed because it is merged to 'X_reg[13][0][1][0]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[12][0][2][1]' is removed because it is merged to 'X_reg[13][0][1][1]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[12][0][2][2]' is removed because it is merged to 'X_reg[13][0][1][2]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[12][0][2][3]' is removed because it is merged to 'X_reg[13][0][1][3]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[12][0][2][4]' is removed because it is merged to 'X_reg[13][0][1][4]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[12][0][2][5]' is removed because it is merged to 'X_reg[13][0][1][5]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[12][0][2][6]' is removed because it is merged to 'X_reg[13][0][1][6]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[12][0][2][7]' is removed because it is merged to 'X_reg[13][0][1][7]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[12][0][1][0]' is removed because it is merged to 'X_reg[13][0][0][0]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[12][0][1][1]' is removed because it is merged to 'X_reg[13][0][0][1]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[12][0][1][2]' is removed because it is merged to 'X_reg[13][0][0][2]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[12][0][1][3]' is removed because it is merged to 'X_reg[13][0][0][3]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[12][0][1][4]' is removed because it is merged to 'X_reg[13][0][0][4]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[12][0][1][5]' is removed because it is merged to 'X_reg[13][0][0][5]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[12][0][1][6]' is removed because it is merged to 'X_reg[13][0][0][6]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[12][0][1][7]' is removed because it is merged to 'X_reg[13][0][0][7]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[10][2][2][0]' is removed because it is merged to 'X_reg[11][2][1][0]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[10][2][2][1]' is removed because it is merged to 'X_reg[11][2][1][1]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[10][2][2][2]' is removed because it is merged to 'X_reg[11][2][1][2]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[10][2][2][3]' is removed because it is merged to 'X_reg[11][2][1][3]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[10][2][2][4]' is removed because it is merged to 'X_reg[11][2][1][4]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[10][2][2][5]' is removed because it is merged to 'X_reg[11][2][1][5]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[10][2][2][6]' is removed because it is merged to 'X_reg[11][2][1][6]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[10][2][2][7]' is removed because it is merged to 'X_reg[11][2][1][7]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[10][2][1][0]' is removed because it is merged to 'X_reg[11][2][0][0]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[10][2][1][1]' is removed because it is merged to 'X_reg[11][2][0][1]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[10][2][1][2]' is removed because it is merged to 'X_reg[11][2][0][2]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[10][2][1][3]' is removed because it is merged to 'X_reg[11][2][0][3]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[10][2][1][4]' is removed because it is merged to 'X_reg[11][2][0][4]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[10][2][1][5]' is removed because it is merged to 'X_reg[11][2][0][5]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[10][2][1][6]' is removed because it is merged to 'X_reg[11][2][0][6]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[10][2][1][7]' is removed because it is merged to 'X_reg[11][2][0][7]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[9][2][2][0]' is removed because it is merged to 'X_reg[11][1][2][0]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[9][2][2][1]' is removed because it is merged to 'X_reg[11][1][2][1]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[9][2][2][2]' is removed because it is merged to 'X_reg[11][1][2][2]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[9][2][2][3]' is removed because it is merged to 'X_reg[11][1][2][3]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[9][2][2][4]' is removed because it is merged to 'X_reg[11][1][2][4]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[9][2][2][5]' is removed because it is merged to 'X_reg[11][1][2][5]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[9][2][2][6]' is removed because it is merged to 'X_reg[11][1][2][6]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[9][2][2][7]' is removed because it is merged to 'X_reg[11][1][2][7]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[10][1][2][0]' is removed because it is merged to 'X_reg[11][1][1][0]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[9][2][1][0]' is removed because it is merged to 'X_reg[11][1][1][0]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[8][2][2][0]' is removed because it is merged to 'X_reg[11][1][1][0]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[10][1][2][1]' is removed because it is merged to 'X_reg[11][1][1][1]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[9][2][1][1]' is removed because it is merged to 'X_reg[11][1][1][1]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[8][2][2][1]' is removed because it is merged to 'X_reg[11][1][1][1]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[10][1][2][2]' is removed because it is merged to 'X_reg[11][1][1][2]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[9][2][1][2]' is removed because it is merged to 'X_reg[11][1][1][2]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[8][2][2][2]' is removed because it is merged to 'X_reg[11][1][1][2]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[10][1][2][3]' is removed because it is merged to 'X_reg[11][1][1][3]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[9][2][1][3]' is removed because it is merged to 'X_reg[11][1][1][3]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[8][2][2][3]' is removed because it is merged to 'X_reg[11][1][1][3]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[10][1][2][4]' is removed because it is merged to 'X_reg[11][1][1][4]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[9][2][1][4]' is removed because it is merged to 'X_reg[11][1][1][4]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[8][2][2][4]' is removed because it is merged to 'X_reg[11][1][1][4]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[10][1][2][5]' is removed because it is merged to 'X_reg[11][1][1][5]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[9][2][1][5]' is removed because it is merged to 'X_reg[11][1][1][5]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[8][2][2][5]' is removed because it is merged to 'X_reg[11][1][1][5]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[10][1][2][6]' is removed because it is merged to 'X_reg[11][1][1][6]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[9][2][1][6]' is removed because it is merged to 'X_reg[11][1][1][6]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[8][2][2][6]' is removed because it is merged to 'X_reg[11][1][1][6]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[10][1][2][7]' is removed because it is merged to 'X_reg[11][1][1][7]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[9][2][1][7]' is removed because it is merged to 'X_reg[11][1][1][7]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[8][2][2][7]' is removed because it is merged to 'X_reg[11][1][1][7]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[10][1][1][0]' is removed because it is merged to 'X_reg[11][1][0][0]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[9][2][0][0]' is removed because it is merged to 'X_reg[11][1][0][0]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[8][2][1][0]' is removed because it is merged to 'X_reg[11][1][0][0]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[10][1][1][1]' is removed because it is merged to 'X_reg[11][1][0][1]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[9][2][0][1]' is removed because it is merged to 'X_reg[11][1][0][1]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[8][2][1][1]' is removed because it is merged to 'X_reg[11][1][0][1]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[10][1][1][2]' is removed because it is merged to 'X_reg[11][1][0][2]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[9][2][0][2]' is removed because it is merged to 'X_reg[11][1][0][2]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[8][2][1][2]' is removed because it is merged to 'X_reg[11][1][0][2]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[10][1][1][3]' is removed because it is merged to 'X_reg[11][1][0][3]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[9][2][0][3]' is removed because it is merged to 'X_reg[11][1][0][3]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[8][2][1][3]' is removed because it is merged to 'X_reg[11][1][0][3]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[10][1][1][4]' is removed because it is merged to 'X_reg[11][1][0][4]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[9][2][0][4]' is removed because it is merged to 'X_reg[11][1][0][4]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[8][2][1][4]' is removed because it is merged to 'X_reg[11][1][0][4]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[10][1][1][5]' is removed because it is merged to 'X_reg[11][1][0][5]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[9][2][0][5]' is removed because it is merged to 'X_reg[11][1][0][5]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[8][2][1][5]' is removed because it is merged to 'X_reg[11][1][0][5]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[10][1][1][6]' is removed because it is merged to 'X_reg[11][1][0][6]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[9][2][0][6]' is removed because it is merged to 'X_reg[11][1][0][6]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[8][2][1][6]' is removed because it is merged to 'X_reg[11][1][0][6]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[10][1][1][7]' is removed because it is merged to 'X_reg[11][1][0][7]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[9][2][0][7]' is removed because it is merged to 'X_reg[11][1][0][7]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[8][2][1][7]' is removed because it is merged to 'X_reg[11][1][0][7]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[9][1][2][0]' is removed because it is merged to 'X_reg[11][0][2][0]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[9][1][2][1]' is removed because it is merged to 'X_reg[11][0][2][1]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[9][1][2][2]' is removed because it is merged to 'X_reg[11][0][2][2]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[9][1][2][3]' is removed because it is merged to 'X_reg[11][0][2][3]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[9][1][2][4]' is removed because it is merged to 'X_reg[11][0][2][4]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[9][1][2][5]' is removed because it is merged to 'X_reg[11][0][2][5]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[9][1][2][6]' is removed because it is merged to 'X_reg[11][0][2][6]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[9][1][2][7]' is removed because it is merged to 'X_reg[11][0][2][7]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[10][0][2][0]' is removed because it is merged to 'X_reg[11][0][1][0]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[9][1][1][0]' is removed because it is merged to 'X_reg[11][0][1][0]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[8][1][2][0]' is removed because it is merged to 'X_reg[11][0][1][0]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[10][0][2][1]' is removed because it is merged to 'X_reg[11][0][1][1]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[9][1][1][1]' is removed because it is merged to 'X_reg[11][0][1][1]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[8][1][2][1]' is removed because it is merged to 'X_reg[11][0][1][1]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[10][0][2][2]' is removed because it is merged to 'X_reg[11][0][1][2]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[9][1][1][2]' is removed because it is merged to 'X_reg[11][0][1][2]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[8][1][2][2]' is removed because it is merged to 'X_reg[11][0][1][2]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[10][0][2][3]' is removed because it is merged to 'X_reg[11][0][1][3]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[9][1][1][3]' is removed because it is merged to 'X_reg[11][0][1][3]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[8][1][2][3]' is removed because it is merged to 'X_reg[11][0][1][3]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[10][0][2][4]' is removed because it is merged to 'X_reg[11][0][1][4]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[9][1][1][4]' is removed because it is merged to 'X_reg[11][0][1][4]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[8][1][2][4]' is removed because it is merged to 'X_reg[11][0][1][4]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[10][0][2][5]' is removed because it is merged to 'X_reg[11][0][1][5]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[9][1][1][5]' is removed because it is merged to 'X_reg[11][0][1][5]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[8][1][2][5]' is removed because it is merged to 'X_reg[11][0][1][5]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[10][0][2][6]' is removed because it is merged to 'X_reg[11][0][1][6]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[9][1][1][6]' is removed because it is merged to 'X_reg[11][0][1][6]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[8][1][2][6]' is removed because it is merged to 'X_reg[11][0][1][6]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[10][0][2][7]' is removed because it is merged to 'X_reg[11][0][1][7]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[9][1][1][7]' is removed because it is merged to 'X_reg[11][0][1][7]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[8][1][2][7]' is removed because it is merged to 'X_reg[11][0][1][7]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[10][0][1][0]' is removed because it is merged to 'X_reg[11][0][0][0]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[9][1][0][0]' is removed because it is merged to 'X_reg[11][0][0][0]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[8][1][1][0]' is removed because it is merged to 'X_reg[11][0][0][0]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[10][0][1][1]' is removed because it is merged to 'X_reg[11][0][0][1]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[9][1][0][1]' is removed because it is merged to 'X_reg[11][0][0][1]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[8][1][1][1]' is removed because it is merged to 'X_reg[11][0][0][1]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[10][0][1][2]' is removed because it is merged to 'X_reg[11][0][0][2]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[9][1][0][2]' is removed because it is merged to 'X_reg[11][0][0][2]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[8][1][1][2]' is removed because it is merged to 'X_reg[11][0][0][2]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[10][0][1][3]' is removed because it is merged to 'X_reg[11][0][0][3]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[9][1][0][3]' is removed because it is merged to 'X_reg[11][0][0][3]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[8][1][1][3]' is removed because it is merged to 'X_reg[11][0][0][3]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[10][0][1][4]' is removed because it is merged to 'X_reg[11][0][0][4]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[9][1][0][4]' is removed because it is merged to 'X_reg[11][0][0][4]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[8][1][1][4]' is removed because it is merged to 'X_reg[11][0][0][4]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[10][0][1][5]' is removed because it is merged to 'X_reg[11][0][0][5]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[9][1][0][5]' is removed because it is merged to 'X_reg[11][0][0][5]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[8][1][1][5]' is removed because it is merged to 'X_reg[11][0][0][5]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[10][0][1][6]' is removed because it is merged to 'X_reg[11][0][0][6]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[9][1][0][6]' is removed because it is merged to 'X_reg[11][0][0][6]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[8][1][1][6]' is removed because it is merged to 'X_reg[11][0][0][6]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[10][0][1][7]' is removed because it is merged to 'X_reg[11][0][0][7]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[9][1][0][7]' is removed because it is merged to 'X_reg[11][0][0][7]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[8][1][1][7]' is removed because it is merged to 'X_reg[11][0][0][7]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[8][2][0][0]' is removed because it is merged to 'X_reg[10][1][0][0]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[8][2][0][1]' is removed because it is merged to 'X_reg[10][1][0][1]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[8][2][0][2]' is removed because it is merged to 'X_reg[10][1][0][2]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[8][2][0][3]' is removed because it is merged to 'X_reg[10][1][0][3]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[8][2][0][4]' is removed because it is merged to 'X_reg[10][1][0][4]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[8][2][0][5]' is removed because it is merged to 'X_reg[10][1][0][5]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[8][2][0][6]' is removed because it is merged to 'X_reg[10][1][0][6]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[8][2][0][7]' is removed because it is merged to 'X_reg[10][1][0][7]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[8][1][0][0]' is removed because it is merged to 'X_reg[10][0][0][0]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[8][1][0][1]' is removed because it is merged to 'X_reg[10][0][0][1]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[8][1][0][2]' is removed because it is merged to 'X_reg[10][0][0][2]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[8][1][0][3]' is removed because it is merged to 'X_reg[10][0][0][3]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[8][1][0][4]' is removed because it is merged to 'X_reg[10][0][0][4]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[8][1][0][5]' is removed because it is merged to 'X_reg[10][0][0][5]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[8][1][0][6]' is removed because it is merged to 'X_reg[10][0][0][6]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[8][1][0][7]' is removed because it is merged to 'X_reg[10][0][0][7]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[8][0][2][0]' is removed because it is merged to 'X_reg[9][0][1][0]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[8][0][2][1]' is removed because it is merged to 'X_reg[9][0][1][1]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[8][0][2][2]' is removed because it is merged to 'X_reg[9][0][1][2]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[8][0][2][3]' is removed because it is merged to 'X_reg[9][0][1][3]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[8][0][2][4]' is removed because it is merged to 'X_reg[9][0][1][4]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[8][0][2][5]' is removed because it is merged to 'X_reg[9][0][1][5]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[8][0][2][6]' is removed because it is merged to 'X_reg[9][0][1][6]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[8][0][2][7]' is removed because it is merged to 'X_reg[9][0][1][7]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[8][0][1][0]' is removed because it is merged to 'X_reg[9][0][0][0]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[8][0][1][1]' is removed because it is merged to 'X_reg[9][0][0][1]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[8][0][1][2]' is removed because it is merged to 'X_reg[9][0][0][2]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[8][0][1][3]' is removed because it is merged to 'X_reg[9][0][0][3]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[8][0][1][4]' is removed because it is merged to 'X_reg[9][0][0][4]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[8][0][1][5]' is removed because it is merged to 'X_reg[9][0][0][5]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[8][0][1][6]' is removed because it is merged to 'X_reg[9][0][0][6]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[8][0][1][7]' is removed because it is merged to 'X_reg[9][0][0][7]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[6][2][2][0]' is removed because it is merged to 'X_reg[7][2][1][0]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[6][2][2][1]' is removed because it is merged to 'X_reg[7][2][1][1]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[6][2][2][2]' is removed because it is merged to 'X_reg[7][2][1][2]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[6][2][2][3]' is removed because it is merged to 'X_reg[7][2][1][3]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[6][2][2][4]' is removed because it is merged to 'X_reg[7][2][1][4]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[6][2][2][5]' is removed because it is merged to 'X_reg[7][2][1][5]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[6][2][2][6]' is removed because it is merged to 'X_reg[7][2][1][6]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[6][2][2][7]' is removed because it is merged to 'X_reg[7][2][1][7]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[6][2][1][0]' is removed because it is merged to 'X_reg[7][2][0][0]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[6][2][1][1]' is removed because it is merged to 'X_reg[7][2][0][1]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[6][2][1][2]' is removed because it is merged to 'X_reg[7][2][0][2]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[6][2][1][3]' is removed because it is merged to 'X_reg[7][2][0][3]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[6][2][1][4]' is removed because it is merged to 'X_reg[7][2][0][4]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[6][2][1][5]' is removed because it is merged to 'X_reg[7][2][0][5]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[6][2][1][6]' is removed because it is merged to 'X_reg[7][2][0][6]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[6][2][1][7]' is removed because it is merged to 'X_reg[7][2][0][7]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[5][2][2][0]' is removed because it is merged to 'X_reg[7][1][2][0]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[5][2][2][1]' is removed because it is merged to 'X_reg[7][1][2][1]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[5][2][2][2]' is removed because it is merged to 'X_reg[7][1][2][2]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[5][2][2][3]' is removed because it is merged to 'X_reg[7][1][2][3]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[5][2][2][4]' is removed because it is merged to 'X_reg[7][1][2][4]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[5][2][2][5]' is removed because it is merged to 'X_reg[7][1][2][5]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[5][2][2][6]' is removed because it is merged to 'X_reg[7][1][2][6]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[5][2][2][7]' is removed because it is merged to 'X_reg[7][1][2][7]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[6][1][2][0]' is removed because it is merged to 'X_reg[7][1][1][0]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[5][2][1][0]' is removed because it is merged to 'X_reg[7][1][1][0]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[4][2][2][0]' is removed because it is merged to 'X_reg[7][1][1][0]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[6][1][2][1]' is removed because it is merged to 'X_reg[7][1][1][1]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[5][2][1][1]' is removed because it is merged to 'X_reg[7][1][1][1]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[4][2][2][1]' is removed because it is merged to 'X_reg[7][1][1][1]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[6][1][2][2]' is removed because it is merged to 'X_reg[7][1][1][2]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[5][2][1][2]' is removed because it is merged to 'X_reg[7][1][1][2]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[4][2][2][2]' is removed because it is merged to 'X_reg[7][1][1][2]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[6][1][2][3]' is removed because it is merged to 'X_reg[7][1][1][3]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[5][2][1][3]' is removed because it is merged to 'X_reg[7][1][1][3]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[4][2][2][3]' is removed because it is merged to 'X_reg[7][1][1][3]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[6][1][2][4]' is removed because it is merged to 'X_reg[7][1][1][4]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[5][2][1][4]' is removed because it is merged to 'X_reg[7][1][1][4]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[4][2][2][4]' is removed because it is merged to 'X_reg[7][1][1][4]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[6][1][2][5]' is removed because it is merged to 'X_reg[7][1][1][5]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[5][2][1][5]' is removed because it is merged to 'X_reg[7][1][1][5]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[4][2][2][5]' is removed because it is merged to 'X_reg[7][1][1][5]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[6][1][2][6]' is removed because it is merged to 'X_reg[7][1][1][6]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[5][2][1][6]' is removed because it is merged to 'X_reg[7][1][1][6]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[4][2][2][6]' is removed because it is merged to 'X_reg[7][1][1][6]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[6][1][2][7]' is removed because it is merged to 'X_reg[7][1][1][7]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[5][2][1][7]' is removed because it is merged to 'X_reg[7][1][1][7]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[4][2][2][7]' is removed because it is merged to 'X_reg[7][1][1][7]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[6][1][1][0]' is removed because it is merged to 'X_reg[7][1][0][0]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[5][2][0][0]' is removed because it is merged to 'X_reg[7][1][0][0]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[4][2][1][0]' is removed because it is merged to 'X_reg[7][1][0][0]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[6][1][1][1]' is removed because it is merged to 'X_reg[7][1][0][1]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[5][2][0][1]' is removed because it is merged to 'X_reg[7][1][0][1]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[4][2][1][1]' is removed because it is merged to 'X_reg[7][1][0][1]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[6][1][1][2]' is removed because it is merged to 'X_reg[7][1][0][2]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[5][2][0][2]' is removed because it is merged to 'X_reg[7][1][0][2]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[4][2][1][2]' is removed because it is merged to 'X_reg[7][1][0][2]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[6][1][1][3]' is removed because it is merged to 'X_reg[7][1][0][3]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[5][2][0][3]' is removed because it is merged to 'X_reg[7][1][0][3]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[4][2][1][3]' is removed because it is merged to 'X_reg[7][1][0][3]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[6][1][1][4]' is removed because it is merged to 'X_reg[7][1][0][4]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[5][2][0][4]' is removed because it is merged to 'X_reg[7][1][0][4]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[4][2][1][4]' is removed because it is merged to 'X_reg[7][1][0][4]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[6][1][1][5]' is removed because it is merged to 'X_reg[7][1][0][5]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[5][2][0][5]' is removed because it is merged to 'X_reg[7][1][0][5]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[4][2][1][5]' is removed because it is merged to 'X_reg[7][1][0][5]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[6][1][1][6]' is removed because it is merged to 'X_reg[7][1][0][6]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[5][2][0][6]' is removed because it is merged to 'X_reg[7][1][0][6]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[4][2][1][6]' is removed because it is merged to 'X_reg[7][1][0][6]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[6][1][1][7]' is removed because it is merged to 'X_reg[7][1][0][7]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[5][2][0][7]' is removed because it is merged to 'X_reg[7][1][0][7]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[4][2][1][7]' is removed because it is merged to 'X_reg[7][1][0][7]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[5][1][2][0]' is removed because it is merged to 'X_reg[7][0][2][0]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[5][1][2][1]' is removed because it is merged to 'X_reg[7][0][2][1]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[5][1][2][2]' is removed because it is merged to 'X_reg[7][0][2][2]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[5][1][2][3]' is removed because it is merged to 'X_reg[7][0][2][3]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[5][1][2][4]' is removed because it is merged to 'X_reg[7][0][2][4]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[5][1][2][5]' is removed because it is merged to 'X_reg[7][0][2][5]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[5][1][2][6]' is removed because it is merged to 'X_reg[7][0][2][6]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[5][1][2][7]' is removed because it is merged to 'X_reg[7][0][2][7]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[6][0][2][0]' is removed because it is merged to 'X_reg[7][0][1][0]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[5][1][1][0]' is removed because it is merged to 'X_reg[7][0][1][0]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[4][1][2][0]' is removed because it is merged to 'X_reg[7][0][1][0]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[6][0][2][1]' is removed because it is merged to 'X_reg[7][0][1][1]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[5][1][1][1]' is removed because it is merged to 'X_reg[7][0][1][1]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[4][1][2][1]' is removed because it is merged to 'X_reg[7][0][1][1]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[6][0][2][2]' is removed because it is merged to 'X_reg[7][0][1][2]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[5][1][1][2]' is removed because it is merged to 'X_reg[7][0][1][2]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[4][1][2][2]' is removed because it is merged to 'X_reg[7][0][1][2]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[6][0][2][3]' is removed because it is merged to 'X_reg[7][0][1][3]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[5][1][1][3]' is removed because it is merged to 'X_reg[7][0][1][3]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[4][1][2][3]' is removed because it is merged to 'X_reg[7][0][1][3]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[6][0][2][4]' is removed because it is merged to 'X_reg[7][0][1][4]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[5][1][1][4]' is removed because it is merged to 'X_reg[7][0][1][4]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[4][1][2][4]' is removed because it is merged to 'X_reg[7][0][1][4]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[6][0][2][5]' is removed because it is merged to 'X_reg[7][0][1][5]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[5][1][1][5]' is removed because it is merged to 'X_reg[7][0][1][5]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[4][1][2][5]' is removed because it is merged to 'X_reg[7][0][1][5]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[6][0][2][6]' is removed because it is merged to 'X_reg[7][0][1][6]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[5][1][1][6]' is removed because it is merged to 'X_reg[7][0][1][6]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[4][1][2][6]' is removed because it is merged to 'X_reg[7][0][1][6]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[6][0][2][7]' is removed because it is merged to 'X_reg[7][0][1][7]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[5][1][1][7]' is removed because it is merged to 'X_reg[7][0][1][7]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[4][1][2][7]' is removed because it is merged to 'X_reg[7][0][1][7]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[6][0][1][0]' is removed because it is merged to 'X_reg[7][0][0][0]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[5][1][0][0]' is removed because it is merged to 'X_reg[7][0][0][0]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[4][1][1][0]' is removed because it is merged to 'X_reg[7][0][0][0]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[6][0][1][1]' is removed because it is merged to 'X_reg[7][0][0][1]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[5][1][0][1]' is removed because it is merged to 'X_reg[7][0][0][1]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[4][1][1][1]' is removed because it is merged to 'X_reg[7][0][0][1]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[6][0][1][2]' is removed because it is merged to 'X_reg[7][0][0][2]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[5][1][0][2]' is removed because it is merged to 'X_reg[7][0][0][2]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[4][1][1][2]' is removed because it is merged to 'X_reg[7][0][0][2]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[6][0][1][3]' is removed because it is merged to 'X_reg[7][0][0][3]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[5][1][0][3]' is removed because it is merged to 'X_reg[7][0][0][3]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[4][1][1][3]' is removed because it is merged to 'X_reg[7][0][0][3]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[6][0][1][4]' is removed because it is merged to 'X_reg[7][0][0][4]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[5][1][0][4]' is removed because it is merged to 'X_reg[7][0][0][4]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[4][1][1][4]' is removed because it is merged to 'X_reg[7][0][0][4]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[6][0][1][5]' is removed because it is merged to 'X_reg[7][0][0][5]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[5][1][0][5]' is removed because it is merged to 'X_reg[7][0][0][5]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[4][1][1][5]' is removed because it is merged to 'X_reg[7][0][0][5]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[6][0][1][6]' is removed because it is merged to 'X_reg[7][0][0][6]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[5][1][0][6]' is removed because it is merged to 'X_reg[7][0][0][6]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[4][1][1][6]' is removed because it is merged to 'X_reg[7][0][0][6]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[6][0][1][7]' is removed because it is merged to 'X_reg[7][0][0][7]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[5][1][0][7]' is removed because it is merged to 'X_reg[7][0][0][7]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[4][1][1][7]' is removed because it is merged to 'X_reg[7][0][0][7]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[4][2][0][0]' is removed because it is merged to 'X_reg[6][1][0][0]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[4][2][0][1]' is removed because it is merged to 'X_reg[6][1][0][1]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[4][2][0][2]' is removed because it is merged to 'X_reg[6][1][0][2]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[4][2][0][3]' is removed because it is merged to 'X_reg[6][1][0][3]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[4][2][0][4]' is removed because it is merged to 'X_reg[6][1][0][4]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[4][2][0][5]' is removed because it is merged to 'X_reg[6][1][0][5]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[4][2][0][6]' is removed because it is merged to 'X_reg[6][1][0][6]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[4][2][0][7]' is removed because it is merged to 'X_reg[6][1][0][7]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[4][1][0][0]' is removed because it is merged to 'X_reg[6][0][0][0]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[4][1][0][1]' is removed because it is merged to 'X_reg[6][0][0][1]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[4][1][0][2]' is removed because it is merged to 'X_reg[6][0][0][2]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[4][1][0][3]' is removed because it is merged to 'X_reg[6][0][0][3]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[4][1][0][4]' is removed because it is merged to 'X_reg[6][0][0][4]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[4][1][0][5]' is removed because it is merged to 'X_reg[6][0][0][5]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[4][1][0][6]' is removed because it is merged to 'X_reg[6][0][0][6]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[4][1][0][7]' is removed because it is merged to 'X_reg[6][0][0][7]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[4][0][2][0]' is removed because it is merged to 'X_reg[5][0][1][0]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[4][0][2][1]' is removed because it is merged to 'X_reg[5][0][1][1]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[4][0][2][2]' is removed because it is merged to 'X_reg[5][0][1][2]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[4][0][2][3]' is removed because it is merged to 'X_reg[5][0][1][3]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[4][0][2][4]' is removed because it is merged to 'X_reg[5][0][1][4]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[4][0][2][5]' is removed because it is merged to 'X_reg[5][0][1][5]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[4][0][2][6]' is removed because it is merged to 'X_reg[5][0][1][6]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[4][0][2][7]' is removed because it is merged to 'X_reg[5][0][1][7]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[4][0][1][0]' is removed because it is merged to 'X_reg[5][0][0][0]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[4][0][1][1]' is removed because it is merged to 'X_reg[5][0][0][1]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[4][0][1][2]' is removed because it is merged to 'X_reg[5][0][0][2]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[4][0][1][3]' is removed because it is merged to 'X_reg[5][0][0][3]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[4][0][1][4]' is removed because it is merged to 'X_reg[5][0][0][4]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[4][0][1][5]' is removed because it is merged to 'X_reg[5][0][0][5]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[4][0][1][6]' is removed because it is merged to 'X_reg[5][0][0][6]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[4][0][1][7]' is removed because it is merged to 'X_reg[5][0][0][7]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[2][2][2][0]' is removed because it is merged to 'X_reg[3][2][1][0]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[2][2][2][1]' is removed because it is merged to 'X_reg[3][2][1][1]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[2][2][2][2]' is removed because it is merged to 'X_reg[3][2][1][2]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[2][2][2][3]' is removed because it is merged to 'X_reg[3][2][1][3]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[2][2][2][4]' is removed because it is merged to 'X_reg[3][2][1][4]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[2][2][2][5]' is removed because it is merged to 'X_reg[3][2][1][5]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[2][2][2][6]' is removed because it is merged to 'X_reg[3][2][1][6]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[2][2][2][7]' is removed because it is merged to 'X_reg[3][2][1][7]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[2][2][1][0]' is removed because it is merged to 'X_reg[3][2][0][0]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[2][2][1][1]' is removed because it is merged to 'X_reg[3][2][0][1]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[2][2][1][2]' is removed because it is merged to 'X_reg[3][2][0][2]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[2][2][1][3]' is removed because it is merged to 'X_reg[3][2][0][3]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[2][2][1][4]' is removed because it is merged to 'X_reg[3][2][0][4]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[2][2][1][5]' is removed because it is merged to 'X_reg[3][2][0][5]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[2][2][1][6]' is removed because it is merged to 'X_reg[3][2][0][6]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[2][2][1][7]' is removed because it is merged to 'X_reg[3][2][0][7]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[1][2][2][0]' is removed because it is merged to 'X_reg[3][1][2][0]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[1][2][2][1]' is removed because it is merged to 'X_reg[3][1][2][1]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[1][2][2][2]' is removed because it is merged to 'X_reg[3][1][2][2]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[1][2][2][3]' is removed because it is merged to 'X_reg[3][1][2][3]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[1][2][2][4]' is removed because it is merged to 'X_reg[3][1][2][4]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[1][2][2][5]' is removed because it is merged to 'X_reg[3][1][2][5]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[1][2][2][6]' is removed because it is merged to 'X_reg[3][1][2][6]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[1][2][2][7]' is removed because it is merged to 'X_reg[3][1][2][7]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[2][1][2][0]' is removed because it is merged to 'X_reg[3][1][1][0]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[1][2][1][0]' is removed because it is merged to 'X_reg[3][1][1][0]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[0][2][2][0]' is removed because it is merged to 'X_reg[3][1][1][0]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[2][1][2][1]' is removed because it is merged to 'X_reg[3][1][1][1]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[1][2][1][1]' is removed because it is merged to 'X_reg[3][1][1][1]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[0][2][2][1]' is removed because it is merged to 'X_reg[3][1][1][1]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[2][1][2][2]' is removed because it is merged to 'X_reg[3][1][1][2]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[1][2][1][2]' is removed because it is merged to 'X_reg[3][1][1][2]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[0][2][2][2]' is removed because it is merged to 'X_reg[3][1][1][2]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[2][1][2][3]' is removed because it is merged to 'X_reg[3][1][1][3]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[1][2][1][3]' is removed because it is merged to 'X_reg[3][1][1][3]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[0][2][2][3]' is removed because it is merged to 'X_reg[3][1][1][3]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[2][1][2][4]' is removed because it is merged to 'X_reg[3][1][1][4]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[1][2][1][4]' is removed because it is merged to 'X_reg[3][1][1][4]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[0][2][2][4]' is removed because it is merged to 'X_reg[3][1][1][4]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[2][1][2][5]' is removed because it is merged to 'X_reg[3][1][1][5]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[1][2][1][5]' is removed because it is merged to 'X_reg[3][1][1][5]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[0][2][2][5]' is removed because it is merged to 'X_reg[3][1][1][5]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[2][1][2][6]' is removed because it is merged to 'X_reg[3][1][1][6]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[1][2][1][6]' is removed because it is merged to 'X_reg[3][1][1][6]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[0][2][2][6]' is removed because it is merged to 'X_reg[3][1][1][6]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[2][1][2][7]' is removed because it is merged to 'X_reg[3][1][1][7]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[1][2][1][7]' is removed because it is merged to 'X_reg[3][1][1][7]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[0][2][2][7]' is removed because it is merged to 'X_reg[3][1][1][7]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[2][1][1][0]' is removed because it is merged to 'X_reg[3][1][0][0]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[1][2][0][0]' is removed because it is merged to 'X_reg[3][1][0][0]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[0][2][1][0]' is removed because it is merged to 'X_reg[3][1][0][0]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[2][1][1][1]' is removed because it is merged to 'X_reg[3][1][0][1]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[1][2][0][1]' is removed because it is merged to 'X_reg[3][1][0][1]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[0][2][1][1]' is removed because it is merged to 'X_reg[3][1][0][1]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[2][1][1][2]' is removed because it is merged to 'X_reg[3][1][0][2]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[1][2][0][2]' is removed because it is merged to 'X_reg[3][1][0][2]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[0][2][1][2]' is removed because it is merged to 'X_reg[3][1][0][2]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[2][1][1][3]' is removed because it is merged to 'X_reg[3][1][0][3]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[1][2][0][3]' is removed because it is merged to 'X_reg[3][1][0][3]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[0][2][1][3]' is removed because it is merged to 'X_reg[3][1][0][3]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[2][1][1][4]' is removed because it is merged to 'X_reg[3][1][0][4]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[1][2][0][4]' is removed because it is merged to 'X_reg[3][1][0][4]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[0][2][1][4]' is removed because it is merged to 'X_reg[3][1][0][4]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[2][1][1][5]' is removed because it is merged to 'X_reg[3][1][0][5]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[1][2][0][5]' is removed because it is merged to 'X_reg[3][1][0][5]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[0][2][1][5]' is removed because it is merged to 'X_reg[3][1][0][5]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[2][1][1][6]' is removed because it is merged to 'X_reg[3][1][0][6]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[1][2][0][6]' is removed because it is merged to 'X_reg[3][1][0][6]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[0][2][1][6]' is removed because it is merged to 'X_reg[3][1][0][6]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[2][1][1][7]' is removed because it is merged to 'X_reg[3][1][0][7]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[1][2][0][7]' is removed because it is merged to 'X_reg[3][1][0][7]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[0][2][1][7]' is removed because it is merged to 'X_reg[3][1][0][7]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[1][1][2][0]' is removed because it is merged to 'X_reg[3][0][2][0]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[1][1][2][1]' is removed because it is merged to 'X_reg[3][0][2][1]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[1][1][2][2]' is removed because it is merged to 'X_reg[3][0][2][2]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[1][1][2][3]' is removed because it is merged to 'X_reg[3][0][2][3]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[1][1][2][4]' is removed because it is merged to 'X_reg[3][0][2][4]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[1][1][2][5]' is removed because it is merged to 'X_reg[3][0][2][5]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[1][1][2][6]' is removed because it is merged to 'X_reg[3][0][2][6]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[1][1][2][7]' is removed because it is merged to 'X_reg[3][0][2][7]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[2][0][2][0]' is removed because it is merged to 'X_reg[3][0][1][0]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[1][1][1][0]' is removed because it is merged to 'X_reg[3][0][1][0]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[0][1][2][0]' is removed because it is merged to 'X_reg[3][0][1][0]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[2][0][2][1]' is removed because it is merged to 'X_reg[3][0][1][1]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[1][1][1][1]' is removed because it is merged to 'X_reg[3][0][1][1]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[0][1][2][1]' is removed because it is merged to 'X_reg[3][0][1][1]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[2][0][2][2]' is removed because it is merged to 'X_reg[3][0][1][2]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[1][1][1][2]' is removed because it is merged to 'X_reg[3][0][1][2]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[0][1][2][2]' is removed because it is merged to 'X_reg[3][0][1][2]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[2][0][2][3]' is removed because it is merged to 'X_reg[3][0][1][3]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[1][1][1][3]' is removed because it is merged to 'X_reg[3][0][1][3]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[0][1][2][3]' is removed because it is merged to 'X_reg[3][0][1][3]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[2][0][2][4]' is removed because it is merged to 'X_reg[3][0][1][4]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[1][1][1][4]' is removed because it is merged to 'X_reg[3][0][1][4]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[0][1][2][4]' is removed because it is merged to 'X_reg[3][0][1][4]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[2][0][2][5]' is removed because it is merged to 'X_reg[3][0][1][5]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[1][1][1][5]' is removed because it is merged to 'X_reg[3][0][1][5]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[0][1][2][5]' is removed because it is merged to 'X_reg[3][0][1][5]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[2][0][2][6]' is removed because it is merged to 'X_reg[3][0][1][6]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[1][1][1][6]' is removed because it is merged to 'X_reg[3][0][1][6]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[0][1][2][6]' is removed because it is merged to 'X_reg[3][0][1][6]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[2][0][2][7]' is removed because it is merged to 'X_reg[3][0][1][7]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[1][1][1][7]' is removed because it is merged to 'X_reg[3][0][1][7]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[0][1][2][7]' is removed because it is merged to 'X_reg[3][0][1][7]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[2][0][1][0]' is removed because it is merged to 'X_reg[3][0][0][0]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[1][1][0][0]' is removed because it is merged to 'X_reg[3][0][0][0]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[0][1][1][0]' is removed because it is merged to 'X_reg[3][0][0][0]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[2][0][1][1]' is removed because it is merged to 'X_reg[3][0][0][1]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[1][1][0][1]' is removed because it is merged to 'X_reg[3][0][0][1]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[0][1][1][1]' is removed because it is merged to 'X_reg[3][0][0][1]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[2][0][1][2]' is removed because it is merged to 'X_reg[3][0][0][2]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[1][1][0][2]' is removed because it is merged to 'X_reg[3][0][0][2]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[0][1][1][2]' is removed because it is merged to 'X_reg[3][0][0][2]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[2][0][1][3]' is removed because it is merged to 'X_reg[3][0][0][3]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[1][1][0][3]' is removed because it is merged to 'X_reg[3][0][0][3]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[0][1][1][3]' is removed because it is merged to 'X_reg[3][0][0][3]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[2][0][1][4]' is removed because it is merged to 'X_reg[3][0][0][4]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[1][1][0][4]' is removed because it is merged to 'X_reg[3][0][0][4]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[0][1][1][4]' is removed because it is merged to 'X_reg[3][0][0][4]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[2][0][1][5]' is removed because it is merged to 'X_reg[3][0][0][5]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[1][1][0][5]' is removed because it is merged to 'X_reg[3][0][0][5]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[0][1][1][5]' is removed because it is merged to 'X_reg[3][0][0][5]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[2][0][1][6]' is removed because it is merged to 'X_reg[3][0][0][6]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[1][1][0][6]' is removed because it is merged to 'X_reg[3][0][0][6]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[0][1][1][6]' is removed because it is merged to 'X_reg[3][0][0][6]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[2][0][1][7]' is removed because it is merged to 'X_reg[3][0][0][7]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[1][1][0][7]' is removed because it is merged to 'X_reg[3][0][0][7]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[0][1][1][7]' is removed because it is merged to 'X_reg[3][0][0][7]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[0][2][0][0]' is removed because it is merged to 'X_reg[2][1][0][0]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[0][2][0][1]' is removed because it is merged to 'X_reg[2][1][0][1]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[0][2][0][2]' is removed because it is merged to 'X_reg[2][1][0][2]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[0][2][0][3]' is removed because it is merged to 'X_reg[2][1][0][3]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[0][2][0][4]' is removed because it is merged to 'X_reg[2][1][0][4]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[0][2][0][5]' is removed because it is merged to 'X_reg[2][1][0][5]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[0][2][0][6]' is removed because it is merged to 'X_reg[2][1][0][6]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[0][2][0][7]' is removed because it is merged to 'X_reg[2][1][0][7]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[0][1][0][0]' is removed because it is merged to 'X_reg[2][0][0][0]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[0][1][0][1]' is removed because it is merged to 'X_reg[2][0][0][1]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[0][1][0][2]' is removed because it is merged to 'X_reg[2][0][0][2]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[0][1][0][3]' is removed because it is merged to 'X_reg[2][0][0][3]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[0][1][0][4]' is removed because it is merged to 'X_reg[2][0][0][4]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[0][1][0][5]' is removed because it is merged to 'X_reg[2][0][0][5]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[0][1][0][6]' is removed because it is merged to 'X_reg[2][0][0][6]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[0][1][0][7]' is removed because it is merged to 'X_reg[2][0][0][7]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[0][0][2][0]' is removed because it is merged to 'X_reg[1][0][1][0]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[0][0][2][1]' is removed because it is merged to 'X_reg[1][0][1][1]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[0][0][2][2]' is removed because it is merged to 'X_reg[1][0][1][2]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[0][0][2][3]' is removed because it is merged to 'X_reg[1][0][1][3]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[0][0][2][4]' is removed because it is merged to 'X_reg[1][0][1][4]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[0][0][2][5]' is removed because it is merged to 'X_reg[1][0][1][5]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[0][0][2][6]' is removed because it is merged to 'X_reg[1][0][1][6]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[0][0][2][7]' is removed because it is merged to 'X_reg[1][0][1][7]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[0][0][1][0]' is removed because it is merged to 'X_reg[1][0][0][0]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[0][0][1][1]' is removed because it is merged to 'X_reg[1][0][0][1]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[0][0][1][2]' is removed because it is merged to 'X_reg[1][0][0][2]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[0][0][1][3]' is removed because it is merged to 'X_reg[1][0][0][3]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[0][0][1][4]' is removed because it is merged to 'X_reg[1][0][0][4]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[0][0][1][5]' is removed because it is merged to 'X_reg[1][0][0][5]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[0][0][1][6]' is removed because it is merged to 'X_reg[1][0][0][6]'. (OPT-1215)
+Information: In design 'top_CNN', the register 'X_reg[0][0][1][7]' is removed because it is merged to 'X_reg[1][0][0][7]'. (OPT-1215)
+ Implement Synthetic for 'top_CNN'.
+Information: The register 'max_reg[7]' is a constant and will be removed. (OPT-1206)
+  Processing 'Convnet_top'
+Information: Added key list 'DesignWare' to design 'Convnet_top'. (DDB-72)
+Information: The register 'test_layer_finish_reg' is a constant and will be removed. (OPT-1206)
+Information: The register 'state_reg[5]' is a constant and will be removed. (OPT-1206)
+Information: The register 'state_reg[4]' is a constant and will be removed. (OPT-1206)
+Information: In design 'Convnet_top', the register 'state_p_reg[4]' is removed because it is merged to 'state_p_reg[5]'. (OPT-1215)
+ Implement Synthetic for 'Convnet_top'.
+Information: The register 'state_p_reg[5]' is a constant and will be removed. (OPT-1206)
+  Processing 'addr'
+Information: Added key list 'DesignWare' to design 'addr'. (DDB-72)
+ Implement Synthetic for 'addr'.
+  Processing 'bytemask'
+Information: Added key list 'DesignWare' to design 'bytemask'. (DDB-72)
+  Processing 'CNN2D_mydesign_0'
+ Implement Synthetic for 'CNN2D_mydesign_0'.
+  Processing 'wen'
+Information: Added key list 'DesignWare' to design 'wen'. (DDB-72)
+ Implement Synthetic for 'wen'.
+  Processing 'SNPS_CLOCK_GATE_HIGH_Convnet_top'
+  Processing 'SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_0'
+  Processing 'SNPS_CLOCK_GATE_HIGH_addr_mydesign_0'
+  Processing 'SNPS_CLOCK_GATE_HIGH_bytemask_mydesign_0'
+
+  Updating timing information
+Information: Updating design information... (UID-85)
+Information: The library cell 'PMT3_HVT' in the library 'saed32hvt_ss0p95v125c' is not characterized for internal power. (PWR-536)
+Information: The library cell 'PMT2_HVT' in the library 'saed32hvt_ss0p95v125c' is not characterized for internal power. (PWR-536)
+Information: The library cell 'PMT1_HVT' in the library 'saed32hvt_ss0p95v125c' is not characterized for internal power. (PWR-536)
+Information: The library cell 'NMT3_HVT' in the library 'saed32hvt_ss0p95v125c' is not characterized for internal power. (PWR-536)
+Information: The library cell 'NMT2_HVT' in the library 'saed32hvt_ss0p95v125c' is not characterized for internal power. (PWR-536)
+Information: The library cell 'NMT1_HVT' in the library 'saed32hvt_ss0p95v125c' is not characterized for internal power. (PWR-536)
+Information: The target library(s) contains cell(s), other than black boxes, that are not characterized for internal power. (PWR-24)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_Convnet_top, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design Convnet_top_DW01_inc_J2_0, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design Convnet_top_DW01_inc_J2_1, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design Convnet_top_DW01_inc_J2_2, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design Convnet_top_DW01_inc_J2_3, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_bytemask_mydesign_0, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_addr_mydesign_0, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design addr_RSOP_199, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design addr_RSOP_200, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design addr_RSOP_201, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design addr_RSOP_202, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design addr_RSOP_203, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design addr_RSOP_204, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design addr_DP_OP_205J3_124_6801_J3_0, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design addr_DW_mult_uns_J3_0, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design addr_DW_mult_uns_J3_1, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design addr_DW01_inc_J3_0, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design addr_DW_mult_uns_J3_2, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design addr_DW01_inc_J3_1, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_0, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design top_CNN_DP_OP_319J1_125_9897_J1_0, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design top_CNN_DP_OP_318J1_124_6714_J1_0, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design top_CNN_DW01_add_J1_0, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design top_CNN_DW01_add_J1_1, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design top_CNN_DW01_add_J1_2, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design top_CNN_DW01_add_J1_3, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design addr_DP_OP_185J3_125_2119_J3_0, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design addr_DP_OP_188J3_128_8569_J3_0, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design addr_DP_OP_204J3_131_2088_J3_0, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design addr_DP_OP_195J3_133_4472_J3_0, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design addr_DP_OP_201J3_135_8165_J3_0, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design addr_DP_OP_204J3_137_8911_J3_0, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design CNN2D_mydesign_0_DP_OP_25J3_140_6780_J3_0_mydesign_15, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_1, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_2, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_3, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_4, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_5, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_6, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_7, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_8, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_9, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_10, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_11, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_12, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_13, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_14, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_15, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_16, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_17, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_18, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_19, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_20, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_21, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_22, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_23, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_24, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_25, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_26, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_27, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_28, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_29, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_30, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_31, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_32, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_33, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_34, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_35, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_36, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_37, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_38, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_39, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_40, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_41, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_42, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_43, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_44, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_45, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_46, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_47, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_48, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_49, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_50, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_51, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_52, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_53, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_54, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_55, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_56, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_57, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_58, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_59, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_60, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_61, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_62, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_63, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_addr_mydesign_1, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_addr_mydesign_2, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_addr_mydesign_3, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_addr_mydesign_4, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_addr_mydesign_5, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_addr_mydesign_6, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_addr_mydesign_7, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_addr_mydesign_8, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_addr_mydesign_9, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_bytemask_mydesign_1, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design CNN2D_mydesign_0_DP_OP_25J3_140_6780_J3_0_mydesign_0, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design CNN2D_mydesign_0_DP_OP_25J3_140_6780_J3_0_mydesign_1, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design CNN2D_mydesign_0_DP_OP_25J3_140_6780_J3_0_mydesign_2, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design CNN2D_mydesign_0_DP_OP_25J3_140_6780_J3_0_mydesign_3, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design CNN2D_mydesign_0_DP_OP_25J3_140_6780_J3_0_mydesign_4, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design CNN2D_mydesign_0_DP_OP_25J3_140_6780_J3_0_mydesign_5, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design CNN2D_mydesign_0_DP_OP_25J3_140_6780_J3_0_mydesign_6, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design CNN2D_mydesign_0_DP_OP_25J3_140_6780_J3_0_mydesign_7, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design CNN2D_mydesign_0_DP_OP_25J3_140_6780_J3_0_mydesign_8, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design CNN2D_mydesign_0_DP_OP_25J3_140_6780_J3_0_mydesign_9, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design CNN2D_mydesign_0_DP_OP_25J3_140_6780_J3_0_mydesign_10, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design CNN2D_mydesign_0_DP_OP_25J3_140_6780_J3_0_mydesign_11, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design CNN2D_mydesign_0_DP_OP_25J3_140_6780_J3_0_mydesign_12, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design CNN2D_mydesign_0_DP_OP_25J3_140_6780_J3_0_mydesign_13, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design CNN2D_mydesign_0_DP_OP_25J3_140_6780_J3_0_mydesign_14, since there are no registers. (PWR-806)
+Information: Performing clock-gating on design top_CNN. (PWR-730)
+Information: Performing clock-gating on design Convnet_top. (PWR-730)
+Information: Performing clock-gating on design addr. (PWR-730)
+Information: Performing clock-gating on design CNN2D_mydesign_8. (PWR-730)
+Information: Performing clock-gating on design CNN2D_mydesign_14. (PWR-730)
+Information: Performing clock-gating on design bytemask. (PWR-730)
+Information: Performing clock-gating on design CNN2D_mydesign_3. (PWR-730)
+Information: Performing clock-gating on design CNN2D_mydesign_9. (PWR-730)
+Information: Performing clock-gating on design wen. (PWR-730)
+Information: Performing clock-gating on design CNN2D_mydesign_15. (PWR-730)
+Information: Performing clock-gating on design CNN2D_mydesign_4. (PWR-730)
+Information: Performing clock-gating on design CNN2D_mydesign_10. (PWR-730)
+Information: Performing clock-gating on design CNN2D_mydesign_0. (PWR-730)
+Information: Performing clock-gating on design CNN2D_mydesign_5. (PWR-730)
+Information: Performing clock-gating on design CNN2D_mydesign_11. (PWR-730)
+Information: Performing clock-gating on design CNN2D_mydesign_1. (PWR-730)
+Information: Performing clock-gating on design CNN2D_mydesign_6. (PWR-730)
+Information: Performing clock-gating on design CNN2D_mydesign_12. (PWR-730)
+Information: Performing clock-gating on design CNN2D_mydesign_2. (PWR-730)
+Information: Performing clock-gating on design CNN2D_mydesign_7. (PWR-730)
+Information: Performing clock-gating on design CNN2D_mydesign_13. (PWR-730)
+Information: In design 'Convnet_top', the register 'top_CNN/conv_out_FF_reg[3][12]' is removed because it is merged to 'top_CNN/conv_out_FF_reg[3][11]'. (OPT-1215)
+Information: In design 'Convnet_top', the register 'top_CNN/conv_out_FF_reg[3][13]' is removed because it is merged to 'top_CNN/conv_out_FF_reg[3][11]'. (OPT-1215)
+Information: In design 'Convnet_top', the register 'top_CNN/conv_out_FF_reg[3][14]' is removed because it is merged to 'top_CNN/conv_out_FF_reg[3][11]'. (OPT-1215)
+Information: In design 'Convnet_top', the register 'top_CNN/conv_out_FF_reg[3][15]' is removed because it is merged to 'top_CNN/conv_out_FF_reg[3][11]'. (OPT-1215)
+Information: In design 'Convnet_top', the register 'top_CNN/conv_out_FF_reg[2][12]' is removed because it is merged to 'top_CNN/conv_out_FF_reg[2][11]'. (OPT-1215)
+Information: In design 'Convnet_top', the register 'top_CNN/conv_out_FF_reg[2][13]' is removed because it is merged to 'top_CNN/conv_out_FF_reg[2][11]'. (OPT-1215)
+Information: In design 'Convnet_top', the register 'top_CNN/conv_out_FF_reg[2][14]' is removed because it is merged to 'top_CNN/conv_out_FF_reg[2][11]'. (OPT-1215)
+Information: In design 'Convnet_top', the register 'top_CNN/conv_out_FF_reg[2][15]' is removed because it is merged to 'top_CNN/conv_out_FF_reg[2][11]'. (OPT-1215)
+Information: In design 'Convnet_top', the register 'top_CNN/conv_out_FF_reg[1][12]' is removed because it is merged to 'top_CNN/conv_out_FF_reg[1][11]'. (OPT-1215)
+Information: In design 'Convnet_top', the register 'top_CNN/conv_out_FF_reg[1][13]' is removed because it is merged to 'top_CNN/conv_out_FF_reg[1][11]'. (OPT-1215)
+Information: In design 'Convnet_top', the register 'top_CNN/conv_out_FF_reg[1][14]' is removed because it is merged to 'top_CNN/conv_out_FF_reg[1][11]'. (OPT-1215)
+Information: In design 'Convnet_top', the register 'top_CNN/conv_out_FF_reg[1][15]' is removed because it is merged to 'top_CNN/conv_out_FF_reg[1][11]'. (OPT-1215)
+Information: In design 'Convnet_top', the register 'top_CNN/conv_out_FF_reg[0][12]' is removed because it is merged to 'top_CNN/conv_out_FF_reg[0][11]'. (OPT-1215)
+Information: In design 'Convnet_top', the register 'top_CNN/conv_out_FF_reg[0][13]' is removed because it is merged to 'top_CNN/conv_out_FF_reg[0][11]'. (OPT-1215)
+Information: In design 'Convnet_top', the register 'top_CNN/conv_out_FF_reg[0][14]' is removed because it is merged to 'top_CNN/conv_out_FF_reg[0][11]'. (OPT-1215)
+Information: In design 'Convnet_top', the register 'top_CNN/conv_out_FF_reg[0][15]' is removed because it is merged to 'top_CNN/conv_out_FF_reg[0][11]'. (OPT-1215)
+
+Threshold voltage group cell usage:
+>> saed32cell_hvt 100.00%, saed32cell_svt 0.00%
+
+  Beginning Mapping Optimizations  (Ultra High effort)
+  -------------------------------
+Information: Added key list 'DesignWare' to design 'addr_RSOP_204'. (DDB-72)
+  Mapping Optimization (Phase 1)
+
+Threshold voltage group cell usage:
+>> saed32cell_hvt 100.00%, saed32cell_svt 0.00%
+
+  Beginning Constant Register Removal
+  -----------------------------------
+Information: In design 'Convnet_top', the register 'addr/sram_raddr_a3_reg[0]' is removed because it is merged to 'addr/sram_raddr_a1_reg[0]'. (OPT-1215)
+Information: In design 'Convnet_top', the register 'addr/sram_raddr_a2_reg[0]' is removed because it is merged to 'addr/sram_raddr_a0_reg[0]'. (OPT-1215)
+
+Threshold voltage group cell usage:
+>> saed32cell_hvt 100.00%, saed32cell_svt 0.00%
+
+  Beginning Global Optimizations
+  ------------------------------
+  Numerical Synthesis (Phase 1)
+  Numerical Synthesis (Phase 2)
+  Global Optimization (Phase 1)
+  Global Optimization (Phase 2)
+  Global Optimization (Phase 3)
+  Global Optimization (Phase 4)
+  Global Optimization (Phase 5)
+  Global Optimization (Phase 6)
+  Global Optimization (Phase 7)
+  Global Optimization (Phase 8)
+  Global Optimization (Phase 9)
+  Global Optimization (Phase 10)
+  Global Optimization (Phase 11)
+  Global Optimization (Phase 12)
+  Global Optimization (Phase 13)
+  Global Optimization (Phase 14)
+  Global Optimization (Phase 15)
+  Global Optimization (Phase 16)
+  Global Optimization (Phase 17)
+  Global Optimization (Phase 18)
+  Global Optimization (Phase 19)
+  Global Optimization (Phase 20)
+  Global Optimization (Phase 21)
+  Global Optimization (Phase 22)
+  Global Optimization (Phase 23)
+  Global Optimization (Phase 24)
+  Global Optimization (Phase 25)
+  Global Optimization (Phase 26)
+  Global Optimization (Phase 27)
+  Global Optimization (Phase 28)
+  Global Optimization (Phase 29)
+  Global Optimization (Phase 30)
+  Global Optimization (Phase 31)
+  Mapping 'CNN2D_mydesign_4_DP_OP_25J3_140_6780_1'
+  Mapping 'CNN2D_mydesign_14_DP_OP_25J3_140_6780_1'
+  Mapping 'CNN2D_mydesign_0_DP_OP_25J3_140_6780_1'
+  Mapping 'CNN2D_mydesign_2_DP_OP_25J3_140_6780_1'
+  Mapping 'CNN2D_mydesign_1_DP_OP_25J3_140_6780_1'
+  Mapping 'CNN2D_mydesign_3_DP_OP_25J3_140_6780_1'
+  Mapping 'CNN2D_mydesign_5_DP_OP_25J3_140_6780_1'
+  Mapping 'CNN2D_mydesign_7_DP_OP_25J3_140_6780_1'
+  Mapping 'CNN2D_mydesign_6_DP_OP_25J3_140_6780_1'
+  Mapping 'CNN2D_mydesign_12_DP_OP_25J3_140_6780_1'
+  Mapping 'CNN2D_mydesign_10_DP_OP_25J3_140_6780_1'
+  Mapping 'CNN2D_mydesign_9_DP_OP_25J3_140_6780_1'
+  Mapping 'CNN2D_mydesign_11_DP_OP_25J3_140_6780_1'
+  Mapping 'CNN2D_mydesign_8_DP_OP_25J3_140_6780_1'
+  Mapping 'CNN2D_mydesign_13_DP_OP_25J3_140_6780_1'
+  Mapping 'CNN2D_mydesign_15_DP_OP_25J3_140_6780_1'
+  Mapping 'CNN2D_mydesign_9_DP_OP_25J3_140_6780_2'
+  Mapping 'CNN2D_mydesign_0_DP_OP_25J3_140_6780_2'
+  Mapping 'CNN2D_mydesign_9_DP_OP_25J3_140_6780_3'
+Information: Added key list 'DesignWare' to design 'CNN2D_mydesign_4'. (DDB-72)
+Information: Added key list 'DesignWare' to design 'CNN2D_mydesign_14'. (DDB-72)
+Information: Added key list 'DesignWare' to design 'CNN2D_mydesign_2'. (DDB-72)
+Information: Added key list 'DesignWare' to design 'CNN2D_mydesign_1'. (DDB-72)
+Information: Added key list 'DesignWare' to design 'CNN2D_mydesign_3'. (DDB-72)
+Information: Added key list 'DesignWare' to design 'CNN2D_mydesign_5'. (DDB-72)
+Information: Added key list 'DesignWare' to design 'CNN2D_mydesign_7'. (DDB-72)
+Information: Added key list 'DesignWare' to design 'CNN2D_mydesign_6'. (DDB-72)
+Information: Added key list 'DesignWare' to design 'CNN2D_mydesign_12'. (DDB-72)
+Information: Added key list 'DesignWare' to design 'CNN2D_mydesign_10'. (DDB-72)
+Information: Added key list 'DesignWare' to design 'CNN2D_mydesign_11'. (DDB-72)
+Information: Added key list 'DesignWare' to design 'CNN2D_mydesign_8'. (DDB-72)
+Information: Added key list 'DesignWare' to design 'CNN2D_mydesign_13'. (DDB-72)
+Information: Added key list 'DesignWare' to design 'CNN2D_mydesign_15'. (DDB-72)
+Information: Added key list 'DesignWare' to design 'CNN2D_mydesign_9'. (DDB-72)
+Information: Added key list 'DesignWare' to design 'CNN2D_mydesign_0'. (DDB-72)
+
+Threshold voltage group cell usage:
+>> saed32cell_hvt 100.00%, saed32cell_svt 0.00%
+
+  Beginning Isolate Ports
+  -----------------------
+
+Threshold voltage group cell usage:
+>> saed32cell_hvt 100.00%, saed32cell_svt 0.00%
+
+  Beginning Delay Optimization
+  ----------------------------
+
+                                  TOTAL                                                            
+   ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE   MIN DELAY 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER      COST    
+  --------- --------- --------- --------- --------- ------------------------- --------- -----------
+    0:01:55   70441.6      0.33      29.0    6831.0                           1348419712.0000      0.00  
+    0:02:24   72273.5      0.02       0.6    6693.1                           1400849280.0000      0.00  
+    0:02:24   72273.5      0.02       0.6    6693.1                           1400849280.0000      0.00  
+    0:02:24   72273.5      0.02       0.6    6693.1                           1400849280.0000      0.00  
+
+Threshold voltage group cell usage:
+>> saed32cell_hvt 100.00%, saed32cell_svt 0.00%
+
+  Beginning WLM Backend Optimization
+  --------------------------------------
+Information: In design 'Convnet_top', the register 'top_CNN/CNN2D_12/Y_reg[15]' is removed because it is merged to 'top_CNN/CNN2D_12/Y_reg[14]'. (OPT-1215)
+Information: In design 'Convnet_top', the register 'top_CNN/CNN2D_13/Y_reg[15]' is removed because it is merged to 'top_CNN/CNN2D_13/Y_reg[14]'. (OPT-1215)
+Information: In design 'Convnet_top', the register 'top_CNN/CNN2D_14/Y_reg[15]' is removed because it is merged to 'top_CNN/CNN2D_14/Y_reg[14]'. (OPT-1215)
+Information: In design 'Convnet_top', the register 'top_CNN/CNN2D_15/Y_reg[15]' is removed because it is merged to 'top_CNN/CNN2D_15/Y_reg[14]'. (OPT-1215)
+Information: In design 'Convnet_top', the register 'top_CNN/CNN2D_8/Y_reg[15]' is removed because it is merged to 'top_CNN/CNN2D_8/Y_reg[14]'. (OPT-1215)
+Information: In design 'Convnet_top', the register 'top_CNN/CNN2D_9/Y_reg[15]' is removed because it is merged to 'top_CNN/CNN2D_9/Y_reg[14]'. (OPT-1215)
+Information: In design 'Convnet_top', the register 'top_CNN/CNN2D_10/Y_reg[15]' is removed because it is merged to 'top_CNN/CNN2D_10/Y_reg[14]'. (OPT-1215)
+Information: In design 'Convnet_top', the register 'top_CNN/CNN2D_11/Y_reg[15]' is removed because it is merged to 'top_CNN/CNN2D_11/Y_reg[14]'. (OPT-1215)
+Information: In design 'Convnet_top', the register 'top_CNN/CNN2D_4/Y_reg[15]' is removed because it is merged to 'top_CNN/CNN2D_4/Y_reg[14]'. (OPT-1215)
+Information: In design 'Convnet_top', the register 'top_CNN/CNN2D_5/Y_reg[15]' is removed because it is merged to 'top_CNN/CNN2D_5/Y_reg[14]'. (OPT-1215)
+Information: In design 'Convnet_top', the register 'top_CNN/CNN2D_6/Y_reg[15]' is removed because it is merged to 'top_CNN/CNN2D_6/Y_reg[14]'. (OPT-1215)
+Information: In design 'Convnet_top', the register 'top_CNN/CNN2D_7/Y_reg[15]' is removed because it is merged to 'top_CNN/CNN2D_7/Y_reg[14]'. (OPT-1215)
+Information: In design 'Convnet_top', the register 'top_CNN/CNN2D_0/Y_reg[15]' is removed because it is merged to 'top_CNN/CNN2D_0/Y_reg[14]'. (OPT-1215)
+Information: In design 'Convnet_top', the register 'top_CNN/conv_out_FF_reg[0][11]' is removed because it is merged to 'top_CNN/conv_out_FF_reg[0][10]'. (OPT-1215)
+Information: In design 'Convnet_top', the register 'top_CNN/conv_out_FF_reg[1][11]' is removed because it is merged to 'top_CNN/conv_out_FF_reg[1][10]'. (OPT-1215)
+Information: In design 'Convnet_top', the register 'top_CNN/CNN2D_2/Y_reg[15]' is removed because it is merged to 'top_CNN/CNN2D_2/Y_reg[14]'. (OPT-1215)
+Information: In design 'Convnet_top', the register 'top_CNN/conv_out_FF_reg[2][11]' is removed because it is merged to 'top_CNN/conv_out_FF_reg[2][10]'. (OPT-1215)
+Information: In design 'Convnet_top', the register 'top_CNN/CNN2D_3/Y_reg[15]' is removed because it is merged to 'top_CNN/CNN2D_3/Y_reg[14]'. (OPT-1215)
+Information: In design 'Convnet_top', the register 'top_CNN/conv_out_FF_reg[3][10]' is removed because it is merged to 'top_CNN/conv_out_FF_reg[3][11]'. (OPT-1215)
+    0:02:44   69935.3      0.02       0.4    6102.8                           1316338048.0000      0.00  
+    0:02:44   69877.9      0.02       0.3    6098.1                           1314485760.0000      0.00  
+    0:02:50   67787.3      0.01       0.1    5978.0                           1091355520.0000      0.00  
+    0:02:50   67787.3      0.01       0.1    5978.0                           1091355520.0000      0.00  
+    0:02:52   67848.3      0.00       0.0    5963.8                           1092927744.0000      0.00  
+    0:02:52   67848.3      0.00       0.0    5963.8                           1092927744.0000      0.00  
+    0:02:52   67848.3      0.00       0.0    5963.8                           1092927744.0000      0.00  
+    0:02:52   67848.3      0.00       0.0    5963.8                           1092927744.0000      0.00  
+    0:02:52   67848.3      0.00       0.0    5963.8                           1092927744.0000      0.00  
+    0:02:52   67848.3      0.00       0.0    5963.8                           1092927744.0000      0.00  
+    0:02:52   67848.3      0.00       0.0    5963.8                           1092927744.0000      0.00  
+    0:02:52   67848.3      0.00       0.0    5963.8                           1092927744.0000      0.00  
+    0:02:52   67848.3      0.00       0.0    5963.8                           1092927744.0000      0.00  
+    0:02:52   67848.3      0.00       0.0    5963.8                           1092927744.0000      0.00  
+    0:02:52   67848.3      0.00       0.0    5963.8                           1092927744.0000      0.00  
+    0:02:52   67848.3      0.00       0.0    5963.8                           1092927744.0000      0.00  
+    0:02:52   67848.3      0.00       0.0    5963.8                           1092927744.0000      0.00  
+    0:02:52   67848.3      0.00       0.0    5963.8                           1092927744.0000      0.00  
+    0:02:52   67848.3      0.00       0.0    5963.8                           1092927744.0000      0.00  
+    0:02:52   67848.3      0.00       0.0    5963.8                           1092927744.0000      0.00  
+    0:02:52   67848.3      0.00       0.0    5963.8                           1092927744.0000      0.00  
+
+
+  Beginning Design Rule Fixing  (max_transition)  (max_fanout)  (max_capacitance)
+  ----------------------------
+
+                                  TOTAL                                                            
+   ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE   MIN DELAY 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER      COST    
+  --------- --------- --------- --------- --------- ------------------------- --------- -----------
+    0:02:52   67848.3      0.00       0.0    5963.8                           1092927744.0000      0.00  
+  Global Optimization (Phase 32)
+  Global Optimization (Phase 33)
+  Global Optimization (Phase 34)
+    0:03:14   72277.0      0.22       7.3    4058.3 top_CNN/net93058          1139949312.0000      0.00  
+    0:03:18   72203.8      0.18       5.5    4045.8 top_CNN/net93319          1130744448.0000      0.00  
+    0:03:22   72302.7      0.17       4.8    3977.7 top_CNN/net98119          1128205312.0000      0.00  
+    0:03:25   72865.1      0.17       5.0    3801.2 top_CNN/net93856          1134977792.0000      0.00  
+    0:03:28   73058.0      0.17       4.3    3749.1 top_CNN/net91437          1136203904.0000      0.00  
+    0:03:30   73106.0      0.17       4.3    3721.8 top_CNN/CNN2D_6/net83330  1132360960.0000      0.00  
+    0:03:32   73225.7      0.17       4.1    3663.7 top_CNN/net92185          1133390592.0000      0.00  
+    0:03:34   73201.9      0.17       4.1    3659.2 top_CNN/net93987          1132543616.0000      0.00  
+    0:03:36   73172.9      0.17       4.1    3658.4 top_CNN/net100629         1130239104.0000      0.00  
+    0:03:38   73153.6      0.17       4.0    3657.3 top_CNN/W[2][2][1][2]     1127991040.0000      0.00  
+    0:03:40   73412.3      0.17       3.9    3629.9 top_CNN/CNN2D_1/net78438  1130588928.0000      0.00  
+    0:03:43   73993.8      0.17       4.0    3607.6 top_CNN/CNN2D_13/net88626 1137975040.0000      0.00  
+    0:03:46   74339.2      0.17       3.8    3593.9 top_CNN/net105953         1143227776.0000      0.00  
+    0:03:48   74618.7      0.17       3.8    3584.0 top_CNN/net98376          1146637824.0000      0.00  
+    0:03:50   74680.0      0.17       3.7    3579.3 top_CNN/CNN2D_3/net95438  1147137408.0000      0.00  
+    0:03:51   74676.7      0.17       3.7    3579.3 top_CNN/CNN2D_5/net101828 1146533504.0000      0.00  
+    0:03:52   74674.6      0.17       3.6    3578.4 top_CNN/CNN2D_8/net105185 1146127616.0000      0.00  
+    0:03:53   74668.3      0.17       3.6    3578.3 top_CNN/CNN2D_11/net93810 1145401472.0000      0.00  
+    0:03:55   74665.5      0.17       3.7    3578.1 top_CNN/CNN2D_14/net96087 1145131136.0000      0.00  
+    0:03:56   74621.0      0.17       3.4    3576.0 top_CNN/net98128          1143232128.0000      0.00  
+    0:03:59   74531.0      0.17       3.4    3571.5 top_CNN/CNN2D_3/net80030  1140287872.0000      0.00  
+    0:04:01   74794.3      0.17       3.3    3554.5 y_cnt[2]                  1141718272.0000      0.00  
+    0:04:02   74928.5      0.17       3.3    3422.3 net108847                 1141660544.0000      0.00  
+    0:04:04   74764.1      0.17       3.3    3410.0 top_CNN/net93046          1138385408.0000      0.00  
+    0:04:07   74728.2      0.08       2.2    3405.0 top_CNN/net109489         1137423616.0000      0.00  
+    0:04:09   74715.3      0.08       2.2    3399.3 top_CNN/net100821         1137392896.0000      0.00  
+    0:04:12   74607.8      0.08       2.2    3399.1 top_CNN/net93718          1136548864.0000      0.00  
+    0:04:15   74606.0      0.08       2.1    3399.1 top_CNN/net91637          1136431360.0000      0.00  
+    0:04:17   74603.0      0.07       2.1    3398.2 top_CNN/CNN2D_1/Y[14]     1136338304.0000      0.00  
+    0:04:19   74750.6      0.07       2.1    3394.2 top_CNN/CNN2D_11/net86706 1138412672.0000      0.00  
+    0:04:21   75746.1      0.07       2.3    3385.3 top_CNN/CNN2D_4/net80861  1152344448.0000      0.00  
+    0:04:22   75747.4      0.07       2.3    3385.2 addr/net72548             1152349696.0000      0.00  
+    0:04:23   75725.8      0.07       2.2    3385.2 top_CNN/net103936         1152012672.0000      0.00  
+    0:04:24   75716.4      0.07       2.2    3384.7 top_CNN/CNN2D_14/net102029 1151754112.0000      0.00  
+    0:04:25   75712.5      0.07       2.2    3384.7 top_CNN/CNN2D_11/net107599 1151419392.0000      0.00  
+    0:04:26   75713.1      0.07       2.2    3384.6 top_CNN/CNN2D_9/net112120 1151432064.0000      0.00  
+    0:04:27   75712.0      0.07       2.2    3384.4 top_CNN/CNN2D_6/net101843 1151207680.0000      0.00  
+    0:04:28   75711.5      0.07       2.2    3384.4 top_CNN/CNN2D_3/net112552 1151092096.0000      0.00  
+    0:04:29   75710.8      0.07       2.2    3384.4 top_CNN/CNN2D_2/net93838  1150924416.0000      0.00  
+    0:04:31   75721.4      0.07       2.2    3381.7 top_CNN/CNN2D_8/W_10[1]   1151129728.0000      0.00  
+    0:04:41   75721.9      0.07       2.1    3381.6 top_CNN/CNN2D_4/net80861  1151181952.0000      0.00  
+    0:04:43   75721.9      0.07       2.1    3381.6 top_CNN/CNN2D_4/Y_reg[12]/D 1151181952.0000      0.00  
+    0:04:46   75765.9      0.04       1.1    3376.7 top_CNN/CNN2D_4/Y_reg[12]/D 1154806400.0000      0.00  
+    0:04:47   75771.0      0.02       0.7    3373.7 top_CNN/CNN2D_11/Y_reg[13]/D 1155787648.0000      0.00  
+    0:04:50   75803.5      0.01       0.5    3364.8 top_CNN/CNN2D_15/Y_reg[13]/D 1156790528.0000      0.00  
+    0:04:52   75826.7      0.02       0.3    3356.6 top_CNN/CNN2D_3/Y_reg[13]/D 1157138560.0000      0.00  
+    0:04:53   75859.7      0.01       0.2    3346.3 top_CNN/CNN2D_5/Y_reg[13]/D 1157688960.0000      0.00  
+    0:04:55   75869.1      0.01       0.1    3341.0 top_CNN/CNN2D_3/Y_reg[12]/D 1157375488.0000      0.00  
+    0:04:57   75885.4      0.01       0.1    3331.2 top_CNN/CNN2D_2/Y_reg[13]/D 1157537152.0000      0.00  
+    0:05:05   75919.9      0.00       0.1    3327.2 top_CNN/rst_n             1161451136.0000      0.00  
+    0:05:06   76441.7      0.01       0.1    3130.5 top_CNN/CNN2D_7/W_01[3]   1173583616.0000      0.00  
+    0:05:08   77141.1      0.10       1.1    2946.3 top_CNN/CNN2D_9/W_20[1]   1213361408.0000      0.00  
+    0:05:09   77801.1      0.25       2.9    2769.6 top_CNN/CNN2D_7/net114909 1248222464.0000      0.00  
+    0:05:11   78298.7      0.25       3.4    2613.0 top_CNN/CNN2D_13/net115340 1274188032.0000      0.00  
+    0:05:12   78658.1      0.25       3.4    2449.8 top_CNN/CNN2D_9/net115740 1281497344.0000      0.00  
+    0:05:13   79020.2      0.25       3.4    2286.8 top_CNN/CNN2D_5/net116050 1288893824.0000      0.00  
+    0:05:15   79379.6      0.25       3.5    2122.6 top_CNN/CNN2D_0/net116332 1296195072.0000      0.00  
+    0:05:16   79810.6      0.25       3.7    1979.6 top_CNN/CNN2D_15/net117330 1328068992.0000      0.00  
+    0:05:18   80797.7      0.25       3.9    1761.4 top_CNN/CNN2D_11/W_12[2]  1356828544.0000      0.00  
+    0:05:19   81925.4      0.25       4.0    1519.5 top_CNN/CNN2D_6/X_11[7]   1379726592.0000      0.00  
+    0:05:21   83023.0      0.25       4.0    1289.0 addr/rst_n                1402447104.0000      0.00  
+    0:05:22   83827.4      0.25       5.3    1287.8 top_CNN/CNN2D_8/X_12[0]   1449424640.0000      0.00  
+    0:05:24   84361.3      0.25       6.0    1246.1 top_CNN/CNN2D_15/net90160 1471124224.0000      0.00  
+    0:05:26   84394.4      0.28       7.3    1225.8 top_CNN/CNN2D_9/net115710 1472768640.0000      0.00  
+    0:05:27   84300.1      0.25       6.8    1197.5 top_CNN/CNN2D_0/net116362 1462419456.0000      0.00  
+    0:05:29   84528.3      0.23       7.1    1174.2 top_CNN/CNN2D_11/net115568 1463286528.0000      0.00  
+    0:05:32   84528.0      0.23       7.1    1170.9 addr/net72548             1460870016.0000      0.00  
+    0:05:34   84525.2      0.23       7.0    1170.9 top_CNN/net95496          1460722688.0000      0.00  
+    0:05:36   84480.0      0.23       6.9    1150.0 top_CNN/CNN2D_15/net106067 1454857216.0000      0.00  
+    0:05:38   84443.9      0.23       6.3    1139.0 top_CNN/CNN2D_14/net117593 1449720832.0000      0.00  
+    0:05:40   84426.4      0.23       6.3    1128.9 top_CNN/CNN2D_13/net119902 1447198592.0000      0.00  
+    0:05:42   84384.4      0.23       6.3    1128.1 top_CNN/CNN2D_12/net121311 1440964096.0000      0.00  
+    0:05:44   84378.1      0.23       6.2    1127.0 top_CNN/CNN2D_11/net120252 1440440704.0000      0.00  
+    0:05:46   84377.3      0.23       6.5    1126.4 top_CNN/CNN2D_10/net122043 1440359936.0000      0.00  
+    0:05:47   84375.8      0.23       6.5    1125.6 top_CNN/CNN2D_9/net126993 1440183040.0000      0.00  
+    0:05:49   84360.6      0.23       6.2    1114.6 top_CNN/CNN2D_9/net107558 1437942016.0000      0.00  
+    0:05:50   84356.0      0.23       6.2    1113.7 top_CNN/CNN2D_8/net118791 1437734656.0000      0.00  
+    0:05:52   84258.9      0.23       5.5    1083.4 top_CNN/CNN2D_7/net122979 1422763136.0000      0.00  
+    0:05:53   84218.0      0.23       5.5    1082.4 top_CNN/CNN2D_6/net127487 1416508416.0000      0.00  
+    0:05:54   84167.9      0.23       5.7    1081.4 top_CNN/CNN2D_6/net116859 1409023104.0000      0.00  
+    0:05:56   84139.7      0.18       4.8    1080.2 top_CNN/CNN2D_5/net120316 1405075968.0000      0.00  
+    0:05:58   83988.2      0.18       4.9    1079.5 top_CNN/CNN2D_4/net123964 1383373696.0000      0.00  
+    0:05:59   83981.9      0.18       4.9    1078.6 top_CNN/CNN2D_3/net116169 1382876416.0000      0.00  
+    0:06:01   83937.9      0.12       4.5    1066.0 top_CNN/CNN2D_3/net105930 1376252160.0000      0.00  
+    0:06:02   83936.9      0.12       4.5    1065.5 top_CNN/CNN2D_2/net119627 1376143232.0000      0.00  
+    0:06:03   83881.2      0.11       4.3    1065.3 top_CNN/CNN2D_0/net116421 1368248704.0000      0.00  
+    0:06:04   83790.5      0.11       4.3    1064.3 top_CNN/Y[15][2]          1354441088.0000      0.00  
+    0:06:07   83839.1      0.06       2.8    1060.8 top_CNN/CNN2D_1/Y_reg[14]/D 1357315456.0000      0.00  
+    0:06:09   83882.5      0.04       1.9    1059.7 top_CNN/CNN2D_0/Y_reg[12]/D 1361963648.0000      0.00  
+    0:06:11   83907.4      0.03       1.3    1057.6 top_CNN/CNN2D_2/Y_reg[13]/D 1363889408.0000      0.00  
+    0:06:13   83911.5      0.02       1.0    1056.5 top_CNN/CNN2D_10/Y_reg[12]/D 1364013440.0000      0.00  
+    0:06:14   83904.4      0.02       0.8    1056.1 top_CNN/CNN2D_8/Y_reg[13]/D 1364132992.0000      0.00  
+    0:06:16   83908.2      0.02       0.6    1053.6 top_CNN/CNN2D_14/Y_reg[12]/D 1364511232.0000      0.00  
+    0:06:19   83907.4      0.02       0.6    1053.6 top_CNN/CNN2D_13/net88402 1364214656.0000      0.00  
+    0:06:21   83905.4      0.02       0.6    1053.6 top_CNN/CNN2D_15/net116469 1364042368.0000      0.00  
+    0:06:23   83903.1      0.02       0.6    1053.6 top_CNN/CNN2D_15/net114787 1363772928.0000      0.00  
+    0:06:26   83899.8      0.02       0.6    1053.6 top_CNN/CNN2D_13/net120994 1363390976.0000      0.00  
+    0:06:29   83898.3      0.02       0.6    1053.6 top_CNN/CNN2D_12/net121318 1363222016.0000      0.00  
+    0:06:31   83886.3      0.02       0.6    1053.6 top_CNN/CNN2D_11/net121695 1361884160.0000      0.00  
+    0:06:33   83878.4      0.02       0.6    1053.6 top_CNN/CNN2D_10/net114560 1361046528.0000      0.00  
+    0:06:34   83875.7      0.02       0.6    1053.6 top_CNN/CNN2D_9/net128517 1360728832.0000      0.00  
+    0:06:36   83871.6      0.02       0.6    1053.6 top_CNN/CNN2D_9/net112621 1360167168.0000      0.00  
+    0:06:38   83867.0      0.02       0.6    1053.6 top_CNN/CNN2D_8/net105939 1359604736.0000      0.00  
+    0:06:39   83865.0      0.02       0.6    1053.6 top_CNN/CNN2D_7/net116830 1359343744.0000      0.00  
+    0:06:40   83862.7      0.02       0.6    1053.6 top_CNN/CNN2D_6/net120059 1359074304.0000      0.00  
+    0:06:42   83852.5      0.02       0.6    1053.6 top_CNN/CNN2D_5/net115004 1357633408.0000      0.00  
+    0:06:43   83850.0      0.02       0.6    1053.6 top_CNN/CNN2D_4/net117269 1357308160.0000      0.00  
+    0:06:44   83844.6      0.02       0.6    1053.6 top_CNN/CNN2D_4/net105252 1356613376.0000      0.00  
+    0:06:45   83827.9      0.02       0.6    1053.6 top_CNN/CNN2D_3/net117573 1354162176.0000      0.00  
+    0:06:47   83821.3      0.02       0.6    1053.6 top_CNN/CNN2D_2/net124576 1353528064.0000      0.00  
+    0:06:48   83815.2      0.02       0.6    1053.6 top_CNN/CNN2D_1/net105234 1352684032.0000      0.00  
+    0:06:50   83811.6      0.02       0.6    1053.6                           1352230016.0000      0.00  
+    0:06:57   83368.9      0.00       0.0    1119.1                           1348164608.0000      0.00  
+
+Threshold voltage group cell usage:
+>> saed32cell_hvt 100.00%, saed32cell_svt 0.00%
+
+
+  Beginning Leakage Power Optimization  (max_leakage_power 0)
+  ------------------------------------
+
+                                  TOTAL                                                            
+   ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE   MIN DELAY 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER      COST    
+  --------- --------- --------- --------- --------- ------------------------- --------- -----------
+    0:06:57   83368.9      0.00       0.0    1119.1                           1348164608.0000      0.00  
+  Global Optimization (Phase 35)
+  Global Optimization (Phase 36)
+  Global Optimization (Phase 37)
+  Global Optimization (Phase 38)
+  Global Optimization (Phase 39)
+  Global Optimization (Phase 40)
+  Global Optimization (Phase 41)
+  Global Optimization (Phase 42)
+  Global Optimization (Phase 43)
+  Global Optimization (Phase 44)
+  Global Optimization (Phase 45)
+  Global Optimization (Phase 46)
+  Global Optimization (Phase 47)
+  Global Optimization (Phase 48)
+  Global Optimization (Phase 49)
+  Global Optimization (Phase 50)
+  Global Optimization (Phase 51)
+  Global Optimization (Phase 52)
+  Global Optimization (Phase 53)
+  Global Optimization (Phase 54)
+  Global Optimization (Phase 55)
+  Global Optimization (Phase 56)
+  Global Optimization (Phase 57)
+  Global Optimization (Phase 58)
+  Global Optimization (Phase 59)
+  Global Optimization (Phase 60)
+  Global Optimization (Phase 61)
+  Global Optimization (Phase 62)
+  Global Optimization (Phase 63)
+  Global Optimization (Phase 64)
+  Global Optimization (Phase 65)
+  Global Optimization (Phase 66)
+  Global Optimization (Phase 67)
+  Global Optimization (Phase 68)
+  Global Optimization (Phase 69)
+  Global Optimization (Phase 70)
+  Global Optimization (Phase 71)
+  Global Optimization (Phase 72)
+  Global Optimization (Phase 73)
+  Global Optimization (Phase 74)
+  Global Optimization (Phase 75)
+  Global Optimization (Phase 76)
+  Global Optimization (Phase 77)
+  Global Optimization (Phase 78)
+  Global Optimization (Phase 79)
+  Global Optimization (Phase 80)
+  Global Optimization (Phase 81)
+    0:08:29   78458.3      0.04       1.5    1051.0 top_CNN/CNN2D_7/Y_reg[13]/D 1140712064.0000      0.00  
+    0:08:31   78497.2      0.02       1.0    1049.9                           1142711552.0000      0.00  
+    0:08:40   78088.0      0.00       0.0    1157.0                           1144256384.0000      0.00  
+    0:08:40   78088.0      0.00       0.0    1157.0                           1144256384.0000      0.00  
+    0:08:44   77982.6      0.00       0.0    1157.0                           1127213696.0000      0.00  
+    0:08:44   77982.6      0.00       0.0    1157.0                           1127213696.0000      0.00  
+    0:08:44   77982.6      0.00       0.0    1157.0                           1127213696.0000      0.00  
+    0:08:44   77982.6      0.00       0.0    1157.0                           1127213696.0000      0.00  
+    0:08:44   77982.6      0.00       0.0    1157.0                           1127213696.0000      0.00  
+    0:08:44   77982.6      0.00       0.0    1157.0                           1127213696.0000      0.00  
+    0:08:44   77982.6      0.00       0.0    1157.0                           1127213696.0000      0.00  
+    0:08:44   77982.6      0.00       0.0    1157.0                           1127213696.0000      0.00  
+    0:08:44   77982.6      0.00       0.0    1157.0                           1127213696.0000      0.00  
+    0:08:44   77982.6      0.00       0.0    1157.0                           1127213696.0000      0.00  
+    0:08:44   77982.6      0.00       0.0    1157.0                           1127213696.0000      0.00  
+    0:08:44   77982.6      0.00       0.0    1157.0                           1127213696.0000      0.00  
+    0:08:44   77982.6      0.00       0.0    1157.0                           1127213696.0000      0.00  
+    0:08:44   77982.6      0.00       0.0    1157.0                           1127213696.0000      0.00  
+    0:08:44   77982.6      0.00       0.0    1157.0                           1127213696.0000      0.00  
+    0:08:44   77982.6      0.00       0.0    1157.0                           1127213696.0000      0.00  
+    0:08:44   77982.6      0.00       0.0    1157.0                           1127213696.0000      0.00  
+    0:08:44   77982.6      0.00       0.0    1157.0                           1127213696.0000      0.00  
+    0:08:44   77982.6      0.00       0.0    1157.0                           1127213696.0000      0.00  
+
+                                  TOTAL                                                            
+   ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE   MIN DELAY 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER      COST    
+  --------- --------- --------- --------- --------- ------------------------- --------- -----------
+    0:08:46   77983.8      0.00       0.0    1157.0                           1127227392.0000      0.00  
+    0:08:50   77876.1      0.07       2.3    1156.8                           1121220608.0000      0.00  
+    0:08:51   77893.6      0.02       0.4    1158.9                           1123589376.0000      0.00  
+    0:08:51   77893.6      0.02       0.4    1158.9                           1123589376.0000      0.00  
+    0:08:54   77895.6      0.02       0.4    1158.9                           1124206848.0000      0.00  
+    0:08:57   77833.9      0.02       0.5    1162.3                           1123447168.0000      0.00  
+    0:08:59   77762.5      0.02       0.5    1163.5                           1122583424.0000      0.00  
+    0:09:00   77719.0      0.02       0.5    1164.3                           1122087040.0000      0.00  
+    0:09:03   77974.9      0.02       0.5    1112.1 top_CNN/net101736         1125459840.0000      0.00  
+    0:09:05   78327.9      0.02       0.6    1094.3 top_CNN/net142872         1132111872.0000      0.00  
+    0:09:07   78465.4      0.02       0.7    1090.0 top_CNN/CNN2D_0/net132728 1135076480.0000      0.00  
+    0:09:09   78462.1      0.02       0.7    1090.0 top_CNN/CNN2D_2/net143906 1134964480.0000      0.00  
+    0:09:11   78460.6      0.02       0.7    1090.0 top_CNN/CNN2D_3/net124269 1134916736.0000      0.00  
+    0:09:13   78458.8      0.02       0.7    1090.0 top_CNN/CNN2D_4/net97450  1134817536.0000      0.00  
+    0:09:15   78458.6      0.02       0.7    1089.8 top_CNN/CNN2D_5/net143722 1134765440.0000      0.00  
+    0:09:16   78458.6      0.02       0.7    1089.7 top_CNN/CNN2D_6/net142794 1134788864.0000      0.00  
+    0:09:18   78456.3      0.02       0.6    1089.7 top_CNN/CNN2D_7/net122962 1134638464.0000      0.00  
+    0:09:21   78454.0      0.02       0.6    1089.7 top_CNN/CNN2D_9/net97806  1134399616.0000      0.00  
+    0:09:23   78450.7      0.02       0.6    1089.6 top_CNN/CNN2D_10/net142804 1134341120.0000      0.00  
+    0:09:24   78450.2      0.02       0.6    1089.6 top_CNN/CNN2D_11/net143469 1134284800.0000      0.00  
+    0:09:25   78449.4      0.02       0.6    1089.6 top_CNN/CNN2D_13/net93794 1134200448.0000      0.00  
+    0:09:27   78449.7      0.02       0.6    1089.6 top_CNN/CNN2D_14/net117836 1134248320.0000      0.00  
+    0:09:29   78447.9      0.02       0.6    1089.4 top_CNN/CNN2D_15/net143403 1134019200.0000      0.00  
+    0:09:30   78448.7      0.02       0.6    1089.4 top_CNN/CNN2D_5/net132678 1134010496.0000      0.00  
+    0:09:32   78448.2      0.02       0.6    1089.4 top_CNN/CNN2D_8/net84443  1133889280.0000      0.00  
+    0:09:35   78454.3      0.02       0.6    1089.0 top_CNN/CNN2D_14/net89234 1133997952.0000      0.00  
+    0:09:40   78455.5      0.02       0.6    1089.0 top_CNN/CNN2D_14/net132298 1134011648.0000      0.00  
+    0:09:48   78455.3      0.02       0.6    1088.9 top_CNN/CNN2D_10/net132660 1134006912.0000      0.00  
+    0:09:49   78456.3      0.02       0.6    1088.8 top_CNN/CNN2D_9/net118621 1133956864.0000      0.00  
+    0:09:54   78453.7      0.02       0.6    1088.7 top_CNN/CNN2D_6/net119047 1133929216.0000      0.00  
+    0:10:02   78457.6      0.02       0.6    1088.7 top_CNN/CNN2D_9/net105634 1134005760.0000      0.00  
+    0:10:04   78475.9      0.01       0.5    1089.4 top_CNN/CNN2D_8/Y_reg[10]/D 1134264704.0000      0.00  
+    0:10:06   78488.6      0.01       0.3    1091.4 top_CNN/CNN2D_6/W_00[2]   1134727680.0000      0.00  
+    0:10:11   78484.0      0.01       0.3    1091.4 top_CNN/CNN2D_14/net144665 1134278528.0000      0.00  
+    0:10:15   78483.2      0.01       0.3    1091.4 top_CNN/CNN2D_9/net144603 1134194176.0000      0.00  
+    0:10:19   78482.5      0.01       0.3    1091.4 top_CNN/CNN2D_0/net143231 1134109696.0000      0.00  
+    0:10:22   78796.8      0.14       3.3    1057.4 top_CNN/CNN2D_4/net105978 1144025856.0000      0.00  
+    0:10:27   78914.8      0.17       4.1    1053.4 top_CNN/CNN2D_7/net142438 1147321856.0000      0.00  
+    0:10:29   78914.5      0.17       4.0    1053.4 top_CNN/CNN2D_15/net145077 1147293696.0000      0.00  
+    0:10:31   78913.7      0.17       4.0    1053.4 top_CNN/CNN2D_14/net145210 1147236992.0000      0.00  
+    0:10:33   78912.7      0.17       4.0    1053.4 top_CNN/CNN2D_13/net143593 1147124352.0000      0.00  
+    0:10:36   78912.2      0.17       4.0    1053.4 top_CNN/CNN2D_12/net145265 1147038976.0000      0.00  
+    0:10:38   78911.5      0.17       4.0    1053.4 top_CNN/CNN2D_11/net143111 1146918784.0000      0.00  
+    0:10:40   78910.9      0.17       4.0    1053.4 top_CNN/CNN2D_10/net145271 1146790912.0000      0.00  
+    0:10:42   78910.2      0.17       3.9    1053.4 top_CNN/CNN2D_9/net145277 1146706560.0000      0.00  
+    0:10:45   78907.9      0.17       3.9    1053.4 top_CNN/CNN2D_8/net145004 1146437120.0000      0.00  
+    0:10:47   78906.9      0.17       3.9    1053.4 top_CNN/CNN2D_7/net145283 1146288768.0000      0.00  
+    0:10:48   78905.9      0.17       3.9    1053.4 top_CNN/CNN2D_7/net127201 1146140416.0000      0.00  
+    0:10:51   78904.3      0.17       3.9    1053.4 top_CNN/CNN2D_5/net145311 1145935744.0000      0.00  
+    0:10:53   78903.6      0.17       3.9    1053.4 top_CNN/CNN2D_4/net145259 1145851392.0000      0.00  
+    0:10:55   78902.6      0.12       3.7    1053.4 top_CNN/CNN2D_3/net145134 1145769728.0000      0.00  
+    0:10:56   78901.8      0.12       3.7    1053.4 top_CNN/CNN2D_2/net145323 1145649536.0000      0.00  
+    0:10:58   78901.3      0.12       3.6    1053.4 top_CNN/CNN2D_0/net145159 1145593216.0000      0.00  
+    0:10:59   78902.3      0.12       3.6    1053.3 top_CNN/Y[1][4]           1145602304.0000      0.00  
+    0:11:02   78981.3      0.04       1.9    1051.2 top_CNN/CNN2D_6/Y_reg[12]/D 1150977792.0000      0.00  
+    0:11:04   79030.1      0.03       1.4    1047.6 top_CNN/CNN2D_5/Y_reg[12]/D 1152907648.0000      0.00  
+    0:11:07   79066.5      0.02       0.8    1045.8 top_CNN/CNN2D_5/Y_reg[13]/D 1154843392.0000      0.00  
+    0:11:09   79093.2      0.02       0.5    1044.0 top_CNN/CNN2D_15/Y_reg[12]/D 1155958528.0000      0.00  
+    0:11:14   79097.0      0.01       0.5    1043.6 top_CNN/CNN2D_8/net84241  1155955840.0000      0.00  
+    0:11:16   79095.2      0.01       0.5    1043.6 top_CNN/CNN2D_15/net144878 1155881344.0000      0.00  
+    0:11:18   79092.2      0.01       0.5    1043.6 top_CNN/CNN2D_14/net144992 1155682304.0000      0.00  
+    0:11:20   79090.4      0.01       0.5    1043.6 top_CNN/CNN2D_13/net145014 1155485184.0000      0.00  
+    0:11:22   79089.9      0.01       0.5    1043.6 top_CNN/CNN2D_13/net97718 1155435520.0000      0.00  
+    0:11:24   79087.3      0.01       0.5    1043.6 top_CNN/CNN2D_12/net117118 1155104896.0000      0.00  
+    0:11:26   79084.3      0.01       0.5    1043.6 top_CNN/CNN2D_10/net144894 1154731392.0000      0.00  
+    0:11:28   79083.0      0.01       0.5    1043.6 top_CNN/CNN2D_9/net126510 1154546944.0000      0.00  
+    0:11:31   79081.5      0.01       0.5    1043.6 top_CNN/CNN2D_8/net144980 1154319744.0000      0.00  
+    0:11:32   79081.2      0.01       0.5    1043.6 top_CNN/CNN2D_8/net111901 1154291584.0000      0.00  
+    0:11:34   79079.7      0.01       0.5    1043.6 top_CNN/CNN2D_6/net143558 1154122624.0000      0.00  
+    0:11:36   79075.1      0.01       0.5    1043.6 top_CNN/CNN2D_5/net145052 1153586816.0000      0.00  
+    0:11:38   79072.6      0.01       0.5    1043.6 top_CNN/CNN2D_4/net142385 1153305344.0000      0.00  
+    0:11:40   79065.7      0.01       0.5    1043.6 top_CNN/CNN2D_3/net145134 1152591360.0000      0.00  
+    0:11:41   79062.9      0.01       0.5    1043.6 top_CNN/CNN2D_2/net145323 1152408704.0000      0.00  
+    0:11:42   79058.9      0.01       0.5    1043.6 top_CNN/CNN2D_2/net100403 1151954048.0000      0.00  
+    0:11:44   79056.6      0.01       0.5    1043.6                           1151692672.0000      0.00  
+    0:11:48   78964.8      0.00       0.0    1055.3                           1152979200.0000      0.00  
+    0:11:48   78964.8      0.00       0.0    1055.3                           1152979200.0000      0.00  
+    0:11:48   78964.8      0.00       0.0    1055.3                           1152979200.0000      0.00  
+    0:11:52   78850.0      0.00       0.0    1055.3                           1140544640.0000      0.00  
+Loading db file '/usr/cadtool/SAED32_EDK/lib/stdcell_hvt/db_nldm/saed32hvt_ss0p95v125c.db'
+Loading db file '/usr/cadtool/SAED32_EDK/lib/io_std/db_nldm/saed32io_wb_ss0p95v125c_2p25v.db'
+
+
+Note: Symbol # after min delay cost means estimated hold TNS across all active scenarios 
+
+
+  Optimization Complete
+  ---------------------
+Warning: Design 'Convnet_top' contains 1 high-fanout nets. A fanout number of 1000 will be used for delay calculations involving these nets. (TIM-134)
+     Net 'top_CNN/clk_gate_W_reg[15][2][0]/net21977': 1207 load(s), 1 driver(s)
+  Loading target library 'saed32io_wb_ss0p95v125c_2p25v'
+Information: State dependent leakage is now switched from off to on.
+Information: Propagating switching activity (low effort zero delay simulation). (PWR-6)
+1
+#compile_ultra -incremental -exact_map -no_autoungroup -no_seq_output_inversion -no_boundary_optimization
+# remove dummy ports
+remove_unconnected_ports [get_cells -hierarchical *]
+Removing port 'rst_n' from design 'bytemask'
+Removing port 'conv_cnt[9]' from design 'bytemask'
+Removing port 'conv_cnt[8]' from design 'bytemask'
+Removing port 'conv_cnt[7]' from design 'bytemask'
+Removing port 'conv_cnt[6]' from design 'bytemask'
+Removing port 'conv_cnt[5]' from design 'bytemask'
+Removing port 'conv_cnt[4]' from design 'bytemask'
+Removing port 'conv_cnt[3]' from design 'bytemask'
+Removing port 'conv_cnt[2]' from design 'bytemask'
+Removing port 'conv_cnt[1]' from design 'bytemask'
+Removing port 'conv_cnt[0]' from design 'bytemask'
+Removing port 'conv_cnt_p[9]' from design 'bytemask'
+Removing port 'conv_cnt_p[8]' from design 'bytemask'
+Removing port 'conv_cnt_p[7]' from design 'bytemask'
+Removing port 'conv_cnt_p[6]' from design 'bytemask'
+Removing port 'conv_cnt_p[5]' from design 'bytemask'
+Removing port 'conv_cnt_p[4]' from design 'bytemask'
+Removing port 'conv_cnt_p[3]' from design 'bytemask'
+Removing port 'conv_cnt_p[2]' from design 'bytemask'
+Removing port 'conv_cnt_p[1]' from design 'bytemask'
+Removing port 'conv_cnt_p[0]' from design 'bytemask'
+Removing port 'conv_cnt_pp[9]' from design 'bytemask'
+Removing port 'conv_cnt_pp[8]' from design 'bytemask'
+Removing port 'conv_cnt_pp[7]' from design 'bytemask'
+Removing port 'conv_cnt_pp[6]' from design 'bytemask'
+Removing port 'conv_cnt_pp[5]' from design 'bytemask'
+Removing port 'conv_cnt_pp[4]' from design 'bytemask'
+Removing port 'conv_cnt_pp[3]' from design 'bytemask'
+Removing port 'conv_cnt_pp[2]' from design 'bytemask'
+Removing port 'conv_cnt_pp[1]' from design 'bytemask'
+Removing port 'conv_cnt_pp[0]' from design 'bytemask'
+Removing port 'x_cnt_pp[4]' from design 'addr'
+Removing port 'x_cnt_pp[3]' from design 'addr'
+Removing port 'x_cnt_pp[2]' from design 'addr'
+Removing port 'x_cnt_pp[1]' from design 'addr'
+Removing port 'x_cnt_pp[0]' from design 'addr'
+Removing port 'y_cnt_pp[4]' from design 'addr'
+Removing port 'y_cnt_pp[3]' from design 'addr'
+Removing port 'y_cnt_pp[2]' from design 'addr'
+Removing port 'y_cnt_pp[1]' from design 'addr'
+Removing port 'y_cnt_pp[0]' from design 'addr'
+Removing port 'x_cnt_ppp[4]' from design 'addr'
+Removing port 'x_cnt_ppp[3]' from design 'addr'
+Removing port 'x_cnt_ppp[2]' from design 'addr'
+Removing port 'x_cnt_ppp[1]' from design 'addr'
+Removing port 'x_cnt_ppp[0]' from design 'addr'
+Removing port 'y_cnt_ppp[4]' from design 'addr'
+Removing port 'y_cnt_ppp[3]' from design 'addr'
+Removing port 'y_cnt_ppp[2]' from design 'addr'
+Removing port 'y_cnt_ppp[1]' from design 'addr'
+Removing port 'y_cnt_ppp[0]' from design 'addr'
+Removing port 'x_cnt_pppp[4]' from design 'addr'
+Removing port 'x_cnt_pppp[3]' from design 'addr'
+Removing port 'x_cnt_pppp[2]' from design 'addr'
+Removing port 'x_cnt_pppp[1]' from design 'addr'
+Removing port 'x_cnt_pppp[0]' from design 'addr'
+Removing port 'y_cnt_pppp[4]' from design 'addr'
+Removing port 'y_cnt_pppp[3]' from design 'addr'
+Removing port 'y_cnt_pppp[2]' from design 'addr'
+Removing port 'y_cnt_pppp[1]' from design 'addr'
+Removing port 'y_cnt_pppp[0]' from design 'addr'
+Removing port 'read_bias_finish' from design 'addr'
+Removing port 'conv_cnt_p[9]' from design 'addr'
+Removing port 'conv_cnt_p[8]' from design 'addr'
+Removing port 'conv_cnt_p[7]' from design 'addr'
+Removing port 'conv_cnt_p[6]' from design 'addr'
+Removing port 'conv_cnt_p[5]' from design 'addr'
+Removing port 'conv_cnt_p[4]' from design 'addr'
+Removing port 'conv_cnt_p[3]' from design 'addr'
+Removing port 'conv_cnt_p[2]' from design 'addr'
+Removing port 'conv_cnt_p[1]' from design 'addr'
+Removing port 'conv_cnt_p[0]' from design 'addr'
+Removing port 'x_cnt[4]' from design 'top_CNN'
+Removing port 'x_cnt[3]' from design 'top_CNN'
+Removing port 'x_cnt[2]' from design 'top_CNN'
+Removing port 'x_cnt[1]' from design 'top_CNN'
+Removing port 'x_cnt[0]' from design 'top_CNN'
+Removing port 'y_cnt[4]' from design 'top_CNN'
+Removing port 'y_cnt[3]' from design 'top_CNN'
+Removing port 'y_cnt[2]' from design 'top_CNN'
+Removing port 'y_cnt[1]' from design 'top_CNN'
+Removing port 'y_cnt[0]' from design 'top_CNN'
+Removing port 'x_cnt_p[4]' from design 'top_CNN'
+Removing port 'x_cnt_p[3]' from design 'top_CNN'
+Removing port 'x_cnt_p[2]' from design 'top_CNN'
+Removing port 'x_cnt_p[1]' from design 'top_CNN'
+Removing port 'x_cnt_p[0]' from design 'top_CNN'
+Removing port 'y_cnt_p[4]' from design 'top_CNN'
+Removing port 'y_cnt_p[3]' from design 'top_CNN'
+Removing port 'y_cnt_p[2]' from design 'top_CNN'
+Removing port 'y_cnt_p[1]' from design 'top_CNN'
+Removing port 'y_cnt_p[0]' from design 'top_CNN'
+Removing port 'x_cnt_ppp[4]' from design 'top_CNN'
+Removing port 'x_cnt_ppp[3]' from design 'top_CNN'
+Removing port 'x_cnt_ppp[2]' from design 'top_CNN'
+Removing port 'x_cnt_ppp[1]' from design 'top_CNN'
+Removing port 'x_cnt_ppp[0]' from design 'top_CNN'
+Removing port 'y_cnt_ppp[4]' from design 'top_CNN'
+Removing port 'y_cnt_ppp[3]' from design 'top_CNN'
+Removing port 'y_cnt_ppp[2]' from design 'top_CNN'
+Removing port 'y_cnt_ppp[1]' from design 'top_CNN'
+Removing port 'y_cnt_ppp[0]' from design 'top_CNN'
+Removing port 'read_input_cnt[1]' from design 'top_CNN'
+Removing port 'read_input_cnt[0]' from design 'top_CNN'
+Removing port 'read_input_cnt_p[1]' from design 'top_CNN'
+Removing port 'read_input_cnt_p[0]' from design 'top_CNN'
+Removing port 'read_bias_finish' from design 'top_CNN'
+Removing port 'x_cnt_pp[4]' from design 'wen'
+Removing port 'x_cnt_pp[3]' from design 'wen'
+Removing port 'x_cnt_pp[2]' from design 'wen'
+Removing port 'x_cnt_pp[1]' from design 'wen'
+Removing port 'x_cnt_pp[0]' from design 'wen'
+Removing port 'y_cnt_pp[4]' from design 'wen'
+Removing port 'y_cnt_pp[3]' from design 'wen'
+Removing port 'y_cnt_pp[2]' from design 'wen'
+Removing port 'y_cnt_pp[1]' from design 'wen'
+Removing port 'y_cnt_pp[0]' from design 'wen'
+Removing port 'x_cnt_ppp[4]' from design 'wen'
+Removing port 'x_cnt_ppp[3]' from design 'wen'
+Removing port 'x_cnt_ppp[2]' from design 'wen'
+Removing port 'x_cnt_ppp[1]' from design 'wen'
+Removing port 'x_cnt_ppp[0]' from design 'wen'
+Removing port 'y_cnt_ppp[4]' from design 'wen'
+Removing port 'y_cnt_ppp[3]' from design 'wen'
+Removing port 'y_cnt_ppp[2]' from design 'wen'
+Removing port 'y_cnt_ppp[1]' from design 'wen'
+Removing port 'y_cnt_ppp[0]' from design 'wen'
+1
+remove_unconnected_ports [get_cells -hierarchical *] -blast_buses
+Removing port 'x_cnt[4]' from design 'bytemask'
+Removing port 'x_cnt[3]' from design 'bytemask'
+Removing port 'x_cnt[2]' from design 'bytemask'
+Removing port 'y_cnt[4]' from design 'bytemask'
+Removing port 'y_cnt[3]' from design 'bytemask'
+Removing port 'y_cnt[2]' from design 'bytemask'
+Removing port 'state[5]' from design 'bytemask'
+Removing port 'state[4]' from design 'bytemask'
+Removing port 'state_p[5]' from design 'bytemask'
+Removing port 'state_p[4]' from design 'bytemask'
+Removing port 'final_cnt[10]' from design 'bytemask'
+Removing port 'final_cnt[9]' from design 'bytemask'
+Removing port 'final_cnt[8]' from design 'bytemask'
+Removing port 'final_cnt[7]' from design 'bytemask'
+Removing port 'final_cnt[6]' from design 'bytemask'
+Removing port 'final_cnt[5]' from design 'bytemask'
+Removing port 'final_cnt[4]' from design 'bytemask'
+Removing port 'x_cnt_ppppp[0]' from design 'addr'
+Removing port 'y_cnt_ppppp[0]' from design 'addr'
+Removing port 'read_cnt[10]' from design 'addr'
+Removing port 'read_cnt[9]' from design 'addr'
+Removing port 'read_cnt[8]' from design 'addr'
+Removing port 'read_cnt[7]' from design 'addr'
+Removing port 'read_cnt[6]' from design 'addr'
+Removing port 'read_cnt[5]' from design 'addr'
+Removing port 'read_cnt[4]' from design 'addr'
+Removing port 'read_cnt[3]' from design 'addr'
+Removing port 'read_cnt[2]' from design 'addr'
+Removing port 'state[5]' from design 'addr'
+Removing port 'state[4]' from design 'addr'
+Removing port 'state_p[5]' from design 'addr'
+Removing port 'state_p[4]' from design 'addr'
+Removing port 'conv_cnt[9]' from design 'addr'
+Removing port 'conv_cnt[8]' from design 'addr'
+Removing port 'conv_cnt[7]' from design 'addr'
+Removing port 'conv_cnt_pp[9]' from design 'addr'
+Removing port 'conv_cnt_pp[8]' from design 'addr'
+Removing port 'conv_cnt_pp[7]' from design 'addr'
+Removing port 'conv_cnt_pp[6]' from design 'addr'
+Removing port 'conv_cnt_pp[5]' from design 'addr'
+Removing port 'conv_cnt_pp[4]' from design 'addr'
+Removing port 'conv_cnt_pp[1]' from design 'addr'
+Removing port 'conv_cnt_pp[0]' from design 'addr'
+Removing port 'state[5]' from design 'top_CNN'
+Removing port 'state[4]' from design 'top_CNN'
+Removing port 'state_p[5]' from design 'top_CNN'
+Removing port 'state_p[4]' from design 'top_CNN'
+Removing port 'x_cnt_pp[4]' from design 'top_CNN'
+Removing port 'x_cnt_pp[3]' from design 'top_CNN'
+Removing port 'x_cnt_pp[2]' from design 'top_CNN'
+Removing port 'x_cnt_pp[1]' from design 'top_CNN'
+Removing port 'y_cnt_pp[4]' from design 'top_CNN'
+Removing port 'y_cnt_pp[3]' from design 'top_CNN'
+Removing port 'y_cnt_pp[2]' from design 'top_CNN'
+Removing port 'y_cnt_pp[1]' from design 'top_CNN'
+Removing port 'read_cnt[10]' from design 'top_CNN'
+Removing port 'read_cnt[9]' from design 'top_CNN'
+Removing port 'read_cnt[8]' from design 'top_CNN'
+Removing port 'read_cnt[7]' from design 'top_CNN'
+Removing port 'read_cnt[6]' from design 'top_CNN'
+Removing port 'read_cnt[5]' from design 'top_CNN'
+Removing port 'read_cnt[4]' from design 'top_CNN'
+Removing port 'max[7]' from design 'top_CNN'
+Removing port 'x_cnt[4]' from design 'wen'
+Removing port 'x_cnt[3]' from design 'wen'
+Removing port 'x_cnt[1]' from design 'wen'
+Removing port 'x_cnt[0]' from design 'wen'
+Removing port 'y_cnt[4]' from design 'wen'
+Removing port 'y_cnt[3]' from design 'wen'
+Removing port 'y_cnt[1]' from design 'wen'
+Removing port 'y_cnt[0]' from design 'wen'
+Removing port 'x_cnt_ppppp[4]' from design 'wen'
+Removing port 'x_cnt_ppppp[3]' from design 'wen'
+Removing port 'x_cnt_ppppp[2]' from design 'wen'
+Removing port 'x_cnt_ppppp[1]' from design 'wen'
+Removing port 'y_cnt_ppppp[4]' from design 'wen'
+Removing port 'y_cnt_ppppp[3]' from design 'wen'
+Removing port 'y_cnt_ppppp[2]' from design 'wen'
+Removing port 'y_cnt_ppppp[1]' from design 'wen'
+Removing port 'state[5]' from design 'wen'
+Removing port 'state[4]' from design 'wen'
+Removing port 'state_p[5]' from design 'wen'
+Removing port 'state_p[4]' from design 'wen'
+Removing port 'final_cnt[5]' from design 'wen'
+Removing port 'final_cnt[4]' from design 'wen'
+Removing port 'final_cnt[3]' from design 'wen'
+Removing port 'final_cnt[2]' from design 'wen'
+Removing port 'final_cnt[1]' from design 'wen'
+Removing port 'final_cnt[0]' from design 'wen'
+1
+1
+source -echo -verbose 3_report.tcl 
+###-----------------------------Naming Rules----------------------------
+set bus_inference_style {%s[%d]}
+%s[%d]
+set bus_naming_style {%s[%d]}
+%s[%d]
+set hdlout_internal_busses true
+true
+change_names -rules verilog -hierarchy
+Warning: The specified replacement character (_) is conflicting with the specified allowed or restricted character.   (UCN-4)
+1
+define_name_rules name_rule -allowed {a-z A-Z 0-9 _} -max_length 255 -type cell
+1
+define_name_rules name_rule -allowed {a-z A-Z 0-9 _[]} -max_length 255 -type net
+1
+define_name_rules name_rule -map {{"\\*cell\\*" "cell"}}
+1
+define_name_rules name_rule -case_insensitive
+1
+change_names -hierarchy -rules name_rule
+1
+###--------------------------Netlist-related------------------------------------
+write -format ddc     -hierarchy -output ./netlist/${TOPLEVEL}_syn.ddc
+Writing ddc file './netlist/Convnet_top_syn.ddc'.
+1
+write -format verilog -hierarchy -output ./netlist/${TOPLEVEL}_syn.v
+Writing verilog file '/home/u105/u105061255/ICLAB/HW5/PART2/syn/netlist/Convnet_top_syn.v'.
+1
+write_sdf -version 1.0  -context verilog ./netlist/${TOPLEVEL}_syn.sdf
+Information: Annotated 'cell' delays are assumed to include load delay. (UID-282)
+Information: Writing timing information to file '/home/u105/u105061255/ICLAB/HW5/PART2/syn/netlist/Convnet_top_syn.sdf'. (WT-3)
+Information: Updating design information... (UID-85)
+Warning: Design 'Convnet_top' contains 1 high-fanout nets. A fanout number of 1000 will be used for delay calculations involving these nets. (TIM-134)
+1
+write_sdc ./netlist/${TOPLEVEL}_syn.sdc
+1
+write_saif -output ./netlist/${TOPLEVEL}_syn.saif 
+Information: Writing backward SAIF information to file './netlist/Convnet_top_syn.saif'. (PWR-458)
+1
+###---------------------------Syntheis result reports----------------------------
+# ===== Timing report =====
+report_timing -delay min -max_paths 4 > ./report/report_hold_${TOPLEVEL}.out
+report_timing -delay max -max_paths 4 > ./report/report_setup_${TOPLEVEL}.out
+report_timing -path full -delay max -max_paths 1 -nworst 1 -significant_digits 4 > ./report/report_time_${TOPLEVEL}.out
+# ===== Area report =====
+report_area -hier  > ./report/report_area_${TOPLEVEL}.out
+# ===== Power report =====
+report_power -hier > ./report/report_power_${TOPLEVEL}.out
+# ===== violations =====
+report_constraint -all_violators > ./report/report_violation_${TOPLEVEL}.out
+exit
+
+Thank you...

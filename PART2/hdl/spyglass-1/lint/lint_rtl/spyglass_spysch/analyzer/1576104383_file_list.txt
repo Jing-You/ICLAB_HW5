@@ -1,0 +1,6 @@
+0 CNN2D.v
+1 Convnet_top.v
+2 addr.v
+3 bytemask.v
+4 top_CNN.v
+5 wen.v

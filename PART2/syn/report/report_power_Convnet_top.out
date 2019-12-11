@@ -1,0 +1,238 @@
+Information: Propagating switching activity (low effort zero delay simulation). (PWR-6)
+Warning: Design has unannotated primary inputs. (PWR-414)
+Warning: Design has unannotated sequential cell outputs. (PWR-415)
+ 
+****************************************
+Report : power
+        -hier
+        -analysis_effort low
+Design : Convnet_top
+Version: O-2018.06
+Date   : Thu Dec 12 06:58:31 2019
+****************************************
+
+
+Library(s) Used:
+
+    saed32hvt_ss0p95v125c (File: /usr/cadtool/SAED32_EDK/lib/stdcell_hvt/db_nldm/saed32hvt_ss0p95v125c.db)
+
+
+Operating Conditions: ss0p95v125c   Library: saed32hvt_ss0p95v125c
+Wire Load Model Mode: enclosed
+
+Design        Wire Load Model            Library
+------------------------------------------------
+Convnet_top            140000            saed32hvt_ss0p95v125c
+bytemask               8000              saed32hvt_ss0p95v125c
+addr                   8000              saed32hvt_ss0p95v125c
+top_CNN                140000            saed32hvt_ss0p95v125c
+wen                    ForQA             saed32hvt_ss0p95v125c
+SNPS_CLOCK_GATE_HIGH_Convnet_top
+                       ForQA             saed32hvt_ss0p95v125c
+SNPS_CLOCK_GATE_HIGH_Convnet_top_mydesign_0
+                       ForQA             saed32hvt_ss0p95v125c
+SNPS_CLOCK_GATE_HIGH_bytemask_mydesign_0
+                       ForQA             saed32hvt_ss0p95v125c
+SNPS_CLOCK_GATE_HIGH_bytemask_mydesign_1
+                       ForQA             saed32hvt_ss0p95v125c
+SNPS_CLOCK_GATE_HIGH_addr_mydesign_0
+                       ForQA             saed32hvt_ss0p95v125c
+SNPS_CLOCK_GATE_HIGH_addr_mydesign_9
+                       ForQA             saed32hvt_ss0p95v125c
+SNPS_CLOCK_GATE_HIGH_addr_mydesign_8
+                       ForQA             saed32hvt_ss0p95v125c
+SNPS_CLOCK_GATE_HIGH_addr_mydesign_7
+                       ForQA             saed32hvt_ss0p95v125c
+SNPS_CLOCK_GATE_HIGH_addr_mydesign_6
+                       ForQA             saed32hvt_ss0p95v125c
+SNPS_CLOCK_GATE_HIGH_addr_mydesign_5
+                       ForQA             saed32hvt_ss0p95v125c
+SNPS_CLOCK_GATE_HIGH_addr_mydesign_4
+                       ForQA             saed32hvt_ss0p95v125c
+SNPS_CLOCK_GATE_HIGH_addr_mydesign_3
+                       ForQA             saed32hvt_ss0p95v125c
+SNPS_CLOCK_GATE_HIGH_addr_mydesign_2
+                       ForQA             saed32hvt_ss0p95v125c
+SNPS_CLOCK_GATE_HIGH_addr_mydesign_1
+                       ForQA             saed32hvt_ss0p95v125c
+CNN2D_mydesign_15      8000              saed32hvt_ss0p95v125c
+CNN2D_mydesign_14      8000              saed32hvt_ss0p95v125c
+CNN2D_mydesign_13      8000              saed32hvt_ss0p95v125c
+CNN2D_mydesign_12      8000              saed32hvt_ss0p95v125c
+CNN2D_mydesign_11      8000              saed32hvt_ss0p95v125c
+CNN2D_mydesign_10      8000              saed32hvt_ss0p95v125c
+CNN2D_mydesign_9       8000              saed32hvt_ss0p95v125c
+CNN2D_mydesign_8       8000              saed32hvt_ss0p95v125c
+CNN2D_mydesign_7       8000              saed32hvt_ss0p95v125c
+CNN2D_mydesign_6       8000              saed32hvt_ss0p95v125c
+CNN2D_mydesign_5       8000              saed32hvt_ss0p95v125c
+CNN2D_mydesign_4       8000              saed32hvt_ss0p95v125c
+CNN2D_mydesign_3       8000              saed32hvt_ss0p95v125c
+CNN2D_mydesign_2       8000              saed32hvt_ss0p95v125c
+CNN2D_mydesign_1       8000              saed32hvt_ss0p95v125c
+CNN2D_mydesign_0       8000              saed32hvt_ss0p95v125c
+SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_0
+                       ForQA             saed32hvt_ss0p95v125c
+SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_63
+                       ForQA             saed32hvt_ss0p95v125c
+SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_62
+                       ForQA             saed32hvt_ss0p95v125c
+SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_61
+                       ForQA             saed32hvt_ss0p95v125c
+SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_60
+                       ForQA             saed32hvt_ss0p95v125c
+SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_59
+                       ForQA             saed32hvt_ss0p95v125c
+SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_58
+                       ForQA             saed32hvt_ss0p95v125c
+SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_57
+                       ForQA             saed32hvt_ss0p95v125c
+SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_56
+                       ForQA             saed32hvt_ss0p95v125c
+SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_55
+                       ForQA             saed32hvt_ss0p95v125c
+SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_54
+                       ForQA             saed32hvt_ss0p95v125c
+SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_53
+                       ForQA             saed32hvt_ss0p95v125c
+SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_52
+                       ForQA             saed32hvt_ss0p95v125c
+SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_51
+                       ForQA             saed32hvt_ss0p95v125c
+SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_50
+                       ForQA             saed32hvt_ss0p95v125c
+SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_49
+                       ForQA             saed32hvt_ss0p95v125c
+SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_48
+                       ForQA             saed32hvt_ss0p95v125c
+SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_47
+                       ForQA             saed32hvt_ss0p95v125c
+SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_46
+                       ForQA             saed32hvt_ss0p95v125c
+SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_45
+                       ForQA             saed32hvt_ss0p95v125c
+SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_44
+                       ForQA             saed32hvt_ss0p95v125c
+SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_43
+                       ForQA             saed32hvt_ss0p95v125c
+SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_42
+                       ForQA             saed32hvt_ss0p95v125c
+SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_41
+                       ForQA             saed32hvt_ss0p95v125c
+SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_40
+                       ForQA             saed32hvt_ss0p95v125c
+SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_39
+                       ForQA             saed32hvt_ss0p95v125c
+SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_38
+                       ForQA             saed32hvt_ss0p95v125c
+SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_37
+                       ForQA             saed32hvt_ss0p95v125c
+SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_36
+                       ForQA             saed32hvt_ss0p95v125c
+SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_35
+                       ForQA             saed32hvt_ss0p95v125c
+SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_34
+                       ForQA             saed32hvt_ss0p95v125c
+SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_33
+                       ForQA             saed32hvt_ss0p95v125c
+SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_32
+                       ForQA             saed32hvt_ss0p95v125c
+SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_31
+                       ForQA             saed32hvt_ss0p95v125c
+SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_30
+                       ForQA             saed32hvt_ss0p95v125c
+SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_29
+                       ForQA             saed32hvt_ss0p95v125c
+SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_28
+                       ForQA             saed32hvt_ss0p95v125c
+SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_27
+                       ForQA             saed32hvt_ss0p95v125c
+SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_26
+                       ForQA             saed32hvt_ss0p95v125c
+SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_25
+                       ForQA             saed32hvt_ss0p95v125c
+SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_24
+                       ForQA             saed32hvt_ss0p95v125c
+SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_23
+                       ForQA             saed32hvt_ss0p95v125c
+SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_22
+                       ForQA             saed32hvt_ss0p95v125c
+SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_21
+                       ForQA             saed32hvt_ss0p95v125c
+SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_20
+                       ForQA             saed32hvt_ss0p95v125c
+SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_19
+                       ForQA             saed32hvt_ss0p95v125c
+SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_18
+                       ForQA             saed32hvt_ss0p95v125c
+SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_17
+                       ForQA             saed32hvt_ss0p95v125c
+SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_16
+                       ForQA             saed32hvt_ss0p95v125c
+SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_15
+                       ForQA             saed32hvt_ss0p95v125c
+SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_14
+                       ForQA             saed32hvt_ss0p95v125c
+SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_13
+                       ForQA             saed32hvt_ss0p95v125c
+SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_12
+                       ForQA             saed32hvt_ss0p95v125c
+SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_11
+                       ForQA             saed32hvt_ss0p95v125c
+SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_10
+                       ForQA             saed32hvt_ss0p95v125c
+SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_9
+                       ForQA             saed32hvt_ss0p95v125c
+SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_8
+                       ForQA             saed32hvt_ss0p95v125c
+SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_7
+                       ForQA             saed32hvt_ss0p95v125c
+SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_6
+                       ForQA             saed32hvt_ss0p95v125c
+SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_5
+                       ForQA             saed32hvt_ss0p95v125c
+SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_4
+                       ForQA             saed32hvt_ss0p95v125c
+SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_3
+                       ForQA             saed32hvt_ss0p95v125c
+SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_2
+                       ForQA             saed32hvt_ss0p95v125c
+SNPS_CLOCK_GATE_HIGH_top_CNN_mydesign_1
+                       ForQA             saed32hvt_ss0p95v125c
+
+
+Global Operating Voltage = 0.95 
+Power-specific unit information :
+    Voltage Units = 1V
+    Capacitance Units = 1.000000ff
+    Time Units = 1ns
+    Dynamic Power Units = 1uW    (derived from V,C,T units)
+    Leakage Power Units = 1pW
+
+
+--------------------------------------------------------------------------------
+                                       Switch   Int      Leak     Total
+Hierarchy                              Power    Power    Power    Power    %
+--------------------------------------------------------------------------------
+Convnet_top                             413.630 3.03e+03 1.12e+09 4.56e+03 100.0
+  wen (wen)                               0.161   17.014 1.69e+06   18.866   0.4
+  top_CNN (top_CNN)                     394.872 2.53e+03 1.05e+09 3.98e+03  87.2
+    CNN2D_15 (CNN2D_mydesign_0)          14.906   56.645 3.94e+07  110.988   2.4
+    CNN2D_14 (CNN2D_mydesign_1)          14.797   56.390 4.02e+07  111.343   2.4
+    CNN2D_13 (CNN2D_mydesign_2)          14.915   56.717 3.97e+07  111.303   2.4
+    CNN2D_12 (CNN2D_mydesign_3)          14.697   56.266 3.95e+07  110.478   2.4
+    CNN2D_11 (CNN2D_mydesign_4)          14.788   56.502 4.02e+07  111.445   2.4
+    CNN2D_10 (CNN2D_mydesign_5)          14.918   56.493 3.99e+07  111.296   2.4
+    CNN2D_9 (CNN2D_mydesign_6)           14.817   56.441 4.04e+07  111.638   2.4
+    CNN2D_8 (CNN2D_mydesign_7)           14.765   56.362 4.01e+07  111.255   2.4
+    CNN2D_7 (CNN2D_mydesign_8)           14.822   56.836 3.96e+07  111.290   2.4
+    CNN2D_6 (CNN2D_mydesign_9)           15.086   56.863 4.08e+07  112.788   2.5
+    CNN2D_5 (CNN2D_mydesign_10)          14.830   56.757 4.00e+07  111.570   2.4
+    CNN2D_4 (CNN2D_mydesign_11)          14.812   56.864 4.01e+07  111.805   2.5
+    CNN2D_3 (CNN2D_mydesign_12)          14.713   56.454 3.93e+07  110.476   2.4
+    CNN2D_2 (CNN2D_mydesign_13)          14.671   56.596 4.02e+07  111.500   2.4
+    CNN2D_1 (CNN2D_mydesign_14)           7.153   34.693 4.15e+07   83.297   1.8
+    CNN2D_0 (CNN2D_mydesign_15)          14.762   56.612 3.93e+07  110.635   2.4
+  addr (addr)                             7.178  104.089 2.63e+07  137.586   3.0
+  bytemask (bytemask)                     2.238   51.908 6.46e+06   60.609   1.3
+1

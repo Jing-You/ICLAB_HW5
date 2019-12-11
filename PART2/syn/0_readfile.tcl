@@ -14,7 +14,7 @@ define_design_lib $TOPLEVEL -path ./$TOPLEVEL
 
 # Read Design File (add your files here)
 set HDL_DIR "../hdl"
-analyze -library $TOPLEVEL -format verilog "$HDL_DIR/top.v"
+analyze -library $TOPLEVEL -format verilog "$HDL_DIR/Convnet_top.v $HDL_DIR/addr.v $HDL_DIR/bytemask.v $HDL_DIR/CNN2D.v $HDL_DIR/top_CNN.v $HDL_DIR/wen.v"
 
 # elaborate your design
 elaborate $TOPLEVEL -architecture verilog -library $TOPLEVEL
